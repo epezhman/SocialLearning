@@ -1,0 +1,161 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.AGQ_R;
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Survey), 0, false, true);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Survey, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+
+<div class="stickDownSubmitSurvey">
+    <div class="row">
+        <div class="col-md-6" title="@(ViewBag.QuestionCountLeft != 0 ? UT.SL.Model.Resource.App_Common.AnswerToAllBeforeSubmit: "")" id="finalSubmitTitle">
+            @if (ViewBag.QuestionCountLeft != 0)
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 3 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", disabled = "disabled", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+            else
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 3},
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="boldAndLarger surveySubmit">
+                Q: <span id="questionLeft">@ViewBag.QuestionCountLeft</span>/@ViewBag.QuestionCount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="surveyRating">
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            1-	My aim is completely master the material presented in this class
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 1 })
+        </div>      
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            2-	I am striving to do well compared to other students
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 2 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            3-	My goal is to learn as much as possible
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 3 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            4-	My aim is to perform well relative to other students
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 4 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            5-	My aim is to avoid learning less than I possibly could
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 5 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            6-	My goal is to avoid performing poorly compared to others
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 6 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            7-	I am striving to understand the content as thoroughly as possible
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 7 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            8-	My goal is to perform better than the other students
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 8 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            9-	My goal is to avoid learning less than it is possible to learn
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 9 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            10-	I am striving to avoid performing worse than others
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 10 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            11-	I am striving to avoid an incomplete understanding of the course material
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 11 })
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-9 surveyFontLeft">
+            12-	My aim is to avoid doing worse than other students
+        </div>
+        <div class="col-md-3">
+            @Html.Action("CircleRatingContent", "Survey", new { area = "Admin", surveyId = 3, questionId = 12 })
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+﻿@model UT.SL.Data.LINQ.Course
+@{
+    var filter = string.Empty;
+    if (ViewBag.Filter != null)
+    {
+        filter = ViewBag.Filter;
+    }
+}
+
+@if (string.IsNullOrEmpty(filter) || filter == "1" || filter == "4")
+{
+    <div id="leadersPanel" data-showeditdelete="true">
+        @Html.Action("Leaders", "Course", new { Model, filter = filter })
+    </div>
+
+}

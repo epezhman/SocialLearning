@@ -1,0 +1,82 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, SelectListItems>
+<div class="">
+    @using (Ajax.BeginForm("Edit", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()  
+        @Html.ValidationSummary(true)    
+        <fieldset>
+            <legend>@UT.SL.Model.Resource.App_Common.EditPage</legend>
+            <div class="" id="SubmitResult">
+            </div>
+            <div class="">
+                <div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.Course.Categories</label>
+                    <div class="controls">
+                        @Html.ListBoxFor(model => model.ExtraKnownData.SelectedIds, Model.ExtraKnownData.Items)
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.Title)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.Title)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.About)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.About)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.StartDate)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.FormObject.StartDate, new { data_datetimeui = "true" })
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.StartDate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.EndDate)</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.FormObject.EndDate, new { data_datetimeui = "true" })
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.EndDate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit"  class="btn btn-default btn btn-default-default submit"/>
+                        @Html.HiddenFor(model => model.FormObject.Id)
+                        <input type="reset" value="@(UT.SL.Model.Resource.App_Common.Reset)"  id="reset" class="btn btn-default btn btn-default-default reset"/>
+
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+            $("#FormObject_About").kendoEditor();
+            $("#ExtraKnownData_SelectedIds").kendoMultiSelect()
+        });
+    </script>
+</div>

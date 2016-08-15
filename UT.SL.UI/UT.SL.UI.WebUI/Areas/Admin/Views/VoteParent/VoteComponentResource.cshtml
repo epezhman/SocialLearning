@@ -1,0 +1,226 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Data.LINQ.VoteParent, UT.SL.Model.VoteModel>
+<div id="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" style="display:inline-block; margin-left:2px; margin-right:2px">
+    <div style="display: inline-block;" class="@(ViewBag.New != null ? "paleItNew" : "paleIt")">
+        <div class="" style="vertical-align: auto;">
+            @if (ViewBag.viewType != 1)
+            {
+                <span class="pointercursor dropdown-toggle" data-toggle="dropdown" title="@UT.SL.Model.Resource.App_Common.Vote" style="@(Model.ExtraKnownData.MyReaction != 0 ? "font-weight:bolder" : "")"><span class="glyphicon glyphicon-heart"></span> @Model.FormObject.Count </span>
+            }
+            @if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    @*اگر بخواهیم عکس خاصی را نشان بدهیم مثلا برای لایک ایت یک عکس برای بعدی یک 
+                        عسک دیگر یک سری استایل خودمان در فایل در فریم ورک تعریف کرده ای م می توانیم
+                         آن کلاس را به این خط بدهیم. مثل نمونه زیر اما فعلا تمامشان بدون عکس هستند
+                        <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ForumReactionType.LikeIt ? "active" : "")">*@
+
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ForumReactionType.LikeIt ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ForumReactionType.LikeIt)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ForumReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ForumReactionType.Challenging ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ForumReactionType.Challenging)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ForumReactionType.Challenging)</span>@UT.SL.Model.Resource.App_Common.Challenging</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ForumReactionType.Motivating ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ForumReactionType.Motivating)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ForumReactionType.Motivating)</span>@UT.SL.Model.Resource.App_Common.Motivating</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ForumReactionType.Communicating ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ForumReactionType.Communicating)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ForumReactionType.Communicating)</span>@UT.SL.Model.Resource.App_Common.Communicating</a>
+                    </li>
+                </ul>
+            }
+            else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)
+            {
+                if (ViewBag.viewType == 1)
+                {
+                    <ul style="list-style-type: none;" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.LikeIt ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.LikeIt)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.LikeIt</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Inspiring ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Inspiring)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.Inspiring</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Evaluating ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Evaluating)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.Evaluating</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Good_Summary ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Good_Summary)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.GoodSummary</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informative_Approve ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Informative_Approve)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.InformativeApprove</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informativ_Dissaprove ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Informativ_Dissaprove)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.InformativeDisapprove</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Organizing ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Organizing)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.Organizing</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Clearifying ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Clearifying)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.Clearifying</span></a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Weak_Contribution ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Weak_Contribution)"><span style="margin-left: 25px">@UT.SL.Model.Resource.App_Common.WeakContribution</span></a>
+                        </li>
+
+                    </ul>
+                    <br />
+                }
+                else
+                {
+                    <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.LikeIt? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.LikeIt)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Inspiring ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Inspiring)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Inspiring)</span>@UT.SL.Model.Resource.App_Common.Inspiring</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Evaluating ? "active" : "")">
+                            
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Evaluating)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Evaluating)</span>@UT.SL.Model.Resource.App_Common.Evaluating</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Good_Summary ? "active" : "")">
+                            
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Good_Summary)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Good_Summary)</span>@UT.SL.Model.Resource.App_Common.GoodSummary</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informative_Approve ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Informative_Approve)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informative_Approve)</span>@UT.SL.Model.Resource.App_Common.InformativeApprove</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informativ_Dissaprove ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Informativ_Dissaprove)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Informativ_Dissaprove)</span>@UT.SL.Model.Resource.App_Common.InformativeDisapprove</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Organizing ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Organizing)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Organizing)</span>@UT.SL.Model.Resource.App_Common.Organizing</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Clearifying ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Clearifying)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Clearifying)</span>@UT.SL.Model.Resource.App_Common.Clearifying</a>
+                        </li>
+                        <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Weak_Contribution ? "active" : "")">
+                            <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.DiscussionReactionType.Weak_Contribution)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.DiscussionReactionType.Weak_Contribution)</span>@UT.SL.Model.Resource.App_Common.WeakContribution</a>
+                        </li>
+
+                    </ul>
+                }
+            }
+            else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.postReply)
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    <li class="Awesome @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring)</span>@UT.SL.Model.Resource.App_Common.Awesome</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Challenging ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Challenging)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Challenging)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Informative_Assert ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Informative_Assert)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct)</span>@UT.SL.Model.Resource.App_Common.Interesting</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.NoNewIdea ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.NoNewIdea)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Informative_Assert)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.WeakContribution ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.WeakContribution)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.WeakContribution)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Unrelated ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Unrelated)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Unrelated)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                </ul>
+            }
+            else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission)
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    <li class="Awesome @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdaterSubmission" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Novel_Inspiring)</span>@UT.SL.Model.Resource.App_Common.Awesome</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdaterSubmission" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Challenging ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdaterSubmission" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Challenging)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Challenging)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.PostReactionType.Informative_Assert ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdaterSubmission" data-reactionid="@((int)UT.SL.Model.Enumeration.PostReactionType.Informative_Assert)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.PostReactionType.Goal_Direct)</span>@UT.SL.Model.Resource.App_Common.Interesting</a>
+                    </li>
+
+                </ul>
+            }
+             else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ResourceReactionType.LikeIt ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ResourceReactionType.LikeIt)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ResourceReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ResourceReactionType.Informative ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ResourceReactionType.Informative)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ResourceReactionType.Informative)</span>@UT.SL.Model.Resource.App_Common.Informative</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ResourceReactionType.Acceptable ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ResourceReactionType.Acceptable)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ResourceReactionType.Acceptable)</span>@UT.SL.Model.Resource.App_Common.Acceptable</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ResourceReactionType.Incomplete ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ResourceReactionType.Incomplete)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ResourceReactionType.Incomplete)</span>@UT.SL.Model.Resource.App_Common.Incomplete</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ResourceReactionType.NeedsImprovement ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ResourceReactionType.NeedsImprovement)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ResourceReactionType.NeedsImprovement)</span>@UT.SL.Model.Resource.App_Common.NeedsImprovement</a>
+                    </li>
+
+                </ul>
+            }
+             else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.AssignmentReactionType.LikeIt? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.AssignmentReactionType.LikeIt)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.AssignmentReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.AssignmentReactionType.Tough ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.AssignmentReactionType.Tough)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.AssignmentReactionType.Tough)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsTime ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsTime)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsTime)</span>@UT.SL.Model.Resource.App_Common.NeedsTime</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsHelp ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsHelp)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.AssignmentReactionType.NeedsHelp)</span>@UT.SL.Model.Resource.App_Common.NeedsHelp</a>
+                    </li>
+                    <li class="@(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.AssignmentReactionType.Useless ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.AssignmentReactionType.Useless)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.AssignmentReactionType.Useless)</span>@UT.SL.Model.Resource.App_Common.Useless</a>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="dropdown-menu" data-updatetargetid="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" data-lookupurl="@Url.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType })">
+                    <li class="Awesome @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.Awesome ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.Awesome)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.Awesome)</span>@UT.SL.Model.Resource.App_Common.Awesome</a>
+                    </li>
+                    <li class="LikeIt @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.LikeIt ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.LikeIt)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.LikeIt)</span>@UT.SL.Model.Resource.App_Common.LikeIt</a>
+                    </li>
+                    <li class="Interesting @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.Interesting ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.Interesting)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.Interesting)</span>@UT.SL.Model.Resource.App_Common.Interesting</a>
+                    </li>
+                    <li class="Tough @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.Tough ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.Tough)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.Tough)</span>@UT.SL.Model.Resource.App_Common.Tough</a>
+                    </li>
+                    <li class="NotThought @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.NotThought ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.NotThought)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.NotThought)</span>@UT.SL.Model.Resource.App_Common.NotThought</a>
+                    </li>
+                    <li class="NeedTime @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.NeedHelp ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.NeedHelp)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.NeedTime)</span>@UT.SL.Model.Resource.App_Common.NeedTime</a>
+                    </li>
+                    <li class="Bored @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.Bored ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.Bored)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.Bored)</span>@UT.SL.Model.Resource.App_Common.Bored</a>
+                    </li>
+                    <li class="NeedHelp @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.NeedHelp ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.NeedHelp)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.NeedHelp)</span>@UT.SL.Model.Resource.App_Common.NeedHelp</a>
+                    </li>
+                    <li class="LostInterest @(Model.ExtraKnownData.MyReaction == (int)UT.SL.Model.Enumeration.ReactionType.LostInterest ? "active" : "")">
+                        <a href="javascript:void(0);" class="reactionUpdater" data-reactionid="@((int)UT.SL.Model.Enumeration.ReactionType.LostInterest)"><span class="dopad">@Model.FormObject.Votes.Count(x => x.VoteValue == (int)UT.SL.Model.Enumeration.ReactionType.LostInterest)</span>@UT.SL.Model.Resource.App_Common.LostInterest</a>
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+</div>

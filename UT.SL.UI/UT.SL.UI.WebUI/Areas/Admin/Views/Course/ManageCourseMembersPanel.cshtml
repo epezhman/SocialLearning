@@ -1,0 +1,87 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.App_UserEnrolement>
+<div class="utwell" data-showeditdelete="true">
+    <div class="row boldAndLarger">
+        <div class="col-md-12">
+            <span>
+                @UT.SL.Model.Resource.App_Common.ManageCourseParticipants
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="GroupAll">
+                @for (int i = 1; i <= 3; i++)
+                {
+                    <div class="container-fluid">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div style="display: inline-block">
+                   @*الآن دکمه را نشان می دهد ولی وقتی می رود داخلش اگر دانشجو باشد می گوید نمی توانی اعضای کلاس را ادیت کنی در حالیکه درستش این بود که مشابه خط زیر که کامنت کرده ام کلا حتی دکمه را اول از فیلتر رد می کرد بعد نشان می داد تا اگر طرف مجاز نیست بیخودی سرکار نباشد.*@
+                   @* @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "LearningGroup", new { area = "admin", id = item.Id },*@
+                                                                     @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "Course", new { id = ViewBag.CourseId, memberType = i },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       LoadingElementId = "loadingAjax",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })"
+                   }, new { @class = "glyColor" }, null)
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <span title="@UT.SL.Model.Resource.App_Common.MemberCount"><span id="memberCount@(i)"> @Model.Where(x => x.Type == i).Count()</span></span>
+                                            <span>
+                                                @if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.Teacher)
+                                                {
+                                                    @UT.SL.Model.Resource.App_Common.Teacher
+                                                }
+                                                else if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.TA)
+                                                {
+                                                    @UT.SL.Model.Resource.App_Common.TA
+                                                }
+                                                else if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.Student)
+                                                {
+                                                    @UT.SL.Model.Resource.App_Common.Student
+                                                }
+                                            </span>
+                                        </div>
+                                        <div id="groupDiv@(i)" style="display:inline-block">
+                                            @Html.Action("GetTopMembersForPanel", "Course", new { area = "Admin", id = ViewBag.CourseId, memberType = i })
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div id="groupMembersDiv" style="display: none">
+            </div>
+        </div>
+    </div>
+</div>

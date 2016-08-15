@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Index;   
+}
+@section styles
+{
+    <link href="@Url.Content("~/Content/themes/jstree/rtl/Style.css")" rel="stylesheet" type="text/css" />
+}
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.hotkeys.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.jstree.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        function beginUpdateAction() {
+            $("#actionSubmit").css("disabled", "disabled");
+        }
+        $(function () {           
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Admin), @((int)UT.SL.Model.Enumeration.NavLinks.AppActiopn), true, false);
+          });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Admin, extra = (int)UT.SL.Model.Enumeration.NavLinks.AppActiopn, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0) })
+}
+<h2>@UT.SL.Model.Resource.App_Common.ManageActions </h2>
+<div class="inds">
+    <table>
+        <tr>
+            <td style="vertical-align: top">
+                <div id="tree">
+                    @if (ViewBag.LinkRank != null && ViewBag.LinkRank == 2)
+                    { 
+                        @Html.Action("DrawBookmarksTree", "AppActions")
+                    }
+                    else
+                    { 
+                        @Html.Action("DrawTree", "AppActions")
+                    }                    
+                </div>
+            </td>
+            <td style="vertical-align: top">
+                <div id="result">
+                </div>
+                <div id="part2">
+                </div>
+                <div id="result2">
+                </div>
+                <div id="part3">
+                </div>
+                <div id="result3">
+                </div>
+                <div id="result4">
+                </div>
+            </td>
+        </tr>        
+    </table>
+</div>
+<div id="loading" style="display: none" class="ajaxloading">
+    <img src="@Url.Content("~/Images/ajax-loader/22-2.gif")"  alt="loading"/>
+</div>

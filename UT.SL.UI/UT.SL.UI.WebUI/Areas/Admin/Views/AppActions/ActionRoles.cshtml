@@ -1,0 +1,31 @@
+﻿@model List<UT.SL.Model.ViewModel>
+@{
+    int actionId = (int)ViewBag.actionId;
+}
+<fieldset>
+    <legend>@UT.SL.Model.Resource.App_Common.Roles</legend>
+    @using (Ajax.BeginForm("SaveActionRoles", "AppActions", new { area = "admin", Id = actionId }, new AjaxOptions()
+    {
+        UpdateTargetId = "result2",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "Post",
+        LoadingElementId = "loadingAjax"
+    }, null))
+    { 
+        <table>
+            @foreach (var item in Model)
+            {
+                string itemId = string.Format("chk_{0}", item.Id);
+                <tr>
+                    <td>
+                        <label for="@itemId">@item.Title</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="@itemId" name="@itemId"  @HelperUtils.IfWrite((bool)item.Value, "checked=checked", "")  />
+                    </td>                  
+                </tr>            
+            }
+        </table>
+        <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit"  class="btn btn-primary submit"/>
+    }
+</fieldset>

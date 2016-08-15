@@ -1,0 +1,49 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  List<ViewModels.AssignmentSubmission.NewSubmissionViewModel>
+@if (Model.Any())
+{
+    <div class="marginBottom20">
+        <div class="" id="allSubmissions@(Model.First().AssignmentSubmission.AssignmentId)">
+            @if (Model.Count() < 4)
+            {
+                for (int i = 0; i < Model.Count(); i++)
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Action("ViewAllSubmission", "AssignmentSubmission", new { area = "admin", Model = Model[i] })
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                @Html.Action("ViewAllSubmission", "AssignmentSubmission", new { area = "admin", Model = Model.First() })
+                for (int i = 1; i < Model.Count() - 1; i++)
+                {
+                    <div class="submissionHiddenBlockDiv" style="display:none">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.Action("ViewAllSubmission", "AssignmentSubmission", new { area = "admin", Model = Model[i] })
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="paddingIt submissionBlock showSubmissions submissionHiddenBlockShowContain">
+                    <span class="submissionHiddenBlockShow glyColor"><span class="glyphicon glyphicon-arrow-down"></span>@String.Format(UT.SL.Model.Resource.App_Common.ShowMoreSubmissions, Model.Count - 2)</span>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.Action("ViewAllSubmission", "AssignmentSubmission", new { area = "admin", Model = Model.Last() })
+                    </div>
+                </div>
+                <div class=" paddingIt submissionBlock showSubmissions submissionHiddenBlockHideContain" style="display: none">
+                    <span class="submissionHiddenBlockHide glyColor "><span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.ShowFewerSubmissions</span>
+                </div>
+
+            }
+        </div>
+        <div class="" id="oneSubmission@(Model.First().AssignmentSubmission.Id)" style="display:none">
+        </div>
+    </div>
+}

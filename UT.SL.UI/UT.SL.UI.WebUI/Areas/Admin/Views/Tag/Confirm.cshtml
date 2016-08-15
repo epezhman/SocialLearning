@@ -1,0 +1,14 @@
+﻿@using UT.SL.Security
+@model UT.SL.Data.LINQ.Tag
+@HelperUtils.IfWriteBootstrap(Model.IsValid)
+@if (!Model.IsValid)
+{
+    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.Tag, "glyphicon glyphicon-ok", UT.SL.Model.Resource.App_Common.Confirm, "Confirm", "Tag", new { area = "Admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "tagIsVerified" + Model.Id,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "confirm" }, null)
+}

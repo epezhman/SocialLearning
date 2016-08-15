@@ -1,0 +1,83 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.GradeTypeModel
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="utwell">
+                <span class="glyphicon glyphicon-remove" data-closepanel="true" data-paneltocloseid="knowledgeDetail" title="@UT.SL.Model.Resource.App_Common.Close" style="cursor:pointer"></span>
+                <span class="boldAndMedium">
+                    @string.Format(UT.SL.Model.Resource.App_Common.KnowledgeProfileOf, ViewBag.FullName)
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="" class="utwell">
+                <div class="inline">
+                    <div class="inline"><span class="glyphicon glyphicon-asterisk"></span></div>
+                    <div class="inline">@Model.MyGradeDouble</div>
+                    <div class="inline"> is your knowledge level value for the topic </div>
+                    <div class="inline">@Model.FullTitle</div>
+                    <div class="inline">, while the minimum is </div>
+                    <div class="inline">@Model.MinGrade</div>
+                    <div class="inline"> and maximum is</div>
+                    <div class="inline">@Model.MaxGrade</div>
+                    <div class="inline"> belongs to </div>
+                    @foreach (var item in Model.MaxGardeUsers)
+                    {
+                        <div class="inline">
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName }) ,
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-12">
+            <div id="" class="utwell form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Topic</label>
+                    <div class="col-sm-9">
+                        @Model.FullTitle
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.MyKnowledgeProfile</label>
+                    <div class="col-sm-9">
+                        @Model.MyGradeDouble
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.UserKnowledgeProfileMIN</label>
+                    <div class="col-sm-9">
+                        @Model.MinGrade
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.UserKnowledgeProfileMAX</label>
+                    <div class="col-sm-9">
+                        <div class="inline">
+                            <div class="inline">
+                                @Model.MaxGrade
+                            </div>
+                            <div class="inline">
+                                -
+                                @UT.SL.Model.Resource.App_Common.BelongsTo
+                            </div>
+                            @foreach (var item in Model.MaxGardeUsers)
+                            {
+                                <div class="inline">
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName }) ,
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+}

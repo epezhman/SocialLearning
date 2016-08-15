@@ -1,0 +1,13 @@
+﻿@model UT.SL.Model.ObjectViewModel
+    @if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+    {
+        @Html.Partial("ResourceViewer", Model)
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+    {
+        @Html.Action("AssignmentViewer", "Assignment", new { area = "Admin", id = Model.Id })
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+    {
+        @Html.Action("ForumViewer", "Forum", new { area = "Admin", id = Model.Id })
+    }

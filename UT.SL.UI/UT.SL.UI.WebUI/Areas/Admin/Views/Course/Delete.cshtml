@@ -1,0 +1,64 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, SelectListItems>
+<div class="">
+    @using (Ajax.BeginForm("Delete", new { },
+    new AjaxOptions()
+    {
+        Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "SubmitResult",
+        LoadingElementId = "loadingAjax"
+    }, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.Course.Categories</label>
+                <div class="col-sm-9 readonly">
+                    @HelperUtils.ShowStringList(Model.ExtraKnownData.Items.Select(x => x.Text).ToList())
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                <div class="col-sm-9 readonly">
+                    @Html.DisplayFor(model => model.FormObject.Title)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                <div class="col-sm-9 readonly">
+                    @(new HtmlString(Model.FormObject.About))
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.StartDate)</label>
+                <div class="col-sm-9 readonly">
+                    @HelperUtils.LocalizedDate(Model.FormObject.StartDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.EndDate)</label>
+                <div class="col-sm-9 readonly">
+                    @HelperUtils.LocalizedDate(Model.FormObject.EndDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.FormObject.Id)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

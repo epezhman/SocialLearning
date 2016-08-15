@@ -1,0 +1,13 @@
+﻿@model List<UT.SL.Data.LINQ.ForumDiscussionPost>
+<div class="row postRow" id="postRow@(ViewBag.Id)" style="@(Model.Any() ?  "" : "display:none" )"  @(Model.Any() ? "" : "data-none='true'")>
+    <div class="col-md-11 col-md-offset-1">
+        <div id="discussionReply@(ViewBag.Id)">
+            @Html.Partial("DiscussionReplyPostsThread", Model)
+        </div>
+        <div class="row discussionReplyForm" id="discussionReplyForm@(ViewBag.Id)" style="display:none">
+            <div class="col-md-12">
+                @Html.Action("GetDiscussionPostForm", "ForumDiscussionPost", new { area = "Admin", id = ViewBag.Id })
+            </div>
+        </div>
+    </div>
+</div>

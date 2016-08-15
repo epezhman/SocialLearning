@@ -1,0 +1,55 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.GroupMember>
+@{
+    int cnt = 1;
+    int skipper = 0;
+}
+@for (int i = 0; i < Model.Where(x => x.IsCircleAdmin == 0).Count() / 2 + 1; i++)
+{
+    <div class="row" style="text-align: center; margin:10px 5px 30px 5px !important;">
+        @foreach (var item in Model.Where(x => x.IsCircleAdmin == 0).Skip(skipper * 2).Take(2))
+        {
+            <div class="col-md-6">
+                <div class="utwell">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-10">
+                            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "RemoveMember", "SocialGroup", new { id = item.Id, largepic = 1 },
+                   new AjaxOptions()
+                       {
+                           Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                           HttpMethod = "GET",
+                           UpdateTargetId = "members" + item.SocialGroupId,
+                           InsertionMode = InsertionMode.Replace,
+                           LoadingElementId = "loadingAjax"
+                       }, new { @class = "delete" }, null)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Large })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            cnt++;
+        }
+    </div>
+        skipper++;
+}
+@if (Model.Any())
+{
+    <script>
+        $(function () {
+            $("#memberCount@(Model.First().SocialGroupId)").text('@Model.Where(x => x.IsCircleAdmin == 0).Count()');
+            $('#searchForm').submit();
+        });
+    </script>
+}
+
+

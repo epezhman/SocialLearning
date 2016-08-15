@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Report;
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Survey, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+<div class="row">
+    <div class="col-md-12 feedDiv boldAndMedium" style="padding:10px; direction:rtl;">
+        <span style="text-align:center">
+            شما اين پرسشنامه را قبلاً انجام داده اید.
+        </span>
+    </div>
+</div>

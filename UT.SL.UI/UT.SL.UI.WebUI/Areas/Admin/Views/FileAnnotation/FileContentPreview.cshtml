@@ -1,0 +1,51 @@
+﻿@model UT.SL.Model.ObjectViewModel
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.FileMime == "application/pdf")
+        {
+            <a href="@Url.Action("ViewImageResource", "FileAnnotation", new { area = "admin",objectId = Model.Id, type = Model.Type    })" class=" fancybox" rel="" data-fancypdf="true">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/pdf3.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "image/jpeg" || Model.FileMime == "image/pjpeg" || Model.FileMime == "image/png" || Model.FileMime == "image/gif")
+        {
+            @*if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+                {
+                    <a href="@Url.Action("ViewImageResourceForAnnotation", "ImageAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })" class="fancybox" rel="" data-fancypic="true" data-updateid="ImageViewFooter@(Model.Type)@(Model.Id)">
+                    </a>
+                }*@
+            <a href="@Url.Action("ViewImageResource", "FileAnnotation", new { area = "admin",objectId = Model.Id, type = Model.Type    })" class=" fancybox" rel="" data-fancypdf="true">
+                <img class="resourceThumbnail img-thumbnail" src="@Url.Action("ViewImageResourceCompressed", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })" alt="" />
+            </a>
+
+        }
+        else if (Model.FileMime == "video/webm" || Model.FileMime == "video/mp4" || Model.FileMime == "video/ogg")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/video.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "application/msword" || Model.FileMime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/word.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "application/x-rar-compressed" || Model.FileMime == "application/rar" || Model.FileMime == "application/zip" || Model.FileMime == "application/octet-stream")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/zip2.png")" alt="" />
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/file.png")" alt="" />
+            </a>
+        }
+        <span>
+            <span class="glyphicon glyphicon-download"></span>
+            @Html.ActionLink(Model.FileTitle, "DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type }, null)
+        </span>
+    </div>
+</div>

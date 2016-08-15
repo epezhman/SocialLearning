@@ -1,0 +1,191 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.ObjectViewModel
+<div class="row contentLoad resourceRow@(Model.Id)" data-showonwhole="true" id="resourceRow@(Model.Type)@(Model.Id)" style="@( (ViewBag.Show != null || ViewBag.LastCheckDate != null) ? "display:none;" : "")" @( ViewBag.LastCheckDate != null ? "data-hiddennewpost" : "")>
+    <div class="col-md-12">
+        @*<div class="onEdge" data-showonedge="true">
+                <div class="feedDivFooterTags tagsOnEdgeConteiner" >
+                    @Html.Action("TopTags", "TagMapper", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                </div>
+            </div>*@
+        <div class="onEdge" data-showonedge="true">
+            <div class="feedDivFooterTags tagsOnEdgeConteiner">
+                @Html.Action("TopTopics", "TagMapper", new { area = "admin", objectId = Model.Id, type = Model.Type, viewType = 2 })
+            </div>
+        </div>
+        <div class="feedDiv">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="widePic">
+                            <tr>
+                                <td>
+                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Medium })
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-file"></span>&nbsp;
+                                                    <strong>
+                                                        @if (!string.IsNullOrEmpty(Model.Title))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @Model.Title
+                                                            </a>
+                                                        }
+                                                        else if (!string.IsNullOrEmpty(Model.Body))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @HelperUtils.ShortenStringForPreview(Model.Body, string.Empty, string.Empty).ToString()
+                                                            </a>
+                                                        }
+                                                        else if (!string.IsNullOrEmpty(Model.FileTitle))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @Model.FileTitle
+                                                            </a>
+                                                        }
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span class="feedDivLessImportant">
+                                                @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                                                @Html.Action("FindViaWhatItWasShared", "Share", new { area = "Admin", objectId = Model.Id, objectType = Model.Type })
+                                                @if (Model.IsEdited)
+                                                {
+                                                    <span class="label label-default" style="padding:3px"> @UT.SL.Model.Resource.App_Common.Edited</span>
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" data-showeditdelete="true">
+                    <div class="col-md-12">
+                        <div class="feedDivContent wideIt" id="resourceContent@(Model.Id)">
+                            <div class="paddingIt">
+                                @if (!string.IsNullOrEmpty(Model.Body))
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @HelperUtils.ShortenBody(Model.Body)
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.FileContent != null)
+                                {
+                                    @Html.Action("FileContentPreview", "FileAnnotation", new { area = "Admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })
+                                }
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" id="TagsFooter@(Model.Type)@(Model.Id)">
+                                    @Html.Action("TopOnlyTags", "TagMapper", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resourceContentEdit@(Model.Id)" style="display:none">
+                </div>
+                <div class="wideIt">
+                    <div class="row" data-showeditdelete="true">
+                        <div class="col-md-12">
+                            <div class="feedDivFooter">
+                                <div class="optionLeft">
+                                    <div class="inline">
+                                        <div class="inline">
+                                            <span class="feedDivLessImportant  paleIt">
+                                                @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                            </span>
+                                        </div>
+                                        <div class="inline">
+                                            @*@Html.Action("ShareComponentResource", "Share", new { area = "admin", objectId = Model.Id, type = Model.Type })*@
+                                            @if (Model.CourseId > 0)
+                                            {
+                                                @Html.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                                            }
+                                            else
+                                            {
+                                                @Html.Action("VoteComponent", "VoteParent", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                                            }
+                                            @Html.Action("TagComponentResource", "TagMapper", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                                            @Html.Action("CommentComponentResource", "Comment", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                                        </div>
+                                        <div class="inline">
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditResource", "Course", new { area = "admin", objectId = Model.Id, ObjecType = Model.Type },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "resourceContentEdit" + Model.Id,
+                       OnSuccess = " showEditSection('resourceContent" + Model.Id + "','resourceContentEdit" + Model.Id + "')",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+                                        </div>
+                                        <div class="inline">
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", 
+                                            new { area = "admin", objectId = Model.Id, ObjecType = Model.Type },
+                                           new AjaxOptions()
+                                           {
+                                               Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                               HttpMethod = "POST",
+                                               //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                               OnSuccess = "DeleteResource('resourceRow" + Model.Type + Model.Id + "');",
+                                               LoadingElementId = "loadingAjax"
+                                           }, new { @class = "delete hiddenoption" }, null)
+
+
+
+                                            @*@Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.FormObject[i].Id, (int)UT.SL.Model.Enumeration.ObjectType.Comment, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteComment", "Comment", 
+                                            new {area = "Admin", ObjectId = Model.ExtraKnownData.Id, type = Model.ExtraKnownData.Type, actionType = 2, Id = Model.FormObject[i].Id},
+                                           new AjaxOptions()
+                                           {
+                                               Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                               HttpMethod = "Post",
+                                               UpdateTargetId = "resourcecommentcount" + Model.ExtraKnownData.Type + Model.ExtraKnownData.Id,
+                                               OnSuccess = "$('#commentRowThread" + Model.FormObject[i].Id + "').hide('blind', 1000);",
+                                               LoadingElementId = "ajaxLoading"
+                                           }, new { @class = "delete hiddenoption" }, null)*@
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="optionRight">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row feedDivFooterShareView" id="ShareFooter@(Model.Type)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterTagView" id="TagViewFooter@(Model.Type)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterImageView" id="ImageViewFooter@(Model.Type)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterComment" @Html.Action("commentthreadany", "Comment", new { area = "admin", objectid = Model.Id, type = Model.Type })>
+                        <div class="col-md-12" id="commentsFooter@(Model.Type)@(Model.Id)">
+                            @if (ViewBag.clickedDate != null)
+                            {
+                                @Html.Action("CommentThread", "Comment", new { area = "admin", objectId = Model.Id, type = Model.Type, clickedDate = ViewBag.clickedDate })
+                            }
+                            else
+                            {
+                                @Html.Action("CommentThread", "Comment", new { area = "admin", objectId = Model.Id, type = Model.Type })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

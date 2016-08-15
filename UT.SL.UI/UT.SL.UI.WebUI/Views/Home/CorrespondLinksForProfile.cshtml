@@ -1,0 +1,54 @@
+﻿@model List<UT.SL.Model.LinkModel>
+@if (Model.Any())
+{
+    if (Model.Where(x => !x.ExtraLink).Count() > 5)
+    {
+        var i = 1;
+        foreach (var item in Model.Where(x => !x.ExtraLink).Take(5))
+        {
+
+    <li class="menuToHide@(i) "><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank, Id = item.guid })" class="@(item.IsActive ? "activeTop" : "")">@item.Title</a></li>
+            i++;
+        }
+    }
+    else
+    {
+        var i = 1;
+        foreach (var item in Model.Where(x => !x.ExtraLink))
+        {
+    <li class="menuToHide@(i) "><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank,  Id = item.guid  })" class="@(item.IsActive ? "activeTop" : "")">@item.Title</a></li>
+            i++;
+        }
+    }
+    @*<li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@UT.SL.Model.Resource.App_Common.More <b class="caret"></b></a>
+        <ul class="dropdown-menu" id="menutomovedhere">
+            @if (Model.Where(x => !x.ExtraLink).Count() > 5)
+            {
+                var i = 1;
+                foreach (var item in Model.Where(x => !x.ExtraLink).Take(5))
+                {
+                <li class="menuToShow@(i) @(item.IsActive ? "active" : "")"><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank,  Id = item.guid  })">@item.Title</a></li>
+                    i++;
+                }
+                foreach (var item in Model.Where(x => !x.ExtraLink).Skip(5))
+                {
+                <li class="@(item.IsActive ? "active" : "")"><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank,  Id = item.guid  })">@item.Title</a></li>
+                }
+            }
+            else
+            {
+                var i = 1;
+                foreach (var item in Model.Where(x => !x.ExtraLink))
+                {
+                <li class="menuToShow@(i) @(item.IsActive ? "active" : "")"><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank,  Id = item.guid  })">@item.Title</a></li>
+                    i++;
+                }
+            }
+            @foreach (var item in Model.Where(x => x.ExtraLink))
+            {
+                <li class="@(item.IsActive ? "active" : "")"><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank,  Id = item.guid  })">@item.Title</a></li>
+            }
+        </ul>
+    </li>*@    
+}

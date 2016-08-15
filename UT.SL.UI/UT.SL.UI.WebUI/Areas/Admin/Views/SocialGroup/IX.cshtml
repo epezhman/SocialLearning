@@ -1,0 +1,51 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model PagedList<UT.SL.Data.LINQ.SocialGroup>
+@foreach (var item in Model)
+{       
+    <div class="row utwell" style="text-align: center; margin-bottom: 10px; ">
+        <div class="col-md-3 boldAndLarger" style="margin: 5px;">
+            <span style="font-weight: bold; margin-left: 5px; margin-right: 5px;">@item.Title</span>
+        </div>
+        <div class="col-md-2" style="margin: 5px;">
+            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "Edit", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.EditPage + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit  glyColor" }, null)
+            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "Delete", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.DeletePage + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  glyColor" }, null)
+            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.ManageMembers, "MamangeMmber", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.ManageMembers + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "manage glyColor" }, null)
+            <span title="@UT.SL.Model.Resource.App_Common.MemberCount"><span id="memberCount@(item.Id)">@item.GroupMembers.Where(x => x.IsCircleAdmin == 0).Count()</span></span>
+        </div>
+        <div class="col-md-7">
+            @Html.Action("GetTopMembers", "SocialGroup", new { area = "Admin", Id = item.Id })
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        $.InitialComponents();
+    });
+</script>

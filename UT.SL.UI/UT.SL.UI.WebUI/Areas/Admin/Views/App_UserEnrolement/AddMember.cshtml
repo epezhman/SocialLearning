@@ -1,0 +1,21 @@
+﻿@model UT.SL.Model.AddCourseMembershipModel
+@using (Ajax.BeginForm("AddMember", "App_UserEnrolement", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "members" + Model.MembershipType,
+    HttpMethod = "POST",
+    LoadingElementId = "LoadingGifCE",
+    OnSuccess = "$('#Member" + Model.MembershipType + "').val('');$('#submitMembersForm').submit();"
+}, new { data_toSubmit = "true" }))
+{ 
+    @Html.AntiForgeryToken()  
+    @Html.ValidationSummary(true)      
+    <div class="col-md-2">
+        @UT.SL.Model.Resource.App_Common.Member
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="Member" id="Member@(Model.MembershipType)" data-lookupurl ="@Url.Action("GetUsers", "App_User", new { area = "Admin" })" data-autocompletewithpics = "true" class="col-md-12"/>
+        @Html.HiddenFor(model => model.CourseId)
+        @Html.HiddenFor(model => model.MembershipType)
+    </div>                
+}

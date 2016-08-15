@@ -1,0 +1,235 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, UT.SL.Model.ContentInterestModel>
+<div class="utwell" data-showeditdelete="true">
+    <div class="row boldAndLarger">
+        <div class="col-md-12">
+            <span>
+                @UT.SL.Model.Resource.App_Common.YouMayBeInterestedIn:
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="GroupAll">
+                @if (Model.ExtraKnownData.ContentInterestModels.Any())
+                {
+                    if (Model.ExtraKnownData.ContentInterestModels.Count() <= 3)
+                    {
+                        foreach (var item in Model.ExtraKnownData.ContentInterestModels)
+                        {
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-9">
+                                        @if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+                                        {
+                                            <i class="glyphicon glyphicon-file"></i>
+                                        }
+                                        else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+                                        {
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        }
+                                        else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+                                        {
+                                            <i class="glyphicon glyphicon-comment"></i>
+                                        }
+                                        @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                       
+                                    </div>
+                                    <div class="col-md-6 col-xs-3">
+                                        <div class="row">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span style="font-weight: normal;" class="badge">@item.UserInterestValue</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>
+                                                            @if (item.UserId != null)
+                                                            {
+                                                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.ContentCreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                                            }
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="hidden-xs feedDivLessImportant paleIt">
+                                                            @HelperUtils.ShowActivityRecentTime(item.ContentCreateDate,item.ContentDueDate)
+                                                           
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="paleIt">
+                                                            @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.ObjectId, type = item.ObjectType })
+                                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.ObjectId, ObjecType = item.ObjectType },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                       OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in Model.ExtraKnownData.ContentInterestModels.Take(3))
+                        {
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-9">
+                                        @if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+                                        {
+                                            <i class="glyphicon glyphicon-file"></i>
+                                        }
+                                        else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+                                        {
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        }
+                                        else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+                                        {
+                                            <i class="glyphicon glyphicon-comment"></i>
+                                        }
+                                        @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                       
+                                    </div>
+                                    <div class="col-md-6 col-xs-3">
+                                        <div class="row">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span style="font-weight: normal;" class="badge">@item.UserInterestValue</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>
+                                                            @if (item.UserId != null)
+                                                            {
+                                                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.ContentCreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                                            }
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="hidden-xs feedDivLessImportant paleIt">
+                                                            @HelperUtils.ShowActivityRecentTime(item.ContentCreateDate, item.ContentDueDate)
+                                                            
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="paleIt">
+                                                            @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.ObjectId, type = item.ObjectType })
+                                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.ObjectId, ObjecType = item.ObjectType },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                       OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3" style="text-align: center">
+                                    <div id="showMoreGroups" style="cursor: pointer" class="glyColor">
+                                        <span class="glyphicon glyphicon-arrow-down"></span>@UT.SL.Model.Resource.App_Common.More
+                                    </div>
+                                    <div id="showLessGroups" style="display: none; cursor: pointer" class="glyColor">
+                                        <span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.Less
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: none" id="moreGroups">
+                            @foreach (var item in Model.ExtraKnownData.ContentInterestModels.Skip(3))
+                            {
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-9">
+                                            @if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+                                            {
+                                                <i class="glyphicon glyphicon-file"></i>
+                                            }
+                                            else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+                                            {
+                                                <i class="glyphicon glyphicon-pencil">
+                                            }
+                                            else if (item.ObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+                                            {
+                                                    <i class=" glyphicon glyphicon-comment"></i>
+                                            }
+                                            @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                     
+                                        </div>
+                                        <div class="col-md-6 col-xs-3">
+                                            <div class="row">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <span style="font-weight: normal;" class="badge">@item.UserInterestValue</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>
+                                                                @if (item.UserId != null)
+                                                                {
+                                                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.ContentCreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                                                }
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="hidden-xs feedDivLessImportant paleIt">
+                                                                @HelperUtils.ShowActivityRecentTime(item.ContentCreateDate, item.ContentDueDate)
+                                                           
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="paleIt">
+                                                                @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.ObjectId, type = item.ObjectType })
+                                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.ObjectId, ObjecType = item.ObjectType },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                       OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

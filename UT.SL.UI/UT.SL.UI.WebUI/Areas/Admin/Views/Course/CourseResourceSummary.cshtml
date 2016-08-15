@@ -1,0 +1,286 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model PagedList<UT.SL.Data.LINQ.Resource>
+@{
+    int i = Model.PagingItem.PageIndex * Model.PagingItem.PageSize;
+    PagingItems sobj = Model.PagingItem;
+    int ix = sobj.PageIndex;
+}
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    @if (ViewBag.Title != null)
+                    {
+                        @(string.Format("{0} {1}", UT.SL.Model.Resource.App_Common.Resources, ViewBag.Title))
+                    }
+                </th>
+            </tr>
+        </thead>
+        <tbody id="art_ls">
+            @foreach (var item in Model)
+            {
+                i++;
+                int j = 0;
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        @Ajax.AuthorizationActionLink(User.Identity.Name, HelperUtils.ShortenStringForPreview(item.Title, item.Body, item.FileTitle).ToString(), "GetOneObject", "Course", new { area = "Admin", id = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "previewOneItemArea",
+                                             OnSuccess = "$('#postItemsArea').slideUp(500, function(){ $('#previewOneItemArea').slideDown(500); });",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { title = HelperUtils.ShortenStringForTitle(item.Title, item.Body, item.FileTitle) })
+                    </td>
+                    <td>
+                        @if (item.App_User != null)
+                        {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                        }
+                    </td>
+                    <td class="hidden-xs feedDivLessImportant paleIt">
+                        <span>
+                            @HelperUtils.ShowRecentTime(item.CreateDate)
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <span>@UT.SL.Model.Resource.App_Common.NumOfAll : @Model.PagingItem.TotalItemCount</span>
+                    @UT.SL.Model.Resource.App_Common.Page @(ix + 1)
+                    @UT.SL.Model.Resource.App_Common.From @Model.PagingItem.TotalPageCount
+
+                    <div class="divHeight30">
+                        <ul class="pagination pagination-sm marginPaging">
+                            @{
+                                var start = ix;
+                                if (start > 0)
+                                {
+                                    int c = 0;
+                                    while (start > 0 && c < 4)
+                                    {
+                                        c++;
+                                        start--;
+                                    }
+                                }
+                                if (ix != 0)
+                                {
+                                    sobj.PageIndex = 0;
+                                    <li>
+                                        @Ajax.ActionLink("<< ", "CourseResourceSummary", "Course", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "resourceResult",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax"
+                            }
+                            , new { id = "First" })
+                                    </li>
+                                }
+                                for (int j = start; j < Model.PagingItem.TotalPageCount && j < start + 10; j++)
+                                {
+                                    if (ix != j)
+                                    {
+                                        sobj.PageIndex = j;
+                                        <li>
+                                            @Ajax.ActionLink((j + 1).ToString(), "CourseResourceSummary", "Course", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "resourceResult",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax"
+                            }
+                            , new { })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="active"><a href="javascript:void(0);">@(j + 1)</a> </li>
+                                    }
+                                }
+                                if (start + 9 < Model.PagingItem.TotalPageCount)
+                                {
+                                    <li>
+                                        @Ajax.ActionLink(" >>", "CourseResourceSummary", "Course", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "resourceResult",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax"
+                            }
+                            , new { id = "Last" })
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+@*<div class="utwell" data-showeditdelete="true">
+        <div class="row boldAndLarger">
+            <div class="col-md-12">
+                <span>
+                    @String.Format("{0} {1} {2}", Model.Count(), UT.SL.Model.Resource.App_Common.InThis, ViewBag.Title)
+                </span>
+            </div>
+        </div>
+        <div class="table-responsive">
+            @if (Model.Any())
+            {
+                if (Model.Count() <= 3)
+                {
+                    <table class="table table-condensed">
+                        <tbody id="art_ls">
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)</td>
+                                <td>
+                                    @if (item.App_User != null)
+                                        {
+                                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                        }
+                                </td>
+                                <td>
+                                    <span class="hidden-xs feedDivLessImportant paleIt">
+                                        @HelperUtils.ShowRecentTime(item.CreateDate)
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="paleIt">
+                                        @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })
+                                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Resource },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+
+                                    </span>
+                                </td>
+                            </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <table class="table table-condensed">
+                        <tbody id="art_ls">
+                            @foreach (var item in Model.Take(3))
+                            {
+                                <tr>
+                                    <td>@HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)</td>
+                                    <td>
+                                        @if (item.App_User != null)
+                                        {
+                                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="hidden-xs feedDivLessImportant paleIt">
+                                            @HelperUtils.ShowRecentTime(item.CreateDate)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="paleIt">
+                                            @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Resource },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-3" style="text-align: center">
+                                <div id="showMoreGroups" style="cursor: pointer" class="glyColor">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>@UT.SL.Model.Resource.App_Common.More
+                                </div>
+                                <div id="showLessGroups" style="display: none; cursor: pointer" class="glyColor">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.Less
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none" id="moreGroups">
+                        <table class="table table-condensed">
+                            <tbody id="art_ls">
+                                @foreach (var item in Model.Skip(3))
+                                {
+                                    <tr>
+                                        <td>@HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)</td>
+                                        <td>
+                                            @if (item.App_User != null)
+                                            {
+                                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                            }
+                                        </td>
+                                        <td>
+                                            <span class="hidden-xs feedDivLessImportant paleIt">
+                                                @HelperUtils.ShowRecentTime(item.CreateDate)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="paleIt">
+                                                @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Resource },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+
+                                            </span>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>
+                </div>
+            }
+        </div>
+    </div>*@

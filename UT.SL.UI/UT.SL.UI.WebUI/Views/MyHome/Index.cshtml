@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.MyHome;
+}
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/scripts/loader.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            window.loadUrl = "@(Url.Action("GetObjects", "MyHome", new { area = "", date = DateTime.Now }))";
+            window.loadUrlForNewPosts = "@(Url.Action("GetNewObjects", "MyHome", new { area = "" }))"
+            window.filterss = '@(ViewBag.Filter != null ? ViewBag.Filter : string.Empty)';
+            window.lastCheckDate = '@(DateTime.Now)';
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.MyHome), 0, false, true);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.MyHome, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0) })
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-6" id="mainPortal">
+            @*@Html.Action("PostToCourse", new { Model })*@
+            @Html.Partial("PostPanel")
+        </div>
+        <div class="col-md-6 panelCompo" id="stufftobemoved">
+            @Html.Action("GetPanel", new { Model, filter = ViewBag.Filter })
+        </div>
+    </div>
+    @*<div class="row" id="hiddenRow" style="display: none; margin-top: -10px">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6" id="stufftobemovedhere">
+        </div>
+    </div>*@
+    <div class="row">
+        <div class="col-md-12">
+            <div id="postswrapper">
+                @Html.Action("GetObjects", new { resourceSelections = ViewBag.Filter != null ? ViewBag.Filter : string.Empty })
+            </div>
+        </div>
+    </div>
+    <div id="noMorePosts" class="row" style="display:none">
+        <div class="col-md-12">
+            <div class="feedDiv centerOne boldAndLarger marginBottom20" style="width:100%">
+                <span>
+                    @UT.SL.Model.Resource.App_Common.NoMorePosts
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+﻿@model UT.SL.Helper.FormModel<List<UT.SL.Model.GradeTypeModel>, UT.SL.Data.LINQ.Course>
+@{
+    String categories = string.Empty;
+    String dataMin = string.Empty;
+    String dataMax = string.Empty;
+    String fullTitle = string.Empty;
+    String dataMine = string.Empty;
+
+    foreach (var item in Model.FormObject)
+    {
+        categories += "\'" + item.Title + "\', ";
+    }
+    if (!string.IsNullOrEmpty(categories))
+    {
+        categories = categories.Substring(0, categories.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MinGrade.HasValue)
+        {
+            dataMin += "" + item.MinGrade + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMin))
+    {
+        dataMin = dataMin.Substring(0, dataMin.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MaxGrade.HasValue)
+        {
+            dataMax += "" + (item.MaxGrade) + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMax))
+    {
+        dataMax = dataMax.Substring(0, dataMax.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        fullTitle += "\'" + (item.FullTitle) + "\', ";
+    }
+    if (!string.IsNullOrEmpty(fullTitle))
+    {
+        fullTitle = fullTitle.Substring(0, fullTitle.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MyGradeDouble.HasValue)
+        {
+            dataMine += "" + item.MyGradeDouble + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMine))
+    {
+        dataMine = dataMine.Substring(0, dataMine.LastIndexOf(','));
+    }
+
+}
+
+<script type="text/javascript">
+    var fullTitlesK = [@Html.Raw(fullTitle)];
+
+    $(function () {
+        $('#userKnowledgeProfile').highcharts({
+
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                text: '@(UT.SL.Model.Resource.App_Common.UserKnowledgeProfile) @(Model.ExtraKnownData.Title)'
+            },
+
+            xAxis: {
+                categories: [@Html.Raw(categories)],
+                title: {
+                    text: '@UT.SL.Model.Resource.App_Common.Topics'
+                }
+            },
+
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '@UT.SL.Model.Resource.App_Common.Knowledge'
+                }
+            },
+
+            tooltip: {
+                formatter: function () {
+                    var result = '<span style="font-size:10px">' + fullTitlesK[this.points[0].point.x] + '</span><table>';
+                    $.each(this.points, function (i, data) {
+                        result += '<tr><td style="color:' + data.series.color + ';padding:0">' + data.series.name + ': </td>' +
+                                      '<td style="padding:0"><b>' + data.y + '</b></td></tr>';
+                    });
+                    result += '</table>';
+                    return result;
+                },
+                shared: true,
+                useHTML: true
+            },
+
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                },
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function () {
+                                $.ajax({
+                                    url: "@(Url.Action("KnowledgeDetails", "Grade", new { area = "Admin", userId = ViewBag.UserId }))&courseId=@(ViewBag.CourseId)&position=" + this.x,
+                                    beforeSend: function () {
+                                        $('#loadingAjax').show();
+                                    },
+                                    success: function (html) {
+                                        if (html) {
+                                            $("#knowledgeDetail").html(html);
+                                        }
+                                    },
+                                    complete: function () {
+                                        $('#loadingAjax').hide();
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            },
+
+            series: [{
+                name: '@UT.SL.Model.Resource.App_Common.UserKnowledgeProfileMAX',
+                data: [@Html.Raw(dataMax)]
+            }, {
+                name: '@UT.SL.Model.Resource.App_Common.MyKnowledgeProfile',
+                data: [@Html.Raw(dataMine)]
+            }, {
+                name: '@UT.SL.Model.Resource.App_Common.UserKnowledgeProfileMIN',
+                data: [@Html.Raw(dataMin)]
+            }]
+        });
+    });
+</script>
+<h3>@UT.SL.Model.Resource.App_Common.UserKnowledgeProfile</h3>
+<div id="userKnowledgeProfile" style="margin: 0 auto">@UT.SL.Model.Resource.App_Common.Loading</div>

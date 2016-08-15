@@ -1,0 +1,76 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.CourseSchedule>
+
+@if (Model.Any())
+{
+    <ul class="sortable" data-sortable="true">
+        @foreach (var item in Model)
+        {
+            var beginDate = string.Empty;
+            var endDate = string.Empty;
+            if (item.BeginDate != null)
+            {
+                if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                {
+                    beginDate = item.BeginDate.ToPersianDate();
+                }
+                else
+                {
+                    beginDate = item.BeginDate.Date.ToShortDateString();
+                }
+            }
+            if (item.EndDate != null)
+            {
+                if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                {
+                    endDate = item.EndDate.ToPersianDate();
+                }
+                else
+                {
+                    endDate = item.EndDate.Date.ToShortDateString();
+                }
+            }
+            <li class="ui-state-default"><span class="ui-icon ui-glyphicon glyphicon-arrowthick-2-n-s"></span>
+                <fieldset class="form-horizontal">
+                    <legend>@string.Format("{0} - {1}", beginDate, endDate)</legend>
+                    <div class="">
+                        <div class="form-group">
+                            <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.Summary</label>
+                            <div class="controls readonly">
+                                @(new HtmlString(item.Summary))
+                            </div>
+                            <div class="controls readonly">
+                                @Ajax.ActionLink("Edit Summary", "EditSummary", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete" })
+                                -- 
+                                @Ajax.ActionLink("Add Resource", "AddResource", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete" })
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </li>      
+        }
+    </ul>
+}
+else
+{
+    <p>
+        @UT.SL.Model.Resource.App_Common.FirstAssignStartEnd
+    </p>
+}

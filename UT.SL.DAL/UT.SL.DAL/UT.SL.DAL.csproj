@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F4B149A-F461-422E-B645-BF5B6D83163A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UT.SL.DAL</RootNamespace>
+    <AssemblyName>UT.SL.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicDAL\EmailRecordDAL.cs" />
+    <Compile Include="BasicDAL\MessageContactDAL.cs" />
+    <Compile Include="BasicDAL\NotificationEmailDAL.cs" />
+    <Compile Include="BasicDAL\NotificationDAL.cs" />
+    <Compile Include="BasicDAL\UserActSummaryDAL.cs" />
+    <Compile Include="BasicDAL\App_ActionEvaulationDAL.cs" />
+    <Compile Include="BasicDAL\SurveyDAL.cs" />
+    <Compile Include="BasicDAL\EmailDAL.cs" />
+    <Compile Include="BasicDAL\FeedbackDAL.cs" />
+    <Compile Include="BasicDAL\DummyDAL.cs" />
+    <Compile Include="BasicDAL\App_ActionDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEApp_MenuPositionDAL.cs" />
+    <Compile Include="BasicDAL\App_PermissionDAL.cs" />
+    <Compile Include="BasicDAL\App_RoleDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEApp_SiteMenuDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEApp_SiteMenuTextDAL.cs" />
+    <Compile Include="BasicDAL\App_UserDAL.cs" />
+    <Compile Include="BasicDAL\App_UserEnrolementDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEApp_UserGradeDAL.cs" />
+    <Compile Include="BasicDAL\App_UserInfoDAL.cs" />
+    <Compile Include="BasicDAL\App_UserInRoleDAL.cs" />
+    <Compile Include="BasicDAL\App_UserLogDAL.cs" />
+    <Compile Include="BasicDAL\App_UserProfileDAL.cs" />
+    <Compile Include="BasicDAL\AssessDAL.cs" />
+    <Compile Include="BasicDAL\AssessParentDAL.cs" />
+    <Compile Include="BasicDAL\AssignmentDAL.cs" />
+    <Compile Include="BasicDAL\AssignmentSubmissionDAL.cs" />
+    <Compile Include="BasicDAL\CategoryDAL.cs" />
+    <Compile Include="BasicDAL\CategoryMapperDAL.cs" />
+    <Compile Include="BasicDAL\CommentDAL.cs" />
+    <Compile Include="BasicDAL\TODELETECommentLogDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEAverageGradeDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEForumDiscussionPostGradeDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEGradeTypeDAL.cs" />
+    <Compile Include="BasicDAL\ObjectTopicMapperDAL.cs" />
+    <Compile Include="BasicDAL\ObjectStreamCourseDAL.cs" />
+    <Compile Include="BasicDAL\ObjectStreamGroupMapperDAL.cs" />
+    <Compile Include="BasicDAL\ObjectStreamDAL.cs" />
+    <Compile Include="BasicDAL\CourseAbstractDAL.cs" />
+    <Compile Include="BasicDAL\ContentPopularityModelDAL.cs" />
+    <Compile Include="BasicDAL\TopicDAL.cs" />
+    <Compile Include="BasicDAL\CourseScheduleDAL.cs" />
+    <Compile Include="BasicDAL\CourseDAL.cs" />
+    <Compile Include="BasicDAL\ForumDiscussionPostDAL.cs" />
+    <Compile Include="BasicDAL\FileAnnotationDAL.cs" />
+    <Compile Include="BasicDAL\GradeDAL.cs" />
+    <Compile Include="BasicDAL\GroupMemberDAL.cs" />
+    <Compile Include="BasicDAL\LearningGroupDAL.cs" />
+    <Compile Include="BasicDAL\ForumDiscussionDAL.cs" />
+    <Compile Include="BasicDAL\MessageDAL.cs" />
+    <Compile Include="BasicDAL\MessageThreadDAL.cs" />
+    <Compile Include="BasicDAL\ForumDAL.cs" />
+    <Compile Include="BasicDAL\ImageAnnotationDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEQuestionDAL.cs" />
+    <Compile Include="BasicDAL\TODELETEQuizDAL.cs" />
+    <Compile Include="BasicDAL\ResourceDAL.cs" />
+    <Compile Include="BasicDAL\ShareDAL.cs" />
+    <Compile Include="BasicDAL\SocialGroupDAL.cs" />
+    <Compile Include="BasicDAL\TagDAL.cs" />
+    <Compile Include="BasicDAL\TagMapperDAL.cs" />
+    <Compile Include="BasicDAL\TODELETETopicLearningGoalDAL.cs" />
+    <Compile Include="BasicDAL\UserKnowledgeProfileDAL.cs" />
+    <Compile Include="BasicDAL\UserSoActProfileDAL.cs" />
+    <Compile Include="BasicDAL\VoteDAL.cs" />
+    <Compile Include="BasicDAL\VoteParentDAL.cs" />
+    <Compile Include="BasicDAL\ObjectGroupMapperDAL.cs" />
+    <Compile Include="DBUtility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UT.SL.Data\UT.SL.Data.LINQ\UT.SL.Data.LINQ.csproj">
+      <Project>{af43e761-610a-4492-99b8-9789073b7a82}</Project>
+      <Name>UT.SL.Data.LINQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Helper\UT.SL.Helper.csproj">
+      <Project>{14224af0-881a-4a53-997d-12d819c2b8b7}</Project>
+      <Name>UT.SL.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model.Enumeration\UT.SL.Model.Enumeration.csproj">
+      <Project>{a2d3ce70-9f8c-4ce2-8c2e-bb26a4a38fa7}</Project>
+      <Name>UT.SL.Model.Enumeration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model.Resource\UT.SL.Model.Resource.csproj">
+      <Project>{c3b47236-c90d-4e7e-b7e1-b7d437c84c0d}</Project>
+      <Name>UT.SL.Model.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model\UT.SL.Model.csproj">
+      <Project>{d6e5f651-4019-4c63-8ed5-2d8a2418970a}</Project>
+      <Name>UT.SL.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

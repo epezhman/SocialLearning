@@ -1,0 +1,137 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.Helper", "UT.SL.Helper", "{59EBB341-2DAC-465B-ADFF-2E7ABBECE85C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.DAL", "UT.SL.DAL", "{F834C604-01B1-4AB8-A49A-2D98D8B47DF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.Model", "UT.SL.Model", "{22252650-2015-49B2-ABC7-15CD94DD99EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.Data", "UT.SL.Data", "{FEA45A0E-51A5-4DF5-AC40-4D00899DACA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.Security", "UT.SL.Security", "{0636B4A4-28E3-4B32-B4B4-E92F40D57A3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.UI", "UT.SL.UI", "{883A2459-BDDD-4B47-95FD-A150E5983CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.DAL", "UT.SL.DAL\UT.SL.DAL\UT.SL.DAL.csproj", "{1F4B149A-F461-422E-B645-BF5B6D83163A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Data.LINQ", "UT.SL.Data\UT.SL.Data.LINQ\UT.SL.Data.LINQ.csproj", "{AF43E761-610A-4492-99B8-9789073B7A82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Model.Enumeration", "UT.SL.Model\UT.SL.Model.Enumeration\UT.SL.Model.Enumeration.csproj", "{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Model", "UT.SL.Model\UT.SL.Model\UT.SL.Model.csproj", "{D6E5F651-4019-4C63-8ED5-2D8A2418970A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Model.Resource", "UT.SL.Model\UT.SL.Model.Resource\UT.SL.Model.Resource.csproj", "{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Security", "UT.SL.Security\UT.SL.Security\UT.SL.Security.csproj", "{5DA2AF83-A4D7-4185-87A0-E93ACE943423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.UI.WebUI", "UT.SL.UI\UT.SL.UI.WebUI\UT.SL.UI.WebUI.csproj", "{2486439D-5F58-436E-8AC0-1C700C587AA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UT.SL.BLL", "UT.SL.BLL", "{772DA0DB-702E-49D0-ADE9-0D938AD3F37E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.Helper", "UT.SL.Helper\UT.SL.Helper.csproj", "{14224AF0-881A-4A53-997D-12D819C2B8B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UT.SL.BLL", "UT.SL.BLL\UT.SL.BLL\UT.SL.BLL.csproj", "{E03DF4C8-E273-430D-AB1F-43A1747095B9}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://doosmooc.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = UT.SL.BLL\\UT.SL.BLL\\UT.SL.BLL.csproj
+		SccProjectTopLevelParentUniqueName1 = UT.SL.sln
+		SccProjectName1 = UT.SL.BLL/UT.SL.BLL
+		SccLocalPath1 = UT.SL.BLL\\UT.SL.BLL
+		SccProjectUniqueName2 = UT.SL.DAL\\UT.SL.DAL\\UT.SL.DAL.csproj
+		SccProjectTopLevelParentUniqueName2 = UT.SL.sln
+		SccProjectName2 = UT.SL.DAL/UT.SL.DAL
+		SccLocalPath2 = UT.SL.DAL\\UT.SL.DAL
+		SccProjectUniqueName3 = UT.SL.Data\\UT.SL.Data.LINQ\\UT.SL.Data.LINQ.csproj
+		SccProjectTopLevelParentUniqueName3 = UT.SL.sln
+		SccProjectName3 = UT.SL.Data/UT.SL.Data.LINQ
+		SccLocalPath3 = UT.SL.Data\\UT.SL.Data.LINQ
+		SccProjectUniqueName4 = UT.SL.Helper\\UT.SL.Helper.csproj
+		SccProjectTopLevelParentUniqueName4 = UT.SL.sln
+		SccProjectName4 = UT.SL.Helper
+		SccLocalPath4 = UT.SL.Helper
+		SccProjectUniqueName5 = UT.SL.Model\\UT.SL.Model.Enumeration\\UT.SL.Model.Enumeration.csproj
+		SccProjectTopLevelParentUniqueName5 = UT.SL.sln
+		SccProjectName5 = UT.SL.Model/UT.SL.Model.Enumeration
+		SccLocalPath5 = UT.SL.Model\\UT.SL.Model.Enumeration
+		SccProjectUniqueName6 = UT.SL.Model\\UT.SL.Model.Resource\\UT.SL.Model.Resource.csproj
+		SccProjectTopLevelParentUniqueName6 = UT.SL.sln
+		SccProjectName6 = UT.SL.Model/UT.SL.Model.Resource
+		SccLocalPath6 = UT.SL.Model\\UT.SL.Model.Resource
+		SccProjectUniqueName7 = UT.SL.Model\\UT.SL.Model\\UT.SL.Model.csproj
+		SccProjectTopLevelParentUniqueName7 = UT.SL.sln
+		SccProjectName7 = UT.SL.Model/UT.SL.Model
+		SccLocalPath7 = UT.SL.Model\\UT.SL.Model
+		SccProjectUniqueName8 = UT.SL.Security\\UT.SL.Security\\UT.SL.Security.csproj
+		SccProjectTopLevelParentUniqueName8 = UT.SL.sln
+		SccProjectName8 = UT.SL.Security/UT.SL.Security
+		SccLocalPath8 = UT.SL.Security\\UT.SL.Security
+		SccProjectUniqueName9 = UT.SL.UI\\UT.SL.UI.WebUI\\UT.SL.UI.WebUI.csproj
+		SccProjectTopLevelParentUniqueName9 = UT.SL.sln
+		SccProjectName9 = UT.SL.UI/UT.SL.UI.WebUI
+		SccLocalPath9 = UT.SL.UI\\UT.SL.UI.WebUI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F4B149A-F461-422E-B645-BF5B6D83163A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4B149A-F461-422E-B645-BF5B6D83163A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4B149A-F461-422E-B645-BF5B6D83163A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4B149A-F461-422E-B645-BF5B6D83163A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF43E761-610A-4492-99B8-9789073B7A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF43E761-610A-4492-99B8-9789073B7A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF43E761-610A-4492-99B8-9789073B7A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF43E761-610A-4492-99B8-9789073B7A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E5F651-4019-4C63-8ED5-2D8A2418970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E5F651-4019-4C63-8ED5-2D8A2418970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E5F651-4019-4C63-8ED5-2D8A2418970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E5F651-4019-4C63-8ED5-2D8A2418970A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA2AF83-A4D7-4185-87A0-E93ACE943423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA2AF83-A4D7-4185-87A0-E93ACE943423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA2AF83-A4D7-4185-87A0-E93ACE943423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA2AF83-A4D7-4185-87A0-E93ACE943423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2486439D-5F58-436E-8AC0-1C700C587AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2486439D-5F58-436E-8AC0-1C700C587AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2486439D-5F58-436E-8AC0-1C700C587AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2486439D-5F58-436E-8AC0-1C700C587AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14224AF0-881A-4A53-997D-12D819C2B8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14224AF0-881A-4A53-997D-12D819C2B8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14224AF0-881A-4A53-997D-12D819C2B8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14224AF0-881A-4A53-997D-12D819C2B8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03DF4C8-E273-430D-AB1F-43A1747095B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03DF4C8-E273-430D-AB1F-43A1747095B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03DF4C8-E273-430D-AB1F-43A1747095B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03DF4C8-E273-430D-AB1F-43A1747095B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14224AF0-881A-4A53-997D-12D819C2B8B7} = {59EBB341-2DAC-465B-ADFF-2E7ABBECE85C}
+		{1F4B149A-F461-422E-B645-BF5B6D83163A} = {F834C604-01B1-4AB8-A49A-2D98D8B47DF8}
+		{A2D3CE70-9F8C-4CE2-8C2E-BB26A4A38FA7} = {22252650-2015-49B2-ABC7-15CD94DD99EE}
+		{D6E5F651-4019-4C63-8ED5-2D8A2418970A} = {22252650-2015-49B2-ABC7-15CD94DD99EE}
+		{C3B47236-C90D-4E7E-B7E1-B7D437C84C0D} = {22252650-2015-49B2-ABC7-15CD94DD99EE}
+		{AF43E761-610A-4492-99B8-9789073B7A82} = {FEA45A0E-51A5-4DF5-AC40-4D00899DACA0}
+		{5DA2AF83-A4D7-4185-87A0-E93ACE943423} = {0636B4A4-28E3-4B32-B4B4-E92F40D57A3B}
+		{2486439D-5F58-436E-8AC0-1C700C587AA1} = {883A2459-BDDD-4B47-95FD-A150E5983CCB}
+		{E03DF4C8-E273-430D-AB1F-43A1747095B9} = {772DA0DB-702E-49D0-ADE9-0D938AD3F37E}
+	EndGlobalSection
+EndGlobal

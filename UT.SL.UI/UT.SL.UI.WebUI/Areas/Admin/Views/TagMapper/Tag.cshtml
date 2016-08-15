@@ -1,0 +1,88 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Model.TagModel, UT.SL.Model.ObjectViewModel>
+<div class="">
+    @using (Ajax.BeginForm("Tag", "TagMapper", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResultTag",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+}, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResultTag">
+        </div>
+        <div class="">
+            @*<div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            @UT.SL.Model.Resource.App_Common.TagHelp
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.ExtraKnownData.ObjectName)</label>
+                    <div class="controls">
+                        @Html.DisplayFor(model => model.ExtraKnownData.ObjectName)
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.Category</label>
+                    <div class="controls">
+                        @Html.DropDownList("CategoryTag", new SelectList(ViewBag.Categories, "Id", "Title"), UT.SL.Model.Resource.App_Common.Select, new { data_lookupurl = Url.Action("GetSubjects"), data_lookupurl2 = Url.Action("GetTagsCategory") })
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.Subject</label>
+                    <div class="controls">
+                        @Html.DropDownList("SubjectTag", new SelectListItem[] { }, UT.SL.Model.Resource.App_Common.Select, new { data_lookupurl = Url.Action("GetTagsCategory") })
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.Tags</label>
+                    <div class="controls">
+                        @Html.DropDownList("TagTag", new SelectListItem[] { }, UT.SL.Model.Resource.App_Common.Select)
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <label class="control-label" for=""></label>
+                <div class="controls tagToViewAndDelete@(Model.ExtraKnownData.Type)@(Model.ExtraKnownData.Id)">
+                    @Html.Action("TagsForViewAndDelete", "TagMapper", new { area = "Admin", objectId = Model.ExtraKnownData.Id, objectType = Model.ExtraKnownData.Type, tagType = (ViewBag.TagType == 0 || ViewBag.TagType == null) ? 0 : 2 })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.Tags)</label>
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.FormObject.Tags, new { data_lookupurl = Url.Action("GetTags", "TagMapper", new { area = "Admin" }), data_autocomplete = "true", @class = "input-xxlarge", style = "width:400px;" })
+                </div>
+                <div class="controls">
+                    @Html.ValidationMessageFor(model => model.FormObject.Tags)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="controls">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary btn-sm submit" />
+                    <a href="javascript:void(0);" class="btn btn-default bt-sm closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.ExtraKnownData.Id)
+                    @Html.HiddenFor(model => model.ExtraKnownData.Type)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

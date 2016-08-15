@@ -1,0 +1,26 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.LearningGroup
+<div class="">
+    <fieldset class="form-horizontal">
+        <legend>@UT.SL.Model.Resource.App_Common.ManageMembers</legend>
+        <div class="row">
+            @Html.Action("AddMember", "LearningGroup", new { area = "Admin", Id = Model.Id})
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="Learningmembers@(Model.Id)">
+                @Html.Action("GetMembersLargePic", "LearningGroup", new { area = "Admin", Id = Model.Id })
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2" style="margin-top:20px">
+                <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+            </div>
+        </div>
+    </fieldset>
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

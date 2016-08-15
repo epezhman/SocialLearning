@@ -1,0 +1,130 @@
+﻿
+<div class="hidden-md hidden-lg">
+    <div class="row">
+        <div class="col-xs-6">
+            @Html.ActionLink(UT.SL.Model.Resource.App_Common.LogIn + "!", "LogIn", "App_User", new { area = "admin" }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col-xs-6">
+            @Html.ActionLink(UT.SL.Model.Resource.App_Common.Register + "!", "Register", "App_User", new { area = "admin" }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <img class="img-responsive" src="@Url.Content("~/Images/Logos/doosmoocTree.png")" alt="" />
+        </div>
+    </div>
+  
+</div>
+
+
+
+<div class="hidden-xs hidden-sm">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        @*@Html.Action("MyHomeResourceSummary")
+            @Html.Action("CourseResourceSummary")*@
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="@Url.Content("~/Images/Logos/AllSenses.png")" alt="First slide">
+                <div class="container">
+                    <div class="carousel-caption padded-multiline">
+                        <h1 class="cloColor"><strong>@UT.SL.Model.Resource.App_Common.DoosMoocSocialLearning</strong></h1>
+                        <p class="cloColor">@UT.SL.Model.Resource.App_Common.LetsLearnTogetherLikeNeverBefore</p>
+                        @*<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Images/Logos/b-01022.png")" alt="Second slide">
+                <div class="container">
+                    <div class="carousel-caption padded-multiline">
+                        <h1 class="cloColor"><strong>@UT.SL.Model.Resource.App_Common.LearningAndSocializing</strong></h1>
+                        <p class="cloColor">@UT.SL.Model.Resource.App_Common.SocializeWithYourTeachersAndClassmatesExperienceANewWayOfLearning</p>
+                        @*<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Images/Logos/image.jpg")" alt="Third slide">
+                <div class="container">
+                    <div class="carousel-caption padded-multiline">
+                        <h1 class="cloColor"><strong>@UT.SL.Model.Resource.App_Common.MakeFriends</strong></h1>
+                        <p class="cloColor">@UT.SL.Model.Resource.App_Common.ShareUnlimitedFunWithYourFriends</p>
+                        @*<p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="colorMarketing">
+                    <img class="img-circle height140Width140" src="@Url.Content("~/Images/Logos/home.jpg")" alt="Generic placeholder image">
+                    <h2>@UT.SL.Model.Resource.App_Common.VisitYourHome</h2>
+                    <p>@UT.SL.Model.Resource.App_Common.AndSeeWhatsWaitingForYouThere</p>
+                    @*<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>*@
+                </div>
+            </div><!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <div class="colorMarketing">
+                    <img class="img-circle height140Width140" src="@Url.Content("~/Images/Logos/friends.jpg")" alt="Generic placeholder image">
+                    <h2>@UT.SL.Model.Resource.App_Common.CreateSocialGroup</h2>
+                    <p>@UT.SL.Model.Resource.App_Common.AndShareWithYourFriends</p>
+                    @*<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>*@
+                </div>
+            </div><!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <div class="colorMarketing">
+                    <img class="img-circle height140Width140" src="@Url.Content("~/Images/Logos/course.jpg")" alt="Generic placeholder image">
+                    <h2>@UT.SL.Model.Resource.App_Common.VisitYourCourses</h2>
+                    <p>@UT.SL.Model.Resource.App_Common.AndLearnWithYourFriends</p>
+                    @*<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>*@
+                </div>
+            </div>
+        </div><!-- /.col-md-4 -->
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">@UT.SL.Model.Resource.App_Common.ItIsANewWay<span class="text-muted">@UT.SL.Model.Resource.App_Common.ItWillBlowYourMind</span></h2>
+            <p class="lead">Try it now!</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" src="@Url.Content("~/Images/Logos/doosmoocTree.png")" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" src="@Url.Content("~/Images/Logos/doosmoocTree.png")" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+            <h2 class="featurette-heading">@UT.SL.Model.Resource.App_Common.OhYeahItIsThatGood <span class="text-muted">@UT.SL.Model.Resource.App_Common.SeeForYourself</span></h2>
+            <p class="lead">@UT.SL.Model.Resource.App_Common.JoinOurNetwork</p>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+</div>
+
+

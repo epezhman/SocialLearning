@@ -1,0 +1,224 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<List<UT.SL.Data.LINQ.SocialGroup>, List<UT.SL.Data.LINQ.App_User>>
+<div class="utwell" style="margin-bottom:10px;" >
+    <div id="GroupAll">
+        <div class="row">
+            <div class="col-md-9 boldAndLarger">
+                <span>
+                    @UT.SL.Model.Resource.App_Common.YourGroups
+                </span>
+            </div>
+        </div>
+        <div class="AllItems">
+            @if (Model.FormObject.Any())
+            {
+                if (Model.FormObject.Count() <= 3)
+                {
+                    foreach (var item in Model.FormObject)
+                    {
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold;">@item.Title</span>
+                                </div>
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <div style="display: inline-block">
+                                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "SocialGroup", new { id = item.Id },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "dialog",
+                                                OnSuccess = " $('#dialog').dialog('open');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "edit hiddenoption glyColor" }, null)
+                                                         @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "SocialGroup", new { id = item.Id },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "dialog",
+                                                OnSuccess = " $('#dialog').dialog('open');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption glyColor" }, null)
+                                                         @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "SocialGroup", new { id = item.Id },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "groupMembersDiv",
+                                                LoadingElementId = "loadingAjax",
+                                                OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })"
+                                            }, new { @class = " glyColor" }, null)
+                                    </div>
+                                    <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                        @Html.Action("GetTopMembersForPanel", "SocialGroup", new { area = "Admin", Id = item.Id })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    foreach (var item in Model.FormObject.Take(3))
+                    {
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold;">@item.Title</span>
+                                </div>
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <div style="display: inline-block">
+                                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption glyColor" }, null)
+                                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption glyColor" }, null)
+                                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       LoadingElementId = "loadingAjax",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })"
+                   }, new { @class = " glyColor" }, null)
+                                    </div>
+                                    <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                        @Html.Action("GetTopMembersForPanel", "SocialGroup", new { area = "Admin", Id = item.Id })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div>
+                        <div class="row">
+                            <div class="col-md-3" style="text-align: center">
+                                <div class="showMoreItem" style="cursor: pointer">
+                                    <span class="glyphicon glyphicon-arrow-down glyColor"></span>@UT.SL.Model.Resource.App_Common.More
+                                </div>
+                                <div class="showLessItems" style="display: none; cursor: pointer">
+                                    <span class="glyphicon glyphicon-arrow-up glyColor"></span>@UT.SL.Model.Resource.App_Common.Less
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none" class="moreItems">
+                        @foreach (var item in Model.FormObject)
+                        {
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span style="font-weight: bold;">@item.Title</span>
+                                    </div>
+                                    <div class="col-md-9" style="display: inline-block;">
+                                        <div style="display: inline-block">
+                                            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption glyColor" }, null)
+                                            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption glyColor" }, null)
+                                            @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "SocialGroup", new { id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       LoadingElementId = "loadingAjax",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })"
+                   }, new { @class = " glyColor" }, null)
+                                        </div>
+                                        <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                            @Html.Action("GetTopMembersForPanel", "SocialGroup", new { area = "Admin", Id = item.Id })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-9 boldAndLarger">
+                <span>
+                    @UT.SL.Model.Resource.App_Common.HaveYouInTheirGroups
+                </span>
+            </div>
+        </div>
+        <div class="AllItems" style="display: inline-block">
+            @if (Model.ExtraKnownData.Any())
+            {
+                if (Model.ExtraKnownData.Count() <= 3)
+                {
+                    foreach (var item in Model.ExtraKnownData)
+                    {
+                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                }
+
+                else
+                {
+                    foreach (var item in Model.ExtraKnownData.Take(3))
+                    {
+                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    <div style="display: inline-block">
+                        <div class="showMoreItem" style="cursor: pointer">
+                            <span class="glyphicon glyphicon-arrow-down glyColor"></span>@UT.SL.Model.Resource.App_Common.More
+                        </div>
+                        <div class="showLessItems" style="display: none; cursor: pointer">
+                            <span class="glyphicon glyphicon-arrow-up glyColor"></span>@UT.SL.Model.Resource.App_Common.Less
+                        </div>
+                    </div>
+                    <div style="display: none" class="moreItems">
+                        @foreach (var item in Model.ExtraKnownData.Skip(3))
+                        {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div>
+                </div>
+            }
+        </div>
+    </div>
+    <div id="groupMembersDiv" style="display: none">
+    </div>
+</div>

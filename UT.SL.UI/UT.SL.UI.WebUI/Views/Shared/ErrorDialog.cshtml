@@ -1,0 +1,21 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model BatchProcessResultModel
+<div class="">
+    <fieldset class="form-horizontal">
+        <legend>@UT.SL.Model.Resource.App_Common.Error</legend>
+        <div class="form-group">
+            @Html.Partial("ProcessResult", Model)
+        </div>
+        <div class="form-group">
+            <div class="controls">
+                <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+            </div>
+        </div>
+    </fieldset>
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

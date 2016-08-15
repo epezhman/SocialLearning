@@ -1,0 +1,81 @@
+﻿@model UT.SL.Data.LINQ.Course
+@{
+    var filter = string.Empty;
+    if (ViewBag.Filter != null)
+    {
+        filter = ViewBag.Filter;
+    }
+}
+<div style="padding-bottom:5px;">
+    @if (!String.IsNullOrEmpty(filter))
+    {
+        if (filter == "1")
+        {
+            <div id="resourceResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseResourceSummary", "Course", new { model = new UT.SL.Model.ResourceSearchModel { CourseId = Model.Id } })
+            </div>
+        }
+        else if (filter == "2")
+        {
+            @Html.Action("ManageLearningGroupsPanel", "LearningGroup", new { Model })
+        }
+        else if (filter.StartsWith("2_"))
+        {
+            @Html.Action("ManageOneLearningGroupsPanel", "LearningGroup", new { id = filter })
+        }
+        else if (filter == "3")
+        { }
+        else if (filter.StartsWith("3_"))
+        { }
+        else if (filter == "4")
+        {
+            @*@Html.Action("CourseActivitiesSummary", "Course", new { Model })*@
+            @*<div class="utwell" data-showeditdelete="true">
+                    <div id="assignmentResult">
+                        @Html.Action("CourseAssignmentSummary", "Course", new { model = new UT.SL.Model.AssignmentSearchModel { CourseId = Model.Id } })
+                    </div>
+                    <div id="forumResult">
+                        @Html.Action("CourseForumSummary", "Course", new { model = new UT.SL.Model.ForumsearchModel { CourseId = Model.Id } })
+                    </div>
+                </div>*@
+            <div id="activitiesResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseActivitiesSummaryTable", "Course", new { model = new UT.SL.Model.CourseSearchModel { CourseId = Model.Id } })
+            </div>
+        }
+        else if (filter == "8")
+        {
+            <div id="forumResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseForumSummary", "Course", new { model = new UT.SL.Model.ForumsearchModel { CourseId = Model.Id } })
+            </div>
+        }
+        else if (filter == "9")
+        {
+
+            <div id="assignmentResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseAssignmentSummary", "Course", new { model = new UT.SL.Model.AssignmentSearchModel { CourseId = Model.Id } })
+            </div>
+        }
+        else if (filter == "5")
+        {
+            @Html.Action("ManageCourseMembersPanel", "Course", new { Model })
+        }
+        else if (filter == "6")
+        {
+            @*@Html.Action("CourseRecommendedSummary", "Course", new { Model })*@
+            <div id="recommendedResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseRecommendedSummaryTable", "Course", new { model = new UT.SL.Model.CourseSearchModel { CourseId = Model.Id } })
+            </div>
+        }
+        else if (filter == "7")
+        {
+            @*@Html.Action("CourseHotSummary", "Course", new { Model })*@
+            <div id="hotResult" class="utwell" data-showeditdelete="true">
+                @Html.Action("CourseHotSummaryTable", "Course", new { model = new UT.SL.Model.CourseSearchModel { CourseId = Model.Id } })
+            </div>
+        }
+    }
+    else
+    {
+        @Html.Action("CourseAllSummary", "Course", new { Model })
+    }
+</div>

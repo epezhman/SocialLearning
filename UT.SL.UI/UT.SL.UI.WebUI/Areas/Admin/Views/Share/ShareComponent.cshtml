@@ -1,0 +1,16 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.ObjectModel
+
+<div style="display: inline-block; margin-left: 3px; margin-right: 3px">
+    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.Type, "glyphicon glyphicon-share", UT.SL.Model.Resource.App_Common.Share, "Share", "Share", new { area = "admin", objectId = Model.ObjectId, type = Model.Type },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "shareDialog",
+                       OnSuccess = "$.DialogOpen('shareDialog','" + UT.SL.Model.Resource.App_Common.Share + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "share" }, null)
+</div>
+

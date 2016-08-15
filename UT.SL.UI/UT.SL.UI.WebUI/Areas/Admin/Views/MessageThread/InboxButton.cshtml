@@ -1,0 +1,25 @@
+﻿@model UT.SL.Data.LINQ.App_User
+@if (ViewBag.TopOrBottom == 1)
+{
+    <div class="inline" style="cursor:pointer" data-messagebutton="true" data-messagebuttontype="1" data-messageurl="@Url.Action("GetMessages", "MessageThread", new { Area = "Admin" })">
+        <div class="inline notif-info-parent" id="notifCnt1">
+            @Html.Action("GetNotSeenCount", "MessageThread", new { Area = "Admin", Model })
+        </div>
+        <div class="inline">
+            <span class="glyphicon glyphicon-envelope notif notif-inverse"></span>
+        </div>
+    </div>
+}
+else if (ViewBag.TopOrBottom == 2)
+{
+    <a href="javascript:void(0);" style="padding-left:0px; padding-right:0px;" data-messagebutton="true" data-messagebuttontype="2" data-messageurl="@Url.Action("GetMessages", "MessageThread", new { Area= "Admin"})">
+        <div class="inline">
+            <div class="inline notif-info-parent" id="notifCnt2">
+                @Html.Action("GetNotSeenCount", "MessageThread", new { Area = "Admin", Model })
+            </div>
+            <div class="inline">
+                <span class="glyphicon glyphicon-envelope notif"></span>
+            </div>
+        </div>
+    </a>
+}

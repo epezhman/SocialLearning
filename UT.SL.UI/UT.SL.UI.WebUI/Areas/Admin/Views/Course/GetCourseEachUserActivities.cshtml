@@ -1,0 +1,74 @@
+﻿@model List<UT.SL.Model.UserActivityRecordModel>
+@{
+    String categories = string.Empty;
+    String score = string.Empty;
+
+    foreach (var item in Model)
+    {
+        categories += "\'" + item.Date.Date.ToShortDateString() + "\', ";
+    }
+    if (!string.IsNullOrEmpty(categories))
+    {
+        categories = categories.Substring(0, categories.LastIndexOf(','));
+    }
+
+    foreach (var item in Model)
+    {
+        score += "" + item.Score + ", ";
+    }
+    if (!string.IsNullOrEmpty(score))
+    {
+        score = score.Substring(0, score.LastIndexOf(','));
+    }
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#educationActivity').highcharts({
+            title: {
+                text: '@UT.SL.Model.Resource.App_Common.EducationalActivites @ViewBag.CourseTitle',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: [@Html.Raw(categories)]
+            },
+            yAxis: {
+                title: {
+                    text: 'Activity Score'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            series: [{
+                name: '@UT.SL.Model.Resource.App_Common.EducationalActivites',
+                data: [@Html.Raw(score)]
+            }],
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function () {
+                                console.log(this.x)
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+    });
+</script>
+<h3>@UT.SL.Model.Resource.App_Common.EducationalActivites</h3>
+<div id="educationActivity" style="margin: 0 auto"></div>

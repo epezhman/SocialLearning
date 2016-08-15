@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Confirm";
+}
+
+<div class="row">
+    <div class="col-md-12 feedDiv " style="padding:10px;">
+
+        @if (ViewBag.Code == 1)
+        {
+            <h4>
+                Your account has been created successfully. Please confirm your email address first in order to use the DoosMooc. Please check your Inbox or Spam folders.
+            </h4>
+        }
+        else if (ViewBag.Code == 2)
+        {
+            <h4>
+                Thank you, Your email has been confirmed successfully. Enjoy your experience with DossMooc ;)
+                <script>
+                    window.setTimeout(location.reload(), 7000);
+                </script>
+            </h4>
+        }
+        else if (ViewBag.Code == 3)
+        {
+            <h4>
+                There is something wrong with confirmation code. If you copied and pasted URL please check if it's right.
+            </h4>
+        }
+        else if (ViewBag.Code == 4)
+        {
+            <h4>
+                You need to confirm your email address first in order to have access to your DossMooc account. If you haven't received any mail yet, you could ask for a conformation email resend.
+            </h4>
+            <a href="@Url.Action("Confirm", "App_User", new { area = "Admin", id = ViewBag.Email, retry  = true})" class="btn btn-default btn btn-default-default btn btn-default btn btn-default-default-primary">@UT.SL.Model.Resource.App_Common.Resend</a>
+        }
+        else if (ViewBag.Code == 5)
+        {
+            <h4>
+                We sent you a mail within past 30 minutes. Please wait at least 30 minutes after every resend, if you need to resend the confirmation again.
+            </h4>
+        }
+        else if (ViewBag.Code == 6)
+        {
+            <h4>
+                Confirmation was resent. Please confirm your email address first in order to use the DoosMooc. Please check your Inbox or Span folders.
+            </h4>
+        }
+        else if (ViewBag.Code == 7)
+        {
+            <h4>
+                There is something wrong, Please try again.
+            </h4>
+        }
+    </div>
+</div>

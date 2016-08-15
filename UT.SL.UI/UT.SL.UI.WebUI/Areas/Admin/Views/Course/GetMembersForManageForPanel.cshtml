@@ -1,0 +1,40 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model  List<UT.SL.Data.LINQ.App_UserEnrolement>
+@{
+    int cnt = 1;
+    int skipper = 0;
+}
+<div>
+    @for (int i = 0; i < Model.Count() / 5 + 1; i++)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var item in Model.Skip(skipper * 5).Take(5))
+                {
+                    <div class="inline">
+                        <div class="inline">
+                            @if (ViewBag.Teacher || ViewBag.TA)
+                            {
+                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.UserEnrolement, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.Portfolio, "UserPortfolio", "Course", new { area = "Admin", courseId = item.CourseId, userId = item.App_User.GuidId },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "userPortfolio",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "" }, null)
+                            }
+                        </div>
+                        <div class="inline">
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small, draggable = true })
+                        </div>
+                    </div>
+                            cnt++;
+                }
+            </div>
+        </div>
+                skipper++;
+    }
+</div>

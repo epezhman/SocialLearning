@@ -1,0 +1,396 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.Model.Enumeration
+@model UT.SL.Model.NotificationViewModel
+<div class="row">
+    <div class="col-xs-12">
+        <div class="notifDiv @(Model.Notification.Readen ? "notifDivSeen" : "notifDivUnSeen")" style="margin-top: 5px;" data-updateurl="@(Url.Action("UpdateReaden", "Notification", new { Area="Admin", id = Model.Notification.Id }))">
+            <div class="row">
+                <div class="col-xs-2">
+                    @if (Model.ObjectType == (int)ObjectType.Vote)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.ForumDiscussion)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.TagMapper)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.AssignmentSubmission)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.Comment)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.Grade)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.GradeUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                    {
+                        @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                    }
+                </div>
+                <div class="col-xs-10">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div style="font-size:small">
+                                <div class="row">
+                                    @if (Model.ObjectType == (int)ObjectType.Vote)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline"> <span class="glyphicon glyphicon-heart"></span> </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Voted </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Comment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Comment)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.ObjectType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.On, string.Empty)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.On, string.Empty)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.ObjectType == (int)ObjectType.TagMapper)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-tags "></span>
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Tagged </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    else if (Model.ObjectType == (int)ObjectType.AssignmentSubmission)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.SubmittedAssigment </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.ObjectType == (int)ObjectType.Comment)
+                                    {
+
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <img src="@Url.Content("~/Images/icon/32x32/reply.png")" style="width:20px; height:20px; margin-bottom:4px" alt="@UT.SL.Model.Resource.App_Common.Comment" />
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Commented </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.ObjectType == (int)ObjectType.Grade)
+                                    {
+
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-ok"></span>
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Graded </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                    }
+                                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.AssignmentSubmission)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.AssignmentSubmission)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-file"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline  hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                        <div class="col-xs-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            "@HelperUtils.ShortenStringForNotifPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="feedDivLessImportant inline hidden-xs" style="opacity:.8">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

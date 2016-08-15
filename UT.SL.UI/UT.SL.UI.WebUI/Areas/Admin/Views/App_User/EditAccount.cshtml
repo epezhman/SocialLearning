@@ -1,0 +1,172 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model   FormModel<UT.SL.Data.LINQ.App_User, UT.SL.Model.ChangePasswordModel>
+<div class="">
+    @using (Ajax.BeginForm("EditAccount", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    //OnSuccess = "updateAccountView(" + Model.FormObject.GuidId + ")"
+}, new { @class = "form-horizontal", data_dom = "discussionEditForm", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="UserPic">@Html.LabelFor(model => model.FormObject.UserPic)</label>
+                <div class="controls">
+                    @if (Model.FormObject.UserPic != null)
+                    {
+                        <img class="userPic img-rounded" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.FormObject.GuidId })" alt="" />
+                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "RemoveUserPic", "App_User", new { id = Model.FormObject.GuidId },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "GET",
+                       OnSuccess = "  window.location.reload();",
+                       LoadingElementId = "ajaxLoading"
+                   }, new { @class = "delete" }, null)
+                    }
+                    else
+                    {
+                        <img class="userPic img-rounded" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for=""></label>
+                <div class="col-sm-9">
+                    <input style="width:200px" type="file" name="userPic" data-kendouploader="true" data-saveurl="@(Url.Action("SaveUserPic", "App_User", new { area = "admin", Id = Model.FormObject.GuidId }))" data-deleteurl="@(Url.Action("RemoveUserPic", "App_User", new { area = "admin", Id = Model.FormObject.GuidId }))" data-updateid="dummy" />
+                    <span>@UT.SL.Model.Resource.App_Common.PleaseRelaodThePageAfterUploadingPic</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="FirstName">@Html.LabelFor(model => model.FormObject.FirstName)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.FormObject.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.FirstName)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="LastName">@Html.LabelFor(model => model.FormObject.LastName)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.FormObject.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.LastName)
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <label class="control-label" for="Email">@Html.LabelFor(model => model.FormObject.Email)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.Email)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.Email)
+                    </div>
+                </div>*@
+            @*<div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_User.Password</label>
+                        <div class="controls">
+                        @Ajax.ActionLink(@UT.SL.Model.Resource.App_Common.ChangePassword, "ChangePassword", new { },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             //UpdateTargetId = "credits",
+                                             //OnSuccess = " $('#dialog').dialog('open');",
+                                             LoadingElementId = "ajaxLoading"
+                                         }, new { @class = "btn btn-default btn btn-default-default" })
+
+                    </div>
+                    <div class="controls readonly">
+                    </div>
+                </div>*@
+            @*<div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.ExtraKnownData.OldPassword)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.ExtraKnownData.OldPassword)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.ExtraKnownData.OldPassword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.ExtraKnownData.NewPassword)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.ExtraKnownData.NewPassword)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.ExtraKnownData.NewPassword)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.ExtraKnownData.ConfirmPassword)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.ExtraKnownData.ConfirmPassword)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.ExtraKnownData.ConfirmPassword)
+                    </div>
+                </div>*@
+            @*                <div class="form-group" id="credits">
+                </div>*@
+            @*<div class="form-group">
+                    <label class="control-label" for="Language">@Html.LabelFor(model => model.FormObject.Language)</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.FormObject.Language, UT.SL.Model.Enumeration.Utility.GetSelectList(typeof(UT.SL.Model.Enumeration.Language), "Select Language"))
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.Language)
+                    </div>
+
+                </div>*@
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Language</label>
+                <div class="col-sm-9">
+                    <select id="new_language" name="new_language" style="direction: ltr" class="form-control">
+                        <option selected="selected" value="en_US">English</option>
+                        <option value="fa_IR">فارسی</option>
+                    </select>
+                </div>
+            </div>
+            @*<div class="ptm">
+                    <table class="lang">
+                        <tbody>
+                            <tr class="dataRow">
+                                <td class="data">
+                                    <select id="new_language" name="new_language" style="direction: ltr">
+                                        <option selected="1" value="en_US">English (US)</option>
+                                        <option value="fa_IR">فارسی</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>*@
+            @*<div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.Language </label>
+                    <div class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b>@UT.SL.Model.Resource.App_Common.Language
+                            <ul class="dropdown-menu" id="langs">
+                                <li id="enlangli"><a href="javascript:void(0);" class="en-US">English</a></li>
+                                <li id="falangli"><a href="javascript:void(0);" class="fa-IR">فارسی</a></li>
+                            </ul>
+                        </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.FormObject.GuidId)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            initializeUploaderWithDon('discussionEditForm');
+        });
+    </script>
+</div>

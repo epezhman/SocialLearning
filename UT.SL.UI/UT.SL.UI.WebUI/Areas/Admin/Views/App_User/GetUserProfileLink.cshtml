@@ -1,0 +1,55 @@
+﻿@model UT.SL.Data.LINQ.App_User
+@if (ViewBag.UserId != null && ViewBag.UserId == Model.Id)
+{
+    if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", UT.SL.Model.Resource.App_Common.You)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", UT.SL.Model.Resource.App_Common.You)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.LastName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", UT.SL.Model.Resource.App_Common.You)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.UserName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", UT.SL.Model.Resource.App_Common.You)
+        </a>
+    }
+}
+else
+{
+    if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0} {1}", Model.FirstName, Model.LastName)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", Model.FirstName)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.LastName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", Model.LastName)
+        </a>
+    }
+    else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ProfileLinkType.UserName)
+    {
+        <a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)" class="blackLink">
+            @string.Format("{0}", Model.UserName)
+        </a>
+    }
+}

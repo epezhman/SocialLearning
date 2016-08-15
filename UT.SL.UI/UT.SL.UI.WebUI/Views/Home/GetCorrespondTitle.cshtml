@@ -1,0 +1,97 @@
+﻿@model UT.SL.Helper.FormModel<UT.SL.Data.LINQ.Course>
+@{
+    int type = (int)Model.ExtraData[0];
+    int extra = (int)Model.ExtraData[1];
+}
+
+@if (type == (int)UT.SL.Model.Enumeration.MenuType.MyHome)
+{
+    <span class="glyphicon glyphicon-home"></span> @UT.SL.Model.Resource.App_Common.MyHome
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.MyCourses)
+{
+    <span class="hidden-xs">
+        <span class="glyphicon glyphicon-book"></span> @Model.FormObject.Title
+    </span>
+    <img style="width:30px; height:30px;" class="visible-xs" src="@Url.Action("ViewImage", "Course", new { area = "admin", id = Model.FormObject.Id })" alt="" />
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Calendar)
+{
+    <span class="glyphicon glyphicon-calendar"></span> @UT.SL.Model.Resource.App_Common.Calendar
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Messages)
+{
+    <span class="glyphicon glyphicon-envelope"></span> @UT.SL.Model.Resource.App_Common.Messages
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Notifications)
+{
+    <span class="glyphicon glyphicon-bell"></span> @UT.SL.Model.Resource.App_Common.Notifications
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.User)
+{
+    <span class="glyphicon glyphicon-user"></span> @UT.SL.Model.Resource.App_Common.User
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.UserProfile)
+{
+    <span class="glyphicon glyphicon-user"></span> @UT.SL.Model.Resource.App_Common.Profile
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Account)
+{
+    <span class="glyphicon glyphicon-user"></span> @UT.SL.Model.Resource.App_Common.MyAccount
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.SocialGroup)
+{
+    <span class="glyphicon glyphicon-user"></span> @UT.SL.Model.Resource.App_Common.SocialGroups
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Survey)
+{
+    <span class="glyphicon glyphicon-question-sign"></span> @UT.SL.Model.Resource.App_Common.Questionnaire
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.FirstPage)
+{
+   <img src="@Url.Content("~/Images/icon/32x32/mouse.png")" style="width:20px; height:20px; margin-bottom:4px" alt="Mouse" /> @UT.SL.Model.Resource.App_Common.NavigateHere
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Admin)
+{
+    <span class="glyphicon glyphicon-cog"></span>
+    if (extra == (int)UT.SL.Model.Enumeration.NavLinks.Category)
+    {
+        @UT.SL.Model.Resource.App_Common.Categories
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.Tag)
+    {
+        @UT.SL.Model.Resource.App_Common.Tags
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.Courses)
+    {
+        @UT.SL.Model.Resource.App_Common.Courses
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.AppActiopn)
+    {
+        @UT.SL.Model.Resource.App_Common.ActionManegment
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.Users)
+    {
+        @UT.SL.Model.Resource.App_Common.Users
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.FeedBack)
+    {
+        @UT.SL.Model.Resource.App_Common.Feedback
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.Email)
+    {
+        @UT.SL.Model.Resource.App_Common.Email
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.ActionEvaluation)
+    {
+        @UT.SL.Model.Resource.App_Common.UsersLog
+    }
+    else if (extra == (int)UT.SL.Model.Enumeration.NavLinks.SurveyReport)
+    {
+        @UT.SL.Model.Resource.App_Common.SurveyResults
+    }
+}
+else
+{
+    <span class="glyphicon glyphicon-road"></span> @UT.SL.Model.Resource.App_Common.Page
+}

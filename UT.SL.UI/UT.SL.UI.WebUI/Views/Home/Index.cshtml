@@ -1,0 +1,19 @@
+﻿@using UT.SL.Security
+@{
+    ViewBag.Title = string.Empty;
+}
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.FirstPage), 0, true, false);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.FirstPage, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+@Html.Action("FirstTimeLogIn")
+
+
+
+

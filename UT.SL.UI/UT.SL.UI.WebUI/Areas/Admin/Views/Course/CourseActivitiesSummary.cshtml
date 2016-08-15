@@ -1,0 +1,349 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, UT.SL.Model.CourseActivitiesSummaryModel>
+
+<div class="utwell" data-showeditdelete="true">
+    <div class="row">
+        <div class="col-md-9 boldAndLarger">
+            <span>
+                @UT.SL.Model.Resource.App_Common.In @Model.FormObject.Title:
+            </span>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12">
+            <span class="glyphicon glyphicon-pencil"></span> @Model.ExtraKnownData.Assignments.Count() @UT.SL.Model.Resource.App_Common.Assignment
+        </div>
+    </div>
+    <div class="table-responsive">
+        @if (Model.ExtraKnownData.Assignments.Any())
+        {
+            //if (Model.ExtraKnownData.Assignments.Count() <= 3)
+            //{
+            <table class="table table-condensed">
+                <tbody id="art_ls">
+                    @foreach (var item in Model.ExtraKnownData.Assignments)
+                    {
+                        <tr>
+                            <td>
+                                @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                            </td>
+                            <td>
+                                <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.SubmissionsCount">@item.AssignmentSubmissions.Count</span>
+                            </td>
+                            <td>
+                                @if (item.App_User != null)
+                                {
+                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                }
+                            </td>
+                            <td>
+                                <span class="hidden-xs feedDivLessImportant paleIt">
+                                    @if (item != null)
+                                    {
+                                        @HelperUtils.ShowActivityRecentTime(item.CreateDate, item.DueDate)
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <span class="paleIt">
+                                    @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Assignment })
+                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Assignment },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+
+                                </span>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            //}
+            @*else
+                {
+                    <table class="table table-condensed">
+                        <tbody id="art_ls">
+                            @foreach (var item in Model.ExtraKnownData.Assignments.Take(3))
+                            {
+                                <tr>
+                                    <td>
+                                        @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                    </td>
+                                    <td>
+                                        <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.SubmissionsCount">@item.AssignmentSubmissions.Count</span>
+                                    </td>
+                                    <td>
+                                        @if (item.App_User != null)
+                                        {
+                                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="hidden-xs feedDivLessImportant paleIt">
+                                            @HelperUtils.ShowActivityRecentTime(item.CreateDate, item.DueDate)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="paleIt">
+                                            @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Assignment })
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Assignment },
+                                                new AjaxOptions()
+                                                {
+                                                    Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                    HttpMethod = "POST",
+                                                    //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                    OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                    LoadingElementId = "loadingAjax"
+                                                }, new { @class = "delete hiddenoption" }, null)
+
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-3" style="text-align: center">
+                                <div id="showMoreGroups" style="cursor: pointer" class="glyColor">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>@UT.SL.Model.Resource.App_Common.More
+                                </div>
+                                <div id="showLessGroups" style="display: none; cursor: pointer" class="glyColor">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.Less
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none" id="moreGroups">
+                        <table class="table table-condensed">
+                            <tbody id="art_ls">
+
+                                @foreach (var item in Model.ExtraKnownData.Assignments.Skip(3))
+                                {
+                                    <tr>
+                                        <td>
+                                            @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                        </td>
+                                        <td>
+                                            <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.SubmissionsCount">@item.AssignmentSubmissions.Count</span>
+                                        </td>
+                                        <td>
+                                            @if (item.App_User != null)
+                                            {
+                                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                            }
+                                        </td>
+                                        <td>
+                                            <span class="hidden-xs feedDivLessImportant paleIt">
+                                                @HelperUtils.ShowActivityRecentTime(item.CreateDate, item.DueDate)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="paleIt">
+                                                @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Assignment })
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Assignment },
+                                                new AjaxOptions()
+                                                {
+                                                    Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                    HttpMethod = "POST",
+                                                    //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                    OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                    LoadingElementId = "loadingAjax"
+                                                }, new { @class = "delete hiddenoption" }, null)
+
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                }*@
+        }
+        else
+        {
+            <div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <span class="glyphicon glyphicon-comment"></span> @Model.ExtraKnownData.Forumes.Count() @UT.SL.Model.Resource.App_Common.Forum
+        </div>
+    </div>
+    <div class="table-responsive">
+        @if (Model.ExtraKnownData.Forumes.Any())
+        {
+            //if (Model.ExtraKnownData.Forumes.Count() <= 3)
+            //{
+            <table class="table table-condensed">
+                <tbody id="art_ls">
+
+                    @foreach (var item in Model.ExtraKnownData.Forumes)
+                    {
+                        <tr>
+                            <td>
+                                @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                            </td>
+                            <td>
+                                <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.DiscussionsCount">@item.ForumDiscussions.Where(x => !x.ParentId.HasValue).Count().ToString()</span>
+                            </td>
+                            <td>
+                                @if (item.App_User != null)
+                                {
+                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                }
+                            </td>
+                            <td>
+                                <span class="hidden-xs feedDivLessImportant paleIt">
+                                    @if (item != null && item.CreateDate.HasValue && item.DueDate.HasValue)
+                                    {
+                                        @HelperUtils.ShowActivityRecentTime(item.CreateDate.Value, item.DueDate.Value)
+
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <span class="paleIt">
+                                    @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Forum },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+
+                                </span>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            //}
+            @*else
+                {
+                    foreach (var item in Model.ExtraKnownData.Forumes.Take(3))
+                    {
+                        <table class="table table-condensed">
+                            <tbody id="art_ls">
+
+                                <tr>
+                                    <td>
+                                        @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                    </td>
+                                    <td>
+                                        <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.DiscussionsCount">@item.ForumDiscussions.Where(x => !x.ParentId.HasValue).Count().ToString()</span>
+                                    </td>
+                                    <td>
+                                        @if (item.App_User != null)
+                                        {
+                                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="hidden-xs feedDivLessImportant paleIt">
+                                            @HelperUtils.ShowActivityRecentTime(item.CreateDate.Value, item.DueDate.Value)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="paleIt">
+                                            @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Forum },
+                                                new AjaxOptions()
+                                                {
+                                                    Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                    HttpMethod = "POST",
+                                                    //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                    OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                    LoadingElementId = "loadingAjax"
+                                                }, new { @class = "delete hiddenoption" }, null)
+
+                                        </span>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    }
+
+                    <div>
+                        <div class="row">
+                            <div class="col-md-3" style="text-align: center">
+                                <div class="showMoreItem" style="cursor: pointer">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>@UT.SL.Model.Resource.App_Common.More
+                                </div>
+                                <div class="showLessItems" style="display: none; cursor: pointer">
+                                    <span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.Less
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none" class="moreItems">
+
+                        <table class="table table-condensed">
+                            <tbody id="art_ls">
+
+                                @foreach (var item in Model.ExtraKnownData.Forumes.Skip(3))
+                                {
+                                    <tr>
+                                        <td>
+                                            @HelperUtils.ShortenString(item.Title, item.Body, item.FileTitle)
+                                        </td>
+                                        <td>
+                                            <span class="badge" data-toggle="tooltip" title="@UT.SL.Model.Resource.App_Common.DiscussionsCount">@item.ForumDiscussions.Where(x => !x.ParentId.HasValue).Count().ToString()</span>
+                                        </td>
+                                        <td>
+                                            @if (item.App_User != null)
+                                            {
+                                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                            }
+                                        </td>
+                                        <td>
+                                            <span class="hidden-xs feedDivLessImportant paleIt">
+                                                @HelperUtils.ShowActivityRecentTime(item.CreateDate.Value, item.DueDate.Value)
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="paleIt">
+                                                @Html.Action("ShareComponent", "Share", new { area = "admin", objectId = item.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Resource, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = item.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Forum },
+                                                new AjaxOptions()
+                                                {
+                                                    Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                    HttpMethod = "POST",
+                                                    //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                    OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + item.Id + "');",
+                                                    LoadingElementId = "loadingAjax"
+                                                }, new { @class = "delete hiddenoption" }, null)
+
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                }*@
+        }
+        else
+        {
+            <div>
+            </div>
+        }
+    </div>
+</div>

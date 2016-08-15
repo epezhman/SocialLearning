@@ -1,0 +1,88 @@
+﻿@using UT.SL.Helper
+@model UT.SL.Model.LogInModel
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.LogIn;
+}
+@section scripts {
+    <script type="text/javascript">
+            $(function () {
+                highLight(@((int)UT.SL.Model.Enumeration.MenuType.Advrt), 0, true, false);
+            });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinksNotLoggedIn", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Advrt, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+@section styles{
+    <style type="text/css">
+        .form-group {
+            margin-bottom: 0px;
+        }
+    </style>
+}
+<div class="row paperSheetBackGround">
+    <div class="col-md-8 hidden-xs  hidden-sm">
+        <img src="@Url.Content("~/Images/Logos/doosmoocTree.png")" alt="" />
+    </div>
+    <div class="col-md-4">
+        <div class="" style="padding-top:40px;">
+            @using (Html.BeginForm("LogIn", "App_User", new { area = "Admin" }, FormMethod.Post, new { @class = " form-signin" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <h2 class="form-signin-heading">@UT.SL.Model.Resource.App_Common.LogIn</h2>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(model => model.RememberMe) @Html.LabelFor(model => model.RememberMe, new { style = "float:none;" })
+                            </label>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="@(UT.SL.Model.Resource.App_Common.LogIn)" id="submit" class="btn btn-primary submit" />
+                        @Html.HiddenFor(model => model.ReturnUrl)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="">@UT.SL.Model.Resource.App_Common.LogInDescription @Html.ActionLink(UT.SL.Model.Resource.App_Common.Register + "!", "Register", "App_User", new { area = "admin" }, null)</h5>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@if (ViewBag.Reset != null)
+{
+    <script>
+        $(function () {
+            resetFields();
+        });
+    </script>
+}

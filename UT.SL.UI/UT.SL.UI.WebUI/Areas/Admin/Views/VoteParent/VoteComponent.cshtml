@@ -1,0 +1,47 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Data.LINQ.VoteParent, UT.SL.Model.VoteModel>
+@{
+    var upVoteNames = new System.Text.StringBuilder();
+    var downVoteNames = new System.Text.StringBuilder();
+    foreach (var item in Model.FormObject.Votes.Where(x => x.Updown))
+    {
+        upVoteNames.AppendLine(item.App_User.FirstName + " " + item.App_User.LastName);
+
+    }
+    if (ViewBag.Button == null)
+    {
+        foreach (var item in Model.FormObject.Votes.Where(x => !x.Updown))
+        {
+            downVoteNames.AppendLine(item.App_User.FirstName + " " + item.App_User.LastName);
+        }
+    }
+}
+<div id="voteDiv@(Model.FormObject.ObjectId)@(Model.FormObject.ObjectType)" style="display: inline-block; margin-left: 2px; margin-right: 2px;">
+    <div class="@(ViewBag.New != null ? "paleItNew" : "paleIt")">
+        <div style="display:inline-block;@(Model.ExtraKnownData.UpVote ? "font-weight:bolder" : "")">
+            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.FormObject.ObjectId, Model.FormObject.ObjectType, "glyphicon glyphicon-thumbs-up", string.Empty, "VoteComponent", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType, vote = 1, button = ViewBag.Button != null ? true : false },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "voteDiv" + Model.FormObject.ObjectId + Model.FormObject.ObjectType,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = ViewBag.Button != null ? "vote" : "vote", title = Html.Raw(upVoteNames.ToString()) }, Model.FormObject.UpvoteCount.ToString())
+        </div>
+        @if (ViewBag.Button == null)
+        {
+            <div style="display:inline-block;@(Model.ExtraKnownData.DownVote ? "font-weight:bolder" : "")">
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.FormObject.ObjectId, Model.FormObject.ObjectType, "glyphicon glyphicon-thumbs-down", string.Empty, "VoteComponent", "VoteParent", new { area = "admin", objectId = Model.FormObject.ObjectId, type = Model.FormObject.ObjectType, vote = 2, button = ViewBag.Button != null ? true : false },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "voteDiv" + Model.FormObject.ObjectId + Model.FormObject.ObjectType,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = ViewBag.Button != null ? "vote" : "vote", title = Html.Raw(downVoteNames.ToString()) }, Model.FormObject.DownvoteCount.ToString())
+            </div>
+        }
+    </div>
+</div>
+

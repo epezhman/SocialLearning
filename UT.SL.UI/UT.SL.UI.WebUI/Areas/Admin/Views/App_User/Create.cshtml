@@ -1,0 +1,73 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.App_User, UT.SL.Data.LINQ.App_Role>
+<div class="">
+    @using (Ajax.BeginForm("Create", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-md-3" for="UserName">@Html.LabelFor(model => model.FormObject.UserName)</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.UserName)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="FirstName">@Html.LabelFor(model => model.FormObject.FirstName)</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.FirstName)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="LastName">@Html.LabelFor(model => model.FormObject.LastName)</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.LastName)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="Password">@Html.LabelFor(model => model.FormObject.Password)</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="Email">@Html.LabelFor(model => model.FormObject.Email)</label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Email)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="IsAdmin">@UT.SL.Model.Resource.App_Common.Role</label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(model => model.ExtraKnownData.Id, new SelectList(ViewBag.Roles, "Id", "Title"), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <input type="reset" value="@(UT.SL.Model.Resource.App_Common.Reset)" id="reset" class="btn btn-default reset" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

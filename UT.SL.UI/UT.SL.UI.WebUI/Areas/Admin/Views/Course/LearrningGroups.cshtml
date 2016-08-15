@@ -1,0 +1,127 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.LearningGroup>
+@{
+    int i = 0;  
+}
+<div id="ResultListGroups">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@UT.SL.Model.Resource.App_Common.List</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Ajax.AuthorizationActionLink(User.Identity.Name, (int)ViewBag.CourseId, (int)UT.SL.Model.Enumeration.ObjectType.Course, UT.SL.Model.Resource.App_Common.Create, "Create", "LearningGroup", new { area = "admin", id = ViewBag.CourseId },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "dialog",
+                                             OnSuccess = " $('#dialog').dialog('open');",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default btn btn-default-default" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("LearrningGroups", "Course", new { area = "admin", id = ViewBag.CourseId }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "ResultListGroups",
+                         HttpMethod = "Post",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "searchFormGroups", @class = "form-horizontal" }))
+            {
+                <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submiForms"  class="btn btn-default btn btn-default-default submit" style="display:none"/>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="">
+                <div class="">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>#
+                                </th>
+                                <th>
+                                    @(UT.SL.Model.Resource.LearningGroup.Title)
+                                </th>
+                                <th>
+                                    @(UT.SL.Model.Resource.LearningGroup.GroupMember)
+                                </th>
+                                <th>
+                                    @(UT.SL.Model.Resource.LearningGroup.CreateDate)
+                                </th>
+                                @*@if (Request.IsAuthenticated)
+            {*@
+                                <th></th>
+                                @*}*@
+                            </tr>
+                        </thead>
+                        <tbody id="art_ls">
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                int j = 0;           
+                                <tr>
+                                    <td>
+                                        @(i)
+                                    </td>
+                                    <td>
+                                        @item.Title
+                                    </td>
+                                    <td>
+                                        @Html.Action("LearrningGroupsUserCount", new { id = item.Id })
+                                    </td>
+                                    <td>
+                                        @if (item.CreateDate != null)
+                                        {
+                                            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                                            {
+                                            @item.CreateDate.Value.ToPersianDate()
+                                            }
+                                            else
+                                            {
+                                            @item.CreateDate.Value.Date.ToShortDateString()
+                                            }
+                                        }
+                                    </td>
+                                    @*@if (Request.IsAuthenticated)
+            { *@
+                                    <td align="center">
+                                        @Ajax.ActionLink("Edit", "Edit", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                       {
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "dialog",
+                           OnSuccess = " $('#dialog').dialog('open');",
+                           LoadingElementId = "loadingAjax"
+                       }, new { @class = "edit" })
+                                        @Ajax.ActionLink("Delete", "Delete", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                       {
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "dialog",
+                           OnSuccess = " $('#dialog').dialog('open');",
+                           LoadingElementId = "loadingAjax"
+                       }, new { @class = "delete" })
+                                    </td>
+                                    @*}  *@
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="10"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

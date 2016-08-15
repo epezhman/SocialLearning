@@ -1,0 +1,45 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, SelectListItems>
+<div class="">
+    <fieldset class="form-horizontal">
+        <legend>@UT.SL.Model.Resource.App_Common.ViewPage</legend>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label" for="">@UT.SL.Model.Resource.Course.Categories</label>
+                <div class="controls readonly">
+                    @HelperUtils.ShowStringList(Model.ExtraKnownData.Items.Select(x => x.Text).ToList())
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                <div class="controls readonly">
+                    @Html.DisplayFor(model => model.FormObject.Title)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                <div class="controls readonly">
+                    @Html.Raw(Model.FormObject.About) 
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.StartDate)</label>
+                <div class="controls readonly">
+                   @HelperUtils.LocalizedDate(Model.FormObject.StartDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.EndDate)</label>
+                <div class="controls readonly">
+                    @HelperUtils.LocalizedDate(Model.FormObject.EndDate)
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

@@ -1,0 +1,127 @@
+﻿.rtl {
+    float: right;
+}
+
+.optionRight {
+    display: inline-block;
+    float: right;
+}
+
+.optionLeft {
+    display: inline-block;
+    float: left;
+}
+
+.leftRight {
+    text-align: left;
+}
+
+label, .control-group > label, .control-group > .control-label, .control-group > .control-label > label, .control-label > label {
+    float: left !important;
+    text-align: left !important;
+}
+
+.span3 > input {
+    float: left;
+}
+
+.alignCul {
+    text-align: left;
+}
+
+.searchFormHeader {
+    text-align: center;
+    margin-left: 170px;
+}
+
+#navigationPanel {
+    left: 0;
+}
+
+.whatsup:before {
+    left: 24px;
+}
+
+.whatsup:after {
+    left: 24px;
+}
+
+.leftOne {
+    float: left;
+    text-align: left;
+}
+
+.rightOne {
+    float: right;
+    text-align: right;
+}
+
+.innerP {
+    right: -5px;
+}
+
+.innerPT {
+    right: -5px;
+}
+
+.innerP2 {
+    right: -5px;
+}
+
+.innerP2T {
+    right: -5px;
+}
+
+.inner1 {
+    border-right: 5px solid #06DCFB;
+}
+
+.inner2 {
+    border-right: 5px solid #24E0FB;
+}
+
+.inner3 {
+    border-right: 5px solid #3DE4FC;
+}
+
+.inner4 {
+    border-right: 5px solid #63E9FC;
+}
+
+.inner5 {
+    border-right: 5px solid #75ECFD;
+}
+
+.inner1T {
+    border-right: 5px solid #03EBA6;
+}
+
+.inner2T {
+    border-right: 5px solid #03F3AB;
+}
+
+.inner3T {
+    border-right: 5px solid #33FDC0;
+}
+
+.inner4T {
+    border-right: 5px solid #62FDCE;
+}
+
+.inner5T {
+    border-right: 5px solid #7DFDD7;
+}
+
+.paddingSides {
+    padding-right: 5px;
+}
+
+.notif-info-parent {
+    margin-right: -20px;
+}
+
+.notif-menu {
+    left: auto;
+    right: 0;
+    float: left;
+}

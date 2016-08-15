@@ -1,0 +1,56 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Resource, List<SelectListItems>>
+<div class="parentDiv">
+
+    @using (Ajax.BeginForm("PostResource", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "updateHomeResource"
+}, new { data_dom = "postUserResourceForm", @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-sm-1">@Html.Action("GetUserPic", "App_User", new { area = "admin", Id = ViewBag.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Large })</div>
+            <div class="col-sm-11">
+                @Html.TextAreaFor(model => model.FormObject.Body, new { @class = "form-control", placeholder = UT.SL.Model.Resource.App_Common.WhatIsYourMind })
+                @Html.ValidationMessageFor(model => model.FormObject.Body)
+            </div>
+        </div>
+        <div class="form-group hiddenFileUpload alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Attach</label>
+            <div class="col-sm-11">
+                <input name="resourceFile" id="resourceFile" type="file" data-kendouploader="true" data-saveurl="@(Url.Action("SaveResource", "MyHome", new { area = "" }))" data-deleteurl="@(Url.Action("RemoveResource", "MyHome", new { area = "" }))" data-updateid="resourceId" />
+            </div>
+        </div>
+        <div class="form-group hiddenShareOption alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.To</label>
+            <div class="col-sm-11">
+                @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.Last().SelectedIds, Model.ExtraKnownData.Last().Items, "groupIds", UT.SL.Model.Resource.App_Common.ChooseLearningGroups)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <div class="col-md-offset-1 col-md-11">
+                <div class="">
+                    <button class="btn btn-primary submit" type="submit" id="coursePostSubmit" data-hidekendoupload="true">@UT.SL.Model.Resource.App_Common.Submit</button>
+                    <div class="btn btn-default cancelClick deleteFileOnCancel" data-show="postTemplate" data-hide="postResourceTemplate" data-toggleclass="mainPortal" data-hideit="true"> @UT.SL.Model.Resource.App_Common.Cancel</div>
+                </div>
+                <input name="FormObject.Id" id="resourceId" type="hidden" data-resetonpost="true" value="" />
+                <input id="resourceUpdateUrl" type="hidden" value="@Url.Action("GetOneResource", "MyHome", new { area = "" })" />
+            </div>
+        </div>
+    }
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { data_antiforgery = "true" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        initializeUploaderWithDon('postUserResourceForm');
+    });
+</script>

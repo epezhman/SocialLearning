@@ -1,0 +1,703 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.Model.Enumeration
+@model UT.SL.Model.NotificationViewModel
+@if (Model != null && Model.NotificationOnObject != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="@(Model.Notification.Readen ? "notifDivSeen" : "notifDivUnSeen")" data-updateurl="@(Url.Action("UpdateReaden", "Notification", new { Area = "Admin", id = Model.Notification.Id }))" data-objectlookupurl="@(Url.Action("GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType }))" style="cursor:pointer">
+                <div class=" row">
+                    @if (Model.ObjectType == (int)ObjectType.Vote)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                            {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-heart"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Voted </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Comment)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Comment)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromUser != null)
+                                    {
+                                    @UT.SL.Model.Resource.App_Common.Of
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                        <span>
+                                            @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                        </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.ForumDiscussion)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                            {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.AddedThing, string.Empty) @(UT.SL.Model.Resource.App_Common.Discussion)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.RepliedThing, string.Empty)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnForum, string.Empty)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnDisscussion, string.Empty)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                {
+                                <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.ExtraInfo, string.Empty, string.Empty)" style="color: Green;">
+                                    @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.ExtraInfo, string.Empty, string.Empty).ToString()
+                                </span>
+                                }
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.TagMapper)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                            {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-tags "></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Tagged </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                        "@HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        "@HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromUser != null)
+                                    {
+                                    @UT.SL.Model.Resource.App_Common.Of
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+
+                    else if (Model.ObjectType == (int)ObjectType.AssignmentSubmission)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                            {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+
+                                </div>
+                                <div class="inline"> @UT.SL.Model.Resource.App_Common.SubmittedAssigment </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    @UT.SL.Model.Resource.App_Common.Of
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.Comment)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                            {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <img src="@Url.Content("~/Images/icon/32x32/reply.png")" style="width:20px; height:20px; margin-bottom:4px" alt="@UT.SL.Model.Resource.App_Common.Comment" />
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Commented </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                        "@HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()"
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromUser != null)
+                                    {
+                                    @UT.SL.Model.Resource.App_Common.Of
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.ObjectType == (int)ObjectType.Grade)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                                    {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.NotificationOnObject.GradeUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+}
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.GradeUser.Id, type = (int)ProfileLinkType.FullName })
+}
+                                </div>
+                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Graded </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.Title) || !string.IsNullOrEmpty(Model.NotificationOnObject.Body))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.Title, Model.NotificationOnObject.Body, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.ForumDiscussion)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                    }
+                                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.AssignmentSubmission)
+                                    {
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.AssignmentSubmission)</span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                <div class="inline">
+                                    @if (Model.NotificationOnObject.CameFromUser != null)
+                                    {
+                                    @UT.SL.Model.Resource.App_Common.Of
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Resource)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                                    {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+}
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-file"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+}
+                                </div>
+
+                                <div class="inline">
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (Model.CreateUser != null)
+                                        {
+                                            if (Model.CreateUser.Id != ViewBag.UserId)
+                                            {
+                                                @UT.SL.Model.Resource.App_Common.Of
+                                                @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                            }
+                                        }
+                                    </div>*@
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Assignment && Model.ObjectType != (int)ObjectType.AssignmentSubmission)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                                    {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+}
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+}
+
+                                </div>
+                                <div class="inline">
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (Model.CreateUser != null)
+                                        {
+                                            if (Model.CreateUser.Id != ViewBag.UserId)
+                                            {
+                                                @UT.SL.Model.Resource.App_Common.Of
+                                                @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                            }
+                                        }
+                                    </div>*@
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                    else if (Model.NotificationOnObject.CameFromType == (int)ObjectType.Forum && Model.ObjectType != (int)ObjectType.ForumDiscussion)
+                    {
+                        <div class="col-md-1">
+                            @if (Model.CreateUser != null)
+                                    {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+}
+                        </div>
+                        <div class="col-md-11">
+                            <div class="inline">
+                                <div class="inline">
+                                    <span class="glyphicon glyphicon-comment"></span>
+                                </div>
+                                <div class="inline">
+                                    @if (Model.CreateUser != null)
+                                    {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.NotificationOnObject.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+}
+                                </div>
+                                <div class="inline">
+
+                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Forum)</span>
+
+                                </div>
+                                <div class="inline">
+                                    @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CameFromTitle))
+                                    {
+                                    <span title="@HelperUtils.ShortenStringForTitle(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                        @HelperUtils.ShortenStringForPreview(Model.NotificationOnObject.CameFromTitle, string.Empty, string.Empty).ToString()
+                                    </span>
+                                    }
+                                </div>
+                                @*<div class="inline">
+                                        @if (Model.CreateUser != null)
+                                        {
+                                            if (Model.CreateUser.Id != ViewBag.UserId)
+                                            {
+                                                @UT.SL.Model.Resource.App_Common.Of
+                                                @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                            }
+                                        }
+                                    </div>*@
+                                @*<div class="inline">
+                                        @if (!string.IsNullOrEmpty(Model.NotificationOnObject.CourseTitle))
+                                        {
+                                            <span>
+                                                @string.Format(UT.SL.Model.Resource.App_Common.FromCourse, Model.NotificationOnObject.CourseTitle)
+                                            </span>
+                                        }
+                                    </div>*@
+                                <div class="inline">
+                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, Model.CreateDate.ToShortTimeString())
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1">
+                                     @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.ObjectType, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "GetOneObjectTry", "Course", new { area = "Admin", id = Model.ObjectId, type = Model.ObjectType },
+                            new AjaxOptions()
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "viewobject",
+                                LoadingElementId = "loadingAjax"
+                            }, new { }, null)
+                                 </div>*@
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+}

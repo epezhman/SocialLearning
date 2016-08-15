@@ -1,0 +1,21 @@
+﻿@model UT.SL.Model.AddSocialGroupMemberModel
+@using (Ajax.BeginForm("AddMember", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "members" + Model.GroupeId,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "$('#Member" + Model.GroupeId + "').val('')"
+}, new { data_toSubmit = "true" }))
+{
+    @Html.AntiForgeryToken()  
+    @Html.ValidationSummary(true)      
+    <div class="col-md-2">
+        @UT.SL.Model.Resource.App_Common.Member
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="Member" id="Member@(Model.GroupeId)" data-lookupurl="@Url.Action("GetUsers", "App_User", new { area = "Admin" })" data-autocompletewithpics="true" class="" style="width:80% !important;" />
+        @Html.HiddenFor(model => model.GroupeId)
+        <input type="hidden" name="largepic" value="@(ViewBag.Largepic)"/>
+    </div>                
+}

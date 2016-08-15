@@ -1,0 +1,120 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Data.LINQ.App_UserInfo, SelectListItems>
+<div class="">
+    @using (Ajax.BeginForm("EditUserInfo", "App_UserInfo", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResultOAI",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()  
+        @Html.ValidationSummary(true)    
+        <fieldset>
+            <legend>@UT.SL.Model.Resource.App_Common.OtherAccountInfo</legend>
+            <div class="" id="SubmitResultOAI">
+            </div>
+            <div class="">
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.NationalId)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.NationalId)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.NationalId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.BirsthDate)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.BirsthDate)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.BirsthDate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.BSin)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.BSin)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.BSin)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.MSin)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.MSin)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.MSin)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.PHDin)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.PHDin)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.PHDin)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.Occupation)</label>
+                    <div class="controls">
+                        @Html.EditorFor(model => model.FormObject.Occupation)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.Occupation)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                    <div class="controls">
+                        @Html.TextAreaFor(model => model.FormObject.About)
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.About)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                    <div class="controls">
+                        @Html.DropDownListFor(model => model.FormObject.Title, UT.SL.Model.Enumeration.Utility.GetSelectList(typeof(UT.SL.Model.Enumeration.PersonTitleType), "Select Title"))
+                    </div>
+                    <div class="controls">
+                        @Html.ValidationMessageFor(model => model.FormObject.Title)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="">@UT.SL.Model.Resource.App_Common.InterestedIn</label>
+                    <div class="controls">
+                        @Html.ListBoxFor(model => model.ExtraKnownData.SelectedIds, Model.ExtraKnownData.Items, new { data_multiselectsecond = "true" })
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit"  class="btn btn-default btn btn-default-default submit"/>
+                        <input type="hidden" value="@Model.FormObject.Id" name ="Id"/>
+                        @Html.HiddenFor(model => model.FormObject.App_User.GuidId)
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+            initializeUploaderUserPic();
+            $("[data-multiselectsecond]").kendoMultiSelect();
+        });
+    </script>
+</div>

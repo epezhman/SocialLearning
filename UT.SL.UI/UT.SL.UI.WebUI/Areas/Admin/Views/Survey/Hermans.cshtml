@@ -1,0 +1,316 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Hermans;
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Survey), 0, false, true);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Survey, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+
+<div class="stickDownSubmitSurvey">
+    <div class="row">
+        <div class="col-md-6" title="@(ViewBag.QuestionCountLeft != 0 ? UT.SL.Model.Resource.App_Common.AnswerToAllBeforeSubmit: "")" id="finalSubmitTitle">
+            @if (ViewBag.QuestionCountLeft != 0)
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 2 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", disabled = "disabled", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+            else
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 2 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="boldAndLarger surveySubmit">
+                Q: <span id="questionLeft">@ViewBag.QuestionCountLeft</span>/@ViewBag.QuestionCount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="k-rtl">
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                1- كاركردن چيزي است كه ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 1 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                2- در دانشگاه فكر مي كنند كه من فردي ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 2 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                3- افراد ديگر فكر مي كنند كه من ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 3 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                4- اگر خود را از خيلي قبل براي انجام يك تكليف آماده كنيم اين كار ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 4 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                5- توقعي كه از خودم موقع كار كردن دارم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 5 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                6- هنگامي كه استاد در كلاس درس مي دهد ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 6 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                7- من معمولان مقدار کاری که انجام می دهم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 7 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                8- هرگاه تکلیفم را خوب انجام نداده و به هدفم نرسیده باشم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 8 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                9- در دانشگاه داشتن پشتکار به نظرم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 9 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                10- شروع کردن به انجام تکالیف دانشگاه در منزل ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 10 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                11- هنگامی که در کلاس های پائین تر بودم معیارها و انتظاراتی که با توجه به میزان مطالعه ام از خود داشتم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 11 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                12- اگر در حال انجام تکلیفم، مرا به تماشای تلویزیون یا گوش دادن به رادیو فرا بخوانند، بعد از آن ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 12 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                13- من کاری را انجام دادن آن احساس مسئولیت زیادی را بخواهد ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 13 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                14- آن زندگی که اصلا نیاز به کار کردن نداشته باشد از نظر من ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 14 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                15- زماني كه در كلاسهاي پايين تر بودم ، فكر مي كردم نائل شدن به يك موقعيت بالا در جامعه (مقام و
+                موقعيتي را كسب كردن) ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 15 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                16- موقعي كه در برابر انجام كار با مشكلي روبرو مي شوم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 16 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                17- به طور كلي ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 17 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                18- در دانشگاه به نظر من دانش جویاني كه خيلي زياد مطالعه مي كنند ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 18 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                19- در دانشگاه كساني را كه به موفقيت هاي بسيار بالايي نائل شده اند ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 19 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                20- براي استفاده از لذتها و تفريحات اضافي زندگي ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 20 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                21- من معمولا فردي ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 21 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                22- من بدون اينكه خسته شوم مي توانم براي ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 22 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                23- زماني كه در كلاسهاي پايين تر بودم رابطه خوب داشتن با استادانم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 23 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                24- پسران شغل پدرانشان را به عنوان مدير يك موسسه دنبال مي كنند زيرا ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 24 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                25- وقتي در كلاسهاي پايين تر بودم دلم مي خواست ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 25 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                26- من نظم دادن به امور را ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 26 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                27- زماني كه كاري را شروع مي كنم ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 27 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                28- من ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 28 })
+    </div>
+
+    <div class="borderBottom surveyFont">
+        <div class="row">
+            <div class="col-md-12">
+                29- خريد كردن كاري است كه من آن را ......
+            </div>
+        </div>
+        @Html.Action("Radios", "Survey", new { area = "Admin", surveyId = 2, questionId = 29 })
+    </div>
+
+</div>

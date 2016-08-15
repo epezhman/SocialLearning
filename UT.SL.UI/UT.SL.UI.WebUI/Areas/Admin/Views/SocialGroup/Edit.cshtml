@@ -1,0 +1,98 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.SocialGroup
+@if (ViewBag.Panel != null)
+{
+    <div class="col-md-12">
+        @using (Ajax.BeginForm("Edit", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "$('#groupManage').slideUp();$('#groupManage').html('')"
+}, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+                <div class="" id="SubmitResult">
+                </div>
+                <div class="">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Title">@Html.LabelFor(model => model.Title)</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Title)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Title">@Html.LabelFor(model => model.About)</label>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(model => model.About, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.About)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                            <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$('#groupManage').slideUp();">@UT.SL.Model.Resource.App_Common.Cancel</a>
+                            @Html.HiddenFor(model => model.Id)
+                            <input type="hidden" name="panel" value="1" />
+                        </div>
+                    </div>
+                </div>
+        }
+        <script>
+            $(function () {
+                $.InitialComponents();
+            });
+        </script>
+    </div>
+}
+else
+{
+    <div class="">
+        @using (Ajax.BeginForm("Edit", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+                <div class="" id="SubmitResult">
+                </div>
+                <div class="">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Title">@Html.LabelFor(model => model.Title)</label>
+                        <div class="col-sm-9">
+                            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Title)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="Title">@Html.LabelFor(model => model.About)</label>
+                        <div class="col-sm-9">
+                            @Html.TextAreaFor(model => model.About, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.About)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                            <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                            @Html.HiddenFor(model => model.Id)
+                        </div>
+                    </div>
+                </div>
+        }
+        <script>
+            $(function () {
+                $.InitialComponents();
+            });
+        </script>
+    </div>
+}
+

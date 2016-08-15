@@ -1,0 +1,117 @@
+﻿@*@model UT.SL.Data.LINQ.SurveyAnswer
+@{
+    bool full1 = false;
+    bool full2 = false;
+    bool full3 = false;
+    bool full4 = false;
+    bool full5 = false;
+
+    if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 1)
+    {
+        full1 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 2)
+    {
+        full1 = true;
+        full2 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 3)
+    {
+        full1 = true;
+        full2 = true;
+        full3 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 4)
+    {
+        full1 = true;
+        full2 = true;
+        full3 = true;
+        full4 = true;        
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 5)
+    {
+        full1 = true;
+        full2 = true;
+        full3 = true;
+        full4 = true;    
+        full5 = true;
+    }
+}
+
+@if (Model != null)
+{
+    <div class="rating">
+        <div class="inline">
+            <div class="inline @(full1 ? "starRatingFull" : "starRating") star1" @(full1 ? "data-constant=true" : "") data-star="1" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId">
+
+            </div>
+            <div class="inline @(full2 ? "starRatingFull" : "starRating") star2" @(full2 ? "data-constant=true" : "") data-star="2" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId">
+
+            </div>
+            <div class="inline @(full3 ? "starRatingFull" : "starRating") star3" @(full3 ? "data-constant=true" : "") data-star="3" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId">
+
+            </div>
+            <div class="inline @(full4 ? "starRatingFull" : "starRating") star4" @(full4 ? "data-constant=true" : "") data-star="4" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId">
+
+            </div>
+            <div class="inline @(full5 ? "starRatingFull" : "starRating") star5" @(full5 ? "data-constant=true" : "") data-star="5" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId">
+
+            </div>
+        </div>
+    </div>
+}*@
+
+@model UT.SL.Data.LINQ.SurveyAnswer
+@{
+    bool full1 = false;
+    bool full2 = false;
+    bool full3 = false;
+    bool full4 = false;
+    bool full5 = false;
+
+    if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 1)
+    {
+        full1 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 2)
+    {
+        full2 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 3)
+    {
+        full3 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 4)
+    {
+        full4 = true;
+    }
+    else if (Model.AnswerValue.HasValue && Model.AnswerValue.Value == 5)
+    {
+        full5 = true;
+    }
+}
+
+@if (Model != null)
+{
+    <div class="circleRating">
+        <div class="inline">
+            <div class="inline @(full1 ? "ratingCircle" : "ratingCircleEmty") circle1" data-circle="1" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId" title="@UT.SL.Model.Resource.App_Common.StronglyDisagree">
+                1
+            </div>
+            <div class="inline @(full2 ? "ratingCircle" : "ratingCircleEmty") circle2" data-circle="2" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId" title="@UT.SL.Model.Resource.App_Common.Disagree">
+                2
+            </div>
+            <div class="inline @(full3 ? "ratingCircle" : "ratingCircleEmty") circle3" data-circle="3" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId" title="@UT.SL.Model.Resource.App_Common.NeitherAgreeNorDisagree">
+                3
+            </div>
+            <div class="inline @(full4 ? "ratingCircle" : "ratingCircleEmty") circle4" data-circle="4" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId" title="@UT.SL.Model.Resource.App_Common.Agree">
+                4
+            </div>
+            <div class="inline @(full5 ? "ratingCircle" : "ratingCircleEmty") circle5" data-circle="5" data-surveyid="@Model.SurveyId" data-quationid="@Model.QuestionId" title="@UT.SL.Model.Resource.App_Common.StronglyAgree">
+                5
+            </div>
+        </div>
+    </div>
+}
+
+

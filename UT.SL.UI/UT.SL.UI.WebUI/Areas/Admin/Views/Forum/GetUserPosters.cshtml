@@ -1,0 +1,23 @@
+﻿@model UT.SL.Model.DiscussionPosterModel
+@if (Model.Users != null && Model.Users.Any())
+{
+
+            @String.Format("{0} {1}", Model.TotalPosts, UT.SL.Model.Resource.App_Common.Replies)
+        
+            foreach (var item in Model.Users)
+            {
+                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+            }
+      
+            if (Model.TheRemainingUserCount > 0)
+            {
+                @*@String.Format(" +{0} {1}", Model.TheRemainingUserCount, UT.SL.Model.Resource.App_Common.Others)*@
+                @String.Format(" +{0}", Model.TheRemainingUserCount)
+                
+            }
+      
+}
+else
+{
+        @String.Format("{0} {1}", Model.TotalPosts, UT.SL.Model.Resource.App_Common.Replies)
+}

@@ -1,0 +1,32 @@
+﻿@model UT.SL.Helper.FormModel<List<UT.SL.Data.LINQ.Course>, UT.SL.Data.LINQ.App_User>
+@{
+    var menuType = (int)Model.ExtraData[0];
+    var extra = (int)Model.ExtraData[1];
+}
+<div id="navigationBar" class="containerOne">
+    <div class="leftOne" id="showMenuLink">
+        <ul class="secondBarNav2 ulheight">
+            <li>
+                <a href="javascript:void(0);" class="showmenu" style="padding-left:0px; padding-right:0px;">@Html.Action("GetCorrespondTitle", "Home", new { area = "", menuType = menuType, extra = extra })</a>
+            </li>
+        </ul>
+    </div>
+    <div class="rightOne">
+        <ul class="secondBarNav2 fever ulheight alarmMargin" style="display: none;">
+            <li class="">
+                @Html.Action("InboxButton", "MessageThread", new { Area = "Admin", type = 2 })
+                @Html.Action("Inbox", "MessageThread", new { Area = "Admin", type = 2 })
+            </li>
+            <li class="" style="padding-bottom:5px">
+                @Html.Action("NotificationButton", "Notification", new { Area = "Admin", type = 2 })
+                @Html.Action("NotificationBox", "Notification", new { Area = "Admin", type = 2 })
+            </li>
+                    
+        </ul>
+    </div>
+    <div class="centerOne">
+        <ul class="secondBarNav ulheight" style="z-index: 999;">
+            @Html.Action("GetCorrespondLinks", "Home", new { area = "", menuType = menuType, extra = extra })
+        </ul>
+    </div>
+</div>

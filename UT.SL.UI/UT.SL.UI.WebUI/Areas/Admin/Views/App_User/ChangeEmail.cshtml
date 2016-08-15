@@ -1,0 +1,52 @@
+﻿@using UT.SL.Helper
+@model UT.SL.Model.ChangeEmailModel
+<div class="">
+    @using (Ajax.BeginForm("ChangeEmail", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResultCP",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResultCP">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.Password)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.Email)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.ConfirmEmail)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.ConfirmEmail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ConfirmEmail)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.Guid)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            resetFields();
+        });
+    </script>
+</div>

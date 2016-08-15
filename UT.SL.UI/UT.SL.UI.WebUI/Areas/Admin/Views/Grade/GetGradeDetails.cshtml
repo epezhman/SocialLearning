@@ -1,0 +1,191 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.GradeTypeModel
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="utwell">
+                <span class="glyphicon glyphicon-remove" data-closepanel="true" data-paneltocloseid="gradeDetail" title="@UT.SL.Model.Resource.App_Common.Close" style="cursor:pointer"></span>
+                <span class="boldAndMedium">
+                    @string.Format(UT.SL.Model.Resource.App_Common.GradeOf, ViewBag.FullName)
+                </span>
+            </div>
+        </div>
+    </div>
+    if (Model.GradedObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="utwell">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="inline">
+                                <div class="inline"><span class="glyphicon glyphicon-comment" style=""></span></div>
+                                @if (Model.MyGradeDouble > 0)
+                                {
+                                    <div class="inline">@Model.MyGradeDouble</div>
+                                    <div class="inline"> is your grade for the forum </div>
+                                }
+                                else
+                                {
+                                    <div class="inline"> Your submission has not been graded for the forum </div>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.GradedObject.Title) || !string.IsNullOrEmpty(Model.GradedObject.Body) || !string.IsNullOrEmpty(Model.GradedObject.FileTitle))
+                                {
+                                    <div class="inline">
+                                        <span title="@HelperUtils.ShortenStringForTitle(Model.GradedObject.Title, Model.GradedObject.Body, Model.GradedObject.FileTitle)" style="color: Green;">
+                                            @HelperUtils.ShortenStringForPreview(Model.GradedObject.Title, Model.GradedObject.Body, Model.GradedObject.FileTitle).ToString()
+                                        </span>
+                                    </div>
+                                }
+                                @if (Model.MinGrade > 0)
+                                {
+                                    <div class="inline">, while the minimum is </div>
+                                    <div class="inline">@Model.MinGrade</div>
+                                }
+                                @if (Model.MaxGrade > 0)
+                                {
+                                    <div class="inline"> and maximum is</div>
+                                    <div class="inline">@Model.MaxGrade</div>
+                                }
+                                @if (Model.MaxGardeUsers.Any())
+                                {
+                                    <div class="inline"> belongs to </div>
+                                    foreach (var item in Model.MaxGardeUsers)
+                                    {
+                                        <div class="inline">
+                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName }) ,
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    @if (Model.GradedObjects.Any())
+                    {
+                        foreach (var item in Model.GradedObjects)
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="inline">
+                                        <div class="inline"><span class="glyphicon glyphicon-comment"></span></div>
+                                        @if (item.MyGrade > 0)
+                                        {
+                                            <div class="inline">@item.MyGrade</div>
+                                            <div class="inline"> is your grade for the forum discussion </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="inline"> Your submission has not been graded for the forum discussion </div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(item.GradedObject.Title) || !string.IsNullOrEmpty(item.GradedObject.Body) || !string.IsNullOrEmpty(item.GradedObject.FileTitle))
+                                        {
+                                            <div class="inline">
+                                                <span title="@HelperUtils.ShortenStringForTitle(item.GradedObject.Title, item.GradedObject.Body, item.GradedObject.FileTitle)" style="color: Green;">
+                                                    @HelperUtils.ShortenStringForPreview(item.GradedObject.Title, item.GradedObject.Body, item.GradedObject.FileTitle).ToString()
+                                                </span>
+                                            </div>
+                                        }
+                                        @if (!string.IsNullOrEmpty(item.GradedObject.CameFromTitle))
+                                        {
+                                            <div class="inline">
+                                                to the discussion
+                                            </div>
+                                            <div class="inline">
+                                                <span title="@HelperUtils.ShortenStringForTitle(item.GradedObject.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                    "@HelperUtils.ShortenStringForPreview(item.GradedObject.CameFromTitle, string.Empty, string.Empty).ToString()"
+                                                </span>
+                                            </div>
+                                        }
+                                        @if (item.MyGradeDouble > 0)
+                                        {
+                                            <div class="inline"> and graded by </div>
+                                            <div class="inline">
+                                                @if (item.GradeGiver != null)
+                                                {
+                                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.GradeGiver.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                                                }
+                                            </div>
+                                            <div class="inline">
+                                                @HelperUtils.ShowRecentTime(item.CreateDate)
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    }
+    else if (Model.GradedObjectType == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div id="" class="utwell">
+                    <div class="inline">
+                        
+                        <div class="inline"><span class="glyphicon glyphicon-pencil"></span> </div>
+                        @if (Model.MyGradeDouble > 0)
+                        {
+                            <div class="inline">@Model.MyGradeDouble</div>
+                            <div class="inline"> is your grade for the assignment </div>
+                        }
+                        else
+                        {
+                            <div class="inline"> Your submission has not been graded for the assignment </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.GradedObject.Title) || !string.IsNullOrEmpty(Model.GradedObject.Body) || !string.IsNullOrEmpty(Model.GradedObject.FileTitle))
+                        {
+
+                            <div class="inline">
+
+                                <span title="@HelperUtils.ShortenStringForTitle(Model.GradedObject.Title, Model.GradedObject.Body, Model.GradedObject.FileTitle)" style="color: Green;">
+                                    @HelperUtils.ShortenStringForPreview(Model.GradedObject.Title, Model.GradedObject.Body, Model.GradedObject.FileTitle).ToString()
+                                </span>
+
+                            </div>
+                        }
+                        @if (Model.MinGrade > 0)
+                        {
+                            <div class="inline">, while the minimum is </div>
+                            <div class="inline">@Model.MinGrade</div>
+                        }
+                        @if (Model.MaxGrade > 0)
+                        {
+                            <div class="inline"> and maximum is</div>
+                            <div class="inline">@Model.MaxGrade</div>
+                        }
+                        @if (Model.MaxGardeUsers.Any())
+                        {
+                            <div class="inline"> belongs to </div>
+                            foreach (var item in Model.MaxGardeUsers)
+                            {
+                                <div class="inline">
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName }) ,
+                                </div>
+                            }
+                        }
+                        @if (Model.MyGradeDouble > 0)
+                        {
+                            <div class="inline"> and graded by </div>
+                            <div class="inline">
+                                @if (Model.GradeGiver != null)
+                                {
+                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.GradeGiver.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                                }
+                            </div>
+                            <div class="inline">
+                                @HelperUtils.ShowRecentTime(Model.CreateDate)
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}

@@ -1,0 +1,16 @@
+﻿@model List<UT.SL.Data.LINQ.GroupMember>
+<div style="display: inline-block">
+    <div style="display: inline-block">
+        @foreach (var item in Model.Take(3))
+        {            
+            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+        }
+
+    </div>
+    @if (Model.Count() > 3)
+    { 
+        <div style="display: inline-block">
+            <span title="@UT.SL.Model.Resource.App_Common.More" >...</span>
+        </div>
+    }
+</div>

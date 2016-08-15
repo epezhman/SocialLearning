@@ -1,0 +1,37 @@
+﻿@model UT.SL.Helper.FormModel<List<UT.SL.Data.LINQ.Course>, UT.SL.Data.LINQ.App_User>
+@{
+    byte type = (byte)Model.ExtraData.First();
+}
+@if (type == (int)UT.SL.Model.Enumeration.MenuType.MyCourses)
+{    
+    <ul class="nav nav-list">
+        @foreach (var item in Model.FormObject)
+        {
+            <li id="navLinkLinkC@(item.Id)">@Html.ActionLink(item.Title, "CourseView", "Course", new { area = "Admin", id = item.Id }, null)</li>
+        }
+    </ul>
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Calendar)
+{
+    <input type="text" data-datetime="true" class="input-small" placeholder="@UT.SL.Model.Resource.App_Common.Date"/>
+}
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Messages)
+{ }
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Notifications)
+{ }
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.User)
+{ }
+else if (type == (int)UT.SL.Model.Enumeration.MenuType.Admin)
+{
+    <ul class="nav nav-list">
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.Category)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Categories, "Index", "Category", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.ActionEvaluation)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.UsersLog, "Index", "App_UserLog", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.SurveyReport)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.SurveyResults, "Index", "Survey", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.Tag)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Tags, "Index", "Tag", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.Courses)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Courses, "Index", "Course", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.AppActiopn)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.ActionManegment, "Index", "Appactions", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.Users)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Users, "Index", "App_User", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.FeedBack)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Feedback, "Index", "Feedback", new { area = "Admin" }, null)</li>
+        <li id="navLinkLink@((int)UT.SL.Model.Enumeration.NavLinks.Email)">@Html.ActionLink(UT.SL.Model.Resource.App_Common.Email, "Index", "Email", new { area = "Admin" }, null)</li>
+    </ul>
+}

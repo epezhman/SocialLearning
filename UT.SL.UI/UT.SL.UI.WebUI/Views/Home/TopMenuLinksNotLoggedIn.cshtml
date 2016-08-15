@@ -1,0 +1,22 @@
+﻿
+<div id="navigationBar" class="containerOne">
+    <div class="leftOne" id="showMenuLink">
+        <ul class="secondBarNav2 ulheight">
+            <li>
+            </li>
+        </ul>
+    </div>
+    <div class="rightOne">
+        <ul class="secondBarNav2 fever ulheight alarmMargin" style="display: none;">
+            <li class="">
+               
+            </li>
+
+        </ul>
+    </div>
+    <div class="centerOne">
+        <ul class="secondBarNav ulheight" style="z-index: 999;">
+            @Html.Action("GetCorrespondLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Advrt, extra = 0 })
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  UT.SL.Data.LINQ.App_UserInfo
+<div class="">
+    @using (Ajax.BeginForm("EditProfile", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+}, new { @class = "form-horizontal", data_dom = "discussionEditForm", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResult">
+        </div>
+         <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.Title)</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.Title, UT.SL.Model.Enumeration.Utility.GetSelectList(typeof(UT.SL.Model.Enumeration.PersonTitleType), UT.SL.Model.Resource.App_Common.Select), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.Occupation)</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(model => model.Occupation, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Occupation)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.BSin)</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(model => model.BSin, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BSin)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.MSin)</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(model => model.MSin, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MSin)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.PHDin)</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(model => model.PHDin, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PHDin)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.About)</label>
+            <div class="col-sm-9">
+                @Html.TextAreaFor(model => model.About, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.About)
+            </div>
+        </div>      
+        <div class="form-group">
+            <label class="control-label col-sm-3" >@Html.LabelFor(model => model.BirsthDate)</label>
+            <div class="col-sm-9">
+                @HelperUtils.DateInput(Model.BirsthDate, "BirsthDate", "BirsthDate", "")
+                @Html.ValidationMessageFor(model => model.BirsthDate)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                @Html.HiddenFor(model => model.App_User.GuidId)
+            </div>
+        </div>
+    }
+</div>

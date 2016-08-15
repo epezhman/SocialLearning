@@ -1,0 +1,1157 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SocialLearning" Class="SocialLearningDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.8.1,1433;Initial Catalog=SocialLearning;User ID=p.nasirifard" SettingsObjectName="UT.SL.Data.LINQ.Properties.Settings" SettingsPropertyName="SocialLearningConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Answer" Member="Answers">
+    <Type Name="Answer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CorrectAnsver" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsEffective" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Question_Answer" Member="Question" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" />
+      <Association Name="Question_Answer1" Member="Question1" ThisKey="QuestionId" OtherKey="Id" Type="Question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wiki" Member="Wikis">
+    <Type Name="Wiki">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HyperLink" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Wiki_Wiki" Member="Wikis" ThisKey="Id" OtherKey="ParentId" Type="Wiki" />
+      <Association Name="Wiki_Wiki" Member="Wiki1" ThisKey="ParentId" OtherKey="Id" Type="Wiki" IsForeignKey="true" />
+      <Association Name="App_User_Wiki" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_Wiki" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_Action" Member="App_Actions">
+    <Type Name="App_Action">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AreaName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ControllerName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="RequireAuthentication" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RequireAuthorization" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IgnoreOwner" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnBlankIfNotAllowed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCredit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StudentCredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TACredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeacherCredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditOnlyPost" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Bookmark" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InNotification" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DoesNotHaveDAL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="App_Action_App_ActionEvaulation" Member="App_ActionEvaulations" ThisKey="Id" OtherKey="ActionId" Type="App_ActionEvaulation" />
+      <Association Name="App_Action_App_Permission" Member="App_Permissions" ThisKey="Id" OtherKey="ActionId" Type="App_Permission" />
+      <Association Name="App_Action_App_SiteMenu" Member="App_SiteMenus" ThisKey="Id" OtherKey="ActionId" Type="App_SiteMenu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_ActionEvaulation" Member="App_ActionEvaulations">
+    <Type Name="App_ActionEvaulation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Credit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Browser" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="OS" Type="System.String" DbType="NVarChar(550)" CanBeNull="true" />
+      <Column Name="IsMobile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ScreenRes" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Association Name="App_Action_App_ActionEvaulation" Member="App_Action" ThisKey="ActionId" OtherKey="Id" Type="App_Action" IsForeignKey="true" />
+      <Association Name="App_User_App_ActionEvaulation" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_MenuPosition" Member="App_MenuPositions">
+    <Type Name="App_MenuPosition">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PositionId" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="MenuId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_SiteMenu_App_MenuPosition" Member="App_SiteMenu" ThisKey="MenuId" OtherKey="Id" Type="App_SiteMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_Permission" Member="App_Permissions">
+    <Type Name="App_Permission">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="App_Action_App_Permission" Member="App_Action" ThisKey="ActionId" OtherKey="Id" Type="App_Action" IsForeignKey="true" />
+      <Association Name="App_Role_App_Permission" Member="App_Role" ThisKey="RoleId" OtherKey="Id" Type="App_Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_Role" Member="App_Roles">
+    <Type Name="App_Role">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="App_Role_App_Permission" Member="App_Permissions" ThisKey="Id" OtherKey="RoleId" Type="App_Permission" />
+      <Association Name="App_Role_App_UserInRole" Member="App_UserInRoles" ThisKey="Id" OtherKey="RoleId" Type="App_UserInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_SiteMenu" Member="App_SiteMenus">
+    <Type Name="App_SiteMenu">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuTitle" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BrifDescription" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ExternalLink" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PageTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Rank" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MenuPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RequireAuthentication" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PageFooter" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PageHeader" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Help" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="App_SiteMenu_App_MenuPosition" Member="App_MenuPositions" ThisKey="Id" OtherKey="MenuId" Type="App_MenuPosition" />
+      <Association Name="App_SiteMenu_App_SiteMenu" Member="App_SiteMenus" ThisKey="Id" OtherKey="ParentId" Type="App_SiteMenu" />
+      <Association Name="App_SiteMenu_App_SiteMenuText" Member="App_SiteMenuTexts" ThisKey="Id" OtherKey="MenuId" Type="App_SiteMenuText" />
+      <Association Name="App_Action_App_SiteMenu" Member="App_Action" ThisKey="ActionId" OtherKey="Id" Type="App_Action" IsForeignKey="true" />
+      <Association Name="App_SiteMenu_App_SiteMenu" Member="App_SiteMenu1" ThisKey="ParentId" OtherKey="Id" Type="App_SiteMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_SiteMenuText" Member="App_SiteMenuTexts">
+    <Type Name="App_SiteMenuText">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MenuId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContentText" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ContentType" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="App_SiteMenu_App_SiteMenuText" Member="App_SiteMenu" ThisKey="MenuId" OtherKey="Id" Type="App_SiteMenu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_User" Member="App_Users">
+    <Type Name="App_User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserPic" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UserPicMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IsFirstTime" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProfileId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_Wiki" Member="Wikis" ThisKey="Id" OtherKey="UserId" Type="Wiki" />
+      <Association Name="App_User_App_ActionEvaulation" Member="App_ActionEvaulations" ThisKey="Id" OtherKey="UserId" Type="App_ActionEvaulation" />
+      <Association Name="App_User_App_UserEnrolement" Member="App_UserEnrolements" ThisKey="Id" OtherKey="UserId" Type="App_UserEnrolement" />
+      <Association Name="App_User_App_UserGrade" Member="App_UserGrades" ThisKey="Id" OtherKey="UserId" Type="App_UserGrade" />
+      <Association Name="App_User_App_UserInfo" Member="App_UserInfos" ThisKey="Id" OtherKey="UserId" Type="App_UserInfo" />
+      <Association Name="App_User_App_UserInRole" Member="App_UserInRoles" ThisKey="Id" OtherKey="UserId" Type="App_UserInRole" />
+      <Association Name="App_User_App_UserLog" Member="App_UserLogs" ThisKey="Id" OtherKey="UserId" Type="App_UserLog" />
+      <Association Name="App_User_App_UserProfile" Member="App_UserProfiles" ThisKey="Id" OtherKey="UserId" Type="App_UserProfile" />
+      <Association Name="App_User_Assess" Member="Assesses" ThisKey="Id" OtherKey="UserId" Type="Assess" />
+      <Association Name="App_User_Assignment" Member="Assignments" ThisKey="Id" OtherKey="CreateUserId" Type="Assignment" />
+      <Association Name="App_User_AssignmentSubmission" Member="AssignmentSubmissions" ThisKey="Id" OtherKey="UserId" Type="AssignmentSubmission" />
+      <Association Name="App_User_BehaviroralStyle" Member="BehaviroralStyles" ThisKey="Id" OtherKey="UserId" Type="BehaviroralStyle" />
+      <Association Name="App_User_Comment" Member="Comments" ThisKey="Id" OtherKey="OwnerId" Type="Comment" />
+      <Association Name="App_User_CommentLog" Member="CommentLogs" ThisKey="Id" OtherKey="ChangedBy" Type="CommentLog" />
+      <Association Name="App_User_Email" Member="Emails" ThisKey="Id" OtherKey="UserId" Type="Email" />
+      <Association Name="App_User_EmailRecord" Member="EmailRecords" ThisKey="Id" OtherKey="UserId" Type="EmailRecord" />
+      <Association Name="App_User_Feedback" Member="Feedbacks" ThisKey="Id" OtherKey="UserId" Type="Feedback" />
+      <Association Name="App_User_FileAnnotation" Member="FileAnnotations" ThisKey="Id" OtherKey="UserId" Type="FileAnnotation" />
+      <Association Name="App_User_Forum" Member="Forums" ThisKey="Id" OtherKey="CreateUserId" Type="Forum" />
+      <Association Name="App_User_ForumAssessment" Member="ForumAssessments" ThisKey="Id" OtherKey="userId" Type="ForumAssessment" />
+      <Association Name="App_User_ForumDiscussion" Member="ForumDiscussions" ThisKey="Id" OtherKey="UserId" Type="ForumDiscussion" />
+      <Association Name="App_User_ForumDiscussionPost" Member="ForumDiscussionPosts" ThisKey="Id" OtherKey="UserId" Type="ForumDiscussionPost" />
+      <Association Name="App_User_ForumDiscussionPostsGrade" Member="ForumDiscussionPostsGrades" ThisKey="Id" OtherKey="userId" Type="ForumDiscussionPostsGrade" />
+      <Association Name="App_User_Grade" Member="Grades" ThisKey="Id" OtherKey="UserId" Type="Grade" />
+      <Association Name="App_User_Grade1" Member="Grades1" ThisKey="Id" OtherKey="GradeOwnerId" Type="Grade" />
+      <Association Name="App_User_GroupMember" Member="GroupMembers" ThisKey="Id" OtherKey="UserId" Type="GroupMember" />
+      <Association Name="App_User_LearningGroup" Member="LearningGroups" ThisKey="Id" OtherKey="CreateUserId" Type="LearningGroup" />
+      <Association Name="App_User_LearningStyle" Member="LearningStyles" ThisKey="Id" OtherKey="UserId" Type="LearningStyle" />
+      <Association Name="App_User_Message" Member="Messages" ThisKey="Id" OtherKey="AutherId" Type="Message" />
+      <Association Name="App_User_Message1" Member="Messages1" ThisKey="Id" OtherKey="ReceiverId" Type="Message" />
+      <Association Name="App_User_Message2" Member="Messages2" ThisKey="Id" OtherKey="BelongToUserId" Type="Message" />
+      <Association Name="App_User_MessageContact" Member="MessageContacts" ThisKey="Id" OtherKey="ContactUserId" Type="MessageContact" />
+      <Association Name="App_User_MessageContact1" Member="MessageContacts1" ThisKey="Id" OtherKey="OwnerUserId" Type="MessageContact" />
+      <Association Name="App_User_MessageThread" Member="MessageThreads" ThisKey="Id" OtherKey="OwnerUserId" Type="MessageThread" />
+      <Association Name="App_User_MessageThread1" Member="MessageThreads1" ThisKey="Id" OtherKey="AssociatedUserId" Type="MessageThread" />
+      <Association Name="App_User_Notification" Member="Notifications" ThisKey="Id" OtherKey="UserId" Type="Notification" />
+      <Association Name="App_User_NotificationEmail" Member="NotificationEmails" ThisKey="Id" OtherKey="UserId" Type="NotificationEmail" />
+      <Association Name="App_User_ObjectStream" Member="ObjectStreams" ThisKey="Id" OtherKey="UserId" Type="ObjectStream" />
+      <Association Name="App_User_PeerAssessmentGrade" Member="PeerAssessmentGrades" ThisKey="Id" OtherKey="studentGraderId" Type="PeerAssessmentGrade" />
+      <Association Name="App_User_PeerAssessmentGrade1" Member="PeerAssessmentGrades1" ThisKey="Id" OtherKey="studentGradedId" Type="PeerAssessmentGrade" />
+      <Association Name="App_User_Resource" Member="Resources" ThisKey="Id" OtherKey="CreateUserId" Type="Resource" />
+      <Association Name="App_User_Share" Member="Shares" ThisKey="Id" OtherKey="UserShareId" Type="Share" />
+      <Association Name="App_User_Share1" Member="Shares1" ThisKey="Id" OtherKey="UserId" Type="Share" />
+      <Association Name="App_User_SocialGroup" Member="SocialGroups" ThisKey="Id" OtherKey="CreateUserId" Type="SocialGroup" />
+      <Association Name="App_User_SurveyAnswer" Member="SurveyAnswers" ThisKey="Id" OtherKey="UserId" Type="SurveyAnswer" />
+      <Association Name="App_User_SurveyUserSummary" Member="SurveyUserSummaries" ThisKey="Id" OtherKey="UserId" Type="SurveyUserSummary" />
+      <Association Name="App_User_Tag" Member="Tags" ThisKey="Id" OtherKey="UserId" Type="Tag" />
+      <Association Name="App_User_TagMapper" Member="TagMappers" ThisKey="Id" OtherKey="UserId" Type="TagMapper" />
+      <Association Name="App_User_UserActSummary" Member="UserActSummaries" ThisKey="Id" OtherKey="UserId" Type="UserActSummary" />
+      <Association Name="App_User_UserKnowledgeProfile" Member="UserKnowledgeProfiles" ThisKey="Id" OtherKey="UserId" Type="UserKnowledgeProfile" />
+      <Association Name="App_User_UserSoActProfile" Member="UserSoActProfiles" ThisKey="Id" OtherKey="UserId" Type="UserSoActProfile" />
+      <Association Name="App_User_UserTopicMapper" Member="UserTopicMappers" ThisKey="Id" OtherKey="UserId" Type="UserTopicMapper" />
+      <Association Name="App_User_Vote" Member="Votes" ThisKey="Id" OtherKey="UserId" Type="Vote" />
+      <Association Name="App_UserProfile_App_User" Member="App_UserProfile" ThisKey="ProfileId" OtherKey="Id" Type="App_UserProfile" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserEnrolements" Member="App_UserEnrolements">
+    <Type Name="App_UserEnrolement">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_App_UserEnrolement" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_App_UserEnrolement" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserGrade" Member="App_UserGrades">
+    <Type Name="App_UserGrade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Grade" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AverageGradeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_App_UserGrade" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="AverageGrade_App_UserGrade" Member="AverageGrade" ThisKey="AverageGradeId" OtherKey="Id" Type="AverageGrade" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserInfo" Member="App_UserInfos">
+    <Type Name="App_UserInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NationalId" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="BirsthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="About" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BSin" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MSin" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PHDin" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Occupation" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="Title" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisplayEmail" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="App_User_App_UserInfo" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserInRole" Member="App_UserInRoles">
+    <Type Name="App_UserInRole">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="App_Role_App_UserInRole" Member="App_Role" ThisKey="RoleId" OtherKey="Id" Type="App_Role" IsForeignKey="true" />
+      <Association Name="App_User_App_UserInRole" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserLog" Member="App_UserLogs">
+    <Type Name="App_UserLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="About" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="App_User_App_UserLog" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_App_UserLog" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.App_UserProfile" Member="App_UserProfiles">
+    <Type Name="App_UserProfile">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GetUnreadenMessagesEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GetNotificationEmails" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastUnreadenMessagesEmailSent" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="App_UserProfile_App_User" Member="App_Users" ThisKey="Id" OtherKey="ProfileId" Type="App_User" />
+      <Association Name="App_User_App_UserProfile" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assess" Member="Assesses">
+    <Type Name="Assess">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Updown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssessValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssessType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_Assess" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="AssessParent_Assess" Member="AssessParent" ThisKey="ParentId" OtherKey="Id" Type="AssessParent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssessParent" Member="AssessParents">
+    <Type Name="AssessParent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpvoteCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DownvoteCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssessValueAverage" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="AssessParent_Assess" Member="Assesses" ThisKey="Id" OtherKey="ParentId" Type="Assess" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Assignment" Member="Assignments">
+    <Type Name="Assignment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Topics" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CreateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Attachments" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GroupSubmissionIsDemanded" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsPublished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GradeFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GetLockedAfterExpiration" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Assignment_AssignmentSubmission" Member="AssignmentSubmissions" ThisKey="Id" OtherKey="AssignmentId" Type="AssignmentSubmission" />
+      <Association Name="App_User_Assignment" Member="App_User" ThisKey="CreateUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_Assignment" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AssignmentSubmission" Member="AssignmentSubmissions">
+    <Type Name="AssignmentSubmission">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AssignmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublishd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_AssignmentSubmission" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Assignment_AssignmentSubmission" Member="Assignment" ThisKey="AssignmentId" OtherKey="Id" Type="Assignment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AverageGrade" Member="AverageGrades">
+    <Type Name="AverageGrade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObejctType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AveargeGrade" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MinGrade" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MaxGrade" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="AverageGrade_App_UserGrade" Member="App_UserGrades" ThisKey="Id" OtherKey="AverageGradeId" Type="App_UserGrade" />
+      <Association Name="Course_AverageGrade" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+      <Association Name="LearningGroup_AverageGrade" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BehaviroralStyle" Member="BehaviroralStyles">
+    <Type Name="BehaviroralStyle">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BehaviroralStyle" Member="BehaviroralStyle1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="App_User_BehaviroralStyle" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImageData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImageMIME" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Category_Category" Member="Categories" ThisKey="Id" OtherKey="ParentId" Type="Category" />
+      <Association Name="Category_CategoryMapper" Member="CategoryMappers" ThisKey="Id" OtherKey="CategoryId" Type="CategoryMapper" />
+      <Association Name="Category_CourseAbstract" Member="CourseAbstracts" ThisKey="Id" OtherKey="SubCategoryId" Type="CourseAbstract" />
+      <Association Name="Category_Tag" Member="Tags" ThisKey="Id" OtherKey="CategoryId" Type="Tag" />
+      <Association Name="Category_Category" Member="Category1" ThisKey="ParentId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CategoryMapper" Member="CategoryMappers">
+    <Type Name="CategoryMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Category_CategoryMapper" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+      <Association Name="Course_CategoryMapper" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comment" Member="Comments">
+    <Type Name="Comment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Comment_CommentLog" Member="CommentLogs" ThisKey="Id" OtherKey="CommentId" Type="CommentLog" />
+      <Association Name="App_User_Comment" Member="App_User" ThisKey="OwnerId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CommentLog" Member="CommentLogs">
+    <Type Name="CommentLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChangeText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChangeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_CommentLog" Member="App_User" ThisKey="ChangedBy" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Comment_CommentLog" Member="Comment" ThisKey="CommentId" OtherKey="Id" Type="Comment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContentPopularityModel" Member="ContentPopularityModels">
+    <Type Name="ContentPopularityModel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SoActValue" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Course_ContentPopularityModel" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="About" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CourseAbstractId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UniversityTitle" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ImageData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImageMIME" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Course_Wiki" Member="Wikis" ThisKey="Id" OtherKey="CourseId" Type="Wiki" />
+      <Association Name="Course_App_UserEnrolement" Member="App_UserEnrolements" ThisKey="Id" OtherKey="CourseId" Type="App_UserEnrolement" />
+      <Association Name="Course_App_UserLog" Member="App_UserLogs" ThisKey="Id" OtherKey="CourseId" Type="App_UserLog" />
+      <Association Name="Course_Assignment" Member="Assignments" ThisKey="Id" OtherKey="CourseId" Type="Assignment" />
+      <Association Name="Course_AverageGrade" Member="AverageGrades" ThisKey="Id" OtherKey="CourseId" Type="AverageGrade" />
+      <Association Name="Course_CategoryMapper" Member="CategoryMappers" ThisKey="Id" OtherKey="CourseId" Type="CategoryMapper" />
+      <Association Name="Course_ContentPopularityModel" Member="ContentPopularityModels" ThisKey="Id" OtherKey="CourseId" Type="ContentPopularityModel" />
+      <Association Name="Course_CourseObjectStream" Member="CourseObjectStreams" ThisKey="Id" OtherKey="CourseId" Type="CourseObjectStream" />
+      <Association Name="Course_CourseSchedule" Member="CourseSchedules" ThisKey="Id" OtherKey="CourseId" Type="CourseSchedule" />
+      <Association Name="Course_Forum" Member="Forums" ThisKey="Id" OtherKey="CourseId" Type="Forum" />
+      <Association Name="Course_GradeType" Member="GradeTypes" ThisKey="Id" OtherKey="CourseId" Type="GradeType" />
+      <Association Name="Course_LearningGroup" Member="LearningGroups" ThisKey="Id" OtherKey="CourseId" Type="LearningGroup" />
+      <Association Name="Course_Notification" Member="Notifications" ThisKey="Id" OtherKey="CourseId" Type="Notification" />
+      <Association Name="Course_NotificationEmail" Member="NotificationEmails" ThisKey="Id" OtherKey="CourseId" Type="NotificationEmail" />
+      <Association Name="Course_ObjectStream" Member="ObjectStreams" ThisKey="Id" OtherKey="CourseId" Type="ObjectStream" />
+      <Association Name="Course_ObjectStreamCourse" Member="ObjectStreamCourses" ThisKey="Id" OtherKey="CourseId" Type="ObjectStreamCourse" />
+      <Association Name="Course_Quiz" Member="Quizs" ThisKey="Id" OtherKey="CourseId" Type="Quiz" />
+      <Association Name="Course_Resource" Member="Resources" ThisKey="Id" OtherKey="CourseId" Type="Resource" />
+      <Association Name="Course_UserKnowledgeProfile" Member="UserKnowledgeProfiles" ThisKey="Id" OtherKey="CourseId" Type="UserKnowledgeProfile" />
+      <Association Name="Course_UserSoActProfile" Member="UserSoActProfiles" ThisKey="Id" OtherKey="CourseId" Type="UserSoActProfile" />
+      <Association Name="CourseAbstract_Course" Member="CourseAbstract" ThisKey="CourseAbstractId" OtherKey="Id" Type="CourseAbstract" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseAbstract" Member="CourseAbstracts">
+    <Type Name="CourseAbstract">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="About" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SubCategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CourseAbstract_Course" Member="Courses" ThisKey="Id" OtherKey="CourseAbstractId" Type="Course" />
+      <Association Name="CourseAbstract_CourseTopcMapper" Member="CourseTopcMappers" ThisKey="Id" OtherKey="CourseAbstractId" Type="CourseTopcMapper" />
+      <Association Name="Category_CourseAbstract" Member="Category" ThisKey="SubCategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseObjectStream" Member="CourseObjectStreams">
+    <Type Name="CourseObjectStream">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Course_CourseObjectStream" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseSchedule" Member="CourseSchedules">
+    <Type Name="CourseSchedule">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Rank" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Summary" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Course_CourseSchedule" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseTopcMapper" Member="CourseTopcMappers">
+    <Type Name="CourseTopcMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseAbstractId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CourseAbstract_CourseTopcMapper" Member="CourseAbstract" ThisKey="CourseAbstractId" OtherKey="Id" Type="CourseAbstract" IsForeignKey="true" />
+      <Association Name="Topic_CourseTopcMapper" Member="Topic" ThisKey="TopicId" OtherKey="Id" Type="Topic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Email" Member="Emails">
+    <Type Name="Email">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Statuse" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SenderEmail" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ReceiverEmail" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="App_User_Email" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmailRecord" Member="EmailRecords">
+    <Type Name="EmailRecord">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EmailType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MailServer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_EmailRecord" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Feedback" Member="Feedbacks">
+    <Type Name="Feedback">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Feedback" Member="Feedback1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PageURL" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_Feedback" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FileAnnotation" Member="FileAnnotations">
+    <Type Name="FileAnnotation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FromPage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromeLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FromLetter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToPage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToLetter" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_FileAnnotation" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Forum" Member="Forums">
+    <Type Name="Forum">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GetLockedAfterExpiration" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GradeFrom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublishd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Forum_ForumAssessment" Member="ForumAssessments" ThisKey="Id" OtherKey="forumId" Type="ForumAssessment" />
+      <Association Name="Forum_ForumDiscussion" Member="ForumDiscussions" ThisKey="Id" OtherKey="ForumId" Type="ForumDiscussion" />
+      <Association Name="App_User_Forum" Member="App_User" ThisKey="CreateUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_Forum" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumAssessment" Member="ForumAssessments">
+    <Type Name="ForumAssessment">
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="forumId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="groupDiscipline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="groupRole" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="groupCohesion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="activeParticipation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="effectiveParticipation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_ForumAssessment" Member="App_User" ThisKey="userId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Forum_ForumAssessment" Member="Forum" ThisKey="forumId" OtherKey="Id" Type="Forum" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumDiscussion" Member="ForumDiscussions">
+    <Type Name="ForumDiscussion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ViewCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ForumId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublishd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ForumDiscussion_ForumDiscussion" Member="ForumDiscussions" ThisKey="Id" OtherKey="ParentId" Type="ForumDiscussion" />
+      <Association Name="ForumDiscussion_ForumDiscussionPost" Member="ForumDiscussionPosts" ThisKey="Id" OtherKey="ParentId" Type="ForumDiscussionPost" />
+      <Association Name="ForumDiscussion_ForumDiscussionPostsGrade" Member="ForumDiscussionPostsGrades" ThisKey="Id" OtherKey="discussionId" Type="ForumDiscussionPostsGrade" />
+      <Association Name="ForumDiscussion_ForumDiscussion" Member="ForumDiscussion1" ThisKey="ParentId" OtherKey="Id" Type="ForumDiscussion" IsForeignKey="true" />
+      <Association Name="App_User_ForumDiscussion" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Forum_ForumDiscussion" Member="Forum" ThisKey="ForumId" OtherKey="Id" Type="Forum" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumDiscussionPost" Member="ForumDiscussionPosts">
+    <Type Name="ForumDiscussionPost">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ForumDiscussionPost_ForumDiscussionPostsGrade" Member="ForumDiscussionPostsGrades" ThisKey="Id" OtherKey="postId" Type="ForumDiscussionPostsGrade" />
+      <Association Name="App_User_ForumDiscussionPost" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="ForumDiscussion_ForumDiscussionPost" Member="ForumDiscussion" ThisKey="ParentId" OtherKey="Id" Type="ForumDiscussion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ForumDiscussionPostsGrade" Member="ForumDiscussionPostsGrades">
+    <Type Name="ForumDiscussionPostsGrade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="postId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="submitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="discussionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_ForumDiscussionPostsGrade" Member="App_User" ThisKey="userId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="ForumDiscussionPost_ForumDiscussionPostsGrade" Member="ForumDiscussionPost" ThisKey="postId" OtherKey="Id" Type="ForumDiscussionPost" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="ForumDiscussion_ForumDiscussionPostsGrade" Member="ForumDiscussion" ThisKey="discussionId" OtherKey="Id" Type="ForumDiscussion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Grade" Member="Grades">
+    <Type Name="Grade">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MinGrade" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxGrade" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GradeValue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GradeOwnerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_Grade" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_Grade1" Member="App_User1" ThisKey="GradeOwnerId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GradeType" Member="GradeTypes">
+    <Type Name="GradeType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MinGrade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxGrade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Course_GradeType" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GroupMember" Member="GroupMembers">
+    <Type Name="GroupMember">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SocialGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsCircleAdmin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_GroupMember" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="LearningGroup_GroupMember" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+      <Association Name="SocialGroup_GroupMember" Member="SocialGroup" ThisKey="SocialGroupId" OtherKey="Id" Type="SocialGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ImageAnnotation" Member="ImageAnnotations">
+    <Type Name="ImageAnnotation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TopCoord" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeftCoord" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Height" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LearningGroup" Member="LearningGroups">
+    <Type Name="LearningGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="LearningGroup_AverageGrade" Member="AverageGrades" ThisKey="Id" OtherKey="LearningGroupId" Type="AverageGrade" />
+      <Association Name="LearningGroup_GroupMember" Member="GroupMembers" ThisKey="Id" OtherKey="LearningGroupId" Type="GroupMember" />
+      <Association Name="LearningGroup_ObjectGroupMapper" Member="ObjectGroupMappers" ThisKey="Id" OtherKey="LearningGroupId" Type="ObjectGroupMapper" />
+      <Association Name="LearningGroup_ObjectStreamGroupMapper" Member="ObjectStreamGroupMappers" ThisKey="Id" OtherKey="LearningGroupId" Type="ObjectStreamGroupMapper" />
+      <Association Name="LearningGroup_ResourceRate" Member="ResourceRates" ThisKey="Id" OtherKey="LearningGroupId" Type="ResourceRate" />
+      <Association Name="LearningGroup_Share" Member="Shares" ThisKey="Id" OtherKey="LearningGroupId" Type="Share" />
+      <Association Name="App_User_LearningGroup" Member="App_User" ThisKey="CreateUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_LearningGroup" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LearningStyle" Member="LearningStyles">
+    <Type Name="LearningStyle">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LearningStyle" Member="LearningStyle1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="App_User_LearningStyle" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Message" Member="Messages">
+    <Type Name="Message">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AutherId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ThreadId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Seen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SeenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BelongToUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReceiverId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SnippestSeen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="App_User_Message" Member="App_User" ThisKey="AutherId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_Message1" Member="App_User1" ThisKey="ReceiverId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_Message2" Member="App_User2" ThisKey="BelongToUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="MessageThread_Message" Member="MessageThread" ThisKey="ThreadId" OtherKey="Id" Type="MessageThread" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageContact" Member="MessageContacts">
+    <Type Name="MessageContact">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ContactUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_MessageContact" Member="App_User" ThisKey="ContactUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_MessageContact1" Member="App_User1" ThisKey="OwnerUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageThread" Member="MessageThreads">
+    <Type Name="MessageThread">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MessageCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Snippest" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OwnerUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AssociatedUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HasNotReaden" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasNotSeen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MessageThread_Message" Member="Messages" ThisKey="Id" OtherKey="ThreadId" Type="Message" />
+      <Association Name="App_User_MessageThread" Member="App_User" ThisKey="OwnerUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_MessageThread1" Member="App_User1" ThisKey="AssociatedUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Notification" Member="Notifications">
+    <Type Name="Notification">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Seen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SeenDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Readen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_Notification" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_Notification" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NotificationEmail" Member="NotificationEmails">
+    <Type Name="NotificationEmail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Sent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="App_User_NotificationEmail" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_NotificationEmail" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectGroupMapper" Member="ObjectGroupMappers">
+    <Type Name="ObjectGroupMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SocialGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="LearningGroup_ObjectGroupMapper" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+      <Association Name="SocialGroup_ObjectGroupMapper" Member="SocialGroup" ThisKey="SocialGroupId" OtherKey="Id" Type="SocialGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectStream" Member="ObjectStreams">
+    <Type Name="ObjectStream">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsRead" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KnowledgeCreditValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InterestCreditValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ReadDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastShownDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastClcikedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ObjectStream_ObjectStreamGroupMapper" Member="ObjectStreamGroupMappers" ThisKey="Id" OtherKey="ObjectStreamId" Type="ObjectStreamGroupMapper" />
+      <Association Name="App_User_ObjectStream" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_ObjectStream" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectStreamCourse" Member="ObjectStreamCourses">
+    <Type Name="ObjectStreamCourse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Course_ObjectStreamCourse" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectStreamGroupMapper" Member="ObjectStreamGroupMappers">
+    <Type Name="ObjectStreamGroupMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectStreamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SocialGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LearningGroup_ObjectStreamGroupMapper" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+      <Association Name="ObjectStream_ObjectStreamGroupMapper" Member="ObjectStream" ThisKey="ObjectStreamId" OtherKey="Id" Type="ObjectStream" IsForeignKey="true" />
+      <Association Name="SocialGroup_ObjectStreamGroupMapper" Member="SocialGroup" ThisKey="SocialGroupId" OtherKey="Id" Type="SocialGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ObjectTopicMapper" Member="ObjectTopicMappers">
+    <Type Name="ObjectTopicMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Topic_ObjectTopicMapper" Member="Topic" ThisKey="TopicId" OtherKey="Id" Type="Topic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PeerAssessmentCriterias" Member="PeerAssessmentCriterias">
+    <Type Name="PeerAssessmentCriteria">
+      <Column Name="criteriaId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="criteriaTitle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PeerAssessmentCriteria_PeerAssessmentIndicator" Member="PeerAssessmentIndicators" ThisKey="criteriaId" OtherKey="criteriaId" Type="PeerAssessmentIndicator" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PeerAssessmentGrades" Member="PeerAssessmentGrades">
+    <Type Name="PeerAssessmentGrade">
+      <Column Name="indicatorId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="studentGraderId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="groupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="grade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="studentGradedId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="App_User_PeerAssessmentGrade" Member="App_User" ThisKey="studentGraderId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_PeerAssessmentGrade1" Member="App_User1" ThisKey="studentGradedId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="PeerAssessmentIndicator_PeerAssessmentGrade" Member="PeerAssessmentIndicator" ThisKey="indicatorId" OtherKey="indicatorId" Type="PeerAssessmentIndicator" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PeerAssessmentIndicators" Member="PeerAssessmentIndicators">
+    <Type Name="PeerAssessmentIndicator">
+      <Column Name="indicatorId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="criteriaId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ratingTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="indicatorText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PeerAssessmentIndicator_PeerAssessmentGrade" Member="PeerAssessmentGrades" ThisKey="indicatorId" OtherKey="indicatorId" Type="PeerAssessmentGrade" />
+      <Association Name="PeerAssessmentCriteria_PeerAssessmentIndicator" Member="PeerAssessmentCriteria" ThisKey="criteriaId" OtherKey="criteriaId" Type="PeerAssessmentCriteria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Questions" Member="Questions">
+    <Type Name="Question">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuizId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Question_Answer" Member="Answers" ThisKey="Id" OtherKey="QuestionId" Type="Answer" />
+      <Association Name="Question_Answer1" Member="Answers1" ThisKey="Id" OtherKey="QuestionId" Type="Answer" />
+      <Association Name="Quiz_Question" Member="Quiz" ThisKey="QuizId" OtherKey="Id" Type="Quiz" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Quiz" Member="Quizs">
+    <Type Name="Quiz">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Deadline" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EffectiveScore" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Quiz_Question" Member="Questions" ThisKey="Id" OtherKey="QuizId" Type="Question" />
+      <Association Name="Course_Quiz" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Resource" Member="Resources">
+    <Type Name="Resource">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Body" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileContent" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuidId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsPublishd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FileSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileMime" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Resource_ResourceRate" Member="ResourceRates" ThisKey="Id" OtherKey="ResourceId" Type="ResourceRate" />
+      <Association Name="App_User_Resource" Member="App_User" ThisKey="CreateUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_Resource" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ResourceRate" Member="ResourceRates">
+    <Type Name="ResourceRate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResourceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShareCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VoteCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LearningGroup_ResourceRate" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+      <Association Name="Resource_ResourceRate" Member="Resource" ThisKey="ResourceId" OtherKey="Id" Type="Resource" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Share" Member="Shares">
+    <Type Name="Share">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SocialGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserShareId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LearningGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LearningGroup_Share" Member="LearningGroup" ThisKey="LearningGroupId" OtherKey="Id" Type="LearningGroup" IsForeignKey="true" />
+      <Association Name="App_User_Share" Member="App_User" ThisKey="UserShareId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="App_User_Share1" Member="App_User1" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="SocialGroup_Share" Member="SocialGroup" ThisKey="SocialGroupId" OtherKey="Id" Type="SocialGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocialGroup" Member="SocialGroups">
+    <Type Name="SocialGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="About" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="SocialGroup_GroupMember" Member="GroupMembers" ThisKey="Id" OtherKey="SocialGroupId" Type="GroupMember" />
+      <Association Name="SocialGroup_ObjectGroupMapper" Member="ObjectGroupMappers" ThisKey="Id" OtherKey="SocialGroupId" Type="ObjectGroupMapper" />
+      <Association Name="SocialGroup_ObjectStreamGroupMapper" Member="ObjectStreamGroupMappers" ThisKey="Id" OtherKey="SocialGroupId" Type="ObjectStreamGroupMapper" />
+      <Association Name="SocialGroup_Share" Member="Shares" ThisKey="Id" OtherKey="SocialGroupId" Type="Share" />
+      <Association Name="App_User_SocialGroup" Member="App_User" ThisKey="CreateUserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Survey" Member="Surveys">
+    <Type Name="Survey">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CountOfQuestions" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Survey_SurveyAnswer" Member="SurveyAnswers" ThisKey="Id" OtherKey="SurveyId" Type="SurveyAnswer" />
+      <Association Name="Survey_SurveyUserSummary" Member="SurveyUserSummaries" ThisKey="Id" OtherKey="SurveyId" Type="SurveyUserSummary" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SurveyAnswer" Member="SurveyAnswers">
+    <Type Name="SurveyAnswer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SurveyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QuestionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnswerValue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="App_User_SurveyAnswer" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Survey_SurveyAnswer" Member="Survey" ThisKey="SurveyId" OtherKey="Id" Type="Survey" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SurveyUserSummary" Member="SurveyUserSummaries">
+    <Type Name="SurveyUserSummary">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SurveyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Statuse" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Score" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SubmitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="App_User_SurveyUserSummary" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Survey_SurveyUserSummary" Member="Survey" ThisKey="SurveyId" OtherKey="Id" Type="Survey" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tag" Member="Tags">
+    <Type Name="Tag">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Tag_TagMapper" Member="TagMappers" ThisKey="Id" OtherKey="TagId" Type="TagMapper" />
+      <Association Name="App_User_Tag" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Category_Tag" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TagMapper" Member="TagMappers">
+    <Type Name="TagMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TagId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="App_User_TagMapper" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Tag_TagMapper" Member="Tag" ThisKey="TagId" OtherKey="Id" Type="Tag" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Topic" Member="Topics">
+    <Type Name="Topic">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Association Name="Topic_CourseTopcMapper" Member="CourseTopcMappers" ThisKey="Id" OtherKey="TopicId" Type="CourseTopcMapper" />
+      <Association Name="Topic_ObjectTopicMapper" Member="ObjectTopicMappers" ThisKey="Id" OtherKey="TopicId" Type="ObjectTopicMapper" />
+      <Association Name="Topic_UserKnowledgeProfile" Member="UserKnowledgeProfiles" ThisKey="Id" OtherKey="TopicId" Type="UserKnowledgeProfile" />
+      <Association Name="Topic_UserSoActProfile" Member="UserSoActProfiles" ThisKey="Id" OtherKey="TopicId" Type="UserSoActProfile" />
+      <Association Name="Topic_UserTopicMapper" Member="UserTopicMappers" ThisKey="Id" OtherKey="TopicId" Type="UserTopicMapper" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TopicLearningGoal" Member="TopicLearningGoals">
+    <Type Name="TopicLearningGoal">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LevelId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImpactId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserActSummary" Member="UserActSummaries">
+    <Type Name="UserActSummary">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TagCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VoteCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="App_User_UserActSummary" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserKnowledgeProfile" Member="UserKnowledgeProfiles">
+    <Type Name="UserKnowledgeProfile">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Knowledge" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_UserKnowledgeProfile" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_UserKnowledgeProfile" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+      <Association Name="Topic_UserKnowledgeProfile" Member="Topic" ThisKey="TopicId" OtherKey="Id" Type="Topic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserSoActProfile" Member="UserSoActProfiles">
+    <Type Name="UserSoActProfile">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoActValue" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_UserSoActProfile" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Course_UserSoActProfile" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+      <Association Name="Topic_UserSoActProfile" Member="Topic" ThisKey="TopicId" OtherKey="Id" Type="Topic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTopicMapper" Member="UserTopicMappers">
+    <Type Name="UserTopicMapper">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_UserTopicMapper" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="Topic_UserTopicMapper" Member="Topic" ThisKey="TopicId" OtherKey="Id" Type="Topic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vote" Member="Votes">
+    <Type Name="Vote">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Updown" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VoteValue" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="App_User_Vote" Member="App_User" ThisKey="UserId" OtherKey="Id" Type="App_User" IsForeignKey="true" />
+      <Association Name="VoteParent_Vote" Member="VoteParent" ThisKey="ParentId" OtherKey="Id" Type="VoteParent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VoteParent" Member="VoteParents">
+    <Type Name="VoteParent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ObjectType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpvoteCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DownvoteCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VoteValueAverage" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="VoteParent_Vote" Member="Votes" ThisKey="Id" OtherKey="ParentId" Type="Vote" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,31 @@
+﻿@model UT.SL.Data.LINQ.App_User
+@{
+    int cnt = 1;
+    int skipper = 0;
+}
+
+@for (int i = 0; i < Model.App_UserEnrolements.Where(x => x.Type == 3).Count() / 3 + 1; i++)
+{
+    <div class="row">
+        @foreach (var item in Model.App_UserEnrolements.Where(x => x.Type == 3).Skip(skipper * 3).Take(3))
+        {
+            <div class="col-md-4">
+                <div class="well pointercursor" style="text-align: center; margin-bottom: 30px; margin-top: 10px" data-updateable="true" data-updateurl="@Url.Action("GetProgressChart", "App_User", new { area = "admin", userId = Model.GuidId, courseId = item.CourseId })" data-updateid="progresschart">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            @item.Course.Title
+                        </div>
+                    </div>
+                </div>
+            </div>
+            cnt++;
+        }
+    </div>
+        skipper++;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div id="progresschart">
+        </div>
+    </div>
+</div>

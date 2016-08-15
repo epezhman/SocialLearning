@@ -1,0 +1,119 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, SelectListItems>
+<button class="btn btn-default" onclick="window.location.assign('@(Url.Action("ExportCourseMetada", "Export", new { area = "Admin", courseId = Model.FormObject.Id }))')">Export Course Metadata (V2)</button>
+<button class="btn btn-default" onclick="window.location.assign('@(Url.Action("ExportCourseMaterials2", "Export", new { area = "Admin", courseId = Model.FormObject.Id }))')">Export Course Materials (V2)</button>
+<button class="btn btn-default" onclick="window.location.assign('@(Url.Action("ExportCourseMaterials", "Export", new { area = "Admin", courseId = Model.FormObject.Id }))')">Export Course Materials</button>
+<button class="btn btn-default" onclick="window.location.assign('@(Url.Action("ExportCourseSocialActions", "Export", new { area = "Admin", courseId = Model.FormObject.Id }))')">Export Course Social Actions</button>
+<button class="btn btn-default" onclick="window.location.assign('@(Url.Action("ExportCourseLearningActions", "Export", new { area = "Admin", courseId = Model.FormObject.Id }))')">Export Course Learning Actions</button>
+
+<div class="">
+    @using (Ajax.BeginForm("Edit", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "updateCourseView(" + Model.FormObject.Id + ")"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <h2>@UT.SL.Model.Resource.App_Common.EditPageCourse</h2>
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Category</label>
+                <div class="col-sm-9">
+                    @Model.ExtraData.First().ToString()
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Topics</label>
+                <div class="col-sm-9">
+                    @if (Model.ExtraKnownData != null && Model.ExtraKnownData.Items != null)
+                    {
+                        foreach (var item in Model.ExtraKnownData.Items)
+                        {
+                            <span class="label label-default label-info">@item.Text</span>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.FormObject.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Title)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                <div class="col-sm-9">
+                    <textarea name="FormObject.About" id="FormObject_About" class="form-control">@Html.Raw(HttpUtility.HtmlDecode(Model.FormObject.About))</textarea>
+                    @Html.ValidationMessageFor(model => model.FormObject.About)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.UniversityTitle)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.FormObject.UniversityTitle, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.UniversityTitle)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.StartDate)</label>
+                <div class="col-sm-9">
+                    @HelperUtils.DateInput(Model.FormObject.StartDate, "FormObject_StartDate", "FormObject.StartDate", "")
+                    @Html.ValidationMessageFor(model => model.FormObject.StartDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.EndDate)</label>
+                <div class="col-sm-9">
+                    @HelperUtils.DateInput(Model.FormObject.EndDate, "FormObject_EndDate", "FormObject.EndDate", "")
+                    @Html.ValidationMessageFor(model => model.FormObject.EndDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.ImageData)</label>
+                <div class="col-sm-9">
+                    @if (Model.FormObject.ImageData != null)
+                    {
+                        <div id="picContent">
+                            <img class="categoryPic img-thumbnail" src="@Url.Action("ViewImage", "Course", new { area = "admin", id = Model.FormObject.Id })" alt="" />
+                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.FormObject.Id, (int)UT.SL.Model.Enumeration.ObjectType.Category, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteImage", "Course", new { area = "admin", id = Model.FormObject.Id },
+                   new AjaxOptions()
+                       {
+                           Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           OnSuccess = " $('#picContent').html('');",
+                           LoadingElementId = "ajaxLoading"
+                       }, new { @class = "delete" }, null)
+                        </div>
+                    }
+                    <input type="file" name="image" id="image" data-kendouploaderwithunknownid="true" data-saveurl="@(Url.Action("SaveImage", "Course", new { area = "admin", Id = Model.FormObject.Id }))" data-deleteurl="@(Url.Action("DeleteImage", "Course", new { area = "admin", Id = Model.FormObject.Id }))" data-contentid="" />
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    @Html.HiddenFor(model => model.FormObject.Id)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+            $("#FormObject_About").kendoEditor();
+            initializeKendoUploader();
+
+        });
+    </script>
+</div>

@@ -1,0 +1,24 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.Course
+<div id="account-tabs" data-tabs="true">
+    <ul>
+        @*<li><a href="#tab-1">@UT.SL.Model.Resource.App_Common.CourseInfo</a></li>*@
+        <li><a href="#tab-2">@UT.SL.Model.Resource.App_Common.EditPageCourse</a></li>
+        <li><a href="#tab-3">@UT.SL.Model.Resource.App_Common.EditDetails</a></li>
+        <li><a href="#tab-4">@UT.SL.Model.Resource.App_Common.Members</a></li>
+        <li><a href="#tab-5">@UT.SL.Model.Resource.App_Common.Groups</a></li>
+    </ul>
+    @*<div id="tab-1">@Html.Action("ViewCourseMadeOfAbstract", "Course", new { area = "admin", Id = Model.Id })</div>*@
+    <div id="tab-2">@Html.Action("EditCourseMadeOfAbstract", "Course", new { area = "admin", Id = Model.Id })</div>   
+    <div id="tab-3">@Html.Action("EditDetails", "Course", new { area = "admin", Id = Model.Id })</div>
+    <div id="tab-4">@Html.Action("Members", "Course", new { area = "admin", Id = Model.Id })</div>
+    <div id="tab-5">@Html.Action("CourseLearnignGroups", "LearningGroup", new { area = "admin", Id = Model.Id })</div>
+</div>
+<br />
+<a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+<script type="text/javascript">
+    $(function () {
+        $.InitialTabs();
+    });
+</script>

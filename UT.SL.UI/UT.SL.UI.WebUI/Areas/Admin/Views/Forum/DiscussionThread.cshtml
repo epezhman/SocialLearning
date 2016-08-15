@@ -1,0 +1,20 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  List<UT.SL.Data.LINQ.ForumDiscussion>
+@if (Model.Any())
+{
+    <div class="marginBottom20">
+        <div class="" id="allDiscussion@(Model.First().ForumId)">
+            @if (ViewBag.clickedDate != null)
+            {
+                @Html.Action("DiscussionThreadItems", "Forum", new { area = "admin", id = Model.First().ForumId, clickedDate = ViewBag.clickedDate })
+            }
+            else
+            {
+                @Html.Partial("DiscussionThreadItems", Model)
+            }
+        </div>
+        <div class="" id="oneDiscussion@(Model.First().ForumId)" style="display:none">
+        </div>
+    </div>
+}

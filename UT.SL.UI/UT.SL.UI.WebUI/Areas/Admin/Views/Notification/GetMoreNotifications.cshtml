@@ -1,0 +1,67 @@
+﻿@model List<IGrouping<DateTime, UT.SL.Data.LINQ.Notification>>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="utwell">
+                    <span class="boldAndMedium">
+                        @string.Format(UT.SL.Model.Resource.App_Common.NotificationAt, HelperUtils.LocalizedDate(item.Key))
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="activitesList" class="utwell">
+                    @if (Model != null)
+                    {
+                        var cntr = 0;
+                        foreach (var notifs in item.GroupBy(x => x.CourseId))
+                        {
+                            if (notifs.Key.HasValue)
+                            {
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="feedDiv" style="margin-bottom: 0px !important; background-color: #ACACAC; padding:5px">
+                                            @if (notifs.FirstOrDefault() != null)
+                                            { 
+                                                <span>@notifs.FirstOrDefault().Course.Title</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            { 
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="feedDiv" style="margin-bottom: 0px !important; background-color: #ACACAC; padding: 5px; ">
+                                            @UT.SL.Model.Resource.App_Common.Others
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            }
+                            foreach (var notif in notifs.OrderByDescending(x => x.CreateDate))
+                            {
+                                cntr++;
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="bgRowclr@((cntr%2)+1)" style="padding:5px 0px 5px 0px;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @Html.Action("NotificationViewDetailed", "Notification", new { Area = "Admin", model = notif })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

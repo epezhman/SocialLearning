@@ -1,0 +1,41 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.App_UserSearchModel
+<div class="form-group">
+    <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.SearchUserName)</label>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.SearchUserName)
+    </div>
+    <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.SearchFirstName)</label>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.SearchFirstName)
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.SearchEmail)</label>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.SearchEmail)
+    </div>
+    <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.SearchIsDeleted)</label>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.SearchIsDeleted)
+    </div>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.SearchIsActive)</label>
+    <div class="col-sm-3">
+        @Html.EditorFor(model => model.SearchIsActive)
+    </div>
+    <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.RecordNumPerView</label>
+    <div class="col-sm-3">
+        <div class="col-md-3" id="searchHiddenInfo">
+            <select name="PageSize" id="PageSize">
+                <option value="10" @(Model.PageSize == 10 ? "selected='selected'" : "")>10</option>
+                <option value="20" @(Model.PageSize == 20 ? "selected='selected'" : "")>20</option>
+                <option value="50" @(Model.PageSize == 50 ? "selected='selected'" : "")>50</option>
+                <option value="100" @(Model.PageSize == 100 ? "selected='selected'" : "")>100</option>
+            </select>
+            <input type="hidden" name="PageIndex" value="@Model.PageIndex" id="PageIndex" />
+        </div>
+    </div>
+</div>

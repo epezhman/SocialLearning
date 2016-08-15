@@ -1,0 +1,61 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  UT.SL.Data.LINQ.Comment
+
+<div class="row commentBlock" id="commentRowThread@(Model.Id)">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-1">
+                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.App_User.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+            </div>
+            <div class="col-md-11">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="feedDivSpan" style="display: inline-block">
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.App_User.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName }) -
+                        </span><span style="display: inline-block" class="fidDivComment">@Model.Title</span>
+                        <br />
+                        <span class="feedDivLessImportant paleIt">@HelperUtils.ShowRecentTime(Model.CreateDate.Value)</span>
+                        @Html.Action("VoteComponent", "VoteParent", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Comment, button = true })
+
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ObjectId, Model.Type, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditOneComment", "Comment", new
+                           {
+                               area = "Admin",
+                               ObjectId = Model.ExtraKnownData.ObjectId,
+                               type = Model.ExtraKnownData.Type,
+                               actionType = 1,
+                               Id = Model.FormObject[i].Id
+                           },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "commentThreadEdit" + Model.ExtraKnownData.Type + Model.ExtraKnownData.ObjectId + Model.FormObject[i].Id,
+                       LoadingElementId = "loadingAjax",
+                       OnSuccess = "$('#commentThreadEdit" + Model.ExtraKnownData.Type + Model.ExtraKnownData.ObjectId + Model.FormObject[i].Id + "').show();"
+                   }, new { @class = "edit hiddenoption" }, null)
+
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.ExtraKnownData.ObjectId, Model.ExtraKnownData.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteComment", "Comment", new
+                           {
+                               area = "Admin",
+                               ObjectId = Model.ExtraKnownData.ObjectId,
+                               type = Model.ExtraKnownData.Type,
+                               actionType = 2,
+                               Id = Model.FormObject[i].Id
+                           },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "Post",
+                       UpdateTargetId = "resourcecommentcount" + Model.ExtraKnownData.Type + Model.ExtraKnownData.ObjectId,
+                       OnSuccess = "$('#commentRowThread" + Model.FormObject[i].Id + "').hide('blind', 1000);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row editcommentview" style="display:none" id="commentThreadEdit@(Model.ExtraKnownData.Type)@(Model.ExtraKnownData.ObjectId)@(Model.FormObject[i].Id)">
+        </div>
+    </div>
+</div>

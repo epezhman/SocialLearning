@@ -1,0 +1,24 @@
+﻿@model List<UT.SL.Model.LinkModel>
+@if (Model.Any())
+{
+    if (Model.Where(x => !x.ExtraLink).Count() > 5)
+    {
+        var i = 1;
+        foreach (var item in Model.Where(x => !x.ExtraLink).Take(5))
+        {
+
+    <li class="menuToHide@(i) "><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank })" class="@(item.IsActive ? "activeTop" : "") @(item.IsBold ? "boldMenuLink " : "")" style="@(item.IsBold ? " color:#2A6496 !important;" : "")">@item.Title</a></li>
+            i++;
+        }
+    }
+    else
+    {
+        var i = 1;
+        foreach (var item in Model.Where(x => !x.ExtraLink))
+        {
+    <li class="menuToHide@(i) "><a href="@Url.Action(item.Action, item.Controller, new { area = item.Area, rank = item.Rank  })" class="@(item.IsActive ? "activeTop " : "") @(item.IsBold ? "boldMenuLink " : "")" style="@(item.IsBold ? " color:#2A6496 !important;" : "")">@item.Title</a></li>
+            i++;
+        }
+    }
+   
+}

@@ -1,0 +1,14 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.Message>
+@foreach (var item in Model)
+{
+    if (item.AutherId == item.MessageThread.OwnerUserId)
+    {
+        @Html.Partial("AuthorSection", item)
+    }
+    else if (item.AutherId == item.MessageThread.AssociatedUserId)
+    {
+        @Html.Partial("ReceiverSection", item)
+    }
+}

@@ -1,0 +1,29 @@
+﻿@model List<UT.SL.Model.SharedVia>
+@{
+    var titles = String.Empty;
+    if (Model.Any())
+    {
+        if (Model.Any(x => x.SharedType == UT.SL.Model.Enumeration.SharedType.FromCourse))
+        {
+            foreach (var item in Model.Where(x => x.SharedType == UT.SL.Model.Enumeration.SharedType.FromCourse))
+            {
+                titles += item.Title + ", ";
+            }
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                titles += item.Title + ", ";
+            }
+        }
+    }
+}
+@if (!string.IsNullOrEmpty(titles))
+{ 
+   @*<span class="smallfont"> @UT.SL.Model.Resource.App_Common.SharedVia </span>*@
+    <span>
+        @string.Format("{0} {1}", UT.SL.Model.Resource.App_Common.SharedVia, titles)
+    </span> 
+   @*<span class="feedDivSpan smallfont"></span>*@
+}

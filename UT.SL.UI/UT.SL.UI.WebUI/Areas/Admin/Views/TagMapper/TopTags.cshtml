@@ -1,0 +1,130 @@
+﻿@model List<UT.SL.Model.TagAndTopicModel>
+@if (Model.Any())
+{
+@*if (Model.Count < 5)
+    {
+        foreach (var item in Model)
+        {
+    <span class="badge badge-info">
+        @{
+            var tempTag = string.Empty;
+            if (item.Tag.Category != null)
+            {
+                if (item.Tag.Category.Category1 != null)
+                {
+                    tempTag += item.Tag.Category.Category1.Title + "-";
+                }
+                tempTag += item.Tag.Category.Title + "-";
+            }
+            tempTag += item.Tag.Title ;
+            @(tempTag)
+        }
+    </span>
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 4; i++)
+        {
+    <span class="badge badge-info">
+        @{
+            var tempTag = string.Empty;
+            if (Model[i].Tag.Category != null)
+            {
+                if (Model[i].Tag.Category.Category1 != null)
+                {
+                    tempTag += Model[i].Tag.Category.Category1.Title + "-";
+                }
+                tempTag += Model[i].Tag.Category.Title + "-";
+            }
+            tempTag += Model[i].Tag.Title;
+            @(tempTag)
+        }
+    </span>
+        }
+        var tempTags = String.Empty;
+        for (int i = 4; i < Model.Count; i++)
+        {
+
+            var tempTag = string.Empty;
+            if (Model[i].Tag.Category != null)
+            {
+                if (Model[i].Tag.Category.Category1 != null)
+                {
+                    tempTag += Model[i].Tag.Category.Category1.Title + "-";
+                }
+                tempTag += Model[i].Tag.Category.Title + "-";
+            }
+            tempTag += Model[i].Tag.Title;
+
+            tempTags += tempTag + "\n";
+        }
+    <span class="badge badge-info" title="@tempTags" style="cursor:pointer">@(Model.Count - 4) More</span>
+    }
+*@    
+    int i = 1;
+    if (Model.Any(x => x.IsTag))
+    {
+        var tempTag = String.Empty;
+        if (Model.Where(x => x.IsTag).First().Tag.Category != null)
+        {
+            if (Model.Where(x => x.IsTag).First().Tag.Category.Category1 != null)
+            {
+                tempTag += Model.Where(x => x.IsTag).First().Tag.Category.Category1.Title + "-";
+            }
+            tempTag += Model.Where(x => x.IsTag).First().Tag.Category.Title + "-";
+        }
+        tempTag += Model.Where(x => x.IsTag).First().Tag.Title;
+    <div class="inner1 innerP @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+        <div class="innerPtop">@tempTag</div>
+    </div>
+        foreach (var item in Model.Where(x => x.IsTag).Skip(1))
+        {
+            tempTag = string.Empty;
+            if (item.Tag.Category != null)
+            {
+                if (item.Tag.Category.Category1 != null)
+                {
+                    tempTag += item.Tag.Category.Category1.Title + "-";
+                }
+                tempTag += item.Tag.Category.Title + "-";
+            }
+            tempTag += item.Tag.Title;
+            
+    <div class="inner@(i + 1) innerP2 @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+        <div class="innerPBottom">@(tempTag)</div>
+    </div>
+            i++;
+        }
+
+    }
+
+    if (Model.Any(x => !x.IsTag))
+    {
+        i++;
+        var tempTag = String.Empty;
+        int j = 1;
+        tempTag += Model.Where(x => !x.IsTag).First().Topic.Title;
+        <div class="inner@(i == 1 ? 1 : i) inner@(j)T innerPT @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+            <div class="innerPTtop">@tempTag</div>
+        </div>
+
+        foreach (var item in Model.Where(x => !x.IsTag).Skip(1))
+        {
+
+            tempTag = string.Empty;
+
+            tempTag += item.Topic.Title;
+            j++;
+    <div class="inner@(i + 1) inner@(j)T innerP2T @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+        <div class="innerPTBottom">@(tempTag)</div>
+    </div>
+            i++;
+        }
+
+    }
+}
+else
+{
+    <span></span>
+}

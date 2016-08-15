@@ -1,0 +1,775 @@
+﻿@model UT.SL.Data.LINQ.SurveyAnswer
+@if (Model != null)
+{
+    if (Model.QuestionId == 1)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">اصلا دوست ندارم آن را انجام دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">دوست ندارم آنرا انجام دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">دوست دارم آن را انجام دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خيلي زياد دوست دارم آنرا انجام دهم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 2)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">بسيار سخت كوش هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">سخت كوش هستم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">نسبتاً راحت طلب هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خيلي راحت طلب هستم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 3)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي سخت كوش هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">سخت كوش هستم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">سخت كوش نيستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلاً سخت كوش نيستم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 4)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">واقعاً بي معني است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">بي معني است</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">قبول واقعيت است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">براي موفقيت ضروري است</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 5)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي بالا است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">بالا است</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">پايين است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خيلي پايين است</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 6)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" style="float:right !important" class="surveyLabelFont">معمولا تمام وجودم را به كار مي گيرم تا كارم را به بهترين وجه انجام داده و تصور خوبي به استاد بدهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" style="float:right !important" class="surveyLabelFont">معمولا به درسهايي كه گفته مي شود توجه زيادي مي كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" style="float:right !important" class="surveyLabelFont">موقع درس دادن استاد، افكار من به سوي امور ديگر منحرف مي شوند</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" style="float:right !important" class="surveyLabelFont">بيشتر به اموري كه مربوط به دانشگاه نيستند علاقه مند مي شوم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 7)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خیلی بیشتر از تصمیمی است که قصد انجام آنرا داشته ام</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">بیشتر از تصمیمی است که قصد انجام آنرا داشته ام</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">کمتر از تصمیمی است که قصد انجام آنرا داشته ام</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خیلی کمتر از تصمیمی است که قصد انجام آنرا داشته ام</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 8)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">برای رسیدن به هدف نهایت کوشش خود را می کنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">برای رسیدن به هدف یک بار دیگر تلاش می کنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">مایلم که از آن صرف نظر کنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">معمولا از آن صرف نظر می کنم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 9)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خیلی بی اهمیت است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">نسبتا بی اهمیت است</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">با اهمیت است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خیلی با اهمیت است</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 10)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">تلاش خیلی زیاد لازم است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">تلاش زیاد لازم است</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">) تلاش کم لازم است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">تلاش خیلی کم لازم است</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 11)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خیلی بالا بود</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">متوسط بود</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">پائین بود</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خیلی پائین بود</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 12)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">همیشه بلافاصله سر کار بر می گردم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">توقف کوتاهی می کنم و بعد به کار بر می گردم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">همیشه قبل از شروع کار، کمی منتظر می مانم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">برگشتن مجدد به کار خیلی دشوار می بینم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 13)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خیلی دوست دارم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">تنها در صورتی که پول خوبی بابت آن بپردازند انجام می دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">فکر می کنم نتوانم انجام دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">دوست ندارم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 14)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خیلی خوشایند است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">خوشایند است</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">ناخوشایند است</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خیلی ناخوشایند است</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 15)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي كم اهميت دارد</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">كم اهميت دارد</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">زياد اهميت دارد</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">خيلي زياد اهميت دارد</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 16)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" style="float:right !important" class="surveyLabelFont">خيلي سريع از انجام دادن آن صرف نظر مي كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" style="float:right !important" class="surveyLabelFont">سريع از انجام دادن آن صرف نظر مي كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" style="float:right !important" class="surveyLabelFont">خيلي زود از انجام آن صرف نظر نمي كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" style="float:right !important" class="surveyLabelFont">معمولا آن را به انجام مي رسانم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 17)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي زياد آينده نگر هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">زياد آينده نگر هستم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">آينده نگر نيستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلا آينده نگر نيستم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 18)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">افراد خيلي خوبي هستند</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">افراد خوبي هستند</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">افراد خوبي نيستند</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">افراد خوبي نيستند</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 19)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي زياد تحسين مي كنم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">زياد تحسين مي كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">تحسين نمي كنم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلاً تحسين نمي كنم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 20)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">اصلا وقت ندارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">اغلب وقت ندارم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">معمولا به قدركافي وقت دارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">هميشه وقت دارم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 21)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي مشغول هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">مشغول هستم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">مشغول نيستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلا مشغول نيستم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 22)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" style="float:right !important" class="surveyLabelFont">مدت زمان خيلي زياد روي امر خاصي كار كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" style="float:right !important" class="surveyLabelFont">مدت زمان زياد روي امر خاصي كار كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" style="float:right !important" class="surveyLabelFont">مدت زمان كوتاه روي امر خاصي كار كنم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" style="float:right !important" class="surveyLabelFont">مدت زمان خيلي كوتاه روي امر خاصي كار كنم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 23)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي زياد مورد قدرداني قرار مي گرفت</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">زياد مورد قدرداني قرار مي گرفت</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">به نظر مهم نبود</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">به نظر مي رسيد كاملا بي اهميت باشد</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 24)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" style="float:right !important" class="surveyLabelFont">آنها مايلند فعاليت موسسه را توسعه بخشند</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" style="float:right !important" class="surveyLabelFont">از اين نظر كه پدرانشان مدير است خوشبخت هستند</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" style="float:right !important" class="surveyLabelFont">آنها مي تواند نظرات جديد خود را به عمل در آورند</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" style="float:right !important" class="surveyLabelFont">آنها مي توانند نيازهاي مادي خود را برآورده سازند</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 25)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">آدم خيلي مهمي باشم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">آدم مهمي باشم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">آدم نسبتاً مهمي باشم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">آدم معمولي باشم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 26)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي دوست دارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">دوست دارم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">زياد دوست ندارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلا دوست ندارم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 27)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" style="float:right !important" class="surveyLabelFont">هرگز آن را تا رسيدن به يك نتيجه موفقيت آميز ادامه نمي دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" style="float:right !important" class="surveyLabelFont">خيلي كم آن را تا رسيدن به يك نتيجه موفقت آميز ادامه مي دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" style="float:right !important" class="surveyLabelFont">گاهي آن را تا رسيدن به يك نتيجه موفقت آميز ادامه مي دهم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" style="float:right !important" class="surveyLabelFont">هميشه آن را تا رسيدن به يك نتيجه موفقيت آميز ادامه مي دهم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 28)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">بيشتر مواقع خسته هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">اغلب خسته هستم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">خيلي كم خسته هستم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلا خسته نيستم</label>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.QuestionId == 29)
+    {
+        <div class="SuveryRadioOptions" data-surveyid="@Model.SurveyId" data-questionid="@Model.QuestionId">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="1" id="survery@(Model.Survey)question@(Model.QuestionId)Answer1" @(Model.AnswerValue == 1 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer1" class="surveyLabelFont">خيلي زياد دوست دارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="2" id="survery@(Model.Survey)question@(Model.QuestionId)Answer2" @(Model.AnswerValue == 2 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer2" class="surveyLabelFont">دوست دارم</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-6">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="3" id="survery@(Model.Survey)question@(Model.QuestionId)Answer3" @(Model.AnswerValue == 3 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer3" class="surveyLabelFont">دوست ندارم</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="radio" class="radioQuestion" name="question@(Model.QuestionId)" value="4" id="survery@(Model.Survey)question@(Model.QuestionId)Answer4" @(Model.AnswerValue == 4 ? "checked=checked" : "")>
+                    <label for="survery@(Model.Survey)question@(Model.QuestionId)Answer4" class="surveyLabelFont">اصلا دوست ندارم</label>
+                </div>
+            </div>
+        </div>
+    }
+
+
+}

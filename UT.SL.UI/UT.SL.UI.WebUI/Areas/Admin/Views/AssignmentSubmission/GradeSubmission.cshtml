@@ -1,0 +1,56 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model ViewModels.AssignmentSubmission.NewSubmissionViewModel
+<div class="col-md-12">
+    <div class="FivePxPadding paddingIt">
+        @using (Ajax.BeginForm("GradeSubmission",
+    "AssignmentSubmission",
+    new { area = "Admin" },
+    new AjaxOptions()
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        LoadingElementId = "LoadingGifCEResource",
+        //OnSuccess = "updateSubmissionGradeTest(" + Model.AssignmentSubmission.Id + ",'" + Url.Action("ViewSubmission", "AssignmentSubmission", new { area = "admin",id= Model.AssignmentSubmission.AssignmentId,assignmentSubmissionId=Model.AssignmentSubmission.Id}) + "');"
+        OnSuccess = "updateSubmissionGrade(" + Model.AssignmentSubmission.Id + ",'" + Url.Action("ViewGradedSubmission", "AssignmentSubmission", new { area = "admin", id = Model.AssignmentSubmission.Id }) + "');"
+    }, new { data_dom = "GradeSubmissionForm" + Model.AssignmentSubmission.Id, @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.Grade.GradeValue)</label>
+                <div class="col-sm-5">
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Grade.GradeValue, new { @class = "form-control" })
+                        <span class="input-group-addon">/@Model.AssignmentSubmission.Assignment.GradeFrom </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Grade.GradeValue)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Assess</label>
+                <div class="col-sm-9">
+                    @Html.DropDownListFor(model => model.ExpertAssess.AssessValue, UT.SL.Model.Enumeration.Utility.GetSelectList(typeof(UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType), UT.SL.Model.Resource.App_Common.Select), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Body</label>
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.Grade.Body, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary btn-sm  submit" type="submit"><span class=" glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default btn-sm closeNewGradePart"><span class=" glyphicon glyphicon-remove"></span></button>
+                    <input name="@(Model.AssignmentSubmission).Id" type="hidden" data-resetonpost="true" value="" class="hiddenId" />
+                </div>
+            </div>
+        }
+        <script type="text/javascript">
+            $(function () {
+                initializeUploaderWithDon('@("GradeSubmissionForm" + Model.AssignmentSubmission.Id)');
+            });
+        </script>
+    </div>
+</div>

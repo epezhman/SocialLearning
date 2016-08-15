@@ -1,0 +1,91 @@
+﻿@using UT.SL.Security
+@model UT.SL.Helper.FormModel<List<UT.SL.Data.LINQ.Course>, UT.SL.Data.LINQ.Category>
+@{
+    int i = 0;
+}
+<div class="row">
+    <div class="col-md-12">
+        <h3>@UT.SL.Model.Resource.App_Common.Courses</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Model.ExtraKnownData.Title</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.Create, "CreateWithCategory", "Course", new { area = "admin", Id = Model.ExtraKnownData.Id },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "dialog",
+                                             OnSuccess = " $('#dialog').dialog('open');",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default btn btn-default-default" })
+
+        @using (Ajax.BeginForm("GetCources", new { Id = Model.ExtraKnownData.Id }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "courselist",
+                         LoadingElementId = "loadingAjax",
+                         HttpMethod = "Get",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "searchForm", @class = "form-horizontal" }))
+        {
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="CourseResultList">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            @(UT.SL.Model.Resource.Course.Title)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="art_ls">
+                    @foreach (var item in Model.FormObject)
+                    {
+                        i++;
+                        <tr>
+                            <td>
+                                @(i)
+                            </td>
+                            <td>
+                                @item.Title
+                            </td>
+
+                            <td align="center">
+                                @Html.ActionLink("View", "CourseView", "Course", new { area = "admin", id = item.Id }, new { @class = "edit", target = "_blank" })
+                                @Html.ActionLink("Edit", "EditPage", "Course", new { area = "admin", id = item.Id }, new { @class = "edit", target = "_blank" })
+                                @Ajax.ActionLink("Delete", "Delete", "Course", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model List<UT.SL.Data.LINQ.Course>
+@{
+    if (ViewBag.NotLogedIn != null)
+    {
+        ViewBag.Title = UT.SL.Model.Resource.App_Common.NavigateHere;
+    }
+    else
+    {
+        ViewBag.Title = UT.SL.Model.Resource.App_Common.Courses;
+    }
+}
+@if (ViewBag.NotLogedIn != null)
+{
+    @section scripts {
+        <script type="text/javascript">
+            $(function () {
+                highLight(@((int)UT.SL.Model.Enumeration.MenuType.Advrt), 0, true, false);
+            });
+        </script>
+    }
+    @section TopLinks{
+        @Html.Action("TopMenuLinksNotLoggedIn", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Advrt, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+    }
+}
+else
+{
+    @section scripts {
+        <script type="text/javascript">
+            $(function () {
+                highLight(@((int)UT.SL.Model.Enumeration.MenuType.FirstPage), 0, true, false);
+            });
+        </script>
+    }
+    @section TopLinks{
+        @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.FirstPage, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+    }
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="colorMarketing">
+                <h2>@UT.SL.Model.Resource.App_Common.Courses</h2>
+                <p>
+                    @foreach (var courseAbstrct in Model.GroupBy(x => x.CourseAbstract.Category))
+                    {
+                        if (courseAbstrct.Key != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="feedDiv" style="margin-bottom: 0px !important; background-color: #ACACAC; padding:5px">
+                                        <span>@courseAbstrct.Key.Title</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="feedDiv" style="margin-bottom: 0px !important; background-color: #ACACAC; padding: 5px; ">
+                                        @UT.SL.Model.Resource.App_Common.Others
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        foreach (var item in courseAbstrct.OrderBy(x => x.Title))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div style="padding:7px;">
+                                        <a href="javascript:void(0);" data-showcoursesummary="@Url.Action("CoursePreviewAndSignUp", "Course", new { area = "Admin", id = item.Id })">
+                                            @*<span class="glyphicon glyphicon-eye-open"></span> &nbsp;*@
+                                            @item.Title
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="coursePreview">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="feedDiv centerOne boldAndLarger marginBottom20" style="width:100%; min-width:50px">
+                            <span>
+                                @UT.SL.Model.Resource.App_Common.Preview
+                            </span>
+                            <p style="font-size:small !important">
+                                @UT.SL.Model.Resource.App_Common.PreviewInfo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

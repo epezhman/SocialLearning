@@ -1,0 +1,507 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.Model.Enumeration
+@model List<UT.SL.Model.ObjectViewModel>
+<div class="row">
+    <div class="col-md-12">
+        <div id="previewOneItemArea">
+
+        </div>
+    </div>
+</div>
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="utwell">
+                <span class="glyphicon glyphicon-remove" data-closepanel="true" data-paneltocloseid="activityDetail" title="@UT.SL.Model.Resource.App_Common.Close" style="cursor:pointer"></span>
+                <span class="boldAndMedium">
+                    @string.Format(UT.SL.Model.Resource.App_Common.ActivitesOfAt, ViewBag.FullName, HelperUtils.LocalizedDate((DateTime)ViewBag.Date))
+                </span>
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-12">
+        <div id="activitesList" class="utwell" >
+            @if (Model != null)
+            {
+                var cntr = 0;
+                foreach (var item in Model)
+                {
+                    cntr++;
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="bgRowclr@((cntr%2)+1)" style="padding:5px 0px 5px 0px;">
+                                <div class="row">
+                                    @if (item.Type == (int)ObjectType.Vote)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-heart"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Voted </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Comment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Comment)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.CameFromTitle, string.Empty, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromUser != null)
+                                                    {
+                                                        @UT.SL.Model.Resource.App_Common.Of
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.ForumDiscussion)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.AddedThing, string.Empty)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.RepliedThing, string.Empty)</span>
+                                                    }  
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                   
+                                                    @if (item.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.On, string.Empty)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.On, string.Empty)</span>
+                                                    }                                                 
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.CameFromTitle, string.Empty, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                @if (item.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                {
+                                                    <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    <span title="@HelperUtils.ShortenStringForTitle(item.ExtraInfo, string.Empty, string.Empty)" style="color: Green;">
+                                                        @HelperUtils.ShortenStringForPreview(item.ExtraInfo, string.Empty, string.Empty).ToString()
+                                                    </span>
+                                                }
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.TagMapper)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-tags "></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Tagged </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.ForumDiscussion)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.ForumDiscussion)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.CameFromTitle, string.Empty, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromUser != null)
+                                                    {
+                                                        @UT.SL.Model.Resource.App_Common.Of
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.Resource)
+                                    {
+
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-file"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                        else
+                                                        {
+
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = ViewBag.UserId, type = (int)ProfileLinkType.FullName })
+
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.Readen, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body) || !string.IsNullOrEmpty(item.FileTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, item.FileTitle)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, item.FileTitle).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id != ViewBag.UserId)
+                                                        {
+                                                            @UT.SL.Model.Resource.App_Common.Of
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.Assignment)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                        else
+                                                        {
+
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = ViewBag.UserId, type = (int)ProfileLinkType.FullName })
+
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.Readen, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id != ViewBag.UserId)
+                                                        {
+                                                            @UT.SL.Model.Resource.App_Common.Of
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.Forum)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                        else
+                                                        {
+
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = ViewBag.UserId, type = (int)ProfileLinkType.FullName })
+
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id == ViewBag.UserId)
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.CreatedThing, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@string.Format(UT.SL.Model.Resource.App_Common.Readen, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        if (item.CreateUser.Id != ViewBag.UserId)
+                                                        {
+                                                            @UT.SL.Model.Resource.App_Common.Of
+                                                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.AssignmentSubmission)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.SubmittedAssigment </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.CameFromTitle, string.Empty, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (item.Type == (int)ObjectType.Comment)
+                                    {
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline" style="margin:0px 5px 0px 5px;">
+                                                    <img src="@Url.Content("~/Images/icon/32x32/reply.png")" style="width:20px; height:20px; margin-bottom:4px" alt="@UT.SL.Model.Resource.App_Common.Comment" />
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CreateUser != null)
+                                                    {
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CreateUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline"> @UT.SL.Model.Resource.App_Common.Commented </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.Body))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.Title, item.Body, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.Title, item.Body, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromType == (int)ObjectType.Resource)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Resource)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Assignment)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Assignment)</span>
+                                                    }
+                                                    else if (item.CameFromType == (int)ObjectType.Forum)
+                                                    {
+                                                        <span>@string.Format(UT.SL.Model.Resource.App_Common.OnThis, UT.SL.Model.Resource.App_Common.Forum)</span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (!string.IsNullOrEmpty(item.CameFromTitle))
+                                                    {
+                                                        <span title="@HelperUtils.ShortenStringForTitle(item.CameFromTitle, string.Empty, string.Empty)" style="color: Green;">
+                                                            @HelperUtils.ShortenStringForPreview(item.CameFromTitle, string.Empty, string.Empty).ToString()
+                                                        </span>
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @if (item.CameFromUser != null)
+                                                    {
+                                                        @UT.SL.Model.Resource.App_Common.Of
+                                                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = item.CameFromUser.Id, type = (int)ProfileLinkType.FullName })
+                                                    }
+                                                </div>
+                                                <div class="inline">
+                                                    @string.Format(UT.SL.Model.Resource.App_Common.AtTime, item.CreateDate.ToShortTimeString())
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.ForumDiscussionsearchModel
+		<div class="form-group">
+            <div class="row">
+            <div class="col-md-4">
+                <label class="control-label" for="Subject">@Html.LabelFor(model => model.SearchSubject)</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.SearchSubject)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label" for="Body">@Html.LabelFor(model => model.SearchBody)</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.SearchBody)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="control-label" for="CreateDate">@Html.LabelFor(model => model.SearchCreateDate)</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.SearchCreateDate)
+                </div>
+            </div>
+		    </div>
+        </div>
+		<div class="form-group">
+            <div class="row">
+            <div class="col-md-4">
+                <label class="control-label" for="ViewCount">@Html.LabelFor(model => model.SearchViewCount)</label>
+                <div class="controls">
+                    @Html.EditorFor(model => model.SearchViewCount, new { data_num = "Number" })
+                </div>
+            </div>
+
+
+		    </div>
+        </div>
+		<div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="control-label" for="searchHiddenInfo">@UT.SL.Model.Resource.App_Common.RecordNumPerView</label>
+                    <div class="controls" id="searchHiddenInfo">
+                        <select name="PageSize" id="PageSize">					
+				       	    <option value="10" @(Model.PageSize == 10 ? "selected='selected'" : "")>10</option>
+                            <option value="20" @(Model.PageSize == 20 ? "selected='selected'" : "")>20</option>
+                            <option value="50" @(Model.PageSize == 50 ? "selected='selected'" : "")>50</option>
+                            <option value="100" @(Model.PageSize == 100 ? "selected='selected'" : "")>100</option>				
+				        </select>
+                        <input type="hidden" name="PageIndex" value="@Model.PageIndex" id="PageIndex" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+

@@ -1,0 +1,36 @@
+﻿@model List<UT.SL.Data.LINQ.ForumDiscussionPost>
+<div>
+    @if (Model.Count() < 4)
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <div id="discussionPost@(Model[i].ParentId)@(Model[i].Id)">
+                @Html.Partial("GetOneDiscussionPost", Model[i])
+            </div>
+        }
+    }
+    else
+    {
+        <div id="discussionPost@(Model[0].ParentId)@(Model[0].Id)">
+            @Html.Partial("GetOneDiscussionPost", Model[0])
+        </div>
+        for (int i = 1; i < Model.Count() - 1; i++)
+        {
+            <div class="discussiontHiddenBlockDiv" style="display: none">
+                <div id="discussionPost@(Model[i].ParentId)@(Model[i].Id)">
+                    @Html.Partial("GetOneDiscussionPost", Model[i])
+                </div>
+            </div>
+        }
+        <div class="showDiscussions discussionBlock discussionHiddenBlockShowContain">
+            <span class="discussionHiddenBlockShow glyColor"><span class="glyphicon glyphicon-arrow-down"></span>@String.Format(UT.SL.Model.Resource.App_Common.ShowMoreReplies, Model.Count - 2)</span>
+        </div>
+        <div id="discussionPost@(Model[Model.Count() - 1].ParentId)@(Model[Model.Count() - 1].Id)">
+            @Html.Partial("GetOneDiscussionPost", Model[Model.Count() - 1])
+        </div>
+        <div class="showDiscussions discussionBlock discussionHiddenBlockHideContain" style="display: none">
+            <span class="discussionHiddenBlockHide paddingSides  glyColor"><span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.ShowFewerReplies</span>
+            @Html.Action("DiscussionPostsCount", "ForumDiscussionPost", new { area = "Admin", id = Model.First().ParentId })
+        </div>
+    }
+</div>

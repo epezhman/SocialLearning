@@ -1,0 +1,118 @@
+﻿@model UT.SL.Helper.FormModel<List<UT.SL.Model.GradeTypeModel>, UT.SL.Data.LINQ.Course>
+@{
+    String categories = string.Empty;
+    String dataMin = string.Empty;
+    String dataMax = string.Empty;
+    //String dataAvg = string.Empty;
+    String dataMine = string.Empty;
+
+    foreach (var item in Model.FormObject)
+    {
+        categories += "\'" + item.Title + "\', ";
+    }
+    if (!string.IsNullOrEmpty(categories))
+    {
+        categories = categories.Substring(0, categories.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MinGrade.HasValue)
+        {
+            dataMin += "" + item.MinGrade + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMin))
+    {
+        dataMin = dataMin.Substring(0, dataMin.LastIndexOf(','));
+    }
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MaxGrade.HasValue)
+        {
+            dataMax += "" + (item.MaxGrade) + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMax))
+    {
+        dataMax = dataMax.Substring(0, dataMax.LastIndexOf(','));
+    }
+
+    //foreach (var item in Model.FormObject)
+    //{
+    //    dataAvg += "" + (item.AverageGrade) + ", ";
+    //}
+    //if (!string.IsNullOrEmpty(dataAvg))
+    //{
+    //    dataAvg = dataAvg.Substring(0, dataAvg.LastIndexOf(','));
+    //}
+
+    foreach (var item in Model.FormObject)
+    {
+        if (item.MyGrade.HasValue)
+        {
+            dataMine += "" + item.MyGrade + ", ";
+        }
+    }
+    if (!string.IsNullOrEmpty(dataMine))
+    {
+        dataMine = dataMine.Substring(0, dataMine.LastIndexOf(','));
+    }
+
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#gradecontainer').highcharts({
+
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                text: '@(Model.ExtraKnownData.Title)'
+            },
+
+            xAxis: {
+                categories: [@Html.Raw(categories)]
+            },
+
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '@UT.SL.Model.Resource.App_Common.Grade'
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+
+            series: [{
+                name: '@UT.SL.Model.Resource.App_Common.MaxGrade',
+                data: [@Html.Raw(dataMax)]
+            }, {
+                name: '@UT.SL.Model.Resource.App_Common.MinGrade',
+                data: [@Html.Raw(dataMin)]
+            }, {
+                name: '@UT.SL.Model.Resource.App_Common.MyGrade',
+                data: [@Html.Raw(dataMine)]
+            }]
+        });
+    });
+</script>
+<h3>@UT.SL.Model.Resource.App_Common.Grades</h3>
+<div id="gradecontainer" style="margin: 0 auto">@UT.SL.Model.Resource.App_Common.Loading</div>

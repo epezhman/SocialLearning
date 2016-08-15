@@ -1,0 +1,88 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.CourseAbstract, SelectListItems>
+<div class="">
+    @using (Ajax.BeginForm("CreateCourseAbstract", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResult",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    @if (Model.FormObject.Id > 0)
+                    {
+                        <div style="text-align: center;">
+                            @Ajax.AuthorizationActionLink(User.Identity.Name, Model.FormObject.Category.Id, (int)UT.SL.Model.Enumeration.ObjectType.Category, UT.SL.Model.Resource.App_Common.CreateNewCourse, "CreateWithAbstract", "Course", new { area = "admin", Id = Model.FormObject.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $.DialogOpen('dialog', '" + @UT.SL.Model.Resource.App_Common.CreateCourseFromAbstract + "')",
+                       LoadingElementId = "ajaxLoading"
+                   }, new { @class = "btn btn-default btn-lg" })
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Category</label>
+                <div class="col-sm-9">
+                    <label class="control-label" for="">@Model.FormObject.Category.Title</label>
+
+                    @Html.HiddenFor(model => model.FormObject.SubCategoryId)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.Title)</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(model => model.FormObject.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Title)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.CurrentTopics</label>
+                <div class="col-sm-9">
+                    @Html.ListBoxFor(model => model.ExtraKnownData.SelectedIds, Model.ExtraKnownData.Items, new { data_multiselect = "true" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.AddTopics</label>
+                <div class="col-sm-9">
+                    <input type="text" name="newTopics" placeholder="@UT.SL.Model.Resource.App_Common.AddTopicsWithCommaAsSeperator" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.About)</label>
+                <div class="col-sm-9">
+                    @*@Html.TextBoxFor(model => model.FormObject.About, new { data_editor = "true", @class = "form-control" })*@
+                    <textarea id="FormObject_About" name="FormObject.About" class="form-control" data-editor="true">
+                        @Html.Raw(Model.FormObject.About)
+                    </textarea>
+                    @Html.ValidationMessageFor(model => model.FormObject.About)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <input type="reset" value="@(UT.SL.Model.Resource.App_Common.Reset)" id="reset" class="btn btn-default reset" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.FormObject.Id)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

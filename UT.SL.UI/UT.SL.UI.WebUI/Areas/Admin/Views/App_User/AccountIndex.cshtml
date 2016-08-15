@@ -1,0 +1,25 @@
+﻿@model UT.SL.Data.LINQ.App_User
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.MyAccount;
+}
+
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Account, extra = Model.Id })
+}
+
+<div class="utwell">
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Action("ViewAccount", "App_User", new { area = "Admin", id = Model.GuidId })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div style="margin-top:30px">
+                @Html.Action("EditEmailSetting", "App_User", new { area = "Admin", id = Model.GuidId })
+            </div>
+        </div>
+    </div>
+</div>
+

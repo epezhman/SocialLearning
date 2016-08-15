@@ -1,0 +1,104 @@
+﻿@model UT.SL.Helper.FormModel<List<UT.SL.Model.ProgressModel>, UT.SL.Data.LINQ.Course>
+@{
+    String categories = string.Empty;
+    String dataTopic = string.Empty;
+    String dataMine = string.Empty;
+    double wholeAverage = 0;
+    double myAverage = 0;
+
+    foreach (var item in Model.FormObject)
+    {
+        categories += "\'" + item.Title + "\', ";
+    }
+    categories = categories.Substring(0, categories.LastIndexOf(','));
+
+    foreach (var item in Model.FormObject)
+    {
+        dataTopic += "" + item.TopicValue + ", ";
+        wholeAverage += item.TopicValue;
+    }
+    dataTopic = dataTopic.Substring(0, dataTopic.LastIndexOf(','));
+
+    foreach (var item in Model.FormObject)
+    {
+        dataMine += "" + (item.MyValue) + ", ";
+        myAverage += item.MyValue;
+    }
+    dataMine = dataMine.Substring(0, dataMine.LastIndexOf(','));
+
+    wholeAverage = wholeAverage / Model.FormObject.Count();
+    myAverage = myAverage / Model.FormObject.Count();
+
+}
+
+<script type="text/javascript">
+
+    var myTopics = [@Html.Raw(categories)];
+
+    $(function () {
+        $('#progresscontainer').highcharts({
+            chart: {
+                polar: true
+            },
+
+            title: {
+                text: '@(Model.ExtraKnownData.Title)'
+            },
+
+            pane: {
+                startAngle: 0,
+                endAngle: 360
+            },
+
+            xAxis: {
+                tickInterval: @(360 / Model.FormObject.Count()),
+                min: 0,
+                max: 360,
+                labels: {
+                    formatter: function () {
+                        return myTopics[1];
+                        console.log(this);
+                    }
+                }
+
+            },
+
+            yAxis: {
+                min: 0
+            },
+
+            plotOptions: {
+                series: {
+                    pointStart: 0,
+                    pointInterval: @(360 / Model.FormObject.Count())
+                    },
+                column: {
+                    pointPadding: 0,
+                    groupPadding: 0
+                }
+            },
+
+            @if (wholeAverage >= myAverage)
+            {
+                 @:colors: ['#4572A7', '#FF4500', '#228B22'] ,
+                        }
+            else
+            {
+                 @:colors: ['#4572A7', '#228B22', '#228B22'] ,
+                        }
+
+            series: [{
+                type: 'column',
+                name: '@UT.SL.Model.Resource.App_Common.Topics',
+                data: [@Html.Raw(dataTopic)],
+                pointPlacement: 'between'
+            }, {
+                type: 'line',
+                name: '@UT.SL.Model.Resource.App_Common.MyProgress',
+                data: [@Html.Raw(dataMine)]
+            }]
+        });
+    });
+</script>
+<h3>@UT.SL.Model.Resource.App_Common.Progress</h3>
+<div id="progresscontainer" style="margin: 0 auto">@UT.SL.Model.Resource.App_Common.Loading</div>

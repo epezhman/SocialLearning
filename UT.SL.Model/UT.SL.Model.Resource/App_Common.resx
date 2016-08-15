@@ -1,0 +1,1458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionName" xml:space="preserve">
+    <value>Action name</value>
+  </data>
+  <data name="ActionTitle" xml:space="preserve">
+    <value>Action title</value>
+  </data>
+  <data name="AddNewPart" xml:space="preserve">
+    <value>Add new part</value>
+  </data>
+  <data name="AddNewSubMenu" xml:space="preserve">
+    <value>Add new sub menu</value>
+  </data>
+  <data name="AreaName" xml:space="preserve">
+    <value>Area name</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Are you Sure?</value>
+  </data>
+  <data name="Authorization" xml:space="preserve">
+    <value>Authorization</value>
+  </data>
+  <data name="BprAddSuccess" xml:space="preserve">
+    <value>Add Success</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>Close window</value>
+  </data>
+  <data name="ContentCount" xml:space="preserve">
+    <value>Content count</value>
+  </data>
+  <data name="ControllerName" xml:space="preserve">
+    <value>Controller name</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreatePage" xml:space="preserve">
+    <value>Create page</value>
+  </data>
+  <data name="DeleteAccount" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="DeletePage" xml:space="preserve">
+    <value>Delete page</value>
+  </data>
+  <data name="DeletePart" xml:space="preserve">
+    <value>Delete part</value>
+  </data>
+  <data name="DeletePartInfo" xml:space="preserve">
+    <value>If there are smoe sub menus for this menu, it won't be deleted.</value>
+  </data>
+  <data name="EditMyAccount" xml:space="preserve">
+    <value>Edit my account</value>
+  </data>
+  <data name="EditPage" xml:space="preserve">
+    <value>Edit page</value>
+  </data>
+  <data name="EditPart" xml:space="preserve">
+    <value>Edit part</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Is active</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="LogInDescription" xml:space="preserve">
+    <value>Are you new? </value>
+  </data>
+  <data name="ManageActions" xml:space="preserve">
+    <value>Manage actions</value>
+  </data>
+  <data name="ManageCredential" xml:space="preserve">
+    <value>Manage credential</value>
+  </data>
+  <data name="ManageSiteParts" xml:space="preserve">
+    <value>Manage site parts</value>
+  </data>
+  <data name="MenuPlace" xml:space="preserve">
+    <value>Menu place</value>
+  </data>
+  <data name="MenuTypes" xml:space="preserve">
+    <value>Menu types</value>
+  </data>
+  <data name="MethodCode" xml:space="preserve">
+    <value>Method code</value>
+  </data>
+  <data name="MethodInfo" xml:space="preserve">
+    <value>Method info</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NumOfAll" xml:space="preserve">
+    <value>Num of all</value>
+  </data>
+  <data name="OtherAccountInfo" xml:space="preserve">
+    <value>Other account info</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PartInfo" xml:space="preserve">
+    <value>Part info</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="RecordNumPerView" xml:space="preserve">
+    <value>Record num per view</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RequirePermission" xml:space="preserve">
+    <value>Require permission</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SubMenuCount" xml:space="preserve">
+    <value>Sub menu count</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateTree" xml:space="preserve">
+    <value>Use the link below to update the tree</value>
+  </data>
+  <data name="WontBeDeletedDueToSubMenus" xml:space="preserve">
+    <value>Wont be deleted due to sub menus</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Social learning</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Log Off</value>
+  </data>
+  <data name="LogOInAs" xml:space="preserve">
+    <value>Logged in as</value>
+  </data>
+  <data name="CourseInfo" xml:space="preserve">
+    <value>Course info</value>
+  </data>
+  <data name="EditDetails" xml:space="preserve">
+    <value>Edit Details</value>
+  </data>
+  <data name="ViewPage" xml:space="preserve">
+    <value>View </value>
+  </data>
+  <data name="FirstAssignStartEnd" xml:space="preserve">
+    <value>First assign couse start and end date</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Members</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="TagHelp" xml:space="preserve">
+    <value>You can suggest tags by typing it, and you need to specify the category, subcategory as well, like Category-Subcategory-MySuggestion</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Assignment" xml:space="preserve">
+    <value>Assignment</value>
+  </data>
+  <data name="ChooseFilter" xml:space="preserve">
+    <value>Choose Filter</value>
+  </data>
+  <data name="GroupShared" xml:space="preserve">
+    <value>Group shared</value>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="MyCources" xml:space="preserve">
+    <value>My Cources</value>
+  </data>
+  <data name="MyHome" xml:space="preserve">
+    <value>My home</value>
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="BehavioralStyle" xml:space="preserve">
+    <value>Behavioral style</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Grades" xml:space="preserve">
+    <value>Grades</value>
+  </data>
+  <data name="LearningStyle" xml:space="preserve">
+    <value>Learning style</value>
+  </data>
+  <data name="MemberOf" xml:space="preserve">
+    <value>Member of</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="SocialGroups" xml:space="preserve">
+    <value>Social groups</value>
+  </data>
+  <data name="StudentIn" xml:space="preserve">
+    <value>Student In</value>
+  </data>
+  <data name="SubCategories" xml:space="preserve">
+    <value>Sub categories</value>
+  </data>
+  <data name="TAIn" xml:space="preserve">
+    <value>TA in</value>
+  </data>
+  <data name="TeacherIn" xml:space="preserve">
+    <value>Teacher in</value>
+  </data>
+  <data name="InterestedIn" xml:space="preserve">
+    <value>Interested in</value>
+  </data>
+  <data name="AvgGrade" xml:space="preserve">
+    <value>Average grade</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="MaxGrade" xml:space="preserve">
+    <value>Max grade</value>
+  </data>
+  <data name="MinGrade" xml:space="preserve">
+    <value>Min grade</value>
+  </data>
+  <data name="MyGrade" xml:space="preserve">
+    <value>My grade</value>
+  </data>
+  <data name="MyGroups" xml:space="preserve">
+    <value>My Social Groups</value>
+  </data>
+  <data name="MyProgress" xml:space="preserve">
+    <value>My progress</value>
+  </data>
+  <data name="Topics" xml:space="preserve">
+    <value>Topics</value>
+  </data>
+  <data name="DateHelper" xml:space="preserve">
+    <value>days ago</value>
+  </data>
+  <data name="ManageMembers" xml:space="preserve">
+    <value>Manage members</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="AddTopics" xml:space="preserve">
+    <value>Add topics</value>
+  </data>
+  <data name="AddTopicsWithCommaAsSeperator" xml:space="preserve">
+    <value>Add topics with Comma as seperator</value>
+  </data>
+  <data name="BprPicOnlyForMainCategory" xml:space="preserve">
+    <value>pic only for main category</value>
+  </data>
+  <data name="NewCourse" xml:space="preserve">
+    <value>New course</value>
+  </data>
+  <data name="CreateCourseAbstract" xml:space="preserve">
+    <value>Create course abstract</value>
+  </data>
+  <data name="CreateNewCourse" xml:space="preserve">
+    <value>Create new course</value>
+  </data>
+  <data name="EditCourseAbstract" xml:space="preserve">
+    <value>Edit course abstract and create new course</value>
+  </data>
+  <data name="CreateCourseFromAbstract" xml:space="preserve">
+    <value>Create course from abstract</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="GradesAndProgress" xml:space="preserve">
+    <value>Grades and progress</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DownVotes" xml:space="preserve">
+    <value>Down votes</value>
+  </data>
+  <data name="SendReply" xml:space="preserve">
+    <value>Send reply</value>
+  </data>
+  <data name="UpVotes" xml:space="preserve">
+    <value>Up votes</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Awesome" xml:space="preserve">
+    <value>Awesome</value>
+  </data>
+  <data name="Bored" xml:space="preserve">
+    <value>Bored</value>
+  </data>
+  <data name="Interesting" xml:space="preserve">
+    <value>Interesting</value>
+  </data>
+  <data name="LikeIt" xml:space="preserve">
+    <value>Like it</value>
+  </data>
+  <data name="LostInterest" xml:space="preserve">
+    <value>Lost interest</value>
+  </data>
+  <data name="NeedHelp" xml:space="preserve">
+    <value>Need help</value>
+  </data>
+  <data name="NeedTime" xml:space="preserve">
+    <value>Need time</value>
+  </data>
+  <data name="NotThought" xml:space="preserve">
+    <value>Not thought</value>
+  </data>
+  <data name="Reactions" xml:space="preserve">
+    <value>Reactions</value>
+  </data>
+  <data name="Tough" xml:space="preserve">
+    <value>Tough</value>
+  </data>
+  <data name="DaysAgo" xml:space="preserve">
+    <value>days ago</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>hours ago</value>
+  </data>
+  <data name="MinAgo" xml:space="preserve">
+    <value>minutes ago</value>
+  </data>
+  <data name="SecAgo" xml:space="preserve">
+    <value>seconds ago</value>
+  </data>
+  <data name="ShowFewerComment" xml:space="preserve">
+    <value>Show fewer comments...</value>
+  </data>
+  <data name="ShowMoreComment" xml:space="preserve">
+    <value>Show {0} more comments...</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value />
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="MemberCount" xml:space="preserve">
+    <value>Member count</value>
+  </data>
+  <data name="ChooseLearningGroups" xml:space="preserve">
+    <value>Choose learning groups or share with class</value>
+  </data>
+  <data name="FileUpload" xml:space="preserve">
+    <value>File upload</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="ShareOption" xml:space="preserve">
+    <value>Share option</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="LearningGroup" xml:space="preserve">
+    <value>Learning group</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DropFilesHere" xml:space="preserve">
+    <value>Drop files here</value>
+  </data>
+  <data name="FailedUpload" xml:space="preserve">
+    <value>Failed upload</value>
+  </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>Remove file</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Select file</value>
+  </data>
+  <data name="statusUploaded" xml:space="preserve">
+    <value>Uploaded successfully</value>
+  </data>
+  <data name="statusUploading" xml:space="preserve">
+    <value>Uploading</value>
+  </data>
+  <data name="UploadSelectedFiles" xml:space="preserve">
+    <value>Upload selected files</value>
+  </data>
+  <data name="AdminSideBar" xml:space="preserve">
+    <value>Admin activities</value>
+  </data>
+  <data name="LearningSideBar" xml:space="preserve">
+    <value>Learning activities</value>
+  </data>
+  <data name="SocialSideBar" xml:space="preserve">
+    <value>Social activities</value>
+  </data>
+  <data name="StudentSideBar" xml:space="preserve">
+    <value>Student activities</value>
+  </data>
+  <data name="TASideBar" xml:space="preserve">
+    <value>TA activities</value>
+  </data>
+  <data name="TeacherSideBar" xml:space="preserve">
+    <value>Teacher activities</value>
+  </data>
+  <data name="Authentication" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="AccessDeniedMessage" xml:space="preserve">
+    <value>You are not Authorized to access this part</value>
+  </data>
+  <data name="NotActive" xml:space="preserve">
+    <value>Not active</value>
+  </data>
+  <data name="NotActiveMessage" xml:space="preserve">
+    <value>This part is not active.</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="TA" xml:space="preserve">
+    <value>TA</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="LearningGroups" xml:space="preserve">
+    <value>LearningGroups</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>FieldIsRequired</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="TagMapper" xml:space="preserve">
+    <value>TagMapper</value>
+  </data>
+  <data name="Vote" xml:space="preserve">
+    <value>Vote</value>
+  </data>
+  <data name="VoteParent" xml:space="preserve">
+    <value>VoteParent</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="ChooseSocialGroups" xml:space="preserve">
+    <value>ChooseSocialGroups</value>
+  </data>
+  <data name="SocialGroup" xml:space="preserve">
+    <value>SocialGroup</value>
+  </data>
+  <data name="ShareWithYourGroups" xml:space="preserve">
+    <value>ShareWithYourGroups</value>
+  </data>
+  <data name="AdminStuff" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="AllCourses" xml:space="preserve">
+    <value>All Courses</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="MyCourses" xml:space="preserve">
+    <value>My Courses</value>
+  </data>
+  <data name="ActionManegment" xml:space="preserve">
+    <value>Action Manegment</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Participants</value>
+  </data>
+  <data name="AdvancedEdit" xml:space="preserve">
+    <value>Advanced Edit</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>AddUser</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="DragAndDropHereToDelete" xml:space="preserve">
+    <value>DragAndDropHereToDelete</value>
+  </data>
+  <data name="In" xml:space="preserve">
+    <value>In</value>
+  </data>
+  <data name="InThis" xml:space="preserve">
+    <value>InThis</value>
+  </data>
+  <data name="Less" xml:space="preserve">
+    <value>Less</value>
+  </data>
+  <data name="ManageCourseParticipants" xml:space="preserve">
+    <value>Manage Course Participants</value>
+  </data>
+  <data name="ManageLearningGroups" xml:space="preserve">
+    <value>ManageLearningGroups</value>
+  </data>
+  <data name="ManageYourGroups" xml:space="preserve">
+    <value>Manage your Groups</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Assignments</value>
+  </data>
+  <data name="Forumes" xml:space="preserve">
+    <value>Forumes</value>
+  </data>
+  <data name="Quizes" xml:space="preserve">
+    <value>Quizes</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="AllGroups" xml:space="preserve">
+    <value>AllGroups</value>
+  </data>
+  <data name="NoMorePosts" xml:space="preserve">
+    <value>No more posts to show.</value>
+  </data>
+  <data name="ToShare" xml:space="preserve">
+    <value>ToShare</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="LearningActivity" xml:space="preserve">
+    <value>LearningActivity</value>
+  </data>
+  <data name="SocialActivity" xml:space="preserve">
+    <value>SocialActivity</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>Work</value>
+  </data>
+  <data name="Attach" xml:space="preserve">
+    <value>Attach</value>
+  </data>
+  <data name="CreatePageCategory" xml:space="preserve">
+    <value>Create Page Category</value>
+  </data>
+  <data name="CurrentTopics" xml:space="preserve">
+    <value>CurrentTopics</value>
+  </data>
+  <data name="DeletePageCategory" xml:space="preserve">
+    <value>DeletePageCategory</value>
+  </data>
+  <data name="EditPageCategory" xml:space="preserve">
+    <value>EditPageCategory</value>
+  </data>
+  <data name="EditPageCourse" xml:space="preserve">
+    <value>Edit Course</value>
+  </data>
+  <data name="NewCourseAbstract" xml:space="preserve">
+    <value>New Course Structure</value>
+  </data>
+  <data name="CreateNewGroup" xml:space="preserve">
+    <value>Create New Group</value>
+  </data>
+  <data name="ChooseTopics" xml:space="preserve">
+    <value>Choose Topics</value>
+  </data>
+  <data name="CreateSocialGroup" xml:space="preserve">
+    <value>Create Social Group</value>
+  </data>
+  <data name="AboutThisGroup" xml:space="preserve">
+    <value>About This Group</value>
+  </data>
+  <data name="CreateNewTag" xml:space="preserve">
+    <value>Create New Tag</value>
+  </data>
+  <data name="HaveYouInTheirGroups" xml:space="preserve">
+    <value>Have You In Their Groups</value>
+  </data>
+  <data name="PostDeleted" xml:space="preserve">
+    <value>Post Deleted</value>
+  </data>
+  <data name="YourGroups" xml:space="preserve">
+    <value> Your Groups</value>
+  </data>
+  <data name="Forum" xml:space="preserve">
+    <value>Forum</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>DueDate</value>
+  </data>
+  <data name="GradeFrom" xml:space="preserve">
+    <value>GradeFrom</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="Replies" xml:space="preserve">
+    <value>Replies</value>
+  </data>
+  <data name="NewDiscussion" xml:space="preserve">
+    <value>NewDiscussion</value>
+  </data>
+  <data name="ShowFewerDiscussions" xml:space="preserve">
+    <value>Show Fewer Discussions</value>
+  </data>
+  <data name="ShowMoreDiscussions" xml:space="preserve">
+    <value>Show {0} More Discussions</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="ViewDiscussion" xml:space="preserve">
+    <value>View Disucssion</value>
+  </data>
+  <data name="ShowFewerReplies" xml:space="preserve">
+    <value>Show Fewer Replies</value>
+  </data>
+  <data name="ShowMoreReplies" xml:space="preserve">
+    <value>{0} Show More Replies</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="LastModified" xml:space="preserve">
+    <value>Last Modified {0}</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>Submitted</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>Opinion</value>
+  </data>
+  <data name="ShowFewerSubmissions" xml:space="preserve">
+    <value>Show Fewer Submissions</value>
+  </data>
+  <data name="ShowMoreSubmissions" xml:space="preserve">
+    <value>Show {0} More Submissions</value>
+  </data>
+  <data name="Assess" xml:space="preserve">
+    <value>Assess</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="NoGrade" xml:space="preserve">
+    <value>NoGrade</value>
+  </data>
+  <data name="ViewAllSubmissions" xml:space="preserve">
+    <value>View All Submissions</value>
+  </data>
+  <data name="ViewSubmission" xml:space="preserve">
+    <value>View Submission</value>
+  </data>
+  <data name="EnterTitleHere" xml:space="preserve">
+    <value>Enter title here</value>
+  </data>
+  <data name="ViewMySubmission" xml:space="preserve">
+    <value>View My Submission</value>
+  </data>
+  <data name="IgnoreOwner" xml:space="preserve">
+    <value>IgnoreOwner</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="Late" xml:space="preserve">
+    <value>Late</value>
+  </data>
+  <data name="SharedVia" xml:space="preserve">
+    <value>Shared by</value>
+  </data>
+  <data name="ReturnBlankIfNotAllowed" xml:space="preserve">
+    <value>Return Blank If Not Allowed</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Change Email</value>
+  </data>
+  <data name="PleaseConfirmYourEmail" xml:space="preserve">
+    <value>Please Confirm Your Email</value>
+  </data>
+  <data name="Harter" xml:space="preserve">
+    <value>Harter's Questionnaire</value>
+  </data>
+  <data name="Hermans" xml:space="preserve">
+    <value>Hermans' Questionnaire</value>
+  </data>
+  <data name="Questionnaire" xml:space="preserve">
+    <value>Questionnaire</value>
+  </data>
+  <data name="Survey" xml:space="preserve">
+    <value>Questionnaire</value>
+  </data>
+  <data name="Incomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="IsCredit" xml:space="preserve">
+    <value>Is Credit</value>
+  </data>
+  <data name="StudentCredit" xml:space="preserve">
+    <value>Student Credit</value>
+  </data>
+  <data name="TACredit" xml:space="preserve">
+    <value>TA Credit</value>
+  </data>
+  <data name="TeacherCredit" xml:space="preserve">
+    <value>Teacher Credit</value>
+  </data>
+  <data name="CreditOnlyPost" xml:space="preserve">
+    <value>Credit Only For POST(Not GET)</value>
+  </data>
+  <data name="Recommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="YouMayNeedToLearn" xml:space="preserve">
+    <value>You may need to learn</value>
+  </data>
+  <data name="YouMayBeInterestedIn" xml:space="preserve">
+    <value>You may be interested in</value>
+  </data>
+  <data name="ForumDiscussion" xml:space="preserve">
+    <value>Forum Discussion</value>
+  </data>
+  <data name="Hot" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="WriteAComment" xml:space="preserve">
+    <value>Write a comment</value>
+  </data>
+  <data name="PleaseRelaodThePageAfterUploadingPic" xml:space="preserve">
+    <value>Please relaod the page after uploading pic.</value>
+  </data>
+  <data name="AndLearnWithYourFriends" xml:space="preserve">
+    <value>And learn with your friends!</value>
+  </data>
+  <data name="AndSeeWhatsWaitingForYouThere" xml:space="preserve">
+    <value>And see what's waiting for you there!</value>
+  </data>
+  <data name="AndShareWithYourFriends" xml:space="preserve">
+    <value>And share with your friends!</value>
+  </data>
+  <data name="CreateSocialGroups" xml:space="preserve">
+    <value>Create Social Groups</value>
+  </data>
+  <data name="DoosMoocSocialLearning" xml:space="preserve">
+    <value>DoosMooc - Social Learning.</value>
+  </data>
+  <data name="LearningAndSocializing" xml:space="preserve">
+    <value>Learning and Socializing.</value>
+  </data>
+  <data name="LetsLearnTogetherLikeNeverBefore" xml:space="preserve">
+    <value>Let's learn together like never before!</value>
+  </data>
+  <data name="MakeFriends" xml:space="preserve">
+    <value>Make Friends!</value>
+  </data>
+  <data name="ShareUnlimitedFunWithYourFriends" xml:space="preserve">
+    <value>Share unlimited fun with your friends!</value>
+  </data>
+  <data name="SocializeWithYourTeachersAndClassmatesExperienceANewWayOfLearning" xml:space="preserve">
+    <value>Socialize with your teachers and classmates, experience a new way of learning!</value>
+  </data>
+  <data name="VisitYourCourses" xml:space="preserve">
+    <value>Visit your courses</value>
+  </data>
+  <data name="VisitYourHome" xml:space="preserve">
+    <value>Visit Your Home</value>
+  </data>
+  <data name="ItIsANewWay" xml:space="preserve">
+    <value>It's a new Way.</value>
+  </data>
+  <data name="ItWillBlowYourMind" xml:space="preserve">
+    <value>It'll blow your mind.</value>
+  </data>
+  <data name="JoinOurNetwork" xml:space="preserve">
+    <value>Join our network!</value>
+  </data>
+  <data name="OhYeahItIsThatGood" xml:space="preserve">
+    <value>Oh yeah, it's that good.</value>
+  </data>
+  <data name="SeeForYourself" xml:space="preserve">
+    <value>See for yourself.</value>
+  </data>
+  <data name="WhatIsYourMind" xml:space="preserve">
+    <value>What is your mind</value>
+  </data>
+  <data name="DiscussionsCount" xml:space="preserve">
+    <value>Discussions count</value>
+  </data>
+  <data name="SubmissionsCount" xml:space="preserve">
+    <value>Submissions count</value>
+  </data>
+  <data name="DayLeft" xml:space="preserve">
+    <value>day left</value>
+  </data>
+  <data name="HourLeft" xml:space="preserve">
+    <value>hour left</value>
+  </data>
+  <data name="MinLeft" xml:space="preserve">
+    <value>min left</value>
+  </data>
+  <data name="SecLeft" xml:space="preserve">
+    <value>sec left</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>days overdue</value>
+  </data>
+  <data name="HourOverdue" xml:space="preserve">
+    <value>hours overdue</value>
+  </data>
+  <data name="MinOverdue" xml:space="preserve">
+    <value>minutes overdue</value>
+  </data>
+  <data name="SecOverdue" xml:space="preserve">
+    <value>Seconds overdue</value>
+  </data>
+  <data name="UsersLog" xml:space="preserve">
+    <value>Users Log</value>
+  </data>
+  <data name="Clearifying" xml:space="preserve">
+    <value>Clearifying</value>
+  </data>
+  <data name="Evaluating" xml:space="preserve">
+    <value>Evaluating</value>
+  </data>
+  <data name="GoodSummary" xml:space="preserve">
+    <value>Good summary</value>
+  </data>
+  <data name="InformativeApprove" xml:space="preserve">
+    <value>Informative approve</value>
+  </data>
+  <data name="InformativeDisapprove" xml:space="preserve">
+    <value>Informative disapprove</value>
+  </data>
+  <data name="Inspiring" xml:space="preserve">
+    <value>Inspiring</value>
+  </data>
+  <data name="Organizing" xml:space="preserve">
+    <value>Organizing</value>
+  </data>
+  <data name="WeakContribution" xml:space="preserve">
+    <value>Weak contribution</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="Disagree" xml:space="preserve">
+    <value>Disagree</value>
+  </data>
+  <data name="NeitherAgreeNorDisagree" xml:space="preserve">
+    <value>Neither agree nor disagree</value>
+  </data>
+  <data name="StronglyAgree" xml:space="preserve">
+    <value>Strongly agree</value>
+  </data>
+  <data name="StronglyDisagree" xml:space="preserve">
+    <value>Strongly disagree</value>
+  </data>
+  <data name="AGQ_R" xml:space="preserve">
+    <value>AGQ-R</value>
+  </data>
+  <data name="AnswerToAllBeforeSubmit" xml:space="preserve">
+    <value>Answer to all questions first</value>
+  </data>
+  <data name="AreYouSureFinalSubmit" xml:space="preserve">
+    <value>Are you sure? you won't be able to change anything after this!</value>
+  </data>
+  <data name="FinalSubmit" xml:space="preserve">
+    <value>Final Submit</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Challenging" xml:space="preserve">
+    <value>Challenging Forum</value>
+  </data>
+  <data name="Communicating" xml:space="preserve">
+    <value>Communicating Forum</value>
+  </data>
+  <data name="Motivating" xml:space="preserve">
+    <value>Motivating Forum</value>
+  </data>
+  <data name="BackToDiscussions" xml:space="preserve">
+    <value>BackToDiscussions</value>
+  </data>
+  <data name="NewsFromYourCourses" xml:space="preserve">
+    <value>News from your courses</value>
+  </data>
+  <data name="NewsFromYourFriends" xml:space="preserve">
+    <value>News from your friends</value>
+  </data>
+  <data name="ThereIsNoNews" xml:space="preserve">
+    <value>There is no news</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="EditCourse" xml:space="preserve">
+    <value>EditCourse</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Portfolio</value>
+  </data>
+  <data name="EducationalActivites" xml:space="preserve">
+    <value>Educational Activites</value>
+  </data>
+  <data name="SurveyResults" xml:space="preserve">
+    <value>Q Results</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="ThreeTagsMax" xml:space="preserve">
+    <value>3 Tags Maximum. First delete unwanted tags, then add new ones.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Knowledge" xml:space="preserve">
+    <value>Knowledge</value>
+  </data>
+  <data name="MyKnowledgeProfile" xml:space="preserve">
+    <value>My Knowledge Profile</value>
+  </data>
+  <data name="MySoActProfile" xml:space="preserve">
+    <value>My So Act Profile</value>
+  </data>
+  <data name="SoActValue" xml:space="preserve">
+    <value>So Act Value</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>Topic</value>
+  </data>
+  <data name="UserKnowledgeProfile" xml:space="preserve">
+    <value>Knowledge Profile</value>
+  </data>
+  <data name="UserKnowledgeProfileMAX" xml:space="preserve">
+    <value>Knowledge Profile Max</value>
+  </data>
+  <data name="UserKnowledgeProfileMIN" xml:space="preserve">
+    <value>Knowledge Profile Min</value>
+  </data>
+  <data name="UserSoActProfile" xml:space="preserve">
+    <value>So Act Profile</value>
+  </data>
+  <data name="UserSoActProfileMAX" xml:space="preserve">
+    <value>So Act Profile Max</value>
+  </data>
+  <data name="UserSoActProfileMIN" xml:space="preserve">
+    <value>So Act Profile Min</value>
+  </data>
+  <data name="TopParticipantsOfTheWeek" xml:space="preserve">
+    <value>Top Participants of the Week</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="MostActive" xml:space="preserve">
+    <value>Most Active</value>
+  </data>
+  <data name="MostPopular" xml:space="preserve">
+    <value>Most Popular</value>
+  </data>
+  <data name="Votes" xml:space="preserve">
+    <value>Votes</value>
+  </data>
+  <data name="ActivitiesDetails" xml:space="preserve">
+    <value>Activities Details</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="WholeSemester" xml:space="preserve">
+    <value>Whole Semester</value>
+  </data>
+  <data name="ActivityScore" xml:space="preserve">
+    <value>ActivityScore</value>
+  </data>
+  <data name="TopParticipantsOfTheMonth" xml:space="preserve">
+    <value>Top Participants of the Month</value>
+  </data>
+  <data name="TopParticipantsOfTheWholeSemester" xml:space="preserve">
+    <value>Top Participants of the Whole Semester</value>
+  </data>
+  <data name="AboutGradedMaterial" xml:space="preserve">
+    <value>About Graded Material</value>
+  </data>
+  <data name="ActivitesOfAt" xml:space="preserve">
+    <value>Activites of {0} at {1}</value>
+  </data>
+  <data name="AtTime" xml:space="preserve">
+    <value>At time {0}</value>
+  </data>
+  <data name="Commented" xml:space="preserve">
+    <value>Commented</value>
+  </data>
+  <data name="CreatedForumDiscussion" xml:space="preserve">
+    <value>Created Forum Discussion</value>
+  </data>
+  <data name="CreatedThing" xml:space="preserve">
+    <value>Created {0}</value>
+  </data>
+  <data name="FD" xml:space="preserve">
+    <value>FD</value>
+  </data>
+  <data name="GradedFor" xml:space="preserve">
+    <value>Graded for</value>
+  </data>
+  <data name="GradedOn" xml:space="preserve">
+    <value>Graded on</value>
+  </data>
+  <data name="GradeOf" xml:space="preserve">
+    <value>Grade of {0}</value>
+  </data>
+  <data name="KnowledgeProfileOf" xml:space="preserve">
+    <value>Knowledge Profile of {0}</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>Of </value>
+  </data>
+  <data name="OnThis" xml:space="preserve">
+    <value>On {0}</value>
+  </data>
+  <data name="PortfolioHelp" xml:space="preserve">
+    <value>Hint: You can get detailed information by clicking on columns and dots of the charts.</value>
+  </data>
+  <data name="Readen" xml:space="preserve">
+    <value>Read {0}</value>
+  </data>
+  <data name="SoActValueOf" xml:space="preserve">
+    <value>So Act Value of {0}</value>
+  </data>
+  <data name="SubmittedAssigment" xml:space="preserve">
+    <value>Submitted Assigment</value>
+  </data>
+  <data name="Voted" xml:space="preserve">
+    <value>Voted</value>
+  </data>
+  <data name="Bookmark" xml:space="preserve">
+    <value>Bookmark</value>
+  </data>
+  <data name="InEmail" xml:space="preserve">
+    <value>In Email</value>
+  </data>
+  <data name="InNotification" xml:space="preserve">
+    <value>In Notification</value>
+  </data>
+  <data name="UserInterestValue" xml:space="preserve">
+    <value>User Interest Value</value>
+  </data>
+  <data name="UserKnowledgeValue" xml:space="preserve">
+    <value>User Knowledge Value</value>
+  </data>
+  <data name="BelongsTo" xml:space="preserve">
+    <value>Belongs to</value>
+  </data>
+  <data name="NoTopic" xml:space="preserve">
+    <value>No Topic</value>
+  </data>
+  <data name="PortfolioOf" xml:space="preserve">
+    <value>Portfolio of {0}</value>
+  </data>
+  <data name="GradedBy" xml:space="preserve">
+    <value>Graded by</value>
+  </data>
+  <data name="GradedMaterials" xml:space="preserve">
+    <value>Graded Materials</value>
+  </data>
+  <data name="AssociatedObjectId" xml:space="preserve">
+    <value>AssociatedObjectId</value>
+  </data>
+  <data name="DoesNotHaveDAL" xml:space="preserve">
+    <value>DoesNotHaveDAL</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="SendNewMessage" xml:space="preserve">
+    <value>Send A New Message</value>
+  </data>
+  <data name="NewMessage" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="MessageSent" xml:space="preserve">
+    <value>Message has been sent</value>
+  </data>
+  <data name="NoMessages" xml:space="preserve">
+    <value>No Messages</value>
+  </data>
+  <data name="ScrollDown" xml:space="preserve">
+    <value>Scroll Down</value>
+  </data>
+  <data name="NoMoreToShow" xml:space="preserve">
+    <value>No more to show</value>
+  </data>
+  <data name="NoNewNotifications" xml:space="preserve">
+    <value>No New Notifications</value>
+  </data>
+  <data name="NotificationAt" xml:space="preserve">
+    <value>Notification at {0}</value>
+  </data>
+  <data name="AssignmentSubmission" xml:space="preserve">
+    <value>Assignment Submission</value>
+  </data>
+  <data name="FromCourse" xml:space="preserve">
+    <value>From Course {0}</value>
+  </data>
+  <data name="Graded" xml:space="preserve">
+    <value>Graded</value>
+  </data>
+  <data name="Tagged" xml:space="preserve">
+    <value>Tagged</value>
+  </data>
+  <data name="AtDateTime" xml:space="preserve">
+    <value>At {0} {1}</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AddedThing" xml:space="preserve">
+    <value>Added {0}</value>
+  </data>
+  <data name="Discussion" xml:space="preserve">
+    <value>Discussion</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>On {0}</value>
+  </data>
+  <data name="RepliedThing" xml:space="preserve">
+    <value>Replied {0}</value>
+  </data>
+  <data name="You" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="Tops" xml:space="preserve">
+    <value>Tops</value>
+  </data>
+  <data name="YourGrade" xml:space="preserve">
+    <value>Your Grade</value>
+  </data>
+  <data name="NewThing" xml:space="preserve">
+    <value>New {0}</value>
+  </data>
+  <data name="Edited" xml:space="preserve">
+    <value>Edited</value>
+  </data>
+  <data name="NavigateHere" xml:space="preserve">
+    <value>Here!</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="Partners" xml:space="preserve">
+    <value>Partners</value>
+  </data>
+  <data name="PreviewInfo" xml:space="preserve">
+    <value>To preview a course choose one from the left!</value>
+  </data>
+  <data name="TosignUp" xml:space="preserve">
+    <value>If you want to sign up send a message to </value>
+  </data>
+  <data name="OnDisscussion" xml:space="preserve">
+    <value>on this disscussion</value>
+  </data>
+  <data name="OnForum" xml:space="preserve">
+    <value>on this forum</value>
+  </data>
+  <data name="WillBeActivatedInFewWeeks" xml:space="preserve">
+    <value>This box will be activated in a few weeks, since there must be at least tens of contents shared by course particpants.</value>
+  </data>
+  <data name="Acceptable" xml:space="preserve">
+    <value>Acceptable</value>
+  </data>
+  <data name="Informative" xml:space="preserve">
+    <value>Informative</value>
+  </data>
+  <data name="NeedsImprovement" xml:space="preserve">
+    <value>Needs Improvement</value>
+  </data>
+  <data name="Useless" xml:space="preserve">
+    <value>Useless</value>
+  </data>
+  <data name="NeedsHelp" xml:space="preserve">
+    <value>Needs Help</value>
+  </data>
+  <data name="NeedsTime" xml:space="preserve">
+    <value>Needs Time</value>
+  </data>
+</root>

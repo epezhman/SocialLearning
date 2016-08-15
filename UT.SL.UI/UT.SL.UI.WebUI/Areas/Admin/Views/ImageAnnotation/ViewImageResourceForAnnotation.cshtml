@@ -1,0 +1,12 @@
+﻿@model UT.SL.Data.LINQ.Resource
+
+<div>
+    <img class=""  src="@Url.Action("ViewImageResource", "Course", new { area = "admin", id = Model.Id })" alt=""  data-imageannotation="true"
+        data-getUrl="@Url.Action("GetImageAnnotations", "ImageAnnotation", new { area = "Admin", objectId = Model.Id, objectType = (int)UT.SL.Model.Enumeration.ObjectType.Resource })" data-saveUrl="@Url.Action("AddImageAnnotations", "ImageAnnotation", new { area = "Admin", objectId = Model.Id, objectType = (int)UT.SL.Model.Enumeration.ObjectType.Resource })" data-deleteUrl="@Url.Action("DeleteImageAnnotations", "Course", new { area = "ImageAnnotation", objectId = Model.Id, objectType = (int)UT.SL.Model.Enumeration.ObjectType.Resource })"/>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $.InitialImageAnnotation()
+    });
+</script>

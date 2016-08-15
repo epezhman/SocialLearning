@@ -1,0 +1,39 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.Grade
+@using (Ajax.BeginForm("Edit",
+    "Grade",
+    new { area = "Admin" },
+    new AjaxOptions()
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "SubmitResult",
+        //OnSuccess = "'" + Url.Action("GetOneGrade", "Grade", new { area = "admin", Id = Model.Id }) + "';",
+        OnSuccess = "'" + Url.Action("GetOneGrade", "Grade", new { area = "admin", Id = Model.Id }) + "';",
+        LoadingElementId = "LoadingGifCEResource"
+    }, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="SubmitResult">
+        <div class="form-group">
+            @*<label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.Grade.GradeValue)</label>*@
+            <div class="col-sm-12">
+                <div class="input-group">
+                    @Html.TextBoxFor(model => model.GradeValue, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.GradeValue)
+            </div>
+        </div>
+        @*@Html.TextBoxFor(model => model.GradeValue, new { @class = "input-small span4" })
+        @Html.ValidationMessageFor(model => model.GradeValue)*@
+        @* <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-default submit btn btn-default-primary" />*@
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $.InitialComponents();
+    });
+</script>

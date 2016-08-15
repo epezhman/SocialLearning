@@ -1,0 +1,98 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  List<UT.SL.Model.GradeTypeModel>
+@{
+    var i = 0;
+}
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="utwell">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    @UT.SL.Model.Resource.App_Common.Title
+                                </th>
+                                <th>
+                                    @UT.SL.Model.Resource.App_Common.YourGrade
+                                </th>
+                                <th>
+                                    @UT.SL.Model.Resource.App_Common.MinGrade
+                                </th>
+                                <th>
+                                    @UT.SL.Model.Resource.App_Common.MaxGrade
+                                </th>
+                                <th>
+                                    @UT.SL.Model.Resource.App_Common.Tops
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="art_ls">
+                            @foreach (var item in Model)
+                            {
+                                i++;
+
+                                <tr>
+                                    <td>
+                                        @i
+                                    </td>
+                                    <td>
+                                        <div class="inline">
+                                            <div class="inline" style="margin: 0px 5px 0px 5px">
+                                                <span class="glyphicon glyphicon-asterisk"></span>
+                                            </div>
+                                            <div class="inline">
+                                                @if (!string.IsNullOrEmpty(item.Title) || !string.IsNullOrEmpty(item.FullTitle))
+                                                {
+                                                    <span title="@HelperUtils.ShortenStringForTitle(item.FullTitle, item.Title, string.Empty)">
+                                                        @HelperUtils.ShortenStringForPreview(item.FullTitle, item.Title, string.Empty).ToString()
+                                                    </span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="text-align:center">
+                                        @if (item.MyGradeDouble > 0)
+                                        {
+                                            @item.MyGradeDouble
+                                        }
+                                    </td>
+                                    <td style="text-align:center">
+                                        @if (item.MinGrade >= 0)
+                                        {
+                                            @item.MinGrade
+                                        }
+                                    </td>
+                                    <td style="text-align:center">
+                                        @if (item.MaxGrade >= 0)
+                                        {
+                                            @item.MaxGrade
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.MaxGardeUsers.Any())
+                                        {
+                                            foreach (var user in item.MaxGardeUsers.Distinct())
+                                            {
+                                                <div class="inline">
+                                                    @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = user.Id, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName }) ,
+                                                </div>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

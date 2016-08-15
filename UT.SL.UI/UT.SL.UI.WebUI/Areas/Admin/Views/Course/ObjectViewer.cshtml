@@ -1,0 +1,26 @@
+﻿@model UT.SL.Model.ObjectViewModel
+@if (Model.IsReaden)
+{
+    <div>
+        <div id="readenContentPreview@(Model.Type)@(Model.Id)" class="upperPart">
+            @Html.Partial("ResourceContentViewer", Model)
+        </div>
+        <div id="readenContent@(Model.Type)@(Model.Id)" class="lowerPart"></div>
+    </div>
+}
+else
+{
+    if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+    {
+        @Html.Partial("ResourceViewer", Model)
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+    {
+        @Html.Action("AssignmentViewer", "Assignment", new { area = "Admin", id = Model.Id, clickedDate = Model.ClickedDate, isEdited = Model.IsEdited })
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+    {
+        @Html.Action("ForumViewer", "Forum", new { area = "Admin", id = Model.Id, clickedDate = Model.ClickedDate, isEdited = Model.IsEdited })
+    }
+}
+

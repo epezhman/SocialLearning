@@ -1,0 +1,24 @@
+﻿@if (ViewBag.IsFirstTime != null)
+{
+    <script type="text/javascript">
+        var navTitle = 'Navigation Hint';
+        var navContent = 'Navigation Hint';
+        $(document).ready(function () {
+            $("#showMenuLink").popover({
+                placement: 'bottom',
+                html: 'true',
+                title: 'Navigation Hint' +
+                        '<button type="button" id="close" class="close" onclick="$(&quot;#showMenuLink&quot;).popover(&quot;hide&quot;);">&times;</button>',
+                content: 'Navigation Hint'
+            }).popover('show');
+        });
+    </script>
+    <style>
+        .popover {
+            min-width: 300px;
+            color:black;
+        }
+
+    </style>
+
+}

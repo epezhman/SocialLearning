@@ -1,0 +1,161 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  ViewModels.AssignmentSubmission.NewSubmissionViewModel
+<div class="" id="assignmentRowThread@(Model.AssignmentSubmission.Id)" data-showeditdelete="true">
+    <div class="submissionBlock paddingIt" id="submissionBlock@(Model.AssignmentSubmission.AssignmentId)@(Model.AssignmentSubmission.Id)">
+        <div id="submissionContent@(Model.AssignmentSubmission.AssignmentId)@(Model.AssignmentSubmission.Id)" class="row">
+            <div class="col-md-12 col-xs-12">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.AssignmentSubmission.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                        </td>
+                        <td>
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.AssignmentSubmission.UserId, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName })
+                            -@if (!string.IsNullOrEmpty(Model.AssignmentSubmission.Body))
+                            {
+                                @Model.AssignmentSubmission.Body
+                            }
+                        </td>
+                    </tr>
+                    @if (Model.AssignmentSubmission.FileContent != null)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>
+                                @*@Html.Action("FileContentPreview", "FileAnnotation", new { area = "Admin", objectId = Model.AssignmentSubmission.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission })*@
+                                <span>
+                                    <span class="glyphicon glyphicon-download"></span>
+                                    @Html.ActionLink(Model.AssignmentSubmission.FileTitle, "DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.AssignmentSubmission.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission }, null)
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="feedDivFooter">
+                                <div class="inline">
+                                    <div class="inline feedDivLessImportant  paleIt hidden-xs">
+                                        @HelperUtils.ShowRecentTime(Model.AssignmentSubmission.CreateDate)
+                                    </div>
+                                    <div class="paleIt inline">
+                                        @if (Model.SelfAssess != null)
+                                        {
+                                            @Html.Action("AssessPreview", "Assess", new { area = "Admin", AssessValue = Model.SelfAssess.AssessValue, AssessType = (int)UT.SL.Model.Enumeration.AssessType.self })
+                                        }
+                                    </div>
+                                  
+                                    @if (Model.AssignmentSubmission.Assignment.GetLockedAfterExpiration == null &&
+                                            Model.AssignmentSubmission.Assignment.DueDate != null &&
+                                            Model.AssignmentSubmission.CreateDate > Model.AssignmentSubmission.Assignment.DueDate)
+                                    {
+                                        <span class="label label-default label-warning">@UT.SL.Model.Resource.App_Common.Late</span>
+                                    }
+                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id, (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditAssignmentSubmission", "AssignmentSubmission", new { area = "admin", id = Model.AssignmentSubmission.Id },
+                                                             new AjaxOptions()
+                                                             {
+                                                                 HttpMethod = "GET",
+                                                                 InsertionMode = InsertionMode.Replace,
+                                                                 UpdateTargetId = "submissionContent" + Model.AssignmentSubmission.AssignmentId + Model.AssignmentSubmission.Id,
+                                                                 LoadingElementId = "loadingAjax"
+                                                             }, new { @class = "edit hiddenoption" }, null)
+                                    @*<div class="inline" id="GetSpecificPanel@(Model.AssignmentSubmission.Id)">
+                                            @Html.Action("GetSpecificPanel", "AssignmentSubmission", new { area = "admin", Id = Model.AssignmentSubmission.Id })
+                                        </div>*@
+                                </div>
+                                <div class="optionRight">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="submissionContentEdit@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterGradeSubmissionView" id="NewGradeFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterSubmission">
+            <div class="col-md-12" id="SubmissionFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+            </div>
+        </div>
+        <div id="gradeContent@(Model.AssignmentSubmission.AssignmentId)@(Model.AssignmentSubmission.Id)" class="row">
+            <div class="col-md-12 col-xs-12">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.Grade.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                        </td>
+                        <td>
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.Grade.UserId, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName })
+                            -@if (!string.IsNullOrEmpty(Model.Grade.Body))
+                            {
+                                @Model.Grade.Body
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="feedDivFooter">
+                                <div class="inline">
+                                    <div class="inline feedDivLessImportant  paleIt hidden-xs">
+                                        @HelperUtils.ShowRecentTime(Model.Grade.CreateDate)
+                                    </div>
+                                    <div class="paleIt inline">
+                                        @if (Model.ExpertAssess != null)
+                                        {
+                                            @Html.Action("AssessPreview", "Assess", new { area = "Admin", AssessValue = Model.ExpertAssess.AssessValue, AssessType = (int)UT.SL.Model.Enumeration.AssessType.expert })
+                                        }
+                                    </div>
+                                    <div class="paleIt inline">
+                                        @if (Model.Grade != null)
+                                        {
+                                            <span class="label label-success" title="@UT.SL.Model.Resource.App_Common.Grade">@Model.Grade.GradeValue</span>
+                                        }
+                                    </div>
+                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Grade.Id,
+                                                                (int)UT.SL.Model.Enumeration.ObjectType.Grade, "glyphicon glyphicon-edit",
+                                                                UT.SL.Model.Resource.App_Common.Edit, "EditGradeSubmission", "AssignmentSubmission",
+                                                                new { area = "admin", id = Model.AssignmentSubmission.Id, gradeId = Model.Grade.Id },
+                                                                      new AjaxOptions()
+                                                                      {
+                                                                          HttpMethod = "GET",
+                                                                          InsertionMode = InsertionMode.Replace,
+                                                                          UpdateTargetId = "gradeContent" + Model.AssignmentSubmission.AssignmentId + Model.AssignmentSubmission.Id,
+                                                                          LoadingElementId = "loadingAjax"
+                                                                      }, new { @class = "edit hiddenoption" }, null)
+                                    @*به این خاطر فعلا دکمه حذف نمره داده شده را برداشتم که اشکال داشت یعنی باید نمره که حذف می شد اسس هم حذف می شد که هنوز بلد نیستم تازه باید بعدش ویویی هم که صدا می زنیم 
+                                        ویوی سابمیت نمره ندار باشد الآن ویوی سابمیت نمره دار است.*@
+                                    @*@Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Grade.Id,
+                                                              (int)UT.SL.Model.Enumeration.ObjectType.Grade, "glyphicon glyphicon-trash",
+                                                              UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course",
+                                                              new { area = "admin", objectId = Model.Grade.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Grade},
+                                                                   new AjaxOptions()
+                                                                   {
+                                                                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                                       HttpMethod = "POST",
+                                                                       //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                                       OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Grade + Model.Grade.Id + "');",
+                                                                       LoadingElementId = "ajaxLoading"
+                                                                   }, new { @class = "delete hiddenoption" }, null)*@
+                                </div>
+                                <div class="optionRight">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="gradeContentEdit@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterGradeSubmissionView" id="NewGradeFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterSubmission">
+            <div class="col-md-12" id="SubmissionFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+
+@model  ViewModels.AssignmentSubmission.NewSubmissionViewModel
+
+<div class="" id="assignmentRowThread@(Model.AssignmentSubmission.Id)" data-showeditdelete="true">
+    <div class="submissionBlock paddingIt">
+        <div id="submissionContent@(Model.AssignmentSubmission.AssignmentId)@(Model.AssignmentSubmission.Id)" class="row">
+            <div class="col-md-12 col-xs-12">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.AssignmentSubmission.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                        </td>
+                        <td>
+                            @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.AssignmentSubmission.UserId, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FirstName })
+                            -@if (!string.IsNullOrEmpty(Model.AssignmentSubmission.Body))
+                            {
+                                @Model.AssignmentSubmission.Body
+                            }
+                        </td>
+                    </tr>
+                    @if (Model.AssignmentSubmission.FileContent != null)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Html.Action("FileContentPreview", "FileAnnotation", new { area = "Admin", objectId = Model.AssignmentSubmission.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission })
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="feedDivFooter">
+                                <div class="inline">
+                                    <div class="inline feedDivLessImportant  paleIt hidden-xs">
+                                        @HelperUtils.ShowRecentTime(Model.AssignmentSubmission.CreateDate)
+                                    </div>
+                                    <div class="paleIt inline">
+                                        @if (Model.SelfAssess != null)
+                                        {
+                                            @Html.Action("AssessPreview", "Assess", new { area = "Admin", AssessValue = Model.SelfAssess.AssessValue, AssessType = (int)UT.SL.Model.Enumeration.AssessType.self })
+                                        }
+                                    </div>
+
+                                    @if (Model.AssignmentSubmission.Assignment.GetLockedAfterExpiration == null &&
+                                            Model.AssignmentSubmission.Assignment.DueDate != null &&
+                                            Model.AssignmentSubmission.CreateDate > Model.AssignmentSubmission.Assignment.DueDate)
+                                    {
+                                        <span class="label label-default label-warning">@UT.SL.Model.Resource.App_Common.Late</span>
+                                    }
+                                    <div class="inline" id="GetSpecificPanel@(Model.AssignmentSubmission.Id)">
+                                        @Html.Action("GetSpecificPanel", "AssignmentSubmission", new { area = "admin", Id = Model.AssignmentSubmission.Id })
+                                    </div>
+                                </div>
+                                <div class="optionRight">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="submissionContentEdit@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterGradeSubmissionView" id="NewGradeFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+        </div>
+        <div class="row feedDivFooterSubmission">
+            <div class="col-md-12" id="SubmissionFooter@((int) UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission )@(Model.AssignmentSubmission.Id)" style="display:none">
+            </div>
+        </div>
+    </div>
+</div>

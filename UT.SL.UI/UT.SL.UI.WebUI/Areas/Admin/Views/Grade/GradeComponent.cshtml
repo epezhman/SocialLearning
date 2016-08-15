@@ -1,0 +1,33 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  UT.SL.Data.LINQ.Grade
+
+@if (ViewBag.GradeFrom != null)
+{
+    if (Model.ObjectId != null)
+    {
+        if (UT.SL.Security.Authorization.IsAuthorized(ViewBag.CurrentUserName, Model.ObjectId, Model.ObjectType, "GradeComponent", "Grade", new { area = "admin", id = Model.ObjectId, type = Model.ObjectType, gradeFrom = ViewBag.GradeFrom }))
+        {
+            <div id="gradeDiv@(Model.ObjectId)@(Model.ObjectType)" style="display:inline-block; margin-left:2px; margin-right:2px">
+                <div style="display: inline-block;" class="paleIt">
+                    @*<div class="btn btn-default-group" style="vertical-align: auto;">*@
+                    <span class="pointercursor" data-toggle="dropdown" title="@UT.SL.Model.Resource.App_Common.Grade" style="@(Model.GradeValue.HasValue ?"font-weight:bolder" : "")"><span class="glyphicon glyphicon-check"></span> @(Model.GradeValue.HasValue ? Model.GradeValue.ToString() : "") </span>
+                    <ul class="dropdown-menu" style="list-style-type: none;" data-updatetargetid="gradeDiv@(Model.ObjectId)@(Model.ObjectType)" data-lookupurl="@Url.Action("GradeComponent", "Grade", new { area = "admin", id = Model.ObjectId, type = Model.ObjectType , gradeFrom = ViewBag.GradeFrom})">
+                        @for (int i = 0; i <= ViewBag.GradeFrom; i++)
+                        {
+                            <li class="@(Model.GradeValue == i ? "active" : "")">
+                                <a href="javascript:void(0);" class="gradeUpdater" data-gradeid="@i"><span style="margin-left: 15px">@i</span></a>
+                            </li>
+                        }
+                    </ul>
+                    @*</div>*@
+                </div>
+            </div>
+        }
+        else
+        {
+            <span> @(Model.GradeValue.HasValue ? Model.GradeValue.ToString() : "") </span>
+        }
+
+    }
+}

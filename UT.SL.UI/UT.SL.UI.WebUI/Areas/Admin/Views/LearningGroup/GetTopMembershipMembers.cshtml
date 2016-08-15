@@ -1,0 +1,37 @@
+﻿@model List<UT.SL.Data.LINQ.GroupMember>
+@{
+    int cnt = 1;
+    int skipper = 0;
+}
+<div>
+    <div class="row">
+        <div class="col-md-12 leftRight">
+            @foreach (var item in Model.Take(5))
+            {            
+                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+            }
+            @if (Model.Count() > 5)
+            { 
+                <div style="margin: 5px;">
+                    <span title="@UT.SL.Model.Resource.App_Common.More" class="showhiddendiv2 pointercursor" style="margin-top:10px"><span class="glyphicon glyphicon-arrow-down" data-changeicon="true"></span>...</span>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="hiddendiv2" style="display: none">
+        @for (int i = 0; i < Model.Skip(5).Count() / 5 + 1; i++)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    @foreach (var item in Model.Skip(5).Skip(skipper * 5).Take(5))
+                    {     
+                    
+                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                        cnt++;
+                    }
+                </div>
+            </div>
+                    skipper++;
+        }
+    </div>
+</div>

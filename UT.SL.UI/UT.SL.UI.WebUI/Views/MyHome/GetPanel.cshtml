@@ -1,0 +1,22 @@
+﻿@{
+    var filter = string.Empty;
+    if (ViewBag.Filter != null)
+    {
+        filter = ViewBag.Filter;
+    }
+}
+@if (!String.IsNullOrEmpty(filter))
+{
+    if (filter == "3")
+    {
+    @Html.Action("ManageSocialGroupsPanel", "SocialGroup", new { area = "Admin" })
+    }
+    else if (filter.StartsWith("3_"))
+    { 
+    @Html.Action("ManageOneSocialGroupsPanel", "SocialGroup", new { area = "Admin", id = filter })
+    }
+}
+else
+{
+   @Html.Action("SocialGroupsReviewPanel", "SocialGroup", new { area = "Admin" })
+}

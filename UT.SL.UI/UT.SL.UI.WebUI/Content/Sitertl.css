@@ -1,0 +1,136 @@
+﻿.rtl {
+    float: left;
+}
+
+.optionRight {
+    display: inline-block;
+    float: left;
+}
+
+.optionLeft {
+    display: inline-block;
+    float: right;
+}
+
+.ui-tabs {
+    direction: rtl;
+}
+
+    .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+    .ui-tabs .ui-tabs-nav li.ui-state-default {
+        float: right;
+    }
+
+    .ui-tabs .ui-tabs-nav li a {
+        float: right;
+    }
+
+.leftRight {
+    text-align: right;
+}
+
+label, .control-group > label, .control-group > .control-label, .control-group > .control-label > label, .control-label > label {
+    float: right !important;
+    text-align: right !important;
+}
+
+.alignCul {
+    text-align: right;
+}
+
+.searchFormHeader {
+    text-align: center;
+    margin-right: 170px;
+}
+
+#navigationPanel {
+    right: 0;
+}
+
+.whatsup:before {
+    right: 24px;
+}
+
+.whatsup:after {
+    right: 24px;
+}
+
+.leftOne {
+    float: right;
+    text-align: right;
+}
+
+.rightOne {
+    float: left;
+    text-align: left;
+}
+
+.innerP {
+    left: -5px;
+}
+
+.innerPT {
+    left: -5px;
+}
+
+.innerP2 {
+    left: -5px;
+}
+
+.innerP2T {
+    left: -5px;
+}
+
+.inner1 {
+    border-left: 5px solid #06DCFB;
+}
+
+.inner2 {
+    border-left: 5px solid #24E0FB;
+}
+
+.inner3 {
+    border-left: 5px solid #3DE4FC;
+}
+
+.inner4 {
+    border-left: 5px solid #63E9FC;
+}
+
+.inner5 {
+    border-left: 5px solid #75ECFD;
+}
+
+.inner1T {
+    border-left: 5px solid #03EBA6;
+}
+
+.inner2T {
+    border-left: 5px solid #03F3AB;
+}
+
+.inner3T {
+    border-left: 5px solid #33FDC0;
+}
+
+.inner4T {
+    border-left: 5px solid #62FDCE;
+}
+
+.inner5T {
+    border-left: 5px solid #7DFDD7;
+}
+
+.paddingSides {
+    padding-left: 5px;
+}
+
+.notif-info-parent {
+    margin-left: -20px;
+}
+
+.notif-menu {
+    right: auto;
+    left: 0;
+    float: right;
+}

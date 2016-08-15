@@ -1,0 +1,47 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model List<UT.SL.Data.LINQ.TagMapper>
+
+@if (Model.Any())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="inline">
+                @foreach (var item in Model)
+                {
+                    var tempTag = String.Empty;
+                    if (item.Tag.Category != null)
+                    {
+                        if (item.Tag.Category.Category1 != null)
+                        {
+                            tempTag += item.Tag.Category.Category1.Title + "-";
+                        }
+                        tempTag += item.Tag.Category.Title + "-";
+                    }
+                    tempTag += item.Tag.Title;                                       
+                    <div class="tagHover inline">
+                        <div class="inline">
+                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.TagMapper, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteTagMapper", "TagMapper", new { area = "Admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = (ViewBag.TagType == 0 || ViewBag.TagType == null) ? "updateTagCountResourceAfterDelete" : "updateTagCountResourceType2AfterDelete",                       
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete" }, null)
+
+                        </div>                        
+                        <div class="inline ">
+                            <span class="label label-default label-info">@tempTag</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{ 
+    <span></span>
+}

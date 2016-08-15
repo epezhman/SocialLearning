@@ -1,0 +1,104 @@
+﻿@using UT.SL.Helper
+@model UT.SL.Data.LINQ.App_User
+
+<div class="" id="toupdate">
+    <div class="form-horizontal">
+        <h2>@UT.SL.Model.Resource.App_Common.MyAccount</h2>
+        <div class="form-group">
+            <div class="control-label col-sm-3">@Html.LabelFor(model => model.FirstName)</div>
+            <div class="col-sm-9 readonly paddingTop7">
+                @Html.DisplayFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-3">@Html.LabelFor(model => model.LastName)</div>
+            <div class="col-sm-9 readonly paddingTop7">
+                @Html.DisplayFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-3">@Html.LabelFor(model => model.UserName)</div>
+            <div class="col-sm-9 readonly paddingTop7">
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+
+        </div>
+        @if (Model.UserName == HttpContext.Current.User.Identity.Name)
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.Email)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+            </div>
+        }
+        @if (Model.IsAdmin)
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.IsAdmin)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @HelperUtils.IfWrite(Model.IsAdmin)
+                </div>
+            </div>
+        }
+        @*<div class="form-group">
+                <label class="control-label" for="">@Html.LabelFor(model => model.Language)</label>
+                <div class="controls readonly">
+                    @Html.DisplayFor(model => model.Language)
+                </div>
+            </div>*@
+        @if (ViewBag.ShowAccountOptions != null)
+        {
+
+            <div class="inline">
+                <div class="inline">
+                    @Ajax.ActionLink(UT.SL.Model.Resource.App_Common.EditAccount, "EditAccount", "App_User", new { area = "admin", Id = Model.GuidId },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.EditMyAccount + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "btn btn-default" })
+                </div>
+                <div class="inline">
+                    @Ajax.ActionLink(@UT.SL.Model.Resource.App_Common.ChangePassword, "ChangePassword", "App_User", new { area = "admin" },
+                        new AjaxOptions
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "dialog",
+                                OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.ChangePassword + "') ",
+                                LoadingElementId = "loadingAjax"
+                            }, new { @class = "btn btn-default" })
+                </div>
+                <div class="inline">
+                    @Ajax.ActionLink(@UT.SL.Model.Resource.App_Common.ChangeEmail, "ChangeEmail", "App_User", new { area = "admin" },
+                        new AjaxOptions
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "dialog",
+                                OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.ChangeEmail + "') ",
+                                LoadingElementId = "loadingAjax"
+                            }, new { @class = "btn btn-default" })
+                </div>
+                <div class="inline">
+                    @Ajax.ActionLink(@UT.SL.Model.Resource.App_Common.DeleteAccount, "DeleteAccount", "App_User", new { area = "admin" },
+                        new AjaxOptions
+                            {
+                                HttpMethod = "GET",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "dialog",
+                                OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.DeleteAccount + "') ",
+                                LoadingElementId = "loadingAjax"
+                            }, new { @class = "btn btn-default" })
+                </div>
+
+            </div>
+        }
+
+
+    </div>
+</div>

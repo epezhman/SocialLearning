@@ -1,0 +1,41 @@
+﻿@using UT.SL.Security
+@model UT.SL.Data.LINQ.LearningGroup
+<div>
+    <div class="row">
+        <div class="col-md-9 boldAndLarger">
+            <span>
+                @UT.SL.Model.Resource.App_Common.In @Model.Title :
+            </span>
+        </div>
+        <div class="col-md-3">
+            <span class="glyphicon glyphicon-trash droppableItem hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.DragAndDropHereToDelete"></span>
+            <span class="glyphicon glyphicon-backward backToGroups hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.Back"></span>
+        </div>
+    </div>
+    <div id="membersInGroupEdit">
+        @Html.Action("GetMembersForManageForPanel", new { Id = Model.Id })
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("AddMemberPanel", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "UpdateLearningGroupMemebrsSections(" + Model.Id + ")"
+}, new { data_toSubmit = "true" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="text" name="Member" id="Member@(Model.Id)" data-lookupurl="@Url.Action("GetUsers", "LearningGroup", new { area = "Admin", groupId = Model.Id })" data-autocompletewithpics="true" placeholder="@UT.SL.Model.Resource.App_Common.AddUser"  style="width:80%"/>
+                @Html.HiddenFor(model => model.Id)
+                <input type="hidden" name="GroupeId" value="@Model.Id" />
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.InitialComponents();
+        DragDrop( "@Url.Action("RemoveMemberByPanel", "LearningGroup", new { area = "Admin" })",@Model.Id , 2 , 0);
+    });
+</script>

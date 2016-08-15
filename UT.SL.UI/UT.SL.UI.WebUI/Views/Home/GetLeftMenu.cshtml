@@ -1,0 +1,89 @@
+﻿<div class="panel-group sidebar-nav marginTop45">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.MyHome)" href="@Url.Action("Index", "MyHome", new { area = "" })">
+                <span class="glyphicon glyphicon-home"></span> @UT.SL.Model.Resource.App_Common.MyHome
+            </a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.MyCourses)" data-toggle="collapse" data-parent="#accordion2" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.MyCourses)">
+                <span class="glyphicon glyphicon-book"></span> @UT.SL.Model.Resource.App_Common.MyCourses
+            </a>
+        </div>
+        <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.MyCourses)" class="panel-collapse collapse">
+            <div class="panel-body">
+                @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.MyCourses })
+            </div>
+        </div>
+    </div>
+
+
+
+    @*@Html.Action("GetMenuIfPossible", "Survey", new { area="Admin"})*@    
+
+
+
+
+    @*<div class="panel panel-default">
+        <div class="panel-heading">
+            <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.Calendar)" data-toggle="collapse" data-parent="#accordion3" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.Calendar)">
+                <span class="glyphicon glyphicon-calendar"></span> @UT.SL.Model.Resource.App_Common.Calendar
+            </a>
+        </div>
+        <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.Calendar)" class="panel-collapse collapse">
+            <div class="panel-body">
+                @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.Calendar })
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <a  id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.Messages)"  data-toggle="collapse" data-parent="#accordion4" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.Messages)"><span class="glyphicon glyphicon-envelope"></span> @UT.SL.Model.Resource.App_Common.Messages
+                </a>
+            </div>
+            <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.Messages)" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.Messages })
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.Notifications)"  data-toggle="collapse" data-parent="#accordion5" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.Notifications)"><span class="glyphicon glyphicon-bell"></span> @UT.SL.Model.Resource.App_Common.Notifications
+                </a>
+            </div>
+            <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.Notifications)" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.Notifications })
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.User)"  data-toggle="collapse" data-parent="#accordion6" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.User)"><span class="glyphicon glyphicon-user"></span> @UT.SL.Model.Resource.App_Common.User
+                </a>
+            </div>
+            <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.User)" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.User })
+                </div>
+            </div>
+        </div>*@
+    @if (ViewBag.Admin)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a id="headerLink@((int)UT.SL.Model.Enumeration.MenuType.Admin)" data-toggle="collapse" data-parent="#accordion7" href="#Div@((int)UT.SL.Model.Enumeration.MenuType.Admin)">
+                    <span class="glyphicon glyphicon-cog"></span> @UT.SL.Model.Resource.App_Common.AdminStuff
+                </a>
+            </div>
+            <div id="Div@((int)UT.SL.Model.Enumeration.MenuType.Admin)" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @Html.Action("GetLinks", new { Type = (int)UT.SL.Model.Enumeration.MenuType.Admin })
+                </div>
+            </div>
+        </div>
+    }
+</div>

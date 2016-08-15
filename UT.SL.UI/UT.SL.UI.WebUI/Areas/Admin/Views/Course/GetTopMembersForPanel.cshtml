@@ -1,0 +1,36 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model  List<UT.SL.Data.LINQ.App_UserEnrolement>
+<div style="display: inline-block">
+    <div style="display: inline-block">
+        @foreach (var item in Model.Take(3))
+        {
+            <div class="inline">
+                <div class="inline">
+                    @if (ViewBag.Teacher)
+                    {
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.UserEnrolement, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.Portfolio, "UserPortfolio", "Course", new { area = "Admin", courseId = item.CourseId, userId = item.App_User.GuidId },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "userPortfolio",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "" }, null)
+                    }
+                </div>
+                <div class="inline">
+                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                </div>
+            </div>
+        }
+
+    </div>
+    @if (Model.Count() > 3)
+    {
+        <div style="display: inline-block">
+            <span >...</span>
+        </div>
+    }
+</div>

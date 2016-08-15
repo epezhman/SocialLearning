@@ -1,0 +1,20 @@
+﻿@model UT.SL.Model.AddLearningGroupMemberModel
+@using (Ajax.BeginForm("AddMember", "LearningGroup", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "Learningmembers" + Model.GroupeId,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "$('#Member" + Model.GroupeId + "').val('');$('#submitLearningForm').submit();"
+}, new { data_toSubmit = "true" }))
+{ 
+    @Html.AntiForgeryToken()  
+    @Html.ValidationSummary(true)      
+    <div class="col-md-2">
+        @UT.SL.Model.Resource.App_Common.Member 
+    </div>
+    <div class="col-md-9">
+        <input type="text" name="Member" id="Member@(Model.GroupeId)" data-lookupurl ="@Url.Action("GetUsers", "LearningGroup", new { area = "Admin", groupId = Model.GroupeId })" data-autocompletewithpics = "true" class="col-md-12"/>
+        @Html.HiddenFor(model => model.GroupeId)
+    </div>                
+}

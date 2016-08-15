@@ -1,0 +1,188 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.Forum
+<div class="row contentLoad resourceRow@(Model.Id)" id="resourceRow@((int)UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)" style="@( (ViewBag.Show != null || ViewBag.LastCheckDate != null) ? "display:none;" : "")" @(  ViewBag.LastCheckDate != null ? "data-hiddennewpost" : "") data-showonwhole="true">
+    <div class="col-md-12">
+        <div class="onEdge" data-showonedge="true">
+            <div class="feedDivFooterTags tagsOnEdgeConteiner">
+                @Html.Action("TopTopics", "TagMapper", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum, viewType = 2 })
+            </div>
+        </div>
+        <div class="feedDiv">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="widePic">
+                            <tr>
+                                <td>
+                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.CreateUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Medium })
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="inline">
+                                                <div class="inline">
+                                                    <span class="glyphicon glyphicon-comment"></span>&nbsp;
+                                                    <strong>
+                                                        @if (!string.IsNullOrEmpty(Model.Title))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @Model.Title
+                                                            </a>
+                                                        }
+                                                        else if (!string.IsNullOrEmpty(Model.Body))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @HelperUtils.ShortenStringForPreview(Model.Body, string.Empty, string.Empty).ToString()
+                                                            </a>
+                                                        }
+                                                        else if (!string.IsNullOrEmpty(Model.FileTitle))
+                                                        {
+                                                            <a class="" data-togglecontent="true" href="javascript:void(0);">
+                                                                @Model.FileTitle
+                                                            </a>
+                                                        }
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span class="feedDivLessImportant">
+                                                @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.CreateUserId, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                                                @Html.Action("FindViaWhatItWasShared", "Share", new { area = "Admin", objectId = Model.Id, objectType = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                                @if (ViewBag.IsEdited != null)
+                                                {
+                                                    <span class="label label-default" style="padding:3px"> @UT.SL.Model.Resource.App_Common.Edited</span>
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" data-showeditdelete="true">
+                    <div class="col-md-12">
+                        <div class="feedDivContent wideIt" id="forumContent@(Model.Id)">
+                            <div class="paddingIt">
+                                @if (!string.IsNullOrEmpty(Model.Body))
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @HelperUtils.ShortenBody(Model.Body)
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.FileContent != null)
+                                {
+                                    @Html.Action("FileContentPreview", "FileAnnotation", new { area = "Admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                }
+                                <div class="row">
+                                    <div class="col-md-12" id="TagsFooter@((int)UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)">
+                                        @Html.Action("TopOnlyTags", "TagMapper", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="forumContentEdit@(Model.Id)" style="display:none">
+
+                </div>
+                <div class="wideIt">
+                    <div class="row" data-showeditdelete="true">
+                        <div class="col-md-12">
+                            <div class="feedDivFooter">
+                                <div class="optionLeft">
+                                    <div class="inline">
+                                        <div class="inline">
+                                            <span class="feedDivLessImportant  paleIt">
+                                                @HelperUtils.ShowRecentTime(Model.CreateDate.Value)
+                                            </span>
+                                        </div>
+                                        <div class="inline">
+                                            @if (Model.GradeFrom.HasValue)
+                                            {
+                                                <div class="paleIt" style="display: inline-block; margin-left: 2px; margin-right: 2px; margin-bottom:5px;">
+                                                    <span class="badge badge-info" data-toggle="tooltip" title="@String.Format(UT.SL.Model.Resource.App_Common.GradeFrom, Model.GradeFrom)">@Model.GradeFrom</span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="paleIt" style="display: inline-block; margin-left: 2px; margin-right: 2px; margin-bottom: 5px;">
+                                                    <span class="badge badge-info" data-toggle="tooltip" title="@String.Format(UT.SL.Model.Resource.App_Common.NoGrade)">i</span>
+                                                </div>
+                                            }
+                                            <div class="inline">
+                                                <div class="inline" id="addDiscCnt@(Model.Id)">
+                                                    @Html.Action("AddDiscussion", "ForumDiscussion", new { area = "admin", Id = Model.Id })
+                                                </div>
+                                                @*@Html.Action("ShareComponentResource", "Share", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })*@
+                                                @if (Model.CourseId > 0)
+                                                {
+                                                    @Html.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                                }
+                                                else
+                                                {
+                                                    @Html.Action("VoteComponent", "VoteParent", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                                }
+                                                @Html.Action("TagComponentResource", "TagMapper", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Forum })
+                                            </div>
+                                            <div class="inline">
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.Forum, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditForum", "Forum", new { area = "admin", objectId = Model.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Forum },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                InsertionMode = InsertionMode.Replace,
+                                                UpdateTargetId = "forumContentEdit" + Model.Id,
+                                                OnSuccess = " showEditSection('forumContent" + Model.Id + "','forumContentEdit" + Model.Id + "')",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "edit hiddenoption" }, null)
+                                            </div>
+                                            <div class="inline">
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.Forum, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = Model.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.Forum },
+                                            new AjaxOptions()
+                                            {
+                                                Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                                HttpMethod = "POST",
+                                                //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                                                OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.Forum + Model.Id + "');",
+                                                LoadingElementId = "loadingAjax"
+                                            }, new { @class = "delete hiddenoption" }, null)
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="optionRight">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row feedDivFooterShareView" id="ShareFooter@((int) UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterTagView" id="TagViewFooter@((int) UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterImageView" id="ImageViewFooter@((int) UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterNewDiscussionView" id="NewDiscussionViewFooter@((int) UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)" style="display:none">
+                    </div>
+                    <div class="row feedDivFooterDiscusstion">
+                        <div class="col-md-12" id="DiscussionFooter@((int) UT.SL.Model.Enumeration.ObjectType.Forum)@(Model.Id)">
+                            @if (ViewBag.clickedDate != null)
+                            {
+                                @Html.Action("DiscussionThread", "Forum", new { area = "admin", id = Model.Id, clickedDate = ViewBag.clickedDate })
+                            }
+                            else
+                            {
+                                @Html.Action("DiscussionThread", "Forum", new { area = "admin", id = Model.Id })
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

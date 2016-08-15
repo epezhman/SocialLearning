@@ -1,0 +1,64 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Model.ShareModel, UT.SL.Model.ObjectViewModel>
+<div class="">
+    @using (Ajax.BeginForm("Share", "Share", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SubmitResultShare",
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="" id="SubmitResultShare">
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.ExtraKnownData.Title)</label>
+            <div class="col-sm-9">
+                @Html.DisplayFor(model => model.ExtraKnownData.Title)
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.SocialGroup)</label>
+            <div class="col-sm-9">
+                @Html.ListBoxFor(model => model.FormObject.SocialGroup.SelectedIds, Model.FormObject.SocialGroup.Items, new { data_multiselect = "true", style = "width:80%" })
+                @Html.ValidationMessageFor(model => model.FormObject.SocialGroup)
+            </div>
+        </div>
+        if ((Model.ExtraKnownData.Type == 1 || Model.ExtraKnownData.Type == 2) && Model.ExtraKnownData.CourseId > 0)
+        {
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.LearningGroup)</label>
+                <div class="col-md-9">
+                    @Html.ListBoxFor(model => model.FormObject.LearningGroup.SelectedIds, Model.FormObject.LearningGroup.Items, new { data_multiselect = "true", style = "width:80%" })
+                    @Html.ValidationMessageFor(model => model.FormObject.LearningGroup)
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">@Html.LabelFor(model => model.FormObject.ShareUserIds)</label>
+            <div class="col-md-9">
+                @Html.TextBoxFor(model => model.FormObject.ShareUserIds, new { data_lookupurl = Url.Action("GetUsers", "App_User", new { area = "Admin" }), data_autocompletemultiplewithpics = "true", style = "width:80%" })
+                @Html.ValidationMessageFor(model => model.FormObject.ShareUserIds)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="submit" class="btn btn-primary submit" />
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                    @Html.HiddenFor(model => model.ExtraKnownData.Id)
+                    @Html.HiddenFor(model => model.ExtraKnownData.Type)
+                </div>
+            </div>
+        </div>
+    }
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

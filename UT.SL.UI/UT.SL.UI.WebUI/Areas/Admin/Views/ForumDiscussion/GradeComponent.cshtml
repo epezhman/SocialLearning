@@ -1,0 +1,43 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Data.LINQ.ForumDiscussionPostsGrade, UT.SL.Data.LINQ.Forum>
+
+@if (Model.ExtraKnownData.GradeFrom != null)
+{
+    if (Model.FormObject.discussionId.HasValue)
+    {
+        <div id="gradeDiv@(Model.FormObject.Id)@((int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)" style="display:inline-block; margin-left:2px; margin-right:2px">
+            <div style="display: inline-block;" class="paleIt">
+                @*<div class="btn btn-default-group" style="vertical-align: auto;">*@
+                    <span class="pointercursor" data-toggle="dropdown" title="@UT.SL.Model.Resource.App_Common.Grade" style="@(Model.FormObject.grade.HasValue ?"font-weight:bolder" : "")"><span class="glyphicon glyphicon-check"></span> @(Model.FormObject.grade.HasValue ? Model.FormObject.grade.ToString() : "") </span>
+                    <ul class="dropdown-menu" style="list-style-type: none;" data-updatetargetid="gradeDiv@(Model.FormObject.Id)@((int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)" data-lookupurl="@Url.Action("GradeComponent", "ForumDiscussion", new { area = "admin", id = Model.FormObject.discussionId, type = (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion })">
+                        @for (int i = 0; i <= Model.ExtraKnownData.GradeFrom; i++)
+                        {
+                            <li class="@(Model.FormObject.grade == i ? "active" : "")">
+                                <a href="javascript:void(0);" class="gradeUpdater" data-gradeid="@i"><span style="margin-left: 15px">@i</span></a>
+                            </li>
+                        }
+                    </ul>
+                @*</div>*@
+            </div>
+        </div>
+    }
+    else if (Model.FormObject.postId.HasValue)
+    {
+        <div id="gradeDiv@(Model.FormObject.Id)@((int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost)" style="display:inline-block; margin-left:3px; margin-right:3px">
+            <div style="display: inline-block;" class="paleIt">
+                @*<div class="btn btn-default-group" style="vertical-align: auto;">*@
+                    <span class="pointercursor" data-toggle="dropdown" title="@UT.SL.Model.Resource.App_Common.Grade" style="@(Model.FormObject.grade.HasValue ?"font-weight:bolder" : "")"><span class="glyphicon glyphicon-check"></span> @(Model.FormObject.grade.HasValue ? Model.FormObject.grade.ToString() : "") </span>
+                    <ul class="dropdown-menu" style="list-style-type: none;" data-updatetargetid="gradeDiv@(Model.FormObject.Id)@((int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost)" data-lookupurl="@Url.Action("GradeComponent", "ForumDiscussion", new { area = "admin", id = Model.FormObject.postId , type =(int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost  })">
+                        @for (int i = 0; i <= Model.ExtraKnownData.GradeFrom; i++)
+                        {
+                            <li class="@(Model.FormObject.grade == i ? "active" : "")">
+                                <a href="javascript:void(0);" class="gradeUpdater" data-gradeid="@i"><span style="margin-left: 15px">@i</span></a>
+                            </li>
+                        }
+                    </ul>
+                @*</div>*@
+            </div>
+        </div>
+    }
+}

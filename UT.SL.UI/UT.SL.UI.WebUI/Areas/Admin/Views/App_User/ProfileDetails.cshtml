@@ -1,0 +1,69 @@
+﻿@using UT.SL.Helper
+@model UT.SL.Data.LINQ.App_UserInfo
+
+<div class="" id="">
+    <div class="form-horizontal">
+        @if (Model.Title.HasValue && Model.Title.Value > 0)
+        {
+            <h2>@string.Format("{0} {1} {2}'s {3}", ((UT.SL.Model.Enumeration.PersonTitleType)Model.Title.Value).ToString(), Model.App_User.FirstName, Model.App_User.LastName, UT.SL.Model.Resource.App_Common.Profile)</h2>
+        }
+        else
+        {
+            <h2>@string.Format("{0} {1}'s {2}", Model.App_User.FirstName, Model.App_User.LastName, UT.SL.Model.Resource.App_Common.Profile)</h2>
+        }
+        @if (!string.IsNullOrEmpty(Model.Occupation))
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.Occupation)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.Occupation)
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.BSin))
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.BSin)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.BSin)
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.MSin))
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.MSin)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.MSin)
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.PHDin))
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.PHDin)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.PHDin)
+                </div>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.About))
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.About)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @Html.DisplayFor(model => model.About)
+                </div>
+            </div>
+        }
+        @if (Model.BirsthDate.HasValue)
+        {
+            <div class="form-group">
+                <div class="control-label col-sm-3">@Html.LabelFor(model => model.BirsthDate)</div>
+                <div class="col-sm-9 readonly paddingTop7">
+                    @HelperUtils.LocalizedDate(Model.BirsthDate)
+                </div>
+            </div>
+        }
+    </div>
+</div>

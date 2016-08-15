@@ -1,0 +1,86 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  List<UT.SL.Data.LINQ.ForumDiscussion>
+
+@if (Model.Count() < 4)
+{
+    for (int i = 0; i < Model.Count(); i++)
+    {    
+            if (ViewBag.clickedDate != null)
+            {
+                @Html.Action("GetOneForumDiscussion", "Forum", new { area = "admin", id = Model[i].Id, clickedDate = ViewBag.clickedDate })
+            }
+            else
+            {
+                @Html.Partial("GetOneForumDiscussion", Model[i])
+            }  
+    }
+}
+else
+{
+        if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneForumDiscussion", "Forum", new { area = "admin", id = Model[0].Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneForumDiscussion", Model[0])
+        }
+    
+ 
+       if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneForumDiscussion", "Forum", new { area = "admin", id = Model[1].Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneForumDiscussion", Model[1])
+        }
+  
+    for (int i = 2; i < Model.Count() - 1; i++)
+    {
+        <div class="discussiontHiddenBlockDiv" style="display:none">
+           
+                @if (ViewBag.clickedDate != null)
+                {
+                    @Html.Action("GetOneForumDiscussion", "Forum", new { area = "admin", id = Model[i].Id, clickedDate = ViewBag.clickedDate })
+                }
+                else
+                {
+                    @Html.Partial("GetOneForumDiscussion", Model[i])
+                }
+            
+        </div>
+    }
+    @*<div class="row showDiscussions discussionHiddenBlockShowContain">
+            <div class="col-md-12">
+                <div class="discussionBlock paddingIt">
+                    <span class="discussionHiddenBlockShowItems glyColor"><span class="glyphicon glyphicon-arrow-down"></span>@String.Format(UT.SL.Model.Resource.App_Common.ShowMoreDiscussions, Model.Count - 2)</span>
+                </div>
+            </div>
+        </div>*@
+    <div class="discussionBlock showDiscussions discussionHiddenBlockShowContain paddingIt">
+        <span class="discussionHiddenBlockShow glyColor"><span class="glyphicon glyphicon-arrow-down"></span> @String.Format(UT.SL.Model.Resource.App_Common.ShowMoreDiscussions, Model.Count - 3)</span>
+    </div>
+
+    if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneForumDiscussion", "Forum", new { area = "admin", id = Model[Model.Count() - 1].Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneForumDiscussion", Model[Model.Count() - 1])
+        }
+   
+    @*<div class="row showDiscussions discussionHiddenBlockHideContain" style="display: none">
+            <div class="col-md-12">
+                <div class="discussionBlock paddingIt">
+                    <span class="discussionHiddenBlockHideItems glyColor"><span class="glyphicon glyphicon-arrow-up"></span>@UT.SL.Model.Resource.App_Common.ShowFewerDiscussions</span>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="discussionBlock showDiscussions discussionHiddenBlockHideContain  paddingIt" style="display: none">
+        <span class="discussionHiddenBlockHide glyColor"><span class="glyphicon glyphicon-arrow-up"></span> @UT.SL.Model.Resource.App_Common.ShowFewerDiscussions</span>
+    </div>
+}

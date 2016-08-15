@@ -1,0 +1,34 @@
+﻿@model List<UT.SL.Model.ObjectViewModelList>
+@{
+    ViewBag.Title = "Index2";
+}
+
+@foreach (var item in Model)
+{
+    foreach (var resc in item.ObjectViewModels)
+    {
+
+
+        using (
+        Ajax.BeginForm("NewBody", "Test", new { area = "SandBox" }, new AjaxOptions()
+{
+    HttpMethod = "POST"
+}, new { @class = "form-horizontal" }))
+        {
+
+            <div class="row-fluid feedDiv">
+                <div class="span4">
+                    <input type="text" value="@resc.Body" name="Body" />
+                </div>
+                <div class="span2 hidden-phone">
+                    @Html.Action("BadgetViewer", "Test", new { area = "SandBox", id = resc.BadgetTitle })
+                </div>
+                <div class="span2">
+                    <input type="submit" value="Subm" class="btn" />
+                    <input type="hidden" value="@resc.Id" name="Id" />
+                </div>
+            </div>
+
+        }
+    }
+}

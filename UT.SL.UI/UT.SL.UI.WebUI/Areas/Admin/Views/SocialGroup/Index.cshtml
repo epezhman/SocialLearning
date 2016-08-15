@@ -1,0 +1,52 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.SocialGroupSearchModel
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.SocialGroups;    
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.SocialGroup, extra = 0})
+}
+
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@UT.SL.Model.Resource.App_Common.SocialGroups</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.Create, "Create", "SocialGroup", new { area = "Admin" },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "dialog",
+                                             OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.CreateNewGroup + "') ",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default" })
+            @using (Ajax.BeginForm("IX", new { }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "ResultList",
+                         LoadingElementId = "loadingAjax",
+                         HttpMethod = "Get",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "searchForm", @class = "form-horizontal" }))
+            {
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="ResultList">
+                @Html.Action("IX", Model)
+            </div>
+        </div>
+    </div>
+</div>

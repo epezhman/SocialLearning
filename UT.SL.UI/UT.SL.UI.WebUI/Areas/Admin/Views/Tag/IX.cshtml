@@ -1,0 +1,193 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model PagedList<UT.SL.Data.LINQ.Tag>
+@{
+    int i = Model.PagingItem.PageIndex * Model.PagingItem.PageSize;
+    PagingItems sobj = Model.PagingItem;
+    int ix = sobj.PageIndex;
+}
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    @(UT.SL.Model.Resource.Tag.UserName)
+                </th>
+                <th>
+                    @(UT.SL.Model.Resource.Tag.Titile)
+                </th>
+                <th>
+                    @(UT.SL.Model.Resource.App_Common.Subject)
+                </th>
+                <th>
+                    @(UT.SL.Model.Resource.App_Common.Category)
+                </th>
+                <th>
+                    @(UT.SL.Model.Resource.Tag.IsValid)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="art_ls">
+            @foreach (var item in Model)
+            {
+                i++;
+                int j = 0;
+                <tr>
+                    <td>
+                        @(i)
+                    </td>
+                    <td>
+                        @item.App_User.UserName 
+                    </td>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @if (item.CategoryId != null)
+                        {
+                            @item.Category.Title
+                        }
+                    </td>
+                    <td>
+                        @if (item.CategoryId != null)
+                        {
+                            if (item.Category.Category1 != null)
+                            {
+                                @item.Category.Category1.Title
+                            }
+                        }
+                    </td>
+                    <td>
+                        <div id="tagIsVerified@(item.Id)">
+                            @HelperUtils.IfWriteBootstrap(item.IsValid)
+                            @if (!item.IsValid)
+                            {
+                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Tag, "glyphicon glyphicon-ok", UT.SL.Model.Resource.App_Common.Confirm, "Confirm", "Tag", new { area = "Admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "tagIsVerified" + item.Id,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "confirm" }, null)
+                            }
+                        </div>
+                    </td>
+                    <td align="center">
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Tag, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "Edit", "Tag", new { area = "Admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.EditPage + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit" }, null)
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Tag, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "Delete", "Tag", new { area = "Admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.DeletePage + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete" }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <span>@UT.SL.Model.Resource.App_Common.NumOfAll : @Model.PagingItem.TotalItemCount</span>
+
+                    @UT.SL.Model.Resource.App_Common.Page @(ix + 1)
+                    @UT.SL.Model.Resource.App_Common.From @Model.PagingItem.TotalPageCount
+                </td>
+                <td colspan="8">
+                    <div class="divHeight30">
+                        <ul class="pagination pagination-sm marginPaging" >
+                            @{
+                                var start = ix;
+                                if (start > 0)
+                                {
+                                    int c = 0;
+                                    while (start > 0 && c < 4)
+                                    {
+                                        c++;
+                                        start--;
+                                    }
+                                }
+                                if (ix != 0)
+                                {
+                                    sobj.PageIndex = 0;
+                                    <li>
+                                        @Ajax.ActionLink("<< ", "IX", "Tag", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax",
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"
+                            }
+                            , new { id = "First" })
+                                    </li>
+                                }
+                                for (int j = start; j < Model.PagingItem.TotalPageCount && j < start + 10; j++)
+                                {
+                                    if (ix != j)
+                                    {
+                                        sobj.PageIndex = j;
+                                        <li>
+                                            @Ajax.ActionLink((j + 1).ToString(), "IX", "Tag", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax",
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"
+                            }
+                            , new { })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="active"><a href="javascript:void(0);">@(j + 1)</a> </li>
+                                    }
+                                }
+                                if (start + 9 < Model.PagingItem.TotalPageCount)
+                                {
+                                    <li>
+                                        @Ajax.ActionLink(" >>", "IX", "Tag", sobj,
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "ResultList",
+                                HttpMethod = "post",
+                                InsertionMode = InsertionMode.Replace,
+                                LoadingElementId = "loadingAjax",
+                                OnBegin = "$('#searchHiddenInfo > #PageIndex').val('" + sobj.PageIndex + "')"
+
+                            }
+                            , new { id = "Last" })
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script>
+    $(function () {
+        $.InitialComponents();
+    });
+</script>

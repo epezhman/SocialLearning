@@ -1,0 +1,89 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Forum, List<SelectListItems>>
+
+<div class="parentDiv">
+    @using (Ajax.BeginForm("PostForum", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "updateCourseForum"
+}, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group alignCul">
+            <div class="col-sm-1">@Html.Action("GetUserPic", "App_User", new { area = "admin", Id = ViewBag.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Large })</div>
+            <div class="col-sm-11">
+                @Html.TextBoxFor(model => model.FormObject.Title, new { @class = "form-control", placeholder = UT.SL.Model.Resource.App_Common.EnterTitleHere })
+                @Html.ValidationMessageFor(model => model.FormObject.Title)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Body</label>
+            <div class="col-sm-11">
+                @Html.TextAreaFor(model => model.FormObject.Body, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FormObject.Body)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Attach</label>
+            <div class="col-sm-11">
+                <input name="forumFile" id="forumFile" type="file" data-kendouploader="true" data-saveurl="@(Url.Action("SaveForumFile", "Forum", new { area = "admin", Id = Model.FormObject.CourseId }))" data-deleteurl="@(Url.Action("RemoveForumFile", "Forum", new { area = "admin" }))" data-updateid="forumId" />
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Topics</label>
+            <div class="col-sm-11">
+                @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.First().SelectedIds, Model.ExtraKnownData.First().Items, "topicIds", null)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.To</label>
+            <div class="col-sm-11">
+                @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.Last().SelectedIds, Model.ExtraKnownData.Last().Items, "groupIds", UT.SL.Model.Resource.App_Common.ChooseLearningGroups)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.DueDate</label>
+            <div class="col-sm-11">
+                @Html.TextBoxFor(model => model.FormObject.DueDate, new { data_datetime = "true", @class = "dateWidth form-control", id = "forumDueDate" })
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <div class="col-md-offset-1 col-md-11">
+                <label class="labelAlign">
+                    <input id="FormObject_GetLockedAfterExpiration_Value" type="checkbox" value="true" name="FormObject.GetLockedAfterExpiration" class="checkBoxAlign">
+                    @UT.SL.Model.Resource.Forum.GetLockedAfterExpiration
+                </label>
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <div class="col-md-offset-1 col-md-11">
+                <label class="labelAlign">
+                    <input type="checkbox" id="gradeChanger" class="checkBoxAlign" />
+                    @UT.SL.Model.Resource.App_Common.GradeFrom
+                </label>
+                @Html.TextBoxFor(model => model.FormObject.GradeFrom, new { data_num = "number", disabled = "disabled", style = "margin-right:5px; margin-left:5px;" })
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <div class="col-md-offset-1 col-md-11">
+                <div class="">
+                    <button class="btn btn-primary submit" type="submit" id="forumPostSubmit" data-hidekendoupload="true">@UT.SL.Model.Resource.App_Common.Submit</button>
+                    <div class="btn btn-default cancelClick deleteFileOnCancel" data-show="postTemplate" data-hide="postForumTemplate" data-toggleclass="mainPortal" data-hideit="true">@UT.SL.Model.Resource.App_Common.Cancel</div>
+                </div>
+                <input name="FormObject.Id" id="forumId" type="hidden" data-resetonpost="true" value="" class="fileId" />
+                <input id="resourceUpdateUrl" type="hidden" value="@Url.Action("GetOneResource", "Course", new { area = "admin" })" />
+                @Html.HiddenFor(model => model.FormObject.CourseId)
+            </div>
+        </div>
+
+    }
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { data_antiforgery = "true" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+</div>

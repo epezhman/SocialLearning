@@ -1,0 +1,156 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Course, SelectListItems>
+@{
+    var summry = (UT.SL.Model.CourseSummaryModel)Model.ExtraData.Last();
+}
+<div class="utwell" data-showeditdelete="true">
+    <div class="row boldAndMedium">
+        <div class="col-md-12">
+            <div class="inline">
+                <div class="inline">
+                    @if (Model.FormObject.ImageData != null)
+                    {
+                        <div id="">
+                            <img class="categoryPic img-thumbnail" src="@Url.Action("ViewImage", "Course", new { area = "admin", id = Model.FormObject.Id })" alt="" />
+                        </div>
+                    }
+                </div>
+                <div class="inline">
+                    @if (!string.IsNullOrEmpty(Model.FormObject.UniversityTitle))
+                    {
+                        <span>
+                            @Model.FormObject.UniversityTitle -
+                        </span>
+                    }
+                </div>
+                <div class="inline">
+                    <span>
+                        @Model.FormObject.Title:
+                    </span>
+                </div>
+                <div class="inline paleIt" style="font-weight:normal !important;">
+                    @HelperUtils.LocalizedDate(Model.FormObject.StartDate) - @HelperUtils.LocalizedDate(Model.FormObject.EndDate)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row bold">
+        <div class="col-md-2">
+            <span>
+                @UT.SL.Model.Resource.App_Common.Categories
+            </span>
+        </div>
+        <div class="col-md-10">
+            <span>
+                @Model.ExtraData.First().ToString()
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div style="padding:5px 0px 5px 0px;">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.FormObject.About))
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span>
+                @UT.SL.Model.Resource.App_Common.Topics
+            </span>
+        </div>
+        <div class="col-md-10">
+            <div>
+                @if (Model.ExtraKnownData != null && Model.ExtraKnownData.Items != null)
+                {
+                    if (Model.ExtraKnownData.Items.Count() <= 3)
+                    {
+                        foreach (var item in Model.ExtraKnownData.Items)
+                        {
+                            <span class="label label-success">@item.Text</span>
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            @foreach (var item in Model.ExtraKnownData.Items.Take(3))
+                            {
+                                <span class="label label-success ">@item.Text</span>
+                            }
+                            <a href='javascript:void(0)' class='changeLongText noDecoration'>@UT.SL.Model.Resource.App_Common.More</a>
+                            <div class='toToggle' style='display:none'>
+                                @foreach (var item in Model.ExtraKnownData.Items.Skip(3))
+                                {
+                                    <span class="label label-success">@item.Text</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="padding:2px 0px 2px 0px;">
+                <span class="glyphicon glyphicon-file"></span> @summry.ResourceCount @UT.SL.Model.Resource.App_Common.Resources
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div style="padding:2px 0px 2px 0px;">
+                <span class="glyphicon glyphicon-globe"></span> @summry.LearningGroupsCount @UT.SL.Model.Resource.App_Common.LearningGroups
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="padding:2px 0px 2px 0px;">
+                <span class="glyphicon glyphicon-comment"></span> @summry.ForumCount @UT.SL.Model.Resource.App_Common.Forumes
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div style="padding:2px 0px 2px 0px;">
+                <span class="glyphicon glyphicon-user"></span> @summry.ParticipantCount @UT.SL.Model.Resource.App_Common.Participants
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="padding:2px 0px 2px 0px;">
+                <span class="glyphicon glyphicon-pencil"></span> @summry.AssignmentCount @UT.SL.Model.Resource.App_Common.Assignments
+            </div>
+
+        </div>
+        <div class="col-sm-8">
+            <div>
+                @if (summry.ParticipantIsd != null)
+                {
+                    if (summry.ParticipantIsd.Count() <= 6)
+                    {
+                        foreach (var item in summry.ParticipantIsd)
+                        {
+                            @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            @foreach (var item in summry.ParticipantIsd.Take(6))
+                            {
+                                @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                            }
+                            <a href='javascript:void(0)' class='changeLongText noDecoration'>@UT.SL.Model.Resource.App_Common.More</a>
+                            <div class='toToggle' style='display:none'>
+                                @foreach (var item in summry.ParticipantIsd.Skip(6))
+                                {
+                                    @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = item, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

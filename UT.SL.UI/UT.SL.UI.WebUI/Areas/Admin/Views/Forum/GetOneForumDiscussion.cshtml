@@ -1,0 +1,75 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  UT.SL.Data.LINQ.ForumDiscussion
+
+<div class="row hidescope@((int) UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)@(Model.Id)" id="forumRowThread@(Model.Id)" data-showeditdelete="true">
+    <div class="col-md-12">
+        <div class="discussionBlock paddingIt">
+            <table>
+                <tr>
+                    <td>
+                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.App_User.Id, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                    </td>
+                    <td>
+                        @if (ViewBag.clickedDate != null)
+                        {
+                            @Ajax.AuthorizationActionLink(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion, Model.Title.Length >= 50 ? Model.Title.Substring(0, 50) + "..." : Model.Title, "Discussions", "ForumDiscussion", new { area = "admin", id = Model.Id, clickedDate = ViewBag.clickedDate },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "oneDiscussion" + Model.ForumId,
+                       OnSuccess = "showOneDiscussion(" + Model.ForumId + ");$('.hidescope" + (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion + "" + Model.Id + "').find('[data-hideafterclick]').hide();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "view" })
+
+                        }
+                        else
+                        {
+                            @Ajax.AuthorizationActionLink(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion, Model.Title.Length >= 50 ? Model.Title.Substring(0, 50) + "..." : Model.Title, "Discussions", "ForumDiscussion", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "oneDiscussion" + Model.ForumId,
+                       OnSuccess = "showOneDiscussion(" + Model.ForumId + ");$('.hidescope" + (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion + "" + Model.Id + "').find('[data-hideafterclick]').hide();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "view" })
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.Body))
+                        {
+                            @HelperUtils.ShortenBody(Model.Title, Model.Body)
+                        }
+                        @if (ViewBag.clickedDate != null && Model.CreateDate >= ViewBag.clickedDate)
+                        {
+                            <span class="label label-default" style="padding:3px"> @UT.SL.Model.Resource.App_Common.New </span>
+                        }
+
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="inline feedDivLessImportant  paleIt hidden-xs">
+                            <div class="inline">
+                                <div class="inline">
+                                    @Html.Action("GetLastChanged", "ForumDiscussion", new { area = "admin", Id = Model.Id }) /
+                                </div>
+                                <div class="inline">
+                                    @Html.Action("GetUserPosters", "Forum", new { area = "Admin", id = Model.Id })
+                                </div>
+                                <div class="inline">
+                                    @if (ViewBag.clickedDate != null)
+                                    {
+                                        @Html.Action("CountNewRepliesForOneDiscussion", "ForumDiscussion", new { area = "Admin", id = Model.Id, clickedDate = ViewBag.clickedDate })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

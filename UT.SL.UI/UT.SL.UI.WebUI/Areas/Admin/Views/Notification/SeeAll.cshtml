@@ -1,0 +1,60 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Notifications;
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Notifications) 0, true, false);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Notifications, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+
+<div class="parentDiv">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="moreNotifications">
+                    @Html.Action("GetMoreNotifications", "Notification", new { Area = "Admin", page = 0 })
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="cursor:pointer" data-getmorenotif="@Url.Action("GetMoreNotifications", "Notification", new { Area = "Admin" })" data-page="1">
+                        <div class="feedDiv notifDivSeen centerOne boldAndLarger" style="margin-top: 2px; margin-bottom: 3px;">
+                            <span class="moreNotifToShow">
+                                @UT.SL.Model.Resource.App_Common.More
+                            </span>
+                            <span class="noMoreNotifToShow" style="display:none">
+                                @UT.SL.Model.Resource.App_Common.NoMoreToShow
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="position:fixed; width:40%;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="feedDiv centerOne boldAndLarger marginBottom20" style="width:100%; min-width:50px">
+                                <span>
+                                    @UT.SL.Model.Resource.App_Common.Preview
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="previewOneItemArea">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

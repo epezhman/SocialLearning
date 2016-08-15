@@ -1,0 +1,157 @@
+﻿@model UT.SL.Data.LINQ.App_Action
+@{
+    string actionRolesUrl = Url.Action("ActionRoles", "AppActions", new { area = "admin", Id = Model.Id });
+}
+<fieldset>
+    <legend>@UT.SL.Model.Resource.App_Common.MethodInfo</legend>
+    @using (Ajax.BeginForm("Edit", "AppActions", new { area = "admin", id = Model.Id }, new AjaxOptions()
+    {
+        HttpMethod = "post",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "loadingAjax",
+        UpdateTargetId = "updateactionresult"
+    }, null))
+    {
+         @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td colspan="2" id="updateactionresult"></td>
+            </tr>
+            <tr>
+                <td>
+                    @UT.SL.Model.Resource.App_Common.MethodCode
+                </td>
+                <td>
+                    @Model.Id
+                    @Html.HiddenFor(model => model.Id)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @UT.SL.Model.Resource.App_Common.AreaName
+                </td>
+                <td>
+                    @Model.AreaName
+                    @Html.HiddenFor(model => model.AreaName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @UT.SL.Model.Resource.App_Common.ControllerName
+                </td>
+                <td>
+                    @Model.ControllerName
+                    @Html.HiddenFor(model => model.ControllerName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @UT.SL.Model.Resource.App_Common.ActionName
+                </td>
+                <td>
+                    @Model.ActionName
+                    @Html.HiddenFor(model => model.ActionName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ActionTitle">
+                        @UT.SL.Model.Resource.App_Common.ActionTitle
+                    </label>
+                </td>
+                <td style="direction: ltr;">
+                    @Html.TextBoxFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="IsActive">
+                        @UT.SL.Model.Resource.App_Common.IsActive
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.IsActive)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="RequireAuthentication">
+                        @UT.SL.Model.Resource.App_Common.Authentication
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.RequireAuthentication)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="RequireAuthorization">
+                        @UT.SL.Model.Resource.App_Common.Authorization
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.RequireAuthorization)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="RequireIgnoreOwner">
+                        @UT.SL.Model.Resource.App_Common.IgnoreOwner
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.IgnoreOwner)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="ReturnBlankIfNotAllowed">
+                        @UT.SL.Model.Resource.App_Common.ReturnBlankIfNotAllowed
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.ReturnBlankIfNotAllowed)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="IsCredit">
+                        @UT.SL.Model.Resource.App_Common.Bookmark
+                    </label>
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.Bookmark, new {  })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <br />
+                </td>
+            </tr> 
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Submit)" id="actionSubmit" class="btn btn-primary submit" />
+                </td>
+            </tr>
+        </table>
+    }
+    <div>
+        @Ajax.ActionLink(UT.SL.Model.Resource.App_Common.Delete, "Delete", new { area = "admin", id = Model.Id },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                                             HttpMethod = "post",
+                                             InsertionMode = InsertionMode.Replace,
+                                             OnSuccess = "setTimeout(function (e) { $('#result').html('');$('#part2').html('');  }, 1990);",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default" })
+    </div>
+</fieldset>
+<script type="text/javascript">
+    $(function () {
+        $("#part2").load("@actionRolesUrl", stopLoadingElement);
+    });
+    function stopLoadingElement() {
+        $("#loading").css("display", "none");
+    }
+</script>

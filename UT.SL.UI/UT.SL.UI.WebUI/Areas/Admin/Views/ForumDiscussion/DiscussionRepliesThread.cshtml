@@ -1,0 +1,82 @@
+﻿@model List<UT.SL.Model.Models.ForumDiscussionsModel>
+@*قبلا اینطوری بود که 5 تا جواب را نشان می داد ولی من عوضش کردم تا فقط چهار تا را نمایش بدهد.*@
+@if (Model.Count() < 4)
+{
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        <div id="discussionInThread@(Model[i].Discussion.ForumId)@(Model[i].Discussion.Id)">
+            @if (ViewBag.clickedDate != null)
+            {
+                @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[i].Discussion.Id, clickedDate = ViewBag.clickedDate })
+            }
+            else
+            {
+                @Html.Partial("GetOneDiscussion", Model[i])
+            }
+        </div>
+    }
+}
+else
+{
+    <div id="discussionInThread@(Model[0].Discussion.ForumId)@(Model[0].Discussion.Id)">
+        @if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[0].Discussion.Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneDiscussion", Model[0])
+        }
+    </div>
+    <div id="discussionInThread@(Model[1].Discussion.ForumId)@(Model[1].Discussion.Id)">
+        @if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[1].Discussion.Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneDiscussion", Model[1])
+        }
+    </div>
+    for (int i = 2; i < Model.Count() - 1; i++)
+    {
+        <div class="discussiontHiddenBlockDiv" style="display: none">
+            <div id="discussionInThread@(Model[i].Discussion.ForumId)@(Model[i].Discussion.Id)">
+                @if (ViewBag.clickedDate != null)
+                {
+                    @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[i].Discussion.Id, clickedDate = ViewBag.clickedDate })
+                }
+                else
+                {
+                    @Html.Partial("GetOneDiscussion", Model[i])
+                }
+            </div>
+        </div>
+    }
+    <div class="discussionBlock showDiscussions discussionHiddenBlockShowContain paddingIt">
+        <span class="discussionHiddenBlockShow glyColor"><span class="glyphicon glyphicon-arrow-down"></span> @String.Format(UT.SL.Model.Resource.App_Common.ShowMoreReplies, Model.Count - 3)</span>
+    </div>
+    @*<div id="discussionInThread@(Model[Model.Count() - 2].Discussion.ForumId)@(Model[Model.Count() - 2].Discussion.Id)">
+        @if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[Model.Count() - 2].Discussion.Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneDiscussion", Model[Model.Count() - 2])
+        }
+    </div>*@
+    <div id="discussionInThread@(Model[Model.Count() - 1].Discussion.ForumId)@(Model[Model.Count() - 1].Discussion.Id)">
+        @if (ViewBag.clickedDate != null)
+        {
+            @Html.Action("GetOneDiscussion", "ForumDiscussion", new { area = "admin", id = Model[Model.Count() - 1].Discussion.Id, clickedDate = ViewBag.clickedDate })
+        }
+        else
+        {
+            @Html.Partial("GetOneDiscussion", Model[Model.Count() - 1])
+        }
+    </div>
+    <div class="discussionBlock showDiscussions discussionHiddenBlockHideContain  paddingIt" style="display: none">
+        <span class="discussionHiddenBlockHide glyColor"><span class="glyphicon glyphicon-arrow-up"></span> @UT.SL.Model.Resource.App_Common.ShowFewerReplies</span>
+    </div>
+}

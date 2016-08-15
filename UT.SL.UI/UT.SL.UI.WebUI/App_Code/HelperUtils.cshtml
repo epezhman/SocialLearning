@@ -1,0 +1,749 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@helper IfWrite(bool condition, string TrueText, string FalseText = "")
+{
+    if (condition)
+    {
+        @(new HtmlString(TrueText))
+    }
+    else
+    {
+        @(new HtmlString(FalseText))
+    }
+}
+@helper BoolImage(bool? value)
+{
+    var url = new System.Web.Mvc.UrlHelper(Request.RequestContext);
+    string trueImage = string.Format("<img src=\"{0}\" alt=\"true\">", url.Content("~/Images/button/16x16/accept-green-circle.png"));
+    string falseImage = string.Format("<img src=\"{0}\" alt=\"true\">", url.Content("~/Images/button/16x16/deny-red-circle.png"));
+    if (value.HasValue)
+    {
+        if (value.Value)
+        {
+            @(new HtmlString(trueImage))
+        }
+        else
+        {
+            @(new HtmlString(falseImage))
+        }
+    }
+}
+
+@helper IfWrite(bool condition)
+{
+    if (condition)
+    {
+        @UT.SL.Model.Resource.App_Common.Yes
+    }
+    else
+    {
+        @UT.SL.Model.Resource.App_Common.No
+    }
+}
+
+@helper IfWriteBootstrap(bool condition)
+{
+    if (condition)
+    {
+        <span class="label label-info"><i class="icon-ok"></i>@UT.SL.Model.Resource.App_Common.Yes</span>
+    }
+    else
+    {
+        <span class="label label-warning"><i class="icon-remove"></i>@UT.SL.Model.Resource.App_Common.No</span>
+    }
+}
+
+@helper ShowStringList(List<string> items)
+{
+    var result = string.Empty;
+    if (items.Any())
+    {
+        foreach (var item in items)
+        {
+            result += item + ", ";
+        }
+        result = result.Substring(0, result.LastIndexOf(','));
+    }
+    @(new HtmlString(result))
+}
+
+@helper ShortenString(string one, string two, string three)
+{
+    var result = string.Empty;
+    var fullResult = string.Empty;
+    if (!String.IsNullOrEmpty(one))
+    {
+        if (one.Length >= 30)
+        {
+            result = one.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = one;
+        }
+        fullResult = one;
+    }
+    else if (!String.IsNullOrEmpty(two))
+    {
+        if (two.Length >= 30)
+        {
+            result = two.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = two;
+        }
+        fullResult = two;
+    }
+    else if (!String.IsNullOrEmpty(three))
+    {
+        if (three.Length >= 30)
+        {
+            result = three.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = three;
+        }
+        fullResult = three;
+    }
+    @(new HtmlString(string.Format("<span class='' title='{0}'> {1}</span>", fullResult, result)))
+}
+
+@helper ShortenStringForTitle(string one, string two, string three)
+{
+    var result = string.Empty;
+    var fullResult = string.Empty;
+    if (!String.IsNullOrEmpty(one))
+    {
+        if (one.Length >= 30)
+        {
+            result = one.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = one;
+        }
+        fullResult = one;
+    }
+    else if (!String.IsNullOrEmpty(two))
+    {
+        if (two.Length >= 30)
+        {
+            result = two.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = two;
+        }
+        fullResult = two;
+    }
+    else if (!String.IsNullOrEmpty(three))
+    {
+        if (three.Length >= 30)
+        {
+            result = three.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = three;
+        }
+        fullResult = three;
+    }
+    @(new HtmlString(string.Format("{0}", fullResult)))
+}
+
+@helper ShortenStringForPreview(string one, string two, string three)
+{
+    var result = string.Empty;
+    var fullResult = string.Empty;
+    if (!String.IsNullOrEmpty(one))
+    {
+        if (one.Length >= 30)
+        {
+            result = one.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = one;
+        }
+        fullResult = one;
+    }
+    else if (!String.IsNullOrEmpty(two))
+    {
+        if (two.Length >= 30)
+        {
+            result = two.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = two;
+        }
+        fullResult = two;
+    }
+    else if (!String.IsNullOrEmpty(three))
+    {
+        if (three.Length >= 30)
+        {
+            result = three.Substring(0, 30) + "...";
+        }
+        else
+        {
+            result = three;
+        }
+        fullResult = three;
+    }
+    @(new HtmlString(string.Format("{0}", result.Replace("\n", "").StringNormalizer())))
+}
+
+
+@helper ShortenStringForNotifPreview(string one, string two, string three)
+{
+    var result = string.Empty;
+    var fullResult = string.Empty;
+    if (!String.IsNullOrEmpty(one))
+    {
+        if (one.Length >= 15)
+        {
+            result = one.Substring(0, 15) + "...";
+        }
+        else
+        {
+            result = one;
+        }
+        fullResult = one;
+    }
+    else if (!String.IsNullOrEmpty(two))
+    {
+        if (two.Length >= 15)
+        {
+            result = two.Substring(0, 15) + "...";
+        }
+        else
+        {
+            result = two;
+        }
+        fullResult = two;
+    }
+    else if (!String.IsNullOrEmpty(three))
+    {
+        if (three.Length >= 15)
+        {
+            result = three.Substring(0, 15) + "...";
+        }
+        else
+        {
+            result = three;
+        }
+        fullResult = three;
+    }
+    @(new HtmlString(string.Format("{0}", result.Replace("\n", "").StringNormalizer())))
+}
+
+@helper ShortenBody(string title, string body)
+{
+    var result = string.Empty;
+    var fullResult = string.Empty;
+
+    if (!String.IsNullOrEmpty(title))
+    {
+        if (title.Length >= 50)
+        {
+            fullResult = string.Empty;
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(body))
+            {
+                if (body.Length > (50 - title.Length))
+                {
+                    fullResult = "-" + body.Substring(0, 50 - title.Length) + "...";
+                }
+                else
+                {
+                    fullResult = "-" + body;
+                }
+            }
+            else
+            {
+                fullResult = string.Empty;
+            }
+        }
+
+    }
+
+
+    @(new HtmlString(string.Format("<span class='' >{0}</span>", fullResult)))
+}
+
+
+
+@helper RTLCorrection(string line)
+{
+    if (!String.IsNullOrEmpty(line))
+    {
+        if (line.Any(x => x == 'ا'))
+        {
+            @(new HtmlString(string.Format("<span style='direction:rtl; float:right;'> {0}</span>", line)))
+        }
+        else
+        {
+            @(new HtmlString(string.Format("<span style='direction:ltr; float:left;'> {0}</span>", line)))
+        }
+    }
+}
+
+
+@helper ShortenBody(string line)
+{
+    var result = string.Empty;
+    var first = string.Empty;
+    var second = string.Empty;
+    if (!String.IsNullOrEmpty(line))
+    {
+        if (line.Any(x => x == 'ا'))
+        {
+            if (line.Length >= 220)
+            {
+                first = line.Substring(0, 220);
+                second = line.Substring(220);
+                @(new HtmlString(string.Format("<div style='direction:rtl; float:right;'> {0} ... <a href='javascript:void(0)' class='changeLongText'>" + UT.SL.Model.Resource.App_Common.More + "</a> <div class='toToggle' style='display:none'> {1}</div></div>", first, second)))
+            }
+            else
+            {
+                result = line;
+                @(new HtmlString(string.Format("<span style='direction:rtl; float:right;'> {0}</span>", result)))
+            }
+        }
+        else
+        {
+            if (line.Length >= 220)
+            {
+                first = line.Substring(0, 220);
+                second = line.Substring(220);
+                @(new HtmlString(string.Format("<div style='direction:ltr; float:left;'> {0} ... <a href='javascript:void(0)' class='changeLongText'>" + UT.SL.Model.Resource.App_Common.More + "</a> <div class='toToggle' style='display:none'> {1}</div></div>", first, second)))
+            }
+            else
+            {
+                result = line;
+                @(new HtmlString(string.Format("<span style='direction:ltr; float:left;'> {0}</span>", result)))
+            }
+        }
+
+    }
+}
+
+@helper ShortenBodyRaw(string line)
+{
+    var result = string.Empty;
+    var first = string.Empty;
+    var second = string.Empty;
+    if (!String.IsNullOrEmpty(line))
+    {
+        if (line.Any(x => x == 'ا'))
+        {
+            if (line.Length >= 220)
+            {
+                first = line.Substring(0, 220);
+                second = line.Substring(220);
+                @(Html.Raw(HttpUtility.HtmlDecode(string.Format("<div style='direction:rtl; float:right;'> {0} ... <a href='javascript:void(0)' class='changeLongText'>" + UT.SL.Model.Resource.App_Common.More + "</a> <div class='toToggle' style='display:none'> {1}</div></div>", first, second))))
+            }
+            else
+            {
+                result = line;
+                @(Html.Raw(HttpUtility.HtmlDecode(string.Format("<span style='direction:rtl; float:right;'> {0}</span>", result))))
+            }
+        }
+        else
+        {
+            if (line.Length >= 220)
+            {
+                first = line.Substring(0, 220);
+                second = line.Substring(220);
+                @(Html.Raw(HttpUtility.HtmlDecode(string.Format(string.Format("<div style='direction:ltr; float:left;'> {0} ... <a href='javascript:void(0)' class='changeLongText'>" + UT.SL.Model.Resource.App_Common.More + "</a> <div class='toToggle' style='display:none'> {1}</div></div>", first, second)))))
+            }
+            else
+            {
+                result = line;
+                @(Html.Raw(HttpUtility.HtmlDecode(string.Format("<span style='direction:ltr; float:left;'> {0}</span>", result))))
+            }
+        }
+
+    }
+}
+
+
+@helper ShowRecentTime(DateTime date)
+{
+    var diff = DateTime.Now - date;
+    if (diff.TotalSeconds < 60)
+    {
+        @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalSeconds), UT.SL.Model.Resource.App_Common.SecAgo)))
+    }
+    else if (diff.TotalMinutes < 60)
+    {
+        @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalMinutes), UT.SL.Model.Resource.App_Common.MinAgo)))
+    }
+    else if (diff.TotalHours < 24)
+    {
+        @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalHours), UT.SL.Model.Resource.App_Common.HourAgo)))
+    }
+    else if (diff.TotalDays < 29)
+    {
+
+        @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalDays), UT.SL.Model.Resource.App_Common.DaysAgo)))
+
+    }
+    else if (diff.TotalDays < 365)
+    {
+        if (date != null)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @date.ToPersianDate()
+            }
+            else
+            {
+                @date.Date.ToString("MMM d")
+            }
+        }
+    }
+    else
+    {
+        if (date != null)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @date.ToPersianDate()
+            }
+            else
+            {
+                @date.Date.ToString("d MMM yyyy")
+            }
+        }
+    }
+
+}
+
+@helper ShowActivityRecentTime(DateTime date, DateTime? dueDate)
+{
+    if (!dueDate.HasValue)
+    {
+        var diff = DateTime.Now - date;
+        if (diff.TotalSeconds < 60)
+        {
+            @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalSeconds), UT.SL.Model.Resource.App_Common.SecAgo)))
+        }
+        else if (diff.TotalMinutes < 60)
+        {
+            @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalMinutes), UT.SL.Model.Resource.App_Common.MinAgo)))
+        }
+        else if (diff.TotalHours < 24)
+        {
+            @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalHours), UT.SL.Model.Resource.App_Common.HourAgo)))
+        }
+        else if (diff.TotalDays < 29)
+        {
+
+            @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalDays), UT.SL.Model.Resource.App_Common.DaysAgo)))
+
+        }
+        else if (diff.TotalDays < 365)
+        {
+            if (date != null)
+            {
+                if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                {
+                    @date.ToPersianDateNoYear()
+                }
+                else
+                {
+                    @date.Date.ToString("MMM d")
+                }
+            }
+        }
+        else
+        {
+            if (date != null)
+            {
+                if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                {
+                    @date.ToPersianDate()
+                }
+                else
+                {
+                    @date.Date.ToString("d MMM yyyy")
+                }
+            }
+        }
+    }
+    else
+    {
+        TimeSpan diff;
+        if (DateTime.Now > dueDate.Value)
+        {
+            diff = DateTime.Now - dueDate.Value;
+            if (diff.TotalSeconds < 60)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalSeconds), UT.SL.Model.Resource.App_Common.SecOverdue)))
+            }
+            else if (diff.TotalMinutes < 60)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalMinutes), UT.SL.Model.Resource.App_Common.MinOverdue)))
+            }
+            else if (diff.TotalHours < 24)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalHours), UT.SL.Model.Resource.App_Common.HourOverdue)))
+            }
+            else if (diff.TotalDays < 29)
+            {
+
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalDays), UT.SL.Model.Resource.App_Common.DayOverdue)))
+
+            }
+            else if (diff.TotalDays < 365)
+            {
+                if (date != null)
+                {
+                    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                    {
+                        @date.ToPersianDateNoYear()
+                    }
+                    else
+                    {
+                        @date.Date.ToString("MMM d")
+                    }
+                }
+            }
+            else
+            {
+                if (date != null)
+                {
+                    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                    {
+                        @date.ToPersianDate()
+                    }
+                    else
+                    {
+                        @date.Date.ToString("d MMM yyyy")
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            diff = dueDate.Value - DateTime.Now;
+
+            if (diff.TotalSeconds < 60)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalSeconds), UT.SL.Model.Resource.App_Common.SecLeft)))
+            }
+            else if (diff.TotalMinutes < 60)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalMinutes), UT.SL.Model.Resource.App_Common.MinLeft)))
+            }
+            else if (diff.TotalHours < 24)
+            {
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalHours), UT.SL.Model.Resource.App_Common.HourLeft)))
+            }
+            else if (diff.TotalDays < 29)
+            {
+
+                @(new HtmlString(string.Format("{0} {1}", Math.Floor(diff.TotalDays), UT.SL.Model.Resource.App_Common.DayLeft)))
+
+            }
+            else if (diff.TotalDays < 365)
+            {
+                if (date != null)
+                {
+                    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                    {
+                        @date.ToPersianDateNoYear()
+                    }
+                    else
+                    {
+                        @date.Date.ToString("MMM d")
+                    }
+                }
+            }
+            else
+            {
+                if (date != null)
+                {
+                    if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+                    {
+                        @date.ToPersianDate()
+                    }
+                    else
+                    {
+                        @date.Date.ToString("d MMM yyyy")
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@helper LocalizedDate(DateTime date)
+{
+    if (date != null)
+    {
+        if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+        {
+            @(date.ToPersianDate())
+        }
+        else
+        {
+            @(date.Date.ToString("yyyy/MM/dd"))
+        }
+    }
+}
+
+@helper LocalizedDate(DateTime? date)
+{
+    if (date != null)
+    {
+        if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+        {
+            @(date.Value.ToPersianDate())
+        }
+        else
+        {
+            @(date.Value.Date.ToString("yyyy/MM/dd"))
+        }
+    }
+}
+
+
+@helper DateInput(DateTime? date, string id, string name, string classes, bool validation = false)
+{
+    if (date != null)
+    {
+        if (validation)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control' data-datetimeui='true' value='" + date.Value.ToPersianDate() + "' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control' data-datetimeui='true' value='" + date.Value.Date.ToString("yyyy/MM/dd") + "' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+        }
+        else
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.Value.ToPersianDate() + "' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.Value.Date.ToString("yyyy/MM/dd") + "' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+        }
+    }
+    else
+    {
+        if (validation)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text'class='form-control'  data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+        }
+        else
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control' data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+        }
+    }
+}
+
+@helper DateInput(DateTime date, string id, string name, string classes, bool validation = false)
+{
+    if (date != null)
+    {
+        if (validation)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.ToPersianDate() + "' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.Date.ToString("yyyy/MM/dd") + "' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+        }
+        else
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.ToPersianDate() + "' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='" + date.Date.ToString("yyyy/MM/dd") + "' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+        }
+    }
+    else
+    {
+        if (validation)
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text'  class='form-control' data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text'class='form-control'  data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid' data-val-required='" + UT.SL.Model.Resource.App_Common.FieldIsRequired + "' data-val='true'>"))
+            }
+        }
+        else
+        {
+            if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "fa-IR")
+            {
+                @(new HtmlString("<input type='text' class='form-control'  data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+            else
+            {
+                @(new HtmlString("<input type='text' class='form-control' data-datetimeui='true' value='' name='" + name + "' id='" + id + "' class='" + classes + " valid'>"))
+            }
+        }
+    }
+}
+
+@helper CustomListBoxFor(string[] selectedIs, IEnumerable<System.Web.Mvc.SelectListItem> items, string name, string placeHolder)
+{
+    string select = string.Format("<select multiple=\"multiple\" data-placeholder = \"{0}\"  name=\"{1}\" data-multiselecwithdrop = \"true\" class = \"span8\" placeholder=\"{0}\">", placeHolder, name);
+    var sb = new System.Text.StringBuilder();
+    sb.Append(select);
+    if (items != null && items.Any())
+    {
+        foreach (var item in items)
+        {
+            if (selectedIs != null && selectedIs.Any(x => x == item.Value))
+            {
+                sb.Append(string.Format("<option value=\"{0}\" selected > {1}</option>", item.Value, item.Text));
+            }
+            else
+            {
+                sb.Append(string.Format("<option value=\"{0}\">  {1}</option>", item.Value, item.Text));
+            }
+        }
+    }
+    sb.Append("</select>");
+    @(new HtmlString(sb.ToString()))
+}

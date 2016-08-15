@@ -1,0 +1,16 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model BatchProcessResultModel
+<div class="">
+    <fieldset class="form-horizontal">
+        <legend>@UT.SL.Model.Resource.App_Common.Error</legend>
+        <div class="form-group">
+            @Html.Partial("ProcessResult", Model)
+        </div>        
+    </fieldset>
+    <script>
+        $(function () {
+            $.InitialComponents();
+        });
+    </script>
+</div>

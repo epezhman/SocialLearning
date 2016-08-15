@@ -1,0 +1,75 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  FormModel<UT.SL.Model.TagModel, UT.SL.Model.ObjectViewModel>
+@{
+    var d = ViewBag.TagType;
+}
+<div class="col-md-12">
+    <div class="FivePxPadding">
+        @using (Ajax.BeginForm("Tag", "TagMapper", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = (ViewBag.TagType == 0 || ViewBag.TagType == null) ? "updateTagCountResource" : "updateTagCountResourceType2"
+}, new { @class = "form-horizontal", data_dom = "TagsDom" + Model.ExtraKnownData.Type + Model.ExtraKnownData.Id, role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @*<div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            @UT.SL.Model.Resource.App_Common.TagHelp
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @UT.SL.Model.Resource.App_Common.Category
+                    </div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("CategoryTag", new SelectList(ViewBag.Categories, "Id", "Title"), UT.SL.Model.Resource.App_Common.Select, new { data_lookupurl = Url.Action("GetSubjects"), data_lookupurl2 = Url.Action("GetTagsCategory") })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @UT.SL.Model.Resource.App_Common.Subject
+                    </div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("SubjectTag", new SelectListItem[] { }, UT.SL.Model.Resource.App_Common.Select, new { data_lookupurl = Url.Action("GetTagsCategory") })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @UT.SL.Model.Resource.App_Common.Tags
+                    </div>
+                    <div class="col-md-7">
+                        @Html.DropDownList("TagTag", new SelectListItem[] { }, UT.SL.Model.Resource.App_Common.Select)
+                    </div>
+                </div>*@
+            <div class="tagToViewAndDelete@(Model.ExtraKnownData.Type)@(Model.ExtraKnownData.Id) columnPadding">
+                @Html.Action("TagsForViewAndDelete", "TagMapper", new { area = "Admin", objectId = Model.ExtraKnownData.Id, objectType = Model.ExtraKnownData.Type, tagType = (ViewBag.TagType == 0 || ViewBag.TagType == null) ? 0 : 2 })
+            </div>
+            <div class="form-group">
+                <div class="control-label col-md-3">@Html.LabelFor(model => model.FormObject.Tags)</div>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.FormObject.Tags, new { data_lookupurl = Url.Action("GetTags", "TagMapper", new { area = "Admin" }), data_autocomplete = "true", @class = "input", style = "width:80%" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Tags)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary btn-sm submit" title="@UT.SL.Model.Resource.App_Common.Submit"><span class=" glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default btn-sm closetagpart" title="@UT.SL.Model.Resource.App_Common.Close" onclick="$('#TagsFooter@(Model.ExtraKnownData.Type)@(Model.ExtraKnownData.Id)').show();"><span class=" glyphicon glyphicon-remove"></span></button>
+                    @Html.HiddenFor(model => model.ExtraKnownData.Id)
+                    @Html.HiddenFor(model => model.ExtraKnownData.Type)
+                    <input type="hidden" name="viewType" value="1" />
+                </div>
+            </div>
+        }
+        <script>
+            $(function () {
+                $.InitialComponentsWithDom('TagsDom@(Model.ExtraKnownData.Type)@(Model.ExtraKnownData.Id)');
+            });
+        </script>
+    </div>
+</div>

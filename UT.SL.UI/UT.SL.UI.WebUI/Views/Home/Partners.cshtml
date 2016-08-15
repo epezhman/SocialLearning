@@ -1,0 +1,83 @@
+﻿@{
+
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Partners;
+
+}
+@if (ViewBag.NotLogedIn != null)
+{
+    @section scripts {
+        <script type="text/javascript">
+            $(function () {
+                highLight(@((int)UT.SL.Model.Enumeration.MenuType.Advrt), 0, true, false);
+            });
+        </script>
+    }
+    @section TopLinks{
+        @Html.Action("TopMenuLinksNotLoggedIn", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Advrt, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+    }
+}
+else
+{
+    @section scripts {
+        <script type="text/javascript">
+            $(function () {
+                highLight(@((int)UT.SL.Model.Enumeration.MenuType.FirstPage), 0, true, false);
+            });
+        </script>
+    }
+    @section TopLinks{
+        @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.FirstPage, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+    }
+
+}
+
+<div class="colorMarketing container-fluid row col-md-12">
+    <div class="centerOne boldAndLarger">
+        <h1>@UT.SL.Model.Resource.App_Common.Partners</h1>
+        <h2><small> DoosMooc have been utilized in these universities</small></h2>
+        <br>
+    </div>
+
+    <div class="row col-md-12">
+
+        <div class="boldAndLarger centerOne">
+            <img class="img-rounded height140width140" src="@Url.Content("~/Images/Logos/UnivLogos/UniversityOfTehran.jpg")" alt="Generic placeholder image">
+            <h2>
+                University of Tehran
+            </h2>
+        </div>
+        <p class="text-justify">University of Tehran rooted in jondi shapur university which goes back over 2,000 years, the university of tehran (ut) in its traditional form was established seven centuries ago. It was founded firstly in religious seminaries ("houza" or traditional religious schools). Other than religious studies, the education then covered mathematics, astronomy, medicine, persian literature, biology, physics and chemistry. During the modern era, the university of tehran evolved from a religious structure to a more modern and academic structure of higher education.</p>
+        <p>The University of Tehran hosts many cultural and academic activities on the national and international levels. UT enjoys the cooperation of foreign countries in holding international conferences, seminars and workshops. In 2008, close to 1,000 UT professors and graduate students have taken part in international conferences with university funding. Furthermore, UT regularly hosts many delegations and professors from abroad.</p>
+        <p>The University has a psychological well-being consultation center including a twenty four hour hotline to help struggling students, especially to reduce stress during examination periods. The University’s student clubs sponsor numerous activities including domestic and overseas trips. Furthermore, in order to promote academic excellence among students, the University hosts more than 118 Scientific Associations. There are also 14 Student Unions active in cultural, welfare and academic affairs.</p>
+        <p>In the national festival of "Nano-Technology Bests", three researchers of the University of Tehran were awarded for excellence in research and writing dissertations.</p>
+        <p>Also 56 faculty members of UT have been honored in 7 rounds of the Unforgettable Faces Festival of Iran (a major and prestigious cultural event in the country.</p>
+        <a href="http://ut.ac.ir/en">Visit University of Tehran</a>
+        <br>
+
+        <div class="boldAndLarger centerOne">
+            <img class="img-rounded height140width140" src="@Url.Content("~/Images/Logos/UnivLogos/UniversityOfAlzahra.jpg")" alt="Generic placeholder image">
+            <h2>
+                University of Alzahra
+            </h2>
+        </div>
+        <p class="text-justify">Alzahra University, exclusively for women, was founded in the area of Vanak in 1964. In the beginning, this educational centre began giving its services as 'The Higher Educational Institute for Girls'. The first students to enroll were 90 in English Translation, Secretarial Studies, and Psychology. In the second year of its establishment , 1965-66, another field of study, Home Economics, was added and this allowed more students the opportunity to register. During the academic year of 1975-76, the Higher Institute for Girls was expanded to a university with four faculties of Basic Sciences, Literature and Humanities, Economics and Administration Science.</p>
+        <p>After the victory of the Islamic Revolution, the university under the new name of Alzahra University continued its activities. In 1986 , the four mentioned faculties were divided into separate fields of Basic Sciences and Social Sciences and Management and Literature and Arts. In 1994, faculties of Sport Sciences, Education Sciences, Psychology, and Technology and Engineering were founded. In 2001, by the permission of the Ministry of Sciences, Research and Technology; the faculty of Theology and Literature was divided into two separate faculties of literature, Languages and History and Theology. The number of faculties was then increased to eight. </p>
+        <p>The university has 316 faculty members who are permanently employed and about the same number of guest lecturers who teach At present, about 9000 students study at different levels of education: undergraduate, Masters and PhD.</p>
+        <a href="http://www.alzahra.ac.ir/English/">Visit University of Alzahra</a>
+        <br>
+
+        <div class="boldAndLarger centerOne">
+            <img class="img-rounded height140width140" src="@Url.Content("~/Images/Logos/UnivLogos/GordonStateCollege.jpg")" alt="Generic placeholder image">
+            <h2>
+                Gordon State College
+            </h2>
+        </div>
+        <p class="text-justify">Located in Barnesville Gordon State College is a residential state college that offers more than 40 programs of study including eight four-year degrees — early childhood education, mathematics, biology, history, English, nursing, health services and informatics administration and human services.  With an enrollment of 4,000 students, Gordon State offers an intimate academic setting in state-of-the-art classrooms and laboratories. In this setting, students receive individualized attention that only a small college with dedicated faculty and staff can provide.</p>
+        <p>Gordon also offers a vibrant campus life with on-campus, apartment-style living, NJCAA sports, clubs for a variety of interests, an active theater and music program and a beautiful, inviting campus.</p>
+        <p>Founded in 1852, Gordon State College joined the University System of Georgia in 1972 and continues a distinctive legacy of excellent scholarship and service.</p>
+        <a href="http://www.gordonstate.edu">Visit Gordon State College</a>
+        <br>
+
+    </div>
+
+</div>

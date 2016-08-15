@@ -1,0 +1,71 @@
+﻿@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.Category>
+@{
+    int cnt = 1;
+    int skipper = 0;
+}
+
+@for (int i = 0; i < Model.Where(x => x.ParentId == null).Count() / 3 + 1; i++)
+{
+    <div class="row" style="margin-bottom: 30px; margin-top: 10px">
+        @foreach (var item in Model.Where(x => x.ParentId == null).Skip(skipper * 3).Take(3))
+        {
+            <div class="col-md-3 col-md-offset-1 utwell" style="text-align: center; height:150px">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        @if (item.ImageData != null)
+                        {
+                            <img class="categoryPic img-thumbnail" src="@Url.Action("ViewImage", "Category", new { area = "admin", id = item.Id })" alt="" />
+                        }
+                        else
+                        {
+                            <img class="categoryPic img-thumbnail" src="@Url.Content("~/Images/content/category.png")" alt="" />
+
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group" style="margin-top: 5px">
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                @item.Title
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @foreach (var category in item.Categories)
+                                {
+                                    <li class="nav-header"><span style="font-size: large">@category.Title</span></li>
+                                    @Html.Action("GetCategoryCources", new { Id = category.Id })
+                                    <li class="inline">
+                                        <div class="inline">
+                                            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, category.Id, (int)UT.SL.Model.Enumeration.ObjectType.Category, "glyphicon glyphicon-plus", UT.SL.Model.Resource.App_Common.NewCourseAbstract, "CreateCourseAbstract", "Category", new { area = "Admin", id = category.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = "$.DialogOpen('dialog','" + UT.SL.Model.Resource.App_Common.NewCourseAbstract + "') ",
+                       LoadingElementId = "loadingAjax"
+                   }, new { }, null)
+
+                                        </div>
+
+                                    </li>
+                                    <li class="divider"></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                cnt++;
+        }
+    </div>
+        skipper++;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div id="courselist">
+        </div>
+    </div>
+</div>

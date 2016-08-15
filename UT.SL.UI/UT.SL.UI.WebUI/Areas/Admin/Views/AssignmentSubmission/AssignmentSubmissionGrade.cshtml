@@ -1,0 +1,55 @@
+﻿@model  ViewModels.AssignmentSubmission.NewSubmissionViewModel
+<div class="col-md-12">
+    <div class="FivePxPadding paddingIt">
+        @*<div class="">
+                @using (Html.BeginForm("PostSubmissionGrade", "AssignmentSubmission", new { area = "admin", Id = Model.AssignmentSubmission.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="input-group input-group">
+                        @Html.TextBoxFor(model => model.Grade, new { @class = "col-md-4 input-small" })
+                        <span class="input-group-addon">/@Model.GradeFrom</span>
+                    </div>
+                }
+            </div>*@
+        @using (Ajax.BeginForm("PostSubmissionGrade", "AssignmentSubmission", new { area = "Admin" }, new AjaxOptions()
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        LoadingElementId = "LoadingGifCEResource",
+        OnSuccess = "updatePostSubmissions(" + Model.AssignmentSubmission.AssignmentId + ",'" + Url.Action("GetSpecificPanel", "Assignment", new { area = "admin", id = Model.AssignmentSubmission.AssignmentId }) + "','" + Url.Action("ViewSubmission", "AssignmentSubmission", new { area = "admin", Id = Model.AssignmentSubmission.AssignmentId }) + "');"
+    }, new { data_dom = "SubmissionGradeForm" + Model.AssignmentSubmission.AssignmentId, @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="control-label col-sm-3" for=""></label>
+                <div class="col-sm-5">
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.Grade, new { @class = "form-control" })
+                        <span class="input-group-addon">/@Model.AssignmentSubmission.Assignment.GradeFrom</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="">@UT.SL.Model.Resource.App_Common.Comment</label>
+                <div class="col-sm-9">
+                    @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary btn-sm submit"><span class=" glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default btn-sm closeNewSubmissionPart"><span class=" glyphicon glyphicon-remove"></span></button>
+                    <input name="@(Model.AssignmentSubmission).Id" id="submissionId@(Model.AssignmentSubmission.AssignmentId)" type="hidden" data-resetonpost="true" value="" class="hiddenId" data-removeattr="@(Url.Action("RemoveSubmissionFile", "AssignmentSubmission", new { area = "admin" }))" />
+                    @Html.HiddenFor(model => model.AssignmentSubmission.AssignmentId)
+                </div>
+            </div>
+        }
+        <script type="text/javascript">
+            $(function () {
+                initializeUploaderWithDon('@("SubmissionGradeForm" + Model.AssignmentSubmission.AssignmentId)');
+            });
+        </script>
+    </div>
+</div>

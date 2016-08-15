@@ -1,0 +1,10 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.Message>
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        @Html.Partial("ReceiverSection", item)
+    }
+}

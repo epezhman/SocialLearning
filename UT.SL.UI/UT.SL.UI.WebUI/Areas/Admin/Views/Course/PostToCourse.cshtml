@@ -1,0 +1,20 @@
+﻿@model UT.SL.Data.LINQ.Course
+<div class="postToCourse" data-dom="coursePosts">
+    <div id="postTemplate">
+        <div class="whatsup" data-show="postResourceTemplate" data-hide="postTemplate" data-toggleclass="mainPortal" data-showit="true">
+        </div>
+        <div class="alignCul">
+            @Html.Action("ResourcePostButton", "Course", new { area = "admin" })            
+            @Html.Action("AssignmentPostButton", "Assignment", new { area = "admin" })            
+            @Html.Action("ForumPostButton", "Forum", new { area = "admin" })           
+        </div>
+    </div>
+    @Html.Action("ResourcePostPanel", "Course", new { area = "admin", obj =  Model })    
+    @Html.Action("AssignmentPostPanel", "Assignment", new { area = "admin", obj = Model })    
+    @Html.Action("ForumPostPanel", "Forum", new { area = "admin",obj = Model })    
+</div>
+<script type="text/javascript">
+    $(function () {
+        initializeUploaderWithDon('coursePosts');
+    });
+</script>

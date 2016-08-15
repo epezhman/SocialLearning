@@ -1,0 +1,66 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model  ViewModels.AssignmentSubmission.NewSubmissionViewModel
+<div class="paleIt" style="display: inline-block; margin-left: 2px; margin-right: 2px">
+    @*@Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id, (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditAssignmentSubmission", "AssignmentSubmission", new { area = "admin", id = Model.AssignmentSubmission.Id },
+        new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "dialog",
+            OnSuccess = " $('#dialog').dialog('open');",
+            LoadingElementId = "ajaxLoading"
+        }, new { @class = "edit hiddenoption" }, null)*@
+    @*@Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id, (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditAssignmentSubmission", "AssignmentSubmission", new { area = "admin",id=Model.AssignmentSubmission.Id},
+        new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "submissionContentEdit" + Model.AssignmentSubmission.Id,
+            OnSuccess = " showEditSection('submissionContent" + Model.AssignmentSubmission.Id + "','submissionContentEdit" + Model.AssignmentSubmission.Id + "')",
+            LoadingElementId = "loadingAjax"
+        }, new { @class = "edit hiddenoption" }, null)*@
+    @if (Model.AssignmentSubmission.Assignment.GradeFrom != null)
+    {
+        if (Model.Grade == null)
+        {
+            @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id, (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-check", UT.SL.Model.Resource.App_Common.Grade, "GradeSubmission", "AssignmentSubmission", new { area = "admin", Id = Model.AssignmentSubmission.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "NewGradeFooter" + (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission + Model.AssignmentSubmission.Id,
+                       OnSuccess = "$('#NewGradeFooter" + (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission + Model.AssignmentSubmission.Id + "').show('blind', 1000);",
+                       LoadingElementId = "ajaxLoading"
+                   }, new { @class = "addsubmission hiddenoption" }, null)
+        }
+
+    }
+    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id, (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditAssignmentSubmission", "AssignmentSubmission", new { area = "admin", id = Model.AssignmentSubmission.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "submissionContent" + Model.AssignmentSubmission.AssignmentId + Model.AssignmentSubmission.Id,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.AssignmentSubmission.Id,
+                (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission, "glyphicon glyphicon-trash",
+                UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course",
+                new
+                {
+                    area = "admin",
+                    objectId = Model.AssignmentSubmission.Id,
+                    ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission
+                },
+                       new AjaxOptions()
+                       {
+                           Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                           HttpMethod = "POST",
+                           //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                           OnSuccess = "DeleteResource('resourceRow" + (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission + Model.AssignmentSubmission.Id + "');",
+                           LoadingElementId = "ajaxLoading"
+                       }, new { @class = "delete hiddenoption" }, null)
+
+
+</div>

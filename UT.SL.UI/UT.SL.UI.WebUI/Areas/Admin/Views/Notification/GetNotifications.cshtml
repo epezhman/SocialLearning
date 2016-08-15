@@ -1,0 +1,41 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<IGrouping<UT.SL.Data.LINQ.Course, UT.SL.Data.LINQ.Notification>>
+<div class="container-fluid">
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="feedDiv" style="margin-bottom: 0px !important;">
+                        @if (item.Key != null)
+                        {
+                            <span>
+                                @item.Key.Title
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            foreach (var notif in item.OrderByDescending(x => x.CreateDate))
+            {
+                <div data-singlethread="notification@(notif.Id)">
+                    @Html.Action("NotificationView", "Notification", new { Area = "Admin", model = notif })
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="messageDiv centerOne boldAndLarger" style="margin-top:5px;">
+                    <span>
+                        @UT.SL.Model.Resource.App_Common.NoNewNotifications
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

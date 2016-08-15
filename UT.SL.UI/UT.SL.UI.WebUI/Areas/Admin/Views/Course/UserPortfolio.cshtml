@@ -1,0 +1,58 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="boldAndLarger">
+            @string.Format(UT.SL.Model.Resource.App_Common.PortfolioOf, ViewBag.FullName)
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetCourseUserActivities", "Course", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="activityDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetGradeChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="gradeDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetGradeTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetUserSoActProfileChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="soActDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetSoActTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetUserKnowledgeProfileChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="knowledgeDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("KnowledgetTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = ViewBag.CourseId })
+    </div>
+</div>

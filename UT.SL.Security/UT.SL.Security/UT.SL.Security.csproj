@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5DA2AF83-A4D7-4185-87A0-E93ACE943423}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UT.SL.Security</RootNamespace>
+    <AssemblyName>UT.SL.Security</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authorization.cs" />
+    <Compile Include="AuthorizeActioncs.cs" />
+    <Compile Include="Membership.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UT.SL.BLL\UT.SL.BLL\UT.SL.BLL.csproj">
+      <Project>{e03df4c8-e273-430d-ab1f-43a1747095b9}</Project>
+      <Name>UT.SL.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.DAL\UT.SL.DAL\UT.SL.DAL.csproj">
+      <Project>{1f4b149a-f461-422e-b645-bf5b6d83163a}</Project>
+      <Name>UT.SL.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Data\UT.SL.Data.LINQ\UT.SL.Data.LINQ.csproj">
+      <Project>{af43e761-610a-4492-99b8-9789073b7a82}</Project>
+      <Name>UT.SL.Data.LINQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Helper\UT.SL.Helper.csproj">
+      <Project>{14224af0-881a-4a53-997d-12d819c2b8b7}</Project>
+      <Name>UT.SL.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model.Enumeration\UT.SL.Model.Enumeration.csproj">
+      <Project>{a2d3ce70-9f8c-4ce2-8c2e-bb26a4a38fa7}</Project>
+      <Name>UT.SL.Model.Enumeration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model.Resource\UT.SL.Model.Resource.csproj">
+      <Project>{c3b47236-c90d-4e7e-b7e1-b7d437c84c0d}</Project>
+      <Name>UT.SL.Model.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Model\UT.SL.Model\UT.SL.Model.csproj">
+      <Project>{d6e5f651-4019-4c63-8ed5-2d8a2418970a}</Project>
+      <Name>UT.SL.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

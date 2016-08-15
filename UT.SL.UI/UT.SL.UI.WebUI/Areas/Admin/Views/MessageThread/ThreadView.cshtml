@@ -1,0 +1,37 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.MessageThread
+<div class="row" style="cursor:pointer;" data-openmessage="@Url.Action("Read", "MessageThread", new { Area = "Admin", id = Model.GuidId })" data-messageid="messageThread@(Model.GuidId.ToString().Replace('-', 'A'))">
+    <div class="col-xs-12">
+        <div class="messageDiv @(Model.HasNotSeen ? "messageDivUnSeen" : "messageDivSeen")" style="margin-top: 5px;">
+            <div class="row">
+                <div class="col-xs-2">
+                    @Html.Action("GetUserPicWithoutLink", "App_User", new { area = "admin", Id = Model.AssociatedUserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.Small })
+                </div>
+                <div class="col-xs-10">
+                    <div class="row  hidden-xs">
+                        <div class="col-xs-12">
+                            <span>
+                                @string.Format("{0} {1}", Model.App_User1.FirstName, Model.App_User1.LastName) (@Model.MessageCount)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span style="font-size:small">
+                                @HelperUtils.RTLCorrection(Model.Snippest)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row hidden-xs">
+                        <div class="col-xs-12">
+                            <span class="feedDivLessImportant" style="opacity:.8">
+                                @HelperUtils.ShowRecentTime(Model.LastUpdate.Value)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

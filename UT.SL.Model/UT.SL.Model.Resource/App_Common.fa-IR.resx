@@ -1,0 +1,1447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionName" xml:space="preserve">
+    <value>نام کنش</value>
+  </data>
+  <data name="ActionTitle" xml:space="preserve">
+    <value>عنوان کنش</value>
+  </data>
+  <data name="AddNewPart" xml:space="preserve">
+    <value>تعريف بخش جديد</value>
+  </data>
+  <data name="AddNewSubMenu" xml:space="preserve">
+    <value>تعریف زیر منوی جدید</value>
+  </data>
+  <data name="AreaName" xml:space="preserve">
+    <value>نام قلمرو</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>آیا مطمئن هستید؟</value>
+  </data>
+  <data name="Authorization" xml:space="preserve">
+    <value>سطح دسترسی خاص نیاز است</value>
+  </data>
+  <data name="BprAddSuccess" xml:space="preserve">
+    <value>با موفقیت انجام شد</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>تغییر گذر واژه</value>
+  </data>
+  <data name="CloseWindow" xml:space="preserve">
+    <value>پنجره را ببند</value>
+  </data>
+  <data name="ContentCount" xml:space="preserve">
+    <value>تعداد محتواها</value>
+  </data>
+  <data name="ControllerName" xml:space="preserve">
+    <value>نام کنترل کننده</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>ایجاد</value>
+  </data>
+  <data name="CreatePage" xml:space="preserve">
+    <value>ایجاد صفحه</value>
+  </data>
+  <data name="DeleteAccount" xml:space="preserve">
+    <value>حذف حساب کاربری</value>
+  </data>
+  <data name="DeletePage" xml:space="preserve">
+    <value>حذف صفحه</value>
+  </data>
+  <data name="DeletePart" xml:space="preserve">
+    <value>حذف بخش</value>
+  </data>
+  <data name="DeletePartInfo" xml:space="preserve">
+    <value>در صورتیکه این بخش, زیربخش داشته باشد حذف نخواهد شد، ابتدا باید زیر بخش های آن
+    را حذف نمایید#3</value>
+  </data>
+  <data name="EditMyAccount" xml:space="preserve">
+    <value>ویرایش حساب کاربری من</value>
+  </data>
+  <data name="EditPage" xml:space="preserve">
+    <value>ویرایش صفحه</value>
+  </data>
+  <data name="EditPart" xml:space="preserve">
+    <value>ویرایش بخش</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>از</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>راهنمایی</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>شاخص</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>فعال است</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>لیست</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>ورود</value>
+  </data>
+  <data name="LogInDescription" xml:space="preserve">
+    <value>شما کاربر جدید هستید؟</value>
+  </data>
+  <data name="ManageActions" xml:space="preserve">
+    <value>ManageActions</value>
+  </data>
+  <data name="ManageCredential" xml:space="preserve">
+    <value>ManageCredential</value>
+  </data>
+  <data name="ManageSiteParts" xml:space="preserve">
+    <value>ManageSiteParts</value>
+  </data>
+  <data name="MenuPlace" xml:space="preserve">
+    <value>MenuPlace</value>
+  </data>
+  <data name="MenuTypes" xml:space="preserve">
+    <value>MenuTypes</value>
+  </data>
+  <data name="MethodCode" xml:space="preserve">
+    <value>MethodCode</value>
+  </data>
+  <data name="MethodInfo" xml:space="preserve">
+    <value>MethodInfo</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>حساب کاربری من</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>خیر</value>
+  </data>
+  <data name="NumOfAll" xml:space="preserve">
+    <value>تعداد کل</value>
+  </data>
+  <data name="OtherAccountInfo" xml:space="preserve">
+    <value>بقیه اطلاعات حساب کاربری</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>صفحه</value>
+  </data>
+  <data name="PartInfo" xml:space="preserve">
+    <value>مشخصات بخش</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>برنامه</value>
+  </data>
+  <data name="RecordNumPerView" xml:space="preserve">
+    <value>تعداد رکورد در صفحه</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>ثبت نام کنید</value>
+  </data>
+  <data name="RequirePermission" xml:space="preserve">
+    <value>نیاز به اجازه دارد</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>پاک کردن صفحه</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>نقشها</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>انتخاب کن</value>
+  </data>
+  <data name="SubMenuCount" xml:space="preserve">
+    <value>SubMenuCount</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>بروز رسانی کن</value>
+  </data>
+  <data name="UpdateTree" xml:space="preserve">
+    <value>جهت بروز شدن ساختار درختي، روي لينک زير کليک نماييد</value>
+  </data>
+  <data name="WontBeDeletedDueToSubMenus" xml:space="preserve">
+    <value>امکان حذف این بخش به دلیل وجود ، بخش های زیر مجموعه وجود ندارد</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>بله</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>دسته</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>درسها</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>خانه</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>زبان</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>یادگیری اجتماعی</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="LogOInAs" xml:space="preserve">
+    <value>ورود به عنوان</value>
+  </data>
+  <data name="CourseInfo" xml:space="preserve">
+    <value>اطلاعات درس</value>
+  </data>
+  <data name="EditDetails" xml:space="preserve">
+    <value>ویرایش جزئیات</value>
+  </data>
+  <data name="ViewPage" xml:space="preserve">
+    <value>مشاهده صفحه</value>
+  </data>
+  <data name="FirstAssignStartEnd" xml:space="preserve">
+    <value>تاریخ شروع تکلیف</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>خلاصه</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="ObjectIdMissing" xml:space="preserve">
+    <value>شیء مورد نظر یافت نشد</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>گروه ها</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>اعضا</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>نظرات</value>
+  </data>
+  <data name="TagHelp" xml:space="preserve">
+    <value>شما میتوانید با تایپ کردن, پیشنهاد نظر بدهید, شما باید دسته و زیر دسته را مشخص کنید مانند (پیشنهاد من-دسته-زیردسته)</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>نشانه ها</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>دسته</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>موضوع</value>
+  </data>
+  <data name="Assignment" xml:space="preserve">
+    <value>تکلیف</value>
+  </data>
+  <data name="ChooseFilter" xml:space="preserve">
+    <value>انتخاب فیلتر</value>
+  </data>
+  <data name="Resource" xml:space="preserve">
+    <value>منبع</value>
+  </data>
+  <data name="MyCources" xml:space="preserve">
+    <value>درس های من</value>
+  </data>
+  <data name="MyHome" xml:space="preserve">
+    <value>خانه</value>
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value>فعالیتها</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>تاریخ</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>نمایه من</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>اعلانات</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>درباره </value>
+  </data>
+  <data name="BehavioralStyle" xml:space="preserve">
+    <value>روش رفتاری</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="Grades" xml:space="preserve">
+    <value>نمرات</value>
+  </data>
+  <data name="LearningStyle" xml:space="preserve">
+    <value>سبک یادگیری</value>
+  </data>
+  <data name="MemberOf" xml:space="preserve">
+    <value>عضو </value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>نمایه</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>پیشرفت</value>
+  </data>
+  <data name="SocialGroups" xml:space="preserve">
+    <value>گروههای اجتماعی</value>
+  </data>
+  <data name="StudentIn" xml:space="preserve">
+    <value>یادگیرنده در</value>
+  </data>
+  <data name="SubCategories" xml:space="preserve">
+    <value>زیر دسته ها</value>
+  </data>
+  <data name="TAIn" xml:space="preserve">
+    <value>دستیار در</value>
+  </data>
+  <data name="TeacherIn" xml:space="preserve">
+    <value>مدرس داخل است</value>
+  </data>
+  <data name="InterestedIn" xml:space="preserve">
+    <value>علاقه مند به</value>
+  </data>
+  <data name="AvgGrade" xml:space="preserve">
+    <value>میانگین نمرات</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>نمره</value>
+  </data>
+  <data name="MaxGrade" xml:space="preserve">
+    <value>بیشترین نمره</value>
+  </data>
+  <data name="MinGrade" xml:space="preserve">
+    <value>کمترین نمره</value>
+  </data>
+  <data name="MyGrade" xml:space="preserve">
+    <value>نمره من</value>
+  </data>
+  <data name="MyGroups" xml:space="preserve">
+    <value>گروه های اجتماعی من</value>
+  </data>
+  <data name="MyProgress" xml:space="preserve">
+    <value>پیشرفت من</value>
+  </data>
+  <data name="Topics" xml:space="preserve">
+    <value>موضوعات</value>
+  </data>
+  <data name="DateHelper" xml:space="preserve">
+    <value>یاری کننده تاریخ</value>
+  </data>
+  <data name="ManageMembers" xml:space="preserve">
+    <value>مدیریت اعضا</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>عضو</value>
+  </data>
+  <data name="AddTopics" xml:space="preserve">
+    <value>افزودن مباحث</value>
+  </data>
+  <data name="AddTopicsWithCommaAsSeperator" xml:space="preserve">
+    <value>برای جدا کردن مبحث ها از علامت کاما استفاده کنید</value>
+  </data>
+  <data name="BprPicOnlyForMainCategory" xml:space="preserve">
+    <value>BprPicOnlyForMainCategory#3</value>
+  </data>
+  <data name="NewCourse" xml:space="preserve">
+    <value>درس جدید</value>
+  </data>
+  <data name="CreateCourseAbstract" xml:space="preserve">
+    <value>ایجاد الگوی درس </value>
+  </data>
+  <data name="CreateNewCourse" xml:space="preserve">
+    <value>ایجاد درس جدید</value>
+  </data>
+  <data name="EditCourseAbstract" xml:space="preserve">
+    <value>ویرایش اجمال درس و ایجاد درس جدید</value>
+  </data>
+  <data name="CreateCourseFromAbstract" xml:space="preserve">
+    <value>ایجاد درس از روی الگو</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>تجربه</value>
+  </data>
+  <data name="GradesAndProgress" xml:space="preserve">
+    <value>نمرات و پیشرفت</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DownVotes" xml:space="preserve">
+    <value>رای منفی</value>
+  </data>
+  <data name="SendReply" xml:space="preserve">
+    <value>ارسال پاسخ</value>
+  </data>
+  <data name="UpVotes" xml:space="preserve">
+    <value>رای مثبت</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>مشاهده</value>
+  </data>
+  <data name="Awesome" xml:space="preserve">
+    <value>عالی</value>
+  </data>
+  <data name="Bored" xml:space="preserve">
+    <value>خسته</value>
+  </data>
+  <data name="Interesting" xml:space="preserve">
+    <value>جالب</value>
+  </data>
+  <data name="LikeIt" xml:space="preserve">
+    <value>خوشایند</value>
+  </data>
+  <data name="LostInterest" xml:space="preserve">
+    <value>LostInterest</value>
+  </data>
+  <data name="NeedHelp" xml:space="preserve">
+    <value>نیازمند کمک</value>
+  </data>
+  <data name="NeedTime" xml:space="preserve">
+    <value>نیازمند زمان</value>
+  </data>
+  <data name="NotThought" xml:space="preserve">
+    <value>فکر نشده</value>
+  </data>
+  <data name="Reactions" xml:space="preserve">
+    <value>واکنش ها</value>
+  </data>
+  <data name="Tough" xml:space="preserve">
+    <value>سخت</value>
+  </data>
+  <data name="DaysAgo" xml:space="preserve">
+    <value>روز قبل</value>
+  </data>
+  <data name="HourAgo" xml:space="preserve">
+    <value>ساعت قبل</value>
+  </data>
+  <data name="MinAgo" xml:space="preserve">
+    <value>دقیقه قبل</value>
+  </data>
+  <data name="SecAgo" xml:space="preserve">
+    <value>ثانیه قبل</value>
+  </data>
+  <data name="ShowFewerComment" xml:space="preserve">
+    <value>نظرات کمتری را نشان بده</value>
+  </data>
+  <data name="ShowMoreComment" xml:space="preserve">
+    <value>{0} نظر بیشتر را نشان بده</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value />
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>توسط</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>نو کردن صفحه</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>به</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>ببند</value>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>عکس</value>
+  </data>
+  <data name="MemberCount" xml:space="preserve">
+    <value>تعداد اعضا</value>
+  </data>
+  <data name="ChooseLearningGroups" xml:space="preserve">
+    <value>گروه یادگیری را انتخاب کن</value>
+  </data>
+  <data name="FileUpload" xml:space="preserve">
+    <value>بارگذاری فایل</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>بیشتر</value>
+  </data>
+  <data name="ShareOption" xml:space="preserve">
+    <value>جزییات به اشتراک گذاری</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تایید</value>
+  </data>
+  <data name="LearningGroup" xml:space="preserve">
+    <value>گروه یادگیری</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>لغو</value>
+  </data>
+  <data name="DropFilesHere" xml:space="preserve">
+    <value>فایل ها را اینجا بینداز</value>
+  </data>
+  <data name="FailedUpload" xml:space="preserve">
+    <value>بارگذاری با شکست مواجه شد</value>
+  </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>حذف فایل</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>تلاش مجدد</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>انتخاب فایل</value>
+  </data>
+  <data name="statusUploaded" xml:space="preserve">
+    <value>با موفقیت بارگذاری شد</value>
+  </data>
+  <data name="statusUploading" xml:space="preserve">
+    <value>در حال بارگذاری</value>
+  </data>
+  <data name="UploadSelectedFiles" xml:space="preserve">
+    <value>آپلود فایل های انتخاب شده</value>
+  </data>
+  <data name="AdminSideBar" xml:space="preserve">
+    <value>فعالیتهای مدیر سایت</value>
+  </data>
+  <data name="LearningSideBar" xml:space="preserve">
+    <value>فعالیتهای یادگیری</value>
+  </data>
+  <data name="SocialSideBar" xml:space="preserve">
+    <value>SocialSideBar</value>
+  </data>
+  <data name="StudentSideBar" xml:space="preserve">
+    <value>StudentSideBar</value>
+  </data>
+  <data name="TASideBar" xml:space="preserve">
+    <value>TASideBar</value>
+  </data>
+  <data name="TeacherSideBar" xml:space="preserve">
+    <value>TeacherSideBar</value>
+  </data>
+  <data name="Authentication" xml:space="preserve">
+    <value>احراز هویت نیاز است</value>
+  </data>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>دسترسی غیرمجاز است</value>
+  </data>
+  <data name="AccessDeniedMessage" xml:space="preserve">
+    <value>این کار به دسترسی سطح بالاتری نیاز دارد</value>
+  </data>
+  <data name="NotActive" xml:space="preserve">
+    <value>فعال نیست</value>
+  </data>
+  <data name="NotActiveMessage" xml:space="preserve">
+    <value>پیام فعال نیست</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>یادگیرنده</value>
+  </data>
+  <data name="TA" xml:space="preserve">
+    <value>دستیار</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>مدرس</value>
+  </data>
+  <data name="LearningGroups" xml:space="preserve">
+    <value>گروه یادگیری</value>
+  </data>
+  <data name="FieldIsRequired" xml:space="preserve">
+    <value>وارد کردن فیلد اجباری است</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>به اشتراک گذاری </value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>نشانه</value>
+  </data>
+  <data name="TagMapper" xml:space="preserve">
+    <value>TagMapper</value>
+  </data>
+  <data name="Vote" xml:space="preserve">
+    <value>رای</value>
+  </data>
+  <data name="VoteParent" xml:space="preserve">
+    <value>VoteParent</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>ویکی</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>نقش</value>
+  </data>
+  <data name="ChooseSocialGroups" xml:space="preserve">
+    <value>گروه اجتماعی را انتخاب کن</value>
+  </data>
+  <data name="SocialGroup" xml:space="preserve">
+    <value>گروه  اجتماعی</value>
+  </data>
+  <data name="ShareWithYourGroups" xml:space="preserve">
+    <value>به اشتراک گذاری با گروه های خودت</value>
+  </data>
+  <data name="AdminStuff" xml:space="preserve">
+    <value>موارد مدیریتی</value>
+  </data>
+  <data name="AllCourses" xml:space="preserve">
+    <value>همه درس ها</value>
+  </data>
+  <data name="Calendar" xml:space="preserve">
+    <value>تقویم</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>پیامها</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>کاربر</value>
+  </data>
+  <data name="MyCourses" xml:space="preserve">
+    <value>درس های من</value>
+  </data>
+  <data name="ActionManegment" xml:space="preserve">
+    <value>مدیریت کنشهای سیستم</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>همه</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>شرکت کنندگان</value>
+  </data>
+  <data name="AdvancedEdit" xml:space="preserve">
+    <value>ویرایش پیشرفته</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>تعریف کاربر</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>بازگشت</value>
+  </data>
+  <data name="DragAndDropHereToDelete" xml:space="preserve">
+    <value>برای حذف عضو او را بکش و اینجا بینداز</value>
+  </data>
+  <data name="In" xml:space="preserve">
+    <value>در</value>
+  </data>
+  <data name="InThis" xml:space="preserve">
+    <value>در</value>
+  </data>
+  <data name="Less" xml:space="preserve">
+    <value>کمتر</value>
+  </data>
+  <data name="ManageCourseParticipants" xml:space="preserve">
+    <value>مدیریت شرکت کنندگان در درس</value>
+  </data>
+  <data name="ManageLearningGroups" xml:space="preserve">
+    <value>مدیریت گروههای یادگیری</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>تکلیف</value>
+  </data>
+  <data name="Forumes" xml:space="preserve">
+    <value>تالار</value>
+  </data>
+  <data name="Quizes" xml:space="preserve">
+    <value>امتحانات</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>منبع</value>
+  </data>
+  <data name="AllGroups" xml:space="preserve">
+    <value>همه گروه ها</value>
+  </data>
+  <data name="NoMorePosts" xml:space="preserve">
+    <value>همه پستها همین بود!</value>
+  </data>
+  <data name="ToShare" xml:space="preserve">
+    <value>به اشتراک بگذار</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>تحصیل</value>
+  </data>
+  <data name="LearningActivity" xml:space="preserve">
+    <value>فعالیت آموزشی</value>
+  </data>
+  <data name="SocialActivity" xml:space="preserve">
+    <value>فعالیت اجتماعی</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>کار</value>
+  </data>
+  <data name="Attach" xml:space="preserve">
+    <value>پیوست کن</value>
+  </data>
+  <data name="CreatePageCategory" xml:space="preserve">
+    <value>ایجاد دسته بندی صفحه</value>
+  </data>
+  <data name="CurrentTopics" xml:space="preserve">
+    <value>موضوعات فعلی</value>
+  </data>
+  <data name="DeletePageCategory" xml:space="preserve">
+    <value>حذف دسته بندی صفحه</value>
+  </data>
+  <data name="EditPageCategory" xml:space="preserve">
+    <value>صفحه ویرایش دسته بندی</value>
+  </data>
+  <data name="EditPageCourse" xml:space="preserve">
+    <value>صحفه ویرایش درس</value>
+  </data>
+  <data name="NewCourseAbstract" xml:space="preserve">
+    <value>الگوی درس جدید</value>
+  </data>
+  <data name="CreateNewGroup" xml:space="preserve">
+    <value>ایجاد گروه جدید</value>
+  </data>
+  <data name="ChooseTopics" xml:space="preserve">
+    <value>موضوع ها را انتخاب کن</value>
+  </data>
+  <data name="CreateSocialGroup" xml:space="preserve">
+    <value>ایجاد گروه اجتماعی</value>
+  </data>
+  <data name="AboutThisGroup" xml:space="preserve">
+    <value>درباره ی این گروه</value>
+  </data>
+  <data name="CreateNewTag" xml:space="preserve">
+    <value>ایجاد برچسب جدید</value>
+  </data>
+  <data name="HaveYouInTheirGroups" xml:space="preserve">
+    <value>شما را در گروه های خود دارند</value>
+  </data>
+  <data name="PostDeleted" xml:space="preserve">
+    <value>پست حذف شده</value>
+  </data>
+  <data name="YourGroups" xml:space="preserve">
+    <value>گروههای من</value>
+  </data>
+  <data name="Forum" xml:space="preserve">
+    <value>تالار</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>بدنه</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>موعد انجام</value>
+  </data>
+  <data name="GradeFrom" xml:space="preserve">
+    <value>نمره از</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>سایر</value>
+  </data>
+  <data name="Replies" xml:space="preserve">
+    <value>پاسخ</value>
+  </data>
+  <data name="NewDiscussion" xml:space="preserve">
+    <value>مباحثه جدید</value>
+  </data>
+  <data name="ShowFewerDiscussions" xml:space="preserve">
+    <value>مباحثات کمتر نشان بده</value>
+  </data>
+  <data name="ShowMoreDiscussions" xml:space="preserve">
+    <value>{0} مباحثه بیشتر را نشان بده</value>
+  </data>
+  <data name="Reply" xml:space="preserve">
+    <value>پاسخ</value>
+  </data>
+  <data name="ViewDiscussion" xml:space="preserve">
+    <value>مشاهده مباحثات</value>
+  </data>
+  <data name="ShowFewerReplies" xml:space="preserve">
+    <value>پاسخهای کمتری نشان بده</value>
+  </data>
+  <data name="ShowMoreReplies" xml:space="preserve">
+    <value>{0} پاسخ بیشتر را نشان بده</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>پست</value>
+  </data>
+  <data name="LastModified" xml:space="preserve">
+    <value>آخرین ویرایش {0}</value>
+  </data>
+  <data name="Submitted" xml:space="preserve">
+    <value>ارسالی</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>نظر</value>
+  </data>
+  <data name="ShowMoreSubmissions" xml:space="preserve">
+    <value>{0} تکلیف بیشتر را نشان بده</value>
+  </data>
+  <data name="Assess" xml:space="preserve">
+    <value>نظر بده</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>نظر</value>
+  </data>
+  <data name="NoGrade" xml:space="preserve">
+    <value>بدون نمره</value>
+  </data>
+  <data name="ViewAllSubmissions" xml:space="preserve">
+    <value>مشاهده تمام تکالیف ارسالی</value>
+  </data>
+  <data name="ViewSubmission" xml:space="preserve">
+    <value>مشاهده تکلیف ارسالی</value>
+  </data>
+  <data name="EnterTitleHere" xml:space="preserve">
+    <value>عنوان را اینجا وارد کن</value>
+  </data>
+  <data name="ViewMySubmission" xml:space="preserve">
+    <value>مشاهده تکلیف ارسالی ام</value>
+  </data>
+  <data name="IgnoreOwner" xml:space="preserve">
+    <value>شرط سطح دسترسی به مالک هم اعمال شود؟</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>بازخورد</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ایمیل</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>ارسال دوباره</value>
+  </data>
+  <data name="Late" xml:space="preserve">
+    <value>دیر</value>
+  </data>
+  <data name="SharedVia" xml:space="preserve">
+    <value>به اشتراک گذاشت با</value>
+  </data>
+  <data name="ReturnBlankIfNotAllowed" xml:space="preserve">
+    <value>Return Blank If Not Allowed</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>تغییر ایمیل</value>
+  </data>
+  <data name="PleaseConfirmYourEmail" xml:space="preserve">
+    <value>لطفا ایمیل خود را تایید کنید</value>
+  </data>
+  <data name="Harter" xml:space="preserve">
+    <value>پرسشنامه هارتر</value>
+  </data>
+  <data name="Hermans" xml:space="preserve">
+    <value>پرسشنامه هرمنس</value>
+  </data>
+  <data name="Questionnaire" xml:space="preserve">
+    <value>پرسشنامه</value>
+  </data>
+  <data name="Survey" xml:space="preserve">
+    <value>نظرسنجی</value>
+  </data>
+  <data name="Incomplete" xml:space="preserve">
+    <value>ناکامل</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>جدید</value>
+  </data>
+  <data name="IsCredit" xml:space="preserve">
+    <value>معتبر است</value>
+  </data>
+  <data name="StudentCredit" xml:space="preserve">
+    <value>اعتبار یادگیرنده</value>
+  </data>
+  <data name="TACredit" xml:space="preserve">
+    <value>اعتباری که به دستیار داده می شود</value>
+  </data>
+  <data name="TeacherCredit" xml:space="preserve">
+    <value>اعتبار مدرس</value>
+  </data>
+  <data name="CreditOnlyPost" xml:space="preserve">
+    <value>Credit Only For POST(Not GET)</value>
+  </data>
+  <data name="YouMayNeedToLearn" xml:space="preserve">
+    <value>احتمالا دانستن این موارد بدردتان می خورد</value>
+  </data>
+  <data name="Recommended" xml:space="preserve">
+    <value>پیشنهادی</value>
+  </data>
+  <data name="YouMayBeInterestedIn" xml:space="preserve">
+    <value>احتمالا از این موارد خوشتان می آید</value>
+  </data>
+  <data name="ForumDiscussion" xml:space="preserve">
+    <value>مباحثه</value>
+  </data>
+  <data name="Hot" xml:space="preserve">
+    <value>پرطرفدار</value>
+  </data>
+  <data name="WriteAComment" xml:space="preserve">
+    <value>یک نظر بنویس</value>
+  </data>
+  <data name="PleaseRelaodThePageAfterUploadingPic" xml:space="preserve">
+    <value>بعد از آپلود تصویر لطفا صفحه را دوباره ببین</value>
+  </data>
+  <data name="AndLearnWithYourFriends" xml:space="preserve">
+    <value>و با دوستان خود یاد بگیرید!</value>
+  </data>
+  <data name="AndSeeWhatsWaitingForYouThere" xml:space="preserve">
+    <value>و آنچه در انتظار شما است!</value>
+  </data>
+  <data name="AndShareWithYourFriends" xml:space="preserve">
+    <value> و با دوستان خود به اشتراک بگذارید!</value>
+  </data>
+  <data name="CreateSocialGroups" xml:space="preserve">
+    <value>گروه های دسته جمعی بسازید</value>
+  </data>
+  <data name="DoosMoocSocialLearning" xml:space="preserve">
+    <value>یادگیری اجتماعی در دوسموک.</value>
+  </data>
+  <data name="LearningAndSocializing" xml:space="preserve">
+    <value>یادگیری و روابط اجتماعی در کنار هم</value>
+  </data>
+  <data name="LetsLearnTogetherLikeNeverBefore" xml:space="preserve">
+    <value>بیایید با هم یاد بگیریم! تجربه جدیدی است!</value>
+  </data>
+  <data name="MakeFriends" xml:space="preserve">
+    <value>دوست پیدا کنید !</value>
+  </data>
+  <data name="ShareUnlimitedFunWithYourFriends" xml:space="preserve">
+    <value> ازبه اشتراک گذاشتن مطالب با دوستان خود لذت ببرید!</value>
+  </data>
+  <data name="SocializeWithYourTeachersAndClassmatesExperienceANewWayOfLearning" xml:space="preserve">
+    <value>شبکه اجتماعی با مدرسان و همکلاسی ها، تجربه یک راه جدید برای یادگیری است!</value>
+  </data>
+  <data name="VisitYourCourses" xml:space="preserve">
+    <value>درسهایتان را ببینید</value>
+  </data>
+  <data name="VisitYourHome" xml:space="preserve">
+    <value>صفحه اصلی خود را ببینید</value>
+  </data>
+  <data name="ItIsANewWay" xml:space="preserve">
+    <value>این راه جدید را امتحان کنید</value>
+  </data>
+  <data name="ItWillBlowYourMind" xml:space="preserve">
+    <value>ذهنتان تحول میشود</value>
+  </data>
+  <data name="JoinOurNetwork" xml:space="preserve">
+    <value>به شبکه ما بپیوندید</value>
+  </data>
+  <data name="OhYeahItIsThatGood" xml:space="preserve">
+    <value>ارزشش را دارد</value>
+  </data>
+  <data name="SeeForYourself" xml:space="preserve">
+    <value>خودتان را پیدا کنید</value>
+  </data>
+  <data name="WhatIsYourMind" xml:space="preserve">
+    <value>اینجا کمی درباره آن بنویس</value>
+  </data>
+  <data name="DiscussionsCount" xml:space="preserve">
+    <value>تعداد مباحثات</value>
+  </data>
+  <data name="SubmissionsCount" xml:space="preserve">
+    <value>تعداد کل ارسالیها</value>
+  </data>
+  <data name="DayLeft" xml:space="preserve">
+    <value>روز مانده</value>
+  </data>
+  <data name="DayOverdue" xml:space="preserve">
+    <value>روز گذشته</value>
+  </data>
+  <data name="HourLeft" xml:space="preserve">
+    <value>ساعت مانده</value>
+  </data>
+  <data name="HourOverdue" xml:space="preserve">
+    <value>ساعت گذشته</value>
+  </data>
+  <data name="MinLeft" xml:space="preserve">
+    <value>دقیقه مانده</value>
+  </data>
+  <data name="MinOverdue" xml:space="preserve">
+    <value>دقیقه گذشته</value>
+  </data>
+  <data name="SecLeft" xml:space="preserve">
+    <value>ثانیه مانده</value>
+  </data>
+  <data name="SecOverdue" xml:space="preserve">
+    <value>ثانیه گذشته</value>
+  </data>
+  <data name="UsersLog" xml:space="preserve">
+    <value>عملکرد کاربران</value>
+  </data>
+  <data name="Clearifying" xml:space="preserve">
+    <value>شفاف سازی خوب بحث</value>
+  </data>
+  <data name="Evaluating" xml:space="preserve">
+    <value>ارزیابی خوب</value>
+  </data>
+  <data name="GoodSummary" xml:space="preserve">
+    <value>جمع بندی خوب</value>
+  </data>
+  <data name="InformativeApprove" xml:space="preserve">
+    <value>موافقت آگاهانه</value>
+  </data>
+  <data name="InformativeDisapprove" xml:space="preserve">
+    <value>مخالفت آگاهانه</value>
+  </data>
+  <data name="Inspiring" xml:space="preserve">
+    <value>الهام بخش</value>
+  </data>
+  <data name="Organizing" xml:space="preserve">
+    <value>سازماندهی خوب بحث</value>
+  </data>
+  <data name="WeakContribution" xml:space="preserve">
+    <value>مشارکت ضعیف</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="Disagree" xml:space="preserve">
+    <value>مخالف</value>
+  </data>
+  <data name="NeitherAgreeNorDisagree" xml:space="preserve">
+    <value>نه موافق نه مخالف</value>
+  </data>
+  <data name="StronglyAgree" xml:space="preserve">
+    <value>کاملا موافقم</value>
+  </data>
+  <data name="StronglyDisagree" xml:space="preserve">
+    <value>کاملا مخالفم</value>
+  </data>
+  <data name="AGQ_R" xml:space="preserve">
+    <value>AGQ-R</value>
+  </data>
+  <data name="AnswerToAllBeforeSubmit" xml:space="preserve">
+    <value>ابتدا به تمامی پرسشها پاسخ دهید</value>
+  </data>
+  <data name="AreYouSureFinalSubmit" xml:space="preserve">
+    <value>مطمئنید؟ بعد از ارسال تغییر ناممکن خواهد بود</value>
+  </data>
+  <data name="FinalSubmit" xml:space="preserve">
+    <value>ارسال نهایی</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>گزارش</value>
+  </data>
+  <data name="Challenging" xml:space="preserve">
+    <value>تالار چالشی</value>
+  </data>
+  <data name="Communicating" xml:space="preserve">
+    <value>تالار تبادل نظر</value>
+  </data>
+  <data name="Motivating" xml:space="preserve">
+    <value>تالار انگیزه بخش</value>
+  </data>
+  <data name="BackToDiscussions" xml:space="preserve">
+    <value>بازگشت به مباحثات</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>مدیریت</value>
+  </data>
+  <data name="EditCourse" xml:space="preserve">
+    <value>ویرایش درس</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>کارپوشه</value>
+  </data>
+  <data name="EducationalActivites" xml:space="preserve">
+    <value>فعالیتهای آموزشی</value>
+  </data>
+  <data name="SurveyResults" xml:space="preserve">
+    <value>نتایج پرسشنامه ها</value>
+  </data>
+  <data name="Answer" xml:space="preserve">
+    <value>پاسخ</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>در حال بارگذاری</value>
+  </data>
+  <data name="Knowledge" xml:space="preserve">
+    <value>دانش</value>
+  </data>
+  <data name="MyKnowledgeProfile" xml:space="preserve">
+    <value>نمایه دانش من</value>
+  </data>
+  <data name="MySoActProfile" xml:space="preserve">
+    <value>نمایه اعتبار من</value>
+  </data>
+  <data name="SoActValue" xml:space="preserve">
+    <value>اعتبار اجتماعی</value>
+  </data>
+  <data name="Topic" xml:space="preserve">
+    <value>موضوع</value>
+  </data>
+  <data name="UserKnowledgeProfile" xml:space="preserve">
+    <value>نمایه دانش کاربر</value>
+  </data>
+  <data name="UserKnowledgeProfileMAX" xml:space="preserve">
+    <value>بیشترین سطح دانش</value>
+  </data>
+  <data name="UserKnowledgeProfileMIN" xml:space="preserve">
+    <value>کمترین سطح دانش</value>
+  </data>
+  <data name="UserSoActProfile" xml:space="preserve">
+    <value>اعتبار اجتماعی</value>
+  </data>
+  <data name="UserSoActProfileMAX" xml:space="preserve">
+    <value>بیشترین اعتبار</value>
+  </data>
+  <data name="UserSoActProfileMIN" xml:space="preserve">
+    <value>کمترین اعتبار</value>
+  </data>
+  <data name="TopParticipantsOfTheWeek" xml:space="preserve">
+    <value>پیشتازان هفته</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>ایجاد کرد</value>
+  </data>
+  <data name="MostActive" xml:space="preserve">
+    <value>فعالترین</value>
+  </data>
+  <data name="MostPopular" xml:space="preserve">
+    <value>پرطرفدارترین</value>
+  </data>
+  <data name="Votes" xml:space="preserve">
+    <value>آراء</value>
+  </data>
+  <data name="ActivitiesDetails" xml:space="preserve">
+    <value>جزئیات فعالیتها</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>جزئیات</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>این ماه</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>این هفته</value>
+  </data>
+  <data name="WholeSemester" xml:space="preserve">
+    <value>کل ترم</value>
+  </data>
+  <data name="ActivityScore" xml:space="preserve">
+    <value>نمرات فعالیتها</value>
+  </data>
+  <data name="TopParticipantsOfTheMonth" xml:space="preserve">
+    <value>پیشتازان ماه</value>
+  </data>
+  <data name="TopParticipantsOfTheWholeSemester" xml:space="preserve">
+    <value>پیشتازان کل ترم</value>
+  </data>
+  <data name="AboutGradedMaterial" xml:space="preserve">
+    <value>درباره محتواهای نمره گرفته</value>
+  </data>
+  <data name="ActivitesOfAt" xml:space="preserve">
+    <value>فعالیتهای of {0} در {1}</value>
+  </data>
+  <data name="AtTime" xml:space="preserve">
+    <value>در زمان {0}</value>
+  </data>
+  <data name="Commented" xml:space="preserve">
+    <value>نظرنوشت</value>
+  </data>
+  <data name="CreatedForumDiscussion" xml:space="preserve">
+    <value>مباحثه ایجاد شده</value>
+  </data>
+  <data name="CreatedThing" xml:space="preserve">
+    <value>ایجاد کرد {0}</value>
+  </data>
+  <data name="FD" xml:space="preserve">
+    <value>FD</value>
+  </data>
+  <data name="GradedFor" xml:space="preserve">
+    <value>نمره گرفت برای</value>
+  </data>
+  <data name="GradedOn" xml:space="preserve">
+    <value>نمره داد به</value>
+  </data>
+  <data name="GradeOf" xml:space="preserve">
+    <value>نمره از {0}</value>
+  </data>
+  <data name="KnowledgeProfileOf" xml:space="preserve">
+    <value>سطح دانش {0}</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OnThis" xml:space="preserve">
+    <value>در {0}</value>
+  </data>
+  <data name="PortfolioHelp" xml:space="preserve">
+    <value>توجه: با کلیک روی ستونها یا نقاط نمودار اطلاعات کاملتری ببینید</value>
+  </data>
+  <data name="Readen" xml:space="preserve">
+    <value>خواند {0}</value>
+  </data>
+  <data name="SoActValueOf" xml:space="preserve">
+    <value>اعتبار اجتماعی {0}</value>
+  </data>
+  <data name="SubmittedAssigment" xml:space="preserve">
+    <value>تکلیف ارسال شده</value>
+  </data>
+  <data name="Bookmark" xml:space="preserve">
+    <value>نشانه</value>
+  </data>
+  <data name="InEmail" xml:space="preserve">
+    <value>در ایمیل</value>
+  </data>
+  <data name="InNotification" xml:space="preserve">
+    <value>در اعلان</value>
+  </data>
+  <data name="UserInterestValue" xml:space="preserve">
+    <value>سطح علاقه کاربر</value>
+  </data>
+  <data name="UserKnowledgeValue" xml:space="preserve">
+    <value>سطح دانش کاربر</value>
+  </data>
+  <data name="BelongsTo" xml:space="preserve">
+    <value>متعلق به</value>
+  </data>
+  <data name="NoTopic" xml:space="preserve">
+    <value>بدون موضوع</value>
+  </data>
+  <data name="PortfolioOf" xml:space="preserve">
+    <value>کارپوشه {0}</value>
+  </data>
+  <data name="GradedBy" xml:space="preserve">
+    <value>نمره گرفت توسط</value>
+  </data>
+  <data name="GradedMaterials" xml:space="preserve">
+    <value>محتواهای نمره گرفته</value>
+  </data>
+  <data name="AssociatedObjectId" xml:space="preserve">
+    <value>AssociatedObjectId</value>
+  </data>
+  <data name="DoesNotHaveDAL" xml:space="preserve">
+    <value>DoesNotHaveDAL</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>پیام</value>
+  </data>
+  <data name="SendNewMessage" xml:space="preserve">
+    <value>پیام جدید بفرست</value>
+  </data>
+  <data name="NewMessage" xml:space="preserve">
+    <value>پیام جدید</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>ارسال</value>
+  </data>
+  <data name="MessageSent" xml:space="preserve">
+    <value>پیام ارسالی</value>
+  </data>
+  <data name="NoMessages" xml:space="preserve">
+    <value>هیچ پیامی نیست</value>
+  </data>
+  <data name="ScrollDown" xml:space="preserve">
+    <value>پایین برو</value>
+  </data>
+  <data name="NoMoreToShow" xml:space="preserve">
+    <value>چیز دیگری برای نمایش نیست</value>
+  </data>
+  <data name="NoNewNotifications" xml:space="preserve">
+    <value>اعلان جدیدی نیست</value>
+  </data>
+  <data name="NotificationAt" xml:space="preserve">
+    <value>اعلانات مورخ {0}</value>
+  </data>
+  <data name="AssignmentSubmission" xml:space="preserve">
+    <value>ارسال تکلیف</value>
+  </data>
+  <data name="FromCourse" xml:space="preserve">
+    <value>از درس {0}</value>
+  </data>
+  <data name="Graded" xml:space="preserve">
+    <value>نمره داد</value>
+  </data>
+  <data name="Tagged" xml:space="preserve">
+    <value>نشانه گذاشت</value>
+  </data>
+  <data name="AtDateTime" xml:space="preserve">
+    <value>در {0} {1}</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>پیش نمایش</value>
+  </data>
+  <data name="AddedThing" xml:space="preserve">
+    <value>اضافه کرد {0}</value>
+  </data>
+  <data name="Discussion" xml:space="preserve">
+    <value>مباحثه</value>
+  </data>
+  <data name="RepliedThing" xml:space="preserve">
+    <value>پاسخ داد {0}</value>
+  </data>
+  <data name="You" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="Tops" xml:space="preserve">
+    <value>برترینها</value>
+  </data>
+  <data name="YourGrade" xml:space="preserve">
+    <value>نمره من</value>
+  </data>
+  <data name="NewThing" xml:space="preserve">
+    <value>جدید {0}</value>
+  </data>
+  <data name="Edited" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="NavigateHere" xml:space="preserve">
+    <value>از اینجا</value>
+  </data>
+  <data name="EditAccount" xml:space="preserve">
+    <value>ویرایش حساب کاربری</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>ویرایش نمایه</value>
+  </data>
+  <data name="Partners" xml:space="preserve">
+    <value>همکاران</value>
+  </data>
+  <data name="PreviewInfo" xml:space="preserve">
+    <value>با انتخاب عنوان درس از باکس کناری توضیحات آنرا مشاهده کنید</value>
+  </data>
+  <data name="TosignUp" xml:space="preserve">
+    <value>اگر می خواهید ثبت نام کنید یک پیام بفرستید به </value>
+  </data>
+  <data name="GroupShared" xml:space="preserve">
+    <value>با گروه به اشتراک گذاشت</value>
+  </data>
+  <data name="ManageYourGroups" xml:space="preserve">
+    <value>گروههایت را مدیریت کن</value>
+  </data>
+  <data name="ThreeTagsMax" xml:space="preserve">
+    <value>نهایتا سه نشانه. اگر می خواهید نشانه جدید بگذارید ابتدا قبلیها را حذف کنید!</value>
+  </data>
+  <data name="Voted" xml:space="preserve">
+    <value>رای داد</value>
+  </data>
+  <data name="OnDisscussion" xml:space="preserve">
+    <value>در مباحثه</value>
+  </data>
+  <data name="OnForum" xml:space="preserve">
+    <value>در تالار</value>
+  </data>
+  <data name="WillBeActivatedInFewWeeks" xml:space="preserve">
+    <value>این باکس ظرف چند هفته آینده فعال خواهد شد چرا که حداقل چند ده محتوا باید توسط مشارکت کنندگان در درس به اشتراک گذاشته شده باشد.</value>
+  </data>
+  <data name="Acceptable" xml:space="preserve">
+    <value>قابل قبول</value>
+  </data>
+  <data name="Informative" xml:space="preserve">
+    <value>بدردبخور</value>
+  </data>
+  <data name="NeedsHelp" xml:space="preserve">
+    <value>نیاز به کمک</value>
+  </data>
+  <data name="NeedsImprovement" xml:space="preserve">
+    <value>نیازمند اصلاح</value>
+  </data>
+  <data name="NeedsTime" xml:space="preserve">
+    <value>نیاز به زمان بیشتر</value>
+  </data>
+  <data name="Useless" xml:space="preserve">
+    <value>بدردنخور</value>
+  </data>
+</root>

@@ -1,0 +1,25 @@
+﻿@model UT.SL.Model.ObjectViewModel
+@if (Model != null && Model.Id > 0)
+{
+    <span class="glyphicon glyphicon-remove" data-showpostpanel="true" title="@UT.SL.Model.Resource.App_Common.Close" style="cursor:pointer"></span>
+    if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+    {
+        @Html.Partial("ResourceViewer", Model)
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+    {
+        @Html.Action("AssignmentViewer", "Assignment", new { area = "Admin", id = Model.Id })
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+    {
+        @Html.Action("ForumViewer", "Forum", new { area = "Admin", id = Model.Id })
+    }
+    else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)
+    {
+        @Html.Action("ForumViewer", "Forum", new { area = "Admin", id = Model.CameFromId })
+    }
+}
+else
+{
+    <span></span>
+}

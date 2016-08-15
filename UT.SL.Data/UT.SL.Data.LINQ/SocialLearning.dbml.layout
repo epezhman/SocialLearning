@@ -1,0 +1,1362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 29, 152.75" name="SocialLearning">
+  <DataContextMoniker Name="/SocialLearningDataContext" />
+  <nestedChildShapes>
+    <classShape Id="36ff6cca-a069-42da-85d6-c5c3d9a67b5f" absoluteBounds="15, 58.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Answer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26a501d1-417b-472a-a26a-4584036a12d6" absoluteBounds="15.015, 59.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e764eaf-1224-4440-a472-6a78b7ac2ccf" absoluteBounds="12.5, 75.875, 2, 2.3478011067708451">
+      <DataClassMoniker Name="/SocialLearningDataContext/Wiki" />
+      <nestedChildShapes>
+        <elementListCompartment Id="655bca98-2b02-44a9-a1d7-90c9121dcfca" absoluteBounds="12.515, 76.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f26085a9-1efe-483e-8836-37c20258828b" absoluteBounds="9.75, 90.75, 2, 4.6554182942708451">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_Action" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a2a8440-a42e-4c9a-97d8-3ac6e9aa6de2" absoluteBounds="9.765, 91.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="40c2a219-ebf7-44b8-a4df-0e994a9b82d1" absoluteBounds="12.5, 79.5, 2, 3.3093082682291595">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_ActionEvaulation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="01407764-784d-45bd-9a23-56df02cb9057" absoluteBounds="12.515, 79.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="411afacf-4db3-4428-8bc9-0d4c27459629" absoluteBounds="15.25, 93.625, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_MenuPosition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3e21fff0-0968-445a-a507-d21baf659e67" absoluteBounds="15.265, 94.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24ad5e1c-e856-4a87-a9c5-56a8d3e5b3ef" absoluteBounds="12.5, 87.625, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6515d2e1-c335-4d0f-b968-842933c853ca" absoluteBounds="12.515, 88.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fa652dfe-b2a1-4ef9-a4ff-9db9ac86bc1d" absoluteBounds="0.75, 69.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16d656cb-d296-4dbb-a9c0-8f2896c8b488" absoluteBounds="0.765, 69.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05888d4d-b590-48f1-88c2-9b2c44727564" absoluteBounds="12.5, 93.375, 2, 4.0785139973958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_SiteMenu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15f3671c-c70a-401c-9914-c47b2f8794ed" absoluteBounds="12.515, 93.835, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b96cfa6-42a1-4a2f-b7b3-c18526f12531" absoluteBounds="15.25, 95.75, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_SiteMenuText" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25d1ae14-9721-4e41-9d81-f48fd85c8580" absoluteBounds="15.265, 96.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" absoluteBounds="0.75, 72.125, 2, 3.8862125651041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="37c949d1-a8d1-40ef-b687-aef5d78db321" absoluteBounds="0.765, 72.585, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5b4871d-decb-4d98-95ca-dc65f230e87a" absoluteBounds="6.5, 73.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserEnrolement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="419f0e81-f60c-45a1-a86f-a8842f8bbcfb" absoluteBounds="6.515, 73.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d6c3eeb-5f6b-4f5b-99f0-7e752ab1f2f7" absoluteBounds="6.5, 70.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserGrade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c941b98-8a45-4acc-a371-838af8430519" absoluteBounds="6.515, 70.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53c9df21-20bb-4964-b01e-be05ca346e3a" absoluteBounds="3.5, 133.375, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8815827a-3157-4935-914c-584e0fc76b1d" absoluteBounds="3.515, 133.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0509cc1-3de9-4d3a-ac76-660d54266c30" absoluteBounds="3.5, 70.25, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserInRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddd91162-5763-4d52-922a-4a94c6ac3a52" absoluteBounds="3.515, 70.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="189bb1ba-f64c-4bac-88ad-d901100ab838" absoluteBounds="6.5, 76.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56fe3279-53db-4924-b743-71c216601dc7" absoluteBounds="6.515, 76.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf12187c-6636-4a92-bbe0-71d42ef6e3c1" absoluteBounds="3.5, 77.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/App_UserProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6869ab0c-e51e-4e88-aa7d-5bd44d747624" absoluteBounds="3.515, 78.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7290250-34e8-4bb9-8da9-06eff1e3319b" absoluteBounds="12.5, 73, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Assess" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3e55020f-898f-4171-98b3-e8c0e0aead03" absoluteBounds="12.515, 73.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="90fc9291-7e81-424d-8454-438967a63936" absoluteBounds="9.75, 87, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/AssessParent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b6a762f-75e1-4e31-9a44-c8fc95eb7cb2" absoluteBounds="9.765, 87.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f02b6405-f243-4fe7-9bfa-4166ed9e664f" absoluteBounds="15.5, 65.25, 2, 5.6169254557291595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Assignment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="328f44db-0976-4ccf-8b2a-0947436954ef" absoluteBounds="15.515, 65.71, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6be473f5-424f-48cd-a3ee-9d7462be4826" absoluteBounds="18.25, 69.25, 2, 2.9247054036458451">
+      <DataClassMoniker Name="/SocialLearningDataContext/AssignmentSubmission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="093da2f5-38e6-4637-93d9-a7b6b374c985" absoluteBounds="18.265, 69.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99c6d077-9dfd-4146-8db7-f80f9a96cc71" absoluteBounds="12.25, 61.875, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/SocialLearningDataContext/AverageGrade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38965b24-d77a-472a-a6a7-546abd1d0abd" absoluteBounds="12.265, 62.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0454b096-8ac2-4bdd-b713-54095ab778e4" absoluteBounds="3.5, 53.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/BehaviroralStyle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c51c46ad-5705-4efa-9519-28860dbe4bd7" absoluteBounds="3.515, 53.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" absoluteBounds="1.25, 50.25, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SocialLearningDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da057d73-f952-4dae-b465-13a867f303c3" absoluteBounds="1.2650000000000001, 50.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b276add-6778-4740-8887-88e4f0a46788" absoluteBounds="12.5, 50.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/CategoryMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a54d940c-740d-4902-8f34-51e5be59dc5c" absoluteBounds="12.515, 50.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55d58c23-6f9a-4853-9f1f-aa750b9e78fc" absoluteBounds="3.5, 80.5, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99be2c10-cff1-4be0-a94b-d2b103634a00" absoluteBounds="3.515, 80.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0b5b2afb-d84b-41fc-83ca-54e806eb4c7d" absoluteBounds="6.25, 79.375, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/CommentLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a398e9b-9c72-4b37-8933-34916acb7016" absoluteBounds="6.265, 79.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6798fad6-69e1-484f-9e81-d2784677b3aa" absoluteBounds="9.5, 53, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/ContentPopularityModel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df950fa2-6adc-441b-99e8-fed64ad50ae6" absoluteBounds="9.515, 53.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" absoluteBounds="6.75, 49.875, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Course" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bd96c176-d3e8-4d78-bb1f-5edff8d7316a" absoluteBounds="6.765, 50.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="faff07b3-192a-4ffe-affd-16654368383e" absoluteBounds="4, 50.25, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/CourseAbstract" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79d3164a-af82-4bdc-b8e1-c94070dbd2fd" absoluteBounds="4.015, 50.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd99b409-61d6-4f66-ba37-a082ee25892a" absoluteBounds="9.5, 45.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SocialLearningDataContext/CourseObjectStream" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cddd710e-fd1c-44e9-8e65-8b0f9694e192" absoluteBounds="9.515, 45.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6629b11d-4ca7-4ad1-af24-e5ad3d29d7c9" absoluteBounds="9.5, 55.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/CourseSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8565b965-87e7-4f36-a3b1-888153f4892e" absoluteBounds="9.515, 56.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9cfafe74-684d-4c36-bcc7-4fb1fcd46883" absoluteBounds="12.5, 55.75, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/CourseTopcMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9217efe5-f3cc-4584-93b6-ae6ad90d3e03" absoluteBounds="12.515, 56.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33619a48-8dc0-429f-b9f7-b8efa893dbdc" absoluteBounds="3.5, 119.625, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Email" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4009dcaf-a292-4fc5-995c-9d669c61584e" absoluteBounds="3.515, 120.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="84b696e8-9a2e-4374-a3ed-fa9f309423d7" absoluteBounds="3.5, 64.625, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/EmailRecord" />
+      <nestedChildShapes>
+        <elementListCompartment Id="160f87dc-182f-42d5-89a7-3c34c68c6ae5" absoluteBounds="3.515, 65.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="29310fc9-4b40-4c73-8757-16a8b9fd2b01" absoluteBounds="3.5, 67.125, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/Feedback" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9cbbd9d8-0932-4deb-bffa-cf91b6bff8d8" absoluteBounds="3.515, 67.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8444d1f2-0005-40da-abe0-cb6d8fce75cc" absoluteBounds="3.5, 137.25, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/SocialLearningDataContext/FileAnnotation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a59233d-f107-4f87-ab3a-42b0f1208a9f" absoluteBounds="3.515, 137.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2fcb5552-6268-48f4-b318-9d1ddd55f77c" absoluteBounds="15.5, 72.125, 2, 3.8862125651041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Forum" />
+      <nestedChildShapes>
+        <elementListCompartment Id="189d5b2f-efa7-4bd9-a3f3-324269a26c07" absoluteBounds="15.515, 72.585, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0f46d1b5-f4c1-4a2b-8749-aef4cf21eb55" absoluteBounds="18.25, 76, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/ForumAssessment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55105cda-749e-4b27-a3ef-e954cc082613" absoluteBounds="18.265, 76.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="137e22ad-7ecb-4267-a749-a8defc5706ec" absoluteBounds="21.25, 72.375, 2, 3.5016097005208451">
+      <DataClassMoniker Name="/SocialLearningDataContext/ForumDiscussion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3382dea2-85d8-47ce-aec8-a7ce0eea5719" absoluteBounds="21.265, 72.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="23c6ffd4-d3dd-47ca-895f-7ef720a51e40" absoluteBounds="24, 73.25, 2, 1.7708968098958451">
+      <DataClassMoniker Name="/SocialLearningDataContext/ForumDiscussionPost" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f301263-1bfa-4892-9fca-4d686fb0a6d1" absoluteBounds="24.015, 73.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0a4acb5-6668-4da4-859e-a85104b38674" absoluteBounds="26.75, 73.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/ForumDiscussionPostsGrade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5508b903-88df-404d-b7f8-35b24ac0256d" absoluteBounds="26.765, 73.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f5d78f6-81de-4791-918d-e5542f4d0847" absoluteBounds="3.5, 149, 2, 3.5016097005208167">
+      <DataClassMoniker Name="/SocialLearningDataContext/Grade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="03a5a6bb-2739-47ca-b7d5-c5e6fbe33b10" absoluteBounds="3.515, 149.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2dd496e0-9f3f-4cc9-adfc-075270771a8f" absoluteBounds="9.5, 48, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SocialLearningDataContext/GradeType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae61c47f-ba01-40a3-a936-5626013b6d84" absoluteBounds="9.515, 48.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7cd99ab4-7b9d-4a5b-9764-5a82db9a2d5d" absoluteBounds="6.25, 82.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/GroupMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce6651f4-7bff-410c-862a-6a517c882068" absoluteBounds="6.265, 83.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f8af8e7c-ac2d-414a-99a4-6886dc89cd09" absoluteBounds="0.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SocialLearningDataContext/ImageAnnotation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13a11adb-2684-4b91-9cd4-0ec3bb341aa9" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" absoluteBounds="6.5, 67.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/LearningGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5e5048b8-c7b3-481e-9c53-a6b3e557cbf2" absoluteBounds="6.515, 67.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d3ad8d58-c73a-49be-9fe7-ad7f348fea2f" absoluteBounds="3.5, 55.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/LearningStyle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="69a893c4-4074-4ad9-b10c-546bc7624440" absoluteBounds="3.515, 55.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="32f9c026-9798-4533-8609-309f84f16ae1" absoluteBounds="6.25, 100.5, 2, 3.8862125651041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63e447e1-599b-44b8-8a67-415485c50ed4" absoluteBounds="6.265, 100.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3d24eb9-2033-4aea-aaa3-880ad00454d1" absoluteBounds="3.5, 59.75, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/MessageContact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="898d49c5-db1e-4d40-b25c-4cd7d953e2c1" absoluteBounds="3.515, 60.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f7c2692f-b06c-4fa5-9369-9243c8d6ab43" absoluteBounds="3.5, 129.75, 2, 2.9247054036458167">
+      <DataClassMoniker Name="/SocialLearningDataContext/MessageThread" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4aa89deb-8054-41e7-a3ab-d1429731c183" absoluteBounds="3.515, 130.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2afceb20-bf92-4780-95e0-585476c7ebe1" absoluteBounds="9.5, 81.875, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5438a04f-ea9c-417c-8f8a-c15ba10f4864" absoluteBounds="9.515, 82.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9927821c-06f6-46e0-b821-e8ffc18109e0" absoluteBounds="9.5, 63.875, 2, 2.347801106770838">
+      <DataClassMoniker Name="/SocialLearningDataContext/NotificationEmail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="355ee0d6-49fb-4594-be37-20a868848824" absoluteBounds="9.515, 64.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9483a481-a30a-47a1-8881-9f4c4d01af8e" absoluteBounds="12.25, 84.25, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/ObjectGroupMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27518b93-276b-4c92-aebe-58e36c2d88ed" absoluteBounds="12.265, 84.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77914c9c-077b-45c2-a55d-ce8b144a909b" absoluteBounds="12.5, 65.5, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/SocialLearningDataContext/ObjectStream" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59334a59-74e9-4015-8aa5-85bca482b470" absoluteBounds="12.515, 65.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f1efa8f-23b7-41ac-ae46-b4ebd6d0f811" absoluteBounds="9.5, 50.5, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/SocialLearningDataContext/ObjectStreamCourse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef0b9c47-244f-4379-a92d-d2cda8a10ad2" absoluteBounds="9.515, 50.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8b95b699-c863-4c06-95cd-e55ddee7c8e8" absoluteBounds="15.25, 78.625, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/ObjectStreamGroupMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e3e8204-f83c-4d5d-b321-23564c5065b0" absoluteBounds="15.265, 79.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="14dd0db5-a35b-4c33-b59b-eea6428d9156" absoluteBounds="9.5, 42.5, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/ObjectTopicMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="06cd5173-0636-43ee-950b-7b7e888b7160" absoluteBounds="9.515, 42.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ccd0b5e0-f10c-43de-8cfc-01f6b08d9189" absoluteBounds="4, 88.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/PeerAssessmentCriteria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d7e7bd3b-910f-44f1-a2a5-cfd0570c9ea1" absoluteBounds="4.015, 88.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="73e083ed-3d89-41d1-93cb-b3bc19fdf802" absoluteBounds="9.5, 73.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/PeerAssessmentGrade" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1c91598-bc38-4a06-b715-04b5a1d54883" absoluteBounds="9.515, 73.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="29ec167c-b4f4-4ed7-82cd-6bcaeb31a344" absoluteBounds="6.75, 88.25, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/PeerAssessmentIndicator" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8a3c6a0-ccc2-4660-afa1-3e4f0ebe7684" absoluteBounds="6.765, 88.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99db7ef1-9a56-45a0-972a-647446af29da" absoluteBounds="12.25, 58.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Question" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56635638-ac1a-44b0-af06-96991295ccdc" absoluteBounds="12.265, 59.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="146efcb3-a34e-481f-b3f6-576edfc75759" absoluteBounds="9.5, 58.5, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Quiz" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3354c890-ba55-4340-ac8b-30d362dafb18" absoluteBounds="9.515, 58.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e93755d2-6216-4a51-99df-c0e74e30297c" absoluteBounds="3.5, 83.375, 2, 3.5016097005208451">
+      <DataClassMoniker Name="/SocialLearningDataContext/Resource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4831de91-7310-41bc-995f-cfb807bca917" absoluteBounds="3.515, 83.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b14b3fb0-4ebe-4ff1-bc85-e708719afd00" absoluteBounds="15.25, 81.875, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/ResourceRate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3b777c20-579b-431b-8bc8-016a4bca9837" absoluteBounds="15.265, 82.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f727846f-1943-43c0-ae74-2567c8fc00b3" absoluteBounds="15.25, 85, 2, 2.3478011067708451">
+      <DataClassMoniker Name="/SocialLearningDataContext/Share" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b5255368-0bb1-46d8-ab9e-9ca40da5e0f9" absoluteBounds="15.265, 85.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f6217407-e812-4d8d-8a28-9a757f70dc93" absoluteBounds="3.5, 91.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/SocialGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d03b1b4b-eb51-416c-915c-e41942048acf" absoluteBounds="3.515, 91.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4bc52e15-5340-4e50-af17-5fbaeb25c31e" absoluteBounds="6.75, 58.25, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Survey" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f23bcf98-b847-45f3-91a6-08a3e6eac0a9" absoluteBounds="6.765, 58.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab79d64c-75c9-4e72-8bdf-2b1559525f62" absoluteBounds="9.5, 70.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/SurveyAnswer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ba4198a-c7d6-41bc-a92c-622829512120" absoluteBounds="9.515, 70.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05506c70-0b49-472d-b1a2-a2a93cb70e01" absoluteBounds="9.5, 76.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/SurveyUserSummary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95d65d35-926f-4829-9a30-d2153f3c2884" absoluteBounds="9.515, 76.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="059b6cee-5de9-48fd-a697-dd8937885b10" absoluteBounds="12.5, 70, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61d61ad3-e747-4419-ad0a-a106e393b7d8" absoluteBounds="12.515, 70.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="581dc127-2464-461c-ac2a-80a01d91c664" absoluteBounds="18.25, 73, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/TagMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a0179fa-b144-49bf-9a36-596ac8b7c2b1" absoluteBounds="18.265, 73.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" absoluteBounds="6.75, 61.5, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/SocialLearningDataContext/Topic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b1c2b0f9-260f-4526-bf48-84b3e231a88f" absoluteBounds="6.765, 61.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ed712622-38b9-4d33-9351-1ae400330081" absoluteBounds="3.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SocialLearningDataContext/TopicLearningGoal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="57cf3aa9-b88e-4696-9014-502fc6fa6459" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c0eb7f5-b946-4e7e-98e8-0d696e1697c8" absoluteBounds="3.5, 126.25, 2, 2.7324039713541595">
+      <DataClassMoniker Name="/SocialLearningDataContext/UserActSummary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6feb1b0c-da04-4ae6-8cea-d0cf22a3c0ed" absoluteBounds="3.515, 126.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f4ccc070-6d48-4147-979a-50b309bbdd2b" absoluteBounds="9.5, 67.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/UserKnowledgeProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="498654d5-4105-4a20-8781-8ac26611d994" absoluteBounds="9.515, 67.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="85b9176e-f334-44df-9150-e8cf12c46c6f" absoluteBounds="9.5, 79.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/UserSoActProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12826f64-b768-4de5-8d4d-0e8979c79e55" absoluteBounds="9.515, 79.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b97a527a-d761-46e7-bd60-de63a348956e" absoluteBounds="3.5, 73.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/SocialLearningDataContext/UserTopicMapper" />
+      <nestedChildShapes>
+        <elementListCompartment Id="507a670c-8c0c-4c2f-84c1-91c1932c2daf" absoluteBounds="3.515, 73.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68b609b3-d99b-46e4-861e-f301e110d4e2" absoluteBounds="6.5, 64.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/SocialLearningDataContext/Vote" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12fd902c-ea13-4429-8bc5-3fe0b6822bdb" absoluteBounds="6.515, 64.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="23df72a3-a66e-4d74-bdac-7f5911cae173" absoluteBounds="3.75, 47, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/SocialLearningDataContext/VoteParent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82399913-5b18-4f3b-bbc1-a32e96eb2333" absoluteBounds="3.765, 47.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.2092307692308 : 78.2228011067708); (13.2092307692308 : 78.4728011067708); (13.8046153846154 : 78.4728011067708); (13.8046153846154 : 78.2228011067708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Wiki/Wiki_Wiki" />
+      <nodes>
+        <classShapeMoniker Id="0e764eaf-1224-4440-a472-6a78b7ac2ccf" />
+        <classShapeMoniker Id="0e764eaf-1224-4440-a472-6a78b7ac2ccf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 90.75); (10.75 : 89.4054996744792); (12 : 89.4054996744792); (12 : 81.1546541341146); (12.1666666666667 : 81.1546541341146 : JumpStart); (12.3333333333333 : 81.1546541341146 : JumpEnd); (12.5 : 81.1546541341146)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_Action/App_Action_App_ActionEvaulation" />
+      <nodes>
+        <classShapeMoniker Id="f26085a9-1efe-483e-8836-37c20258828b" />
+        <classShapeMoniker Id="40c2a219-ebf7-44b8-a4df-0e994a9b82d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 90.7515374615385); (12.125 : 90.3765374615385); (12.125 : 88.4142976888021); (12.5 : 88.4142976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_Action/App_Action_App_Permission" />
+      <nodes>
+        <classShapeMoniker Id="f26085a9-1efe-483e-8836-37c20258828b" />
+        <classShapeMoniker Id="24ad5e1c-e856-4a87-a9c5-56a8d3e5b3ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 69.7812505); (2.91666666666667 : 69.7812505 : JumpStart); (3.55208333333333 : 69.7812505 : JumpEnd); (5.79166666666667 : 69.7812505 : JumpStart); (6.20833333333333 : 69.7812505 : JumpEnd); (6.25 : 69.7812505); (6.25 : 72.75); (8.57291666666667 : 72.75 : JumpStart); (8.73958333333333 : 72.75 : JumpEnd); (8.79166666666667 : 72.75 : JumpStart); (8.95833333333333 : 72.75 : JumpEnd); (8.97916666666667 : 72.75 : JumpStart); (9.55208333333333 : 72.75 : JumpEnd); (12.25 : 72.75); (12.25 : 84); (14.5 : 84); (14.5 : 87.25); (13.5 : 87.25); (13.5 : 87.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_Role/App_Role_App_Permission" />
+      <nodes>
+        <classShapeMoniker Id="fa652dfe-b2a1-4ef9-a4ff-9db9ac86bc1d" />
+        <classShapeMoniker Id="24ad5e1c-e856-4a87-a9c5-56a8d3e5b3ef" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 94.3181469726563); (15.25 : 94.3181469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_SiteMenu/App_SiteMenu_App_MenuPosition" />
+      <nodes>
+        <classShapeMoniker Id="05888d4d-b590-48f1-88c2-9b2c44727564" />
+        <classShapeMoniker Id="411afacf-4db3-4428-8bc9-0d4c27459629" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 94.3902091471354); (12.5 : 94.3902091471354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_Action/App_Action_App_SiteMenu" />
+      <nodes>
+        <classShapeMoniker Id="f26085a9-1efe-483e-8836-37c20258828b" />
+        <classShapeMoniker Id="05888d4d-b590-48f1-88c2-9b2c44727564" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.2092307692308 : 97.4535139973958); (13.2092307692308 : 97.7035139973958); (13.8046153846154 : 97.7035139973958); (13.8046153846154 : 97.4535139973958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_SiteMenu/App_SiteMenu_App_SiteMenu" />
+      <nodes>
+        <classShapeMoniker Id="05888d4d-b590-48f1-88c2-9b2c44727564" />
+        <classShapeMoniker Id="05888d4d-b590-48f1-88c2-9b2c44727564" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 96.5392976888021); (15.25 : 96.5392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_SiteMenu/App_SiteMenu_App_SiteMenuText" />
+      <nodes>
+        <classShapeMoniker Id="05888d4d-b590-48f1-88c2-9b2c44727564" />
+        <classShapeMoniker Id="0b96cfa6-42a1-4a2f-b7b3-c18526f12531" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.9465961804888); (3.03125 : 76.2278461804888); (3.03125 : 75.5); (3.16666666666667 : 75.5 : JumpStart); (3.52083333333333 : 75.5 : JumpEnd); (5.79166666666667 : 75.5 : JumpStart); (5.95833333333333 : 75.5 : JumpEnd); (8.57291666666667 : 75.5 : JumpStart); (8.73958333333333 : 75.5 : JumpEnd); (8.79166666666667 : 75.5 : JumpStart); (8.95833333333333 : 75.5 : JumpEnd); (8.97916666666667 : 75.5 : JumpStart); (9.45833333333333 : 75.5 : JumpEnd); (9.88541416666667 : 75.5 : JumpStart); (10.0520808333333 : 75.5 : JumpEnd); (11.5729166666667 : 75.5 : JumpStart); (11.7395833333333 : 75.5 : JumpEnd); (12.0926923076923 : 75.5); (12.1910744349011 : 75.5983821272088 : JumpStart); (12.3089255650989 : 75.7162332574066 : JumpEnd); (12.5 : 75.9073076923077)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Wiki" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="0e764eaf-1224-4440-a472-6a78b7ac2ccf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.8125005); (2.91666666666667 : 73.8125005 : JumpStart); (3.20833333333333 : 73.8125005 : JumpEnd); (3.25 : 73.8125005); (3.25 : 75.875); (5.79166666666667 : 75.875 : JumpStart); (5.95833333333333 : 75.875 : JumpEnd); (8.57291666666667 : 75.875 : JumpStart); (8.73958333333333 : 75.875 : JumpEnd); (8.79166666666667 : 75.875 : JumpStart); (8.95833333333333 : 75.875 : JumpEnd); (8.97916666666667 : 75.875 : JumpStart); (9.45833333333333 : 75.875 : JumpEnd); (11.5729166666667 : 75.875 : JumpStart); (11.7395833333333 : 75.875 : JumpEnd); (12 : 75.875); (12 : 79.125); (12.1666666666667 : 79.125 : JumpStart); (12.3333333333333 : 79.125 : JumpEnd); (13.5 : 79.125); (13.5 : 79.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_ActionEvaulation" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="40c2a219-ebf7-44b8-a4df-0e994a9b82d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 74.95599609375); (3.10416666666667 : 74.95599609375 : JumpStart); (3.52083333333333 : 74.95599609375 : JumpEnd); (5.79166666666667 : 74.95599609375 : JumpStart); (5.95833333333333 : 74.95599609375 : JumpEnd); (6.5 : 74.95599609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserEnrolement" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f5b4871d-decb-4d98-95ca-dc65f230e87a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.1665374615385); (2.75357443490112 : 72.1629630266373 : JumpStart); (2.87142556509888 : 72.0451118964396 : JumpEnd); (3.0625 : 71.8540374615385); (3.0625 : 72.4631982421875); (3.13541666666667 : 72.4631982421875 : JumpStart); (3.30208333333333 : 72.4631982421875 : JumpEnd); (3.30729166666667 : 72.4631982421875 : JumpStart); (3.47395833333333 : 72.4631982421875 : JumpEnd); (5.79166666666667 : 72.4631982421875 : JumpStart); (6.08333333333333 : 72.4631982421875 : JumpEnd); (6.125 : 72.4631982421875); (6.19107443490112 : 72.3971238072864 : JumpStart); (6.30892556509888 : 72.2792726770886 : JumpEnd); (6.5 : 72.0881982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserGrade" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="2d6c3eeb-5f6b-4f5b-99f0-7e752ab1f2f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.7187475 : 76.0112125651042); (1.7187475 : 134.933503417969); (1.76432072916667 : 134.933503417969 : JumpStart); (1.93098739583333 : 134.933503417969 : JumpEnd); (2.02213385416666 : 134.933503417969 : JumpStart); (2.18880052083333 : 134.933503417969 : JumpEnd); (2.53776010416666 : 134.933503417969 : JumpStart); (2.70442677083333 : 134.933503417969 : JumpEnd); (3.5 : 134.933503417969)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserInfo" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="53c9df21-20bb-4964-b01e-be05ca346e3a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 70.5056469726563); (2.91666666666667 : 70.5056469726563 : JumpStart); (3.45833333333333 : 70.5056469726563 : JumpEnd); (3.5 : 70.5056469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_Role/App_Role_App_UserInRole" />
+      <nodes>
+        <classShapeMoniker Id="fa652dfe-b2a1-4ef9-a4ff-9db9ac86bc1d" />
+        <classShapeMoniker Id="c0509cc1-3de9-4d3a-ac76-660d54266c30" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.1526913076923); (2.75357443490112 : 72.1491168727912 : JumpStart); (2.87142556509888 : 72.0312657425934 : JumpEnd); (2.90625 : 71.9964413076923); (2.90625 : 72.6160080382111); (3.15982443490112 : 72.36243360331 : JumpStart); (3.44955056509888 : 72.0727074731123 : JumpEnd); (3.5013612283153 : 72.0208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserInRole" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="c0509cc1-3de9-4d3a-ac76-660d54266c30" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.23437375 : 76.0112125651042); (2.23437375 : 76.90625); (2.24869447916666 : 76.90625 : JumpStart); (2.80208083333333 : 76.90625 : JumpEnd); (5.79166666666667 : 76.90625 : JumpStart); (5.95833333333333 : 76.90625 : JumpEnd); (6.5 : 76.90625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserLog" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="189bb1ba-f64c-4bac-88ad-d901100ab838" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5 : 78.7315991210938); (2.80208083333333 : 78.7315991210938 : JumpStart); (1.24869447916667 : 78.7315991210938 : JumpEnd); (1.20312125 : 78.7315991210938); (1.20312125 : 76.0112125651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_UserProfile/App_UserProfile_App_User" />
+      <nodes>
+        <classShapeMoniker Id="bf12187c-6636-4a92-bbe0-71d42ef6e3c1" />
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.492186875 : 76.0112125651042); (2.492186875 : 78.2095470605469); (2.50650760416666 : 78.2095470605469 : JumpStart); (2.80208083333333 : 78.2095470605469 : JumpEnd); (3.5 : 78.2095470605469)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_App_UserProfile" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="bf12187c-6636-4a92-bbe0-71d42ef6e3c1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.03125); (2.91666666666667 : 73.03125 : JumpStart); (3.45833333333333 : 73.03125 : JumpEnd); (5.76041666666667 : 73.03125 : JumpStart); (5.95833333333333 : 73.03125 : JumpEnd); (6.32291666666667 : 73.03125 : JumpStart); (6.48958333333333 : 73.03125 : JumpEnd); (8.57291666666667 : 73.03125 : JumpStart); (8.73958333333333 : 73.03125 : JumpEnd); (8.79166666666667 : 73.03125 : JumpStart); (8.95833333333333 : 73.03125 : JumpEnd); (8.97916666666667 : 73.03125 : JumpStart); (9.55208333333333 : 73.03125 : JumpEnd); (12.1666666666667 : 73.03125 : JumpStart); (12.3333333333333 : 73.03125 : JumpEnd); (12.5 : 73.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Assess" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="d7290250-34e8-4bb9-8da9-06eff1e3319b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.65625 : 87); (11.65625 : 73.046875); (12.1666666666667 : 73.046875 : JumpStart); (12.3333333333333 : 73.046875 : JumpEnd); (12.5 : 73.046875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/AssessParent/AssessParent_Assess" />
+      <nodes>
+        <classShapeMoniker Id="90fc9291-7e81-424d-8454-438967a63936" />
+        <classShapeMoniker Id="d7290250-34e8-4bb9-8da9-06eff1e3319b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 74.384248296875); (3 : 74.384248296875); (3 : 72.875); (3.04166666666667 : 72.875 : JumpStart); (3.36458333333333 : 72.875 : JumpEnd); (5.79166666666667 : 72.875 : JumpStart); (5.95833333333333 : 72.875 : JumpEnd); (6.16666666666667 : 72.875 : JumpStart); (6.33333333333333 : 72.875 : JumpEnd); (8.57291666666667 : 72.875 : JumpStart); (8.73958333333333 : 72.875 : JumpEnd); (8.79166666666667 : 72.875 : JumpStart); (8.95833333333333 : 72.875 : JumpEnd); (8.97916666666667 : 72.875 : JumpStart); (9.55208333333333 : 72.875 : JumpEnd); (12.1666666666667 : 72.875 : JumpStart); (12.3333333333333 : 72.875 : JumpEnd); (14.8229166666667 : 72.875 : JumpStart); (15.1458333333333 : 72.875 : JumpEnd); (15.25 : 72.875); (15.25 : 71.875); (15.9166671666667 : 71.875 : JumpStart); (16.0833338333333 : 71.875 : JumpEnd); (16.5 : 71.875); (16.5 : 70.8669254557292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Assignment" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f02b6405-f243-4fe7-9bfa-4166ed9e664f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.42187525); (2.91666666666667 : 73.42187525 : JumpStart); (3.20833333333333 : 73.42187525 : JumpEnd); (3.25 : 73.42187525); (3.25 : 72.625); (5.79166666666667 : 72.625 : JumpStart); (6.33333333333333 : 72.625 : JumpEnd); (8.57291666666667 : 72.625 : JumpStart); (8.73958333333333 : 72.625 : JumpEnd); (8.79166666666667 : 72.625 : JumpStart); (8.95833333333333 : 72.625 : JumpEnd); (8.97916666666667 : 72.625 : JumpStart); (9.55208333333333 : 72.625 : JumpEnd); (14.8229166666667 : 72.625 : JumpStart); (14.9895833333333 : 72.625 : JumpEnd); (15 : 72.625); (15 : 71.625); (15.1041666666667 : 71.625 : JumpStart); (15.2708333333333 : 71.625 : JumpEnd); (15.2916666666667 : 71.625 : JumpStart); (15.4583333333333 : 71.625 : JumpEnd); (16.4166666666667 : 71.625 : JumpStart); (16.5833333333333 : 71.625 : JumpEnd); (18 : 71.625); (18 : 72.4247054036458); (18.0416666666667 : 72.4247054036458 : JumpStart); (18.2083333333333 : 72.4247054036458 : JumpEnd); (19.25 : 72.4247054036458); (19.25 : 72.1747054036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_AssignmentSubmission" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="6be473f5-424f-48cd-a3ee-9d7462be4826" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.5 : 70.0584627278646); (18.25 : 70.0584627278646)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Assignment/Assignment_AssignmentSubmission" />
+      <nodes>
+        <classShapeMoniker Id="f02b6405-f243-4fe7-9bfa-4166ed9e664f" />
+        <classShapeMoniker Id="6be473f5-424f-48cd-a3ee-9d7462be4826" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.2515374615385 : 64.4151025390625); (11.875 : 64.791640000601); (11.875 : 69.75); (9.55208333333333 : 69.75 : JumpStart); (9.04166666666667 : 69.75 : JumpEnd); (8.875 : 69.75); (8.71517556509888 : 69.9098244349011 : JumpStart); (8.59732443490112 : 70.0276755650989 : JumpEnd); (8.5 : 70.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/AverageGrade/AverageGrade_App_UserGrade" />
+      <nodes>
+        <classShapeMoniker Id="99c6d077-9dfd-4146-8db7-f80f9a96cc71" />
+        <classShapeMoniker Id="2d6c3eeb-5f6b-4f5b-99f0-7e752ab1f2f7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.66538461538461 : 72.125); (2.75357443490112 : 72.0368101804835 : JumpStart); (2.87142556509888 : 71.9189590502857 : JumpEnd); (3.15625 : 71.6341346153846); (3.15625 : 54.0681469726563); (3.5 : 54.0681469726563)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_BehaviroralStyle" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="0454b096-8ac2-4bdd-b713-54095ab778e4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.80128361378205 : 52.0208968098958); (1.80128361378205 : 52.2708968098958); (1.94791716666667 : 52.2708968098958 : JumpStart); (2.11458383333333 : 52.2708968098958 : JumpEnd); (2.25 : 52.2708968098958); (2.25 : 52.0208968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Category/Category_Category" />
+      <nodes>
+        <classShapeMoniker Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" />
+        <classShapeMoniker Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.25 : 50.25); (2.25 : 49.625); (6.51041666666667 : 49.625 : JumpStart); (6.67708333333333 : 49.625 : JumpEnd); (7.66666666666667 : 49.625 : JumpStart); (7.83333333333333 : 49.625 : JumpEnd); (8.19791916666667 : 49.625 : JumpStart); (8.36458583333333 : 49.625 : JumpEnd); (9.25 : 49.625); (9.25 : 50.0208968098958); (12.125 : 50.0208968098958); (12.125 : 51.0681469726563); (12.5 : 51.0681469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Category/Category_CategoryMapper" />
+      <nodes>
+        <classShapeMoniker Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" />
+        <classShapeMoniker Id="2b276add-6778-4740-8887-88e4f0a46788" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.976560625 : 76.0112125651042); (1.976560625 : 81.4815991210938); (1.99088135416666 : 81.4815991210938 : JumpStart); (2.80208083333333 : 81.4815991210938 : JumpEnd); (3.5 : 81.4815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Comment" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="55d58c23-6f9a-4853-9f1f-aa750b9e78fc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.460934375 : 76.0112125651042); (1.460934375 : 80.1065991210938); (1.50650760416667 : 80.1065991210938 : JumpStart); (2.80208083333333 : 80.1065991210938 : JumpEnd); (5.79166666666667 : 80.1065991210938 : JumpStart); (5.95833333333333 : 80.1065991210938 : JumpEnd); (6.25 : 80.1065991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_CommentLog" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="0b5b2afb-d84b-41fc-83ca-54e806eb4c7d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 80.8229484049479); (5.79166666666667 : 80.8229484049479 : JumpStart); (5.95833333333333 : 80.8229484049479 : JumpEnd); (6.25 : 80.8229484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Comment/Comment_CommentLog" />
+      <nodes>
+        <classShapeMoniker Id="55d58c23-6f9a-4853-9f1f-aa750b9e78fc" />
+        <classShapeMoniker Id="0b5b2afb-d84b-41fc-83ca-54e806eb4c7d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 52.3397169236779); (9.12857443490112 : 52.718291358579 : JumpStart); (9.24642556509888 : 52.8361424887768 : JumpEnd); (9.46875 : 53.0584669236779); (9.46875 : 75.25); (9.88541416666667 : 75.25 : JumpStart); (10.0520808333333 : 75.25 : JumpEnd); (10.4166666666667 : 75.25 : JumpStart); (10.5833333333333 : 75.25 : JumpEnd); (11.5729166666667 : 75.25 : JumpStart); (11.7395833333333 : 75.25 : JumpEnd); (11.9103836153846 : 75.25); (12.1910744349011 : 75.5306908195165 : JumpStart); (12.3089255650989 : 75.6485419497143 : JumpEnd); (12.5353836153846 : 75.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Wiki" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="0e764eaf-1224-4440-a472-6a78b7ac2ccf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 52.3658717698317); (6.65267556509888 : 52.4631962047329 : JumpStart); (6.53482443490112 : 52.5810473349306 : JumpEnd); (6.43392556509888 : 52.6819462047329 : JumpStart); (6.31607443490112 : 52.7997973349306 : JumpEnd); (6.26326923076923 : 52.8526025390625); (6.125 : 52.8526025390625); (6.125 : 72.75); (6.5 : 73.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_App_UserEnrolement" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="f5b4871d-decb-4d98-95ca-dc65f230e87a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.67307692307692 : 52.4151025390625); (9.09732443490112 : 52.8393500508867 : JumpStart); (9.24642556509888 : 52.9884511810845 : JumpEnd); (9.375 : 53.1170256159856); (9.375 : 76); (9.36458333333333 : 76 : JumpStart); (8.97916666666667 : 76 : JumpEnd); (8.95833333333333 : 76 : JumpStart); (8.79166666666667 : 76 : JumpEnd); (8.625 : 76); (8.5 : 76.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_App_UserLog" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="189bb1ba-f64c-4bac-88ad-d901100ab838" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 50.1666984049479); (9.10416666666667 : 50.1666984049479 : JumpStart); (9.27083333333333 : 50.1666984049479 : JumpEnd); (12.0416666666667 : 50.1666984049479 : JumpStart); (12.2083333333333 : 50.1666984049479 : JumpEnd); (17.28125 : 50.1666984049479); (17.28125 : 65.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Assignment" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="f02b6405-f243-4fe7-9bfa-4166ed9e664f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 52.3827938467548); (9.12857443490112 : 52.7613682816559 : JumpStart); (9.24642556509888 : 52.8792194118537 : JumpEnd); (9.40625 : 53.0390438467548); (9.40625 : 62.8437505); (12.25 : 62.8437505)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_AverageGrade" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="99c6d077-9dfd-4146-8db7-f80f9a96cc71" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 50.40625); (9.10416666666667 : 50.40625 : JumpStart); (9.27083333333333 : 50.40625 : JumpEnd); (12.0416666666667 : 50.40625 : JumpStart); (12.2083333333333 : 50.40625 : JumpEnd); (12.5 : 50.40625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_CategoryMapper" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="2b276add-6778-4740-8887-88e4f0a46788" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.72538461538462 : 52.4151025390625); (7.72538461538462 : 53.9815991210938); (8.12974358974359 : 53.9815991210938 : JumpStart); (8.29641025641026 : 53.9815991210938 : JumpEnd); (9.07291666666667 : 53.9815991210938 : JumpStart); (9.48958333333333 : 53.9815991210938 : JumpEnd); (9.5 : 53.9815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_ContentPopularityModel" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="6798fad6-69e1-484f-9e81-d2784677b3aa" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 51.0392976888021); (6.51041666666667 : 51.0392976888021 : JumpStart); (6.67708333333333 : 51.0392976888021 : JumpEnd); (6.75 : 51.0392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/CourseAbstract/CourseAbstract_Course" />
+      <nodes>
+        <classShapeMoniker Id="faff07b3-192a-4ffe-affd-16654368383e" />
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.25 : 51.0392976888021); (4 : 51.0392976888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Category/Category_CourseAbstract" />
+      <nodes>
+        <classShapeMoniker Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" />
+        <classShapeMoniker Id="faff07b3-192a-4ffe-affd-16654368383e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.75 : 49.875); (7.75 : 46.3854484049479); (9.10416666666667 : 46.3854484049479 : JumpStart); (9.27083333333333 : 46.3854484049479 : JumpEnd); (9.5 : 46.3854484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_CourseObjectStream" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="cd99b409-61d6-4f66-ba37-a082ee25892a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.21307692307692 : 52.4151025390625); (8.21307692307692 : 56.7315991210938); (9.07291666666667 : 56.7315991210938 : JumpStart); (9.48958333333333 : 56.7315991210938 : JumpEnd); (9.5 : 56.7315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_CourseSchedule" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="6629b11d-4ca7-4ad1-af24-e5ad3d29d7c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 51.8285953776042); (6.375 : 52.2035953776042); (6.375 : 55.375); (6.51041666666667 : 55.375 : JumpStart); (6.67708333333333 : 55.375 : JumpEnd); (7.17128155128205 : 55.375 : JumpStart); (7.33794821794872 : 55.375 : JumpEnd); (8.12974358974359 : 55.375 : JumpStart); (8.29641025641026 : 55.375 : JumpEnd); (9.07291666666667 : 55.375 : JumpStart); (9.55208333333333 : 55.375 : JumpEnd); (12.125 : 55.375); (12.5 : 55.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/CourseAbstract/CourseAbstract_CourseTopcMapper" />
+      <nodes>
+        <classShapeMoniker Id="faff07b3-192a-4ffe-affd-16654368383e" />
+        <classShapeMoniker Id="9cfafe74-684d-4c36-bcc7-4fb1fcd46883" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.945308125 : 76.0112125651042); (0.945308125 : 120.895051269531); (1.63541416666667 : 120.895051269531 : JumpStart); (1.93098739583333 : 120.895051269531 : JumpEnd); (1.99088135416666 : 120.895051269531 : JumpStart); (2.18880052083333 : 120.895051269531 : JumpEnd); (2.50650760416666 : 120.895051269531 : JumpStart); (2.80208083333333 : 120.895051269531 : JumpEnd); (3.5 : 120.895051269531)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Email" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="33619a48-8dc0-429f-b9f7-b8efa893dbdc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.72076923076923 : 72.125); (2.75357443490112 : 72.0921947958681 : JumpStart); (2.87142556509888 : 71.9743436656703 : JumpEnd); (3.28125 : 71.5645192307692); (3.28125 : 65.5104484049479); (3.29166666666667 : 65.5104484049479 : JumpStart); (3.45833333333333 : 65.5104484049479 : JumpEnd); (3.5 : 65.5104484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_EmailRecord" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="84b696e8-9a2e-4374-a3ed-fa9f309423d7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.73461538461538 : 72.125); (2.75357443490112 : 72.1060409497143 : JumpStart); (2.87142556509888 : 71.9881898195165 : JumpEnd); (3.21875 : 71.6408653846154); (3.21875 : 68.0104484049479); (3.22916666666667 : 68.0104484049479 : JumpStart); (3.45833333333333 : 68.0104484049479 : JumpEnd); (3.5 : 68.0104484049479)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Feedback" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="29310fc9-4b40-4c73-8757-16a8b9fd2b01" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.6210934375 : 76.0112125651042); (2.6210934375 : 138.808503417969); (3.5 : 138.808503417969)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_FileAnnotation" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="8444d1f2-0005-40da-abe0-cb6d8fce75cc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.2780989583333); (2.82291666666667 : 72.2780989583333 : JumpStart); (3.14583333333333 : 72.2780989583333 : JumpEnd); (3.16082574654449 : 72.2780989583333 : JumpStart); (3.47395833333333 : 72.2780989583333 : JumpEnd); (5.79166666666667 : 72.2780989583333 : JumpStart); (6.3934326171875 : 72.2780989583333 : JumpEnd); (8.57291666666667 : 72.2780989583333 : JumpStart); (8.73958333333333 : 72.2780989583333 : JumpEnd); (8.79166666666667 : 72.2780989583333 : JumpStart); (8.95833333333333 : 72.2780989583333 : JumpEnd); (8.97916666666667 : 72.2780989583333 : JumpStart); (9.55208333333333 : 72.2780989583333 : JumpEnd); (12.295604844351 : 72.2780989583333 : JumpStart); (12.4622715110176 : 72.2780989583333 : JumpEnd); (14.7916666666667 : 72.2780989583333 : JumpStart); (15.3958333333333 : 72.2780989583333 : JumpEnd); (15.5 : 72.2780989583333)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Forum" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="2fcb5552-6268-48f4-b318-9d1ddd55f77c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 51.3852911541466); (9.25 : 51.3852911541466); (9.25 : 52.5208968098958); (17.125 : 52.5208968098958); (17.125 : 65); (15.375 : 65); (15.375 : 71.75); (16.0000005 : 71.75); (16.0000005 : 72.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Forum" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="2fcb5552-6268-48f4-b318-9d1ddd55f77c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.3632803125 : 76.0112125651042); (2.3632803125 : 77.3277498372396); (2.37760104166666 : 77.3277498372396 : JumpStart); (2.80208083333333 : 77.3277498372396 : JumpEnd); (5.79166666666667 : 77.3277498372396 : JumpStart); (5.95833333333333 : 77.3277498372396 : JumpEnd); (6.25 : 77.3277498372396); (6.25 : 78.375); (8.57291666666667 : 78.375 : JumpStart); (8.73958333333333 : 78.375 : JumpEnd); (8.79166666666667 : 78.375 : JumpStart); (8.95833333333333 : 78.375 : JumpEnd); (8.97916666666667 : 78.375 : JumpStart); (9.52083333333333 : 78.375 : JumpEnd); (11.5729166666667 : 78.375 : JumpStart); (11.7395833333333 : 78.375 : JumpEnd); (11.9166666666667 : 78.375 : JumpStart); (12.0833333333333 : 78.375 : JumpEnd); (12.1666666666667 : 78.375 : JumpStart); (12.3333333333333 : 78.375 : JumpEnd); (13.1258974358974 : 78.375 : JumpStart); (13.2925641025641 : 78.375 : JumpEnd); (13.7212820512821 : 78.375 : JumpStart); (13.8879487179487 : 78.375 : JumpEnd); (14.5416666666667 : 78.375 : JumpStart); (15.0208333333333 : 78.375 : JumpEnd); (15.1041666666667 : 78.375 : JumpStart); (15.2708333333333 : 78.375 : JumpEnd); (17.875 : 78.375); (17.875 : 77.0777498372396); (18.25 : 77.0777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_ForumAssessment" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="0f46d1b5-f4c1-4a2b-8749-aef4cf21eb55" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.5 : 76.0112125651042); (16.5 : 77.6478772558594); (17.7916666666667 : 77.6478772558594 : JumpStart); (17.9583333333333 : 77.6478772558594 : JumpEnd); (18.25 : 77.6478772558594)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Forum/Forum_ForumAssessment" />
+      <nodes>
+        <classShapeMoniker Id="2fcb5552-6268-48f4-b318-9d1ddd55f77c" />
+        <classShapeMoniker Id="0f46d1b5-f4c1-4a2b-8749-aef4cf21eb55" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(21.9592307692308 : 75.8766097005208); (21.9592307692308 : 76.1266097005208); (22.5546153846154 : 76.1266097005208); (22.5546153846154 : 75.8766097005208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/ForumDiscussion/ForumDiscussion_ForumDiscussion" />
+      <nodes>
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.259250546875); (3.10416666666667 : 75.259250546875 : JumpStart); (3.36458333333333 : 75.259250546875 : JumpEnd); (3.375 : 75.259250546875); (3.375 : 72.8125); (5.79166666666667 : 72.8125 : JumpStart); (5.95833333333333 : 72.8125 : JumpEnd); (6.10416666666667 : 72.8125 : JumpStart); (6.27083333333333 : 72.8125 : JumpEnd); (8.57291666666667 : 72.8125 : JumpStart); (8.73958333333333 : 72.8125 : JumpEnd); (8.79166666666667 : 72.8125 : JumpStart); (8.95833333333333 : 72.8125 : JumpEnd); (8.97916666666667 : 72.8125 : JumpStart); (9.55208333333333 : 72.8125 : JumpEnd); (14.8229166666667 : 72.8125 : JumpStart); (15.0208333333333 : 72.8125 : JumpEnd); (15.125 : 72.8125); (15.125 : 72); (15.1666666666667 : 72 : JumpStart); (15.3333333333333 : 72 : JumpEnd); (15.3541666666667 : 72 : JumpStart); (15.5208333333333 : 72 : JumpEnd); (15.9166671666667 : 72 : JumpStart); (16.0833338333333 : 72 : JumpEnd); (17.5416666666667 : 72 : JumpStart); (17.7083333333333 : 72 : JumpEnd); (17.75 : 72); (17.75 : 72.6747054036458); (17.9791666666667 : 72.6747054036458 : JumpStart); (18.1458333333333 : 72.6747054036458 : JumpEnd); (21 : 72.6747054036458); (21 : 72.125); (22.25 : 72.125); (22.25 : 72.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_ForumDiscussion" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.5 : 75.4511539713542); (21.25 : 75.4511539713542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Forum/Forum_ForumDiscussion" />
+      <nodes>
+        <classShapeMoniker Id="2fcb5552-6268-48f4-b318-9d1ddd55f77c" />
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 74.0983743984375); (2.91666666666667 : 74.0983743984375 : JumpStart); (3.08333333333333 : 74.0983743984375 : JumpEnd); (3.125 : 74.0983743984375); (3.125 : 72.6875); (3.13541666666667 : 72.6875 : JumpStart); (3.30208333333333 : 72.6875 : JumpEnd); (5.79166666666667 : 72.6875 : JumpStart); (6.08333333333333 : 72.6875 : JumpEnd); (8.57291666666667 : 72.6875 : JumpStart); (8.73958333333333 : 72.6875 : JumpEnd); (8.79166666666667 : 72.6875 : JumpStart); (8.95833333333333 : 72.6875 : JumpEnd); (8.97916666666667 : 72.6875 : JumpStart); (9.55208333333333 : 72.6875 : JumpEnd); (14.875 : 72.6875); (14.875 : 71.5); (14.9791666666667 : 71.5 : JumpStart); (15.2708333333333 : 71.5 : JumpEnd); (15.2916666666667 : 71.5 : JumpStart); (15.4583333333333 : 71.5 : JumpEnd); (16.4166666666667 : 71.5 : JumpStart); (16.5833333333333 : 71.5 : JumpEnd); (18.125 : 71.5); (18.125 : 72.5497054036458); (20.75 : 72.5497054036458); (20.75 : 71.875); (25 : 71.875); (25 : 73.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_ForumDiscussionPost" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="23c6ffd4-d3dd-47ca-895f-7ef720a51e40" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(23.25 : 74.1354484049479); (24 : 74.1354484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/ForumDiscussion/ForumDiscussion_ForumDiscussionPost" />
+      <nodes>
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+        <classShapeMoniker Id="23c6ffd4-d3dd-47ca-895f-7ef720a51e40" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 74.6701221953125); (3.10416666666667 : 74.6701221953125 : JumpStart); (3.30208333333333 : 74.6701221953125 : JumpEnd); (3.3125 : 74.6701221953125); (3.3125 : 72.9375); (5.79166666666667 : 72.9375 : JumpStart); (6.02083333333333 : 72.9375 : JumpEnd); (6.22916666666667 : 72.9375 : JumpStart); (6.39583333333333 : 72.9375 : JumpEnd); (8.57291666666667 : 72.9375 : JumpStart); (8.73958333333333 : 72.9375 : JumpEnd); (8.79166666666667 : 72.9375 : JumpStart); (8.95833333333333 : 72.9375 : JumpEnd); (8.97916666666667 : 72.9375 : JumpStart); (9.55208333333333 : 72.9375 : JumpEnd); (12.1666666666667 : 72.9375 : JumpStart); (12.3333333333333 : 72.9375 : JumpEnd); (14.8229166666667 : 72.9375 : JumpStart); (15.2708333333333 : 72.9375 : JumpEnd); (15.3125 : 72.9375); (15.3125 : 71.9375); (15.3541666666667 : 71.9375 : JumpStart); (15.5208333333333 : 71.9375 : JumpEnd); (15.9166671666667 : 71.9375 : JumpStart); (16.0833338333333 : 71.9375 : JumpEnd); (17.5416666666667 : 71.9375 : JumpStart); (17.7083333333333 : 71.9375 : JumpEnd); (17.875 : 71.9375); (17.875 : 72.2997054036458); (17.9166666666667 : 72.2997054036458 : JumpStart); (18.2083333333333 : 72.2997054036458 : JumpEnd); (19.1666666666667 : 72.2997054036458 : JumpStart); (19.3333333333333 : 72.2997054036458 : JumpEnd); (20.6666666666667 : 72.2997054036458 : JumpStart); (20.8333333333333 : 72.2997054036458 : JumpEnd); (20.9166666666667 : 72.2997054036458 : JumpStart); (21.0833333333333 : 72.2997054036458 : JumpEnd); (21.125 : 72.2997054036458); (21.125 : 72.25); (22.1666666666667 : 72.25 : JumpStart); (22.3333333333333 : 72.25 : JumpEnd); (24.9166666666667 : 72.25 : JumpStart); (25.0833333333333 : 72.25 : JumpEnd); (27.75 : 72.25); (27.75 : 73.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_ForumDiscussionPostsGrade" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="d0a4acb5-6668-4da4-859e-a85104b38674" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(26 : 74.1354484049479); (26.75 : 74.1354484049479)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/ForumDiscussionPost/ForumDiscussionPost_ForumDiscussionPostsGrade" />
+      <nodes>
+        <classShapeMoniker Id="23c6ffd4-d3dd-47ca-895f-7ef720a51e40" />
+        <classShapeMoniker Id="d0a4acb5-6668-4da4-859e-a85104b38674" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(23.25 : 73.15625); (24.9166666666667 : 73.15625 : JumpStart); (25.0833333333333 : 73.15625 : JumpEnd); (26.75 : 73.15625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/ForumDiscussion/ForumDiscussion_ForumDiscussionPostsGrade" />
+      <nodes>
+        <classShapeMoniker Id="137e22ad-7ecb-4267-a749-a8defc5706ec" />
+        <classShapeMoniker Id="d0a4acb5-6668-4da4-859e-a85104b38674" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.1054671875 : 76.0112125651042); (2.1054671875 : 150.75080485026); (3.5 : 150.75080485026)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Grade" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="2f5d78f6-81de-4791-918d-e5542f4d0847" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.8476540625 : 76.0112125651042); (1.8476540625 : 149.84414992513); (2.02213385416666 : 149.84414992513 : JumpStart); (2.18880052083333 : 149.84414992513 : JumpEnd); (3.5 : 149.84414992513)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Grade1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="2f5d78f6-81de-4791-918d-e5542f4d0847" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.2812525 : 49.875); (8.2812525 : 48.8125); (9.10416666666667 : 48.8125 : JumpStart); (9.27083333333333 : 48.8125 : JumpEnd); (9.5 : 48.8125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_GradeType" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="2dd496e0-9f3f-4cc9-adfc-075270771a8f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5898409375 : 76.0112125651042); (1.5898409375 : 83.03125); (1.63541416666667 : 83.03125 : JumpStart); (1.93098739583333 : 83.03125 : JumpEnd); (1.99088135416666 : 83.03125 : JumpStart); (2.41536114583333 : 83.03125 : JumpEnd); (2.50650760416666 : 83.03125 : JumpStart); (2.80208083333333 : 83.03125 : JumpEnd); (6.25 : 83.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_GroupMember" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="7cd99ab4-7b9d-4a5b-9764-5a82db9a2d5d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 67.125); (8.59732443490112 : 67.0276755650989 : JumpStart); (8.71517556509888 : 66.9098244349011 : JumpEnd); (8.875 : 66.75); (8.875 : 63.35937775); (8.91666666666667 : 63.35937775 : JumpStart); (9.55208333333333 : 63.35937775 : JumpEnd); (12.25 : 63.35937775)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_AverageGrade" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="99c6d077-9dfd-4146-8db7-f80f9a96cc71" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.43506344275841 : 69.0881982421875); (8.59732443490112 : 69.2504592343302 : JumpStart); (8.71517556509888 : 69.368310364528 : JumpEnd); (8.875 : 69.5281347994291); (8.875 : 82.125); (8.625 : 82.125); (8.25 : 82.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_GroupMember" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="7cd99ab4-7b9d-4a5b-9764-5a82db9a2d5d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.1388451538462); (2.75357443490112 : 72.135270718945 : JumpStart); (2.87142556509888 : 72.0174195887473 : JumpEnd); (3.46875 : 71.4200951538462); (3.46875 : 69.4631982421875); (5.79166666666667 : 69.4631982421875 : JumpStart); (6.08333333333333 : 69.4631982421875 : JumpEnd); (6.125 : 69.4631982421875); (6.25357443490112 : 69.3346238072864 : JumpStart); (6.43392556509888 : 69.1542726770886 : JumpEnd); (6.5 : 69.0881982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_LearningGroup" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 52.4151025390625); (6.625 : 52.5401025390625); (6.45833333333333 : 52.5401025390625 : JumpStart); (6.29166666666667 : 52.5401025390625 : JumpEnd); (6.25 : 52.5401025390625); (6.25 : 66.875); (6.25357443490112 : 66.8785744349011 : JumpStart); (6.37142556509888 : 66.9964255650989 : JumpEnd); (6.5 : 67.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_LearningGroup" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.67923076923077 : 72.125); (2.75357443490112 : 72.0506563343296 : JumpStart); (2.87142556509888 : 71.9328052041319 : JumpEnd); (3.375 : 71.4292307692308); (3.375 : 56.1931469726563); (3.5 : 56.1931469726563)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_LearningStyle" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="d3ad8d58-c73a-49be-9fe7-ad7f348fea2f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.3320278125 : 76.0112125651042); (1.3320278125 : 102.443106282552); (1.63541416666667 : 102.443106282552 : JumpStart); (1.93098739583333 : 102.443106282552 : JumpEnd); (1.99088135416666 : 102.443106282552 : JumpStart); (2.18880052083333 : 102.443106282552 : JumpEnd); (2.50650760416666 : 102.443106282552 : JumpStart); (2.80208083333333 : 102.443106282552 : JumpEnd); (6.25 : 102.443106282552)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Message" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="32f9c026-9798-4533-8609-309f84f16ae1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.0742146875 : 76.0112125651042); (1.0742146875 : 101.440300641276); (1.24869447916667 : 101.440300641276 : JumpStart); (1.41536114583333 : 101.440300641276 : JumpEnd); (1.63541416666667 : 101.440300641276 : JumpStart); (1.93098739583333 : 101.440300641276 : JumpEnd); (1.99088135416666 : 101.440300641276 : JumpStart); (2.18880052083333 : 101.440300641276 : JumpEnd); (2.50650760416666 : 101.440300641276 : JumpStart); (2.80208083333333 : 101.440300641276 : JumpEnd); (6.25 : 101.440300641276)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Message1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="32f9c026-9798-4533-8609-309f84f16ae1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.8164015625 : 76.0112125651042); (0.8164015625 : 103.445911923828); (0.861974791666666 : 103.445911923828 : JumpStart); (1.02864145833333 : 103.445911923828 : JumpEnd); (1.63541416666667 : 103.445911923828 : JumpStart); (1.93098739583333 : 103.445911923828 : JumpEnd); (1.99088135416666 : 103.445911923828 : JumpStart); (2.18880052083333 : 103.445911923828 : JumpEnd); (2.50650760416666 : 103.445911923828 : JumpStart); (2.80208083333333 : 103.445911923828 : JumpEnd); (6.25 : 103.445911923828)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Message2" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="32f9c026-9798-4533-8609-309f84f16ae1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.70692307692308 : 72.125); (2.75357443490112 : 72.078348642022 : JumpStart); (2.87142556509888 : 71.9604975118242 : JumpEnd); (3.3125 : 71.5194230769231); (3.3125 : 60.5392976888021); (3.5 : 60.5392976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_MessageContact" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="b3d24eb9-2033-4aea-aaa3-880ad00454d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.69307692307692 : 72.125); (2.75357443490112 : 72.0645024881758 : JumpStart); (2.87142556509888 : 71.946651357978 : JumpEnd); (3.25 : 71.5680769230769); (3.25 : 60.5392976888021); (3.29166666666667 : 60.5392976888021 : JumpStart); (3.45833333333333 : 60.5392976888021 : JumpEnd); (3.5 : 60.5392976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_MessageContact1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="b3d24eb9-2033-4aea-aaa3-880ad00454d1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 131.212352701823); (7.25 : 131.212352701823); (7.25 : 104.386212565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/MessageThread/MessageThread_Message" />
+      <nodes>
+        <classShapeMoniker Id="f7c2692f-b06c-4fa5-9369-9243c8d6ab43" />
+        <classShapeMoniker Id="32f9c026-9798-4533-8609-309f84f16ae1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.7187475 : 76.0112125651042); (2.7187475 : 131.212352701823); (3.5 : 131.212352701823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_MessageThread" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f7c2692f-b06c-4fa5-9369-9243c8d6ab43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5898409375 : 76.0112125651042); (2.5898409375 : 130.449923850911); (2.63541416666667 : 130.449923850911 : JumpStart); (2.80208083333333 : 130.449923850911 : JumpEnd); (3.5 : 130.449923850911)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_MessageThread1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f7c2692f-b06c-4fa5-9369-9243c8d6ab43" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.460934375 : 76.0112125651042); (2.460934375 : 82.6065991210938); (2.50650760416666 : 82.6065991210938 : JumpStart); (2.80208083333333 : 82.6065991210938 : JumpEnd); (5.79166666666667 : 82.6065991210938 : JumpStart); (5.95833333333333 : 82.6065991210938 : JumpEnd); (8.25270719401042 : 82.6065991210938 : JumpStart); (8.41937386067709 : 82.6065991210938 : JumpEnd); (8.97916666666667 : 82.6065991210938 : JumpStart); (9.36458333333333 : 82.6065991210938 : JumpEnd); (9.5 : 82.6065991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Notification" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="2afceb20-bf92-4780-95e0-585476c7ebe1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.69461538461539 : 52.4151025390625); (9.09732443490112 : 52.8178115893482 : JumpStart); (9.24642556509888 : 52.966912719546 : JumpEnd); (9.28125 : 53.0017371544471); (9.28125 : 83.5421028300781); (9.5 : 83.5421028300781)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Notification" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="2afceb20-bf92-4780-95e0-585476c7ebe1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.6875); (2.8125 : 75.6875); (2.8125 : 66.5978011067708); (3.07291666666667 : 66.5978011067708 : JumpStart); (3.45833333333333 : 66.5978011067708 : JumpEnd); (5.79166666666667 : 66.5978011067708 : JumpStart); (6.39583333333333 : 66.5978011067708 : JumpEnd); (8.57291666666667 : 66.5978011067708 : JumpStart); (8.73958333333333 : 66.5978011067708 : JumpEnd); (8.79166666666667 : 66.5978011067708 : JumpStart); (9.55208333333333 : 66.5978011067708 : JumpEnd); (10.5 : 66.5978011067708); (10.5 : 66.2228011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_NotificationEmail" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="9927821c-06f6-46e0-b821-e8ffc18109e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 52.4043323082933); (9.12857443490112 : 52.7829067431944 : JumpStart); (9.24642556509888 : 52.9007578733922 : JumpEnd); (9.4375 : 53.0918323082933); (9.4375 : 65.0489005533854); (9.5 : 65.0489005533854)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_NotificationEmail" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="9927821c-06f6-46e0-b821-e8ffc18109e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.46677664513221 : 69.0881982421875); (8.59732443490112 : 69.2187460319564 : JumpStart); (8.71517556509888 : 69.3365971621542 : JumpEnd); (9.0625 : 69.6839215970553); (9.0625 : 85.345399890625); (9.10416666666667 : 85.345399890625 : JumpStart); (9.27083333333333 : 85.345399890625 : JumpEnd); (11.5729166666667 : 85.345399890625 : JumpStart); (11.7395833333333 : 85.345399890625 : JumpEnd); (11.9166666666667 : 85.345399890625 : JumpStart); (12.2083333333333 : 85.345399890625 : JumpEnd); (12.25 : 85.345399890625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_ObjectGroupMapper" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="9483a481-a30a-47a1-8881-9f4c4d01af8e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.678748 : 72.125); (1.678748 : 71.0112939453125); (2.72916666666667 : 71.0112939453125 : JumpStart); (2.89583333333333 : 71.0112939453125 : JumpEnd); (3 : 71.0112939453125); (3 : 66.875); (3.07291666666667 : 66.875 : JumpStart); (3.45833333333333 : 66.875 : JumpEnd); (5.79166666666667 : 66.875 : JumpStart); (6.20833333333333 : 66.875 : JumpEnd); (6.22916666666667 : 66.875 : JumpStart); (6.39583333333333 : 66.875 : JumpEnd); (8.57291666666667 : 66.875 : JumpStart); (8.83333333333333 : 66.875 : JumpEnd); (9.04166666666667 : 66.875 : JumpStart); (9.55208333333333 : 66.875 : JumpEnd); (11.7916666666667 : 66.875 : JumpStart); (11.9583333333333 : 66.875 : JumpEnd); (12.125 : 66.875); (12.125 : 67.0585034179688); (12.1666666666667 : 67.0585034179688 : JumpStart); (12.3333333333333 : 67.0585034179688 : JumpEnd); (12.5 : 67.0585034179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_ObjectStream" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="77914c9c-077b-45c2-a55d-ce8b144a909b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25461488461538 : 52.4151025390625); (7.25461488461538 : 58); (9 : 58); (9 : 66.75); (9.04166666666667 : 66.75 : JumpStart); (9.55208333333333 : 66.75 : JumpEnd); (11.7916666666667 : 66.75 : JumpStart); (11.9583333333333 : 66.75 : JumpEnd); (12.25 : 66.75); (12.25 : 67.8690071269531); (12.5 : 67.8690071269531)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_ObjectStream" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="77914c9c-077b-45c2-a55d-ce8b144a909b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 51.8905939820212); (9.10416666666667 : 51.8905939820212 : JumpStart); (9.33333333333333 : 51.8905939820212 : JumpEnd); (9.5 : 51.8905939820212)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_ObjectStreamCourse" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="6f1efa8f-23b7-41ac-ae46-b4ebd6d0f811" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.49848984750601 : 69.0881982421875); (8.59732443490112 : 69.1870328295826 : JumpStart); (8.71517556509888 : 69.3048839597804 : JumpEnd); (8.90473984750601 : 69.4944482421875); (9.01041666666667 : 69.4944482421875 : JumpStart); (9.55208333333333 : 69.4944482421875 : JumpEnd); (11.7916666666667 : 69.4944482421875 : JumpStart); (11.9583333333333 : 69.4944482421875 : JumpEnd); (14.8229166666667 : 69.4944482421875 : JumpStart); (15.0208333333333 : 69.4944482421875 : JumpEnd); (15.0625 : 69.4944482421875); (15.0625 : 78.4375); (15.1285744349011 : 78.5035744349011 : JumpStart); (15.2464255650989 : 78.6214255650989 : JumpEnd); (15.25 : 78.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_ObjectStreamGroupMapper" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="8b95b699-c863-4c06-95cd-e55ddee7c8e8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 68.5862366051683); (14.90625 : 68.9924866051683); (14.90625 : 79.4455496888021); (15.25 : 79.4455496888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/ObjectStream/ObjectStream_ObjectStreamGroupMapper" />
+      <nodes>
+        <classShapeMoniker Id="77914c9c-077b-45c2-a55d-ce8b144a909b" />
+        <classShapeMoniker Id="8b95b699-c863-4c06-95cd-e55ddee7c8e8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.4375); (3.16666666666667 : 75.4375 : JumpStart); (3.52083333333333 : 75.4375 : JumpEnd); (5.79166666666667 : 75.4375 : JumpStart); (5.95833333333333 : 75.4375 : JumpEnd); (8.57291666666667 : 75.4375 : JumpStart); (8.73958333333333 : 75.4375 : JumpEnd); (8.79166666666667 : 75.4375 : JumpStart); (8.95833333333333 : 75.4375 : JumpEnd); (8.97916666666667 : 75.4375 : JumpStart); (9.45833333333333 : 75.4375 : JumpEnd); (9.88541416666667 : 75.4375 : JumpStart); (10.0520808333333 : 75.4375 : JumpEnd); (10.5 : 75.4375); (10.5 : 75.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_PeerAssessmentGrade" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="73e083ed-3d89-41d1-93cb-b3bc19fdf802" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.8125); (2.94791666666667 : 75.8125 : JumpStart); (3.36458333333333 : 75.8125 : JumpEnd); (5.79166666666667 : 75.8125 : JumpStart); (5.95833333333333 : 75.8125 : JumpEnd); (8.57291666666667 : 75.8125 : JumpStart); (8.73958333333333 : 75.8125 : JumpEnd); (8.79166666666667 : 75.8125 : JumpStart); (8.95833333333333 : 75.8125 : JumpEnd); (8.97916666666667 : 75.8125 : JumpStart); (9.45833333333333 : 75.8125 : JumpEnd); (9.9687475 : 75.8125); (9.9687475 : 75.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_PeerAssessmentGrade1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="73e083ed-3d89-41d1-93cb-b3bc19fdf802" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 88.3119285109675); (9.1875 : 87.8744285109675); (9.1875 : 74.1065991210938); (9.19791666666667 : 74.1065991210938 : JumpStart); (9.45833333333333 : 74.1065991210938 : JumpEnd); (9.5 : 74.1065991210938)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/PeerAssessmentIndicator/PeerAssessmentIndicator_PeerAssessmentGrade" />
+      <nodes>
+        <classShapeMoniker Id="29ec167c-b4f4-4ed7-82cd-6bcaeb31a344" />
+        <classShapeMoniker Id="73e083ed-3d89-41d1-93cb-b3bc19fdf802" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 89.0681469726563); (6.16666666666667 : 89.0681469726563 : JumpStart); (6.33333333333333 : 89.0681469726563 : JumpEnd); (6.38541666666667 : 89.0681469726563 : JumpStart); (6.55208333333333 : 89.0681469726563 : JumpEnd); (6.75 : 89.0681469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/PeerAssessmentCriteria/PeerAssessmentCriteria_PeerAssessmentIndicator" />
+      <nodes>
+        <classShapeMoniker Id="ccd0b5e0-f10c-43de-8cfc-01f6b08d9189" />
+        <classShapeMoniker Id="29ec167c-b4f4-4ed7-82cd-6bcaeb31a344" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 59.7315991210938); (14.3229166666667 : 59.7315991210938 : JumpStart); (14.4895833333333 : 59.7315991210938 : JumpEnd); (15 : 59.7315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Question/Question_Answer" />
+      <nodes>
+        <classShapeMoniker Id="99db7ef1-9a56-45a0-972a-647446af29da" />
+        <classShapeMoniker Id="36ff6cca-a069-42da-85d6-c5c3d9a67b5f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 59.1782995605469); (14.3229166666667 : 59.1782995605469 : JumpStart); (14.4895833333333 : 59.1782995605469 : JumpEnd); (15 : 59.1782995605469)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Question/Question_Answer1" />
+      <nodes>
+        <classShapeMoniker Id="99db7ef1-9a56-45a0-972a-647446af29da" />
+        <classShapeMoniker Id="36ff6cca-a069-42da-85d6-c5c3d9a67b5f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 59.7315991210938); (12.25 : 59.7315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Quiz/Quiz_Question" />
+      <nodes>
+        <classShapeMoniker Id="146efcb3-a34e-481f-b3f6-576edfc75759" />
+        <classShapeMoniker Id="99db7ef1-9a56-45a0-972a-647446af29da" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 52.3612553852164); (9.15625 : 52.7675053852164); (9.15625 : 59.7700512695313); (9.19791666666667 : 59.7700512695313 : JumpStart); (9.48958333333333 : 59.7700512695313 : JumpEnd); (9.5 : 59.7700512695313)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Quiz" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="146efcb3-a34e-481f-b3f6-576edfc75759" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.3320278125 : 76.0112125651042); (2.3320278125 : 85.1258048502604); (2.50650760416666 : 85.1258048502604 : JumpStart); (2.80208083333333 : 85.1258048502604 : JumpEnd); (3.5 : 85.1258048502604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Resource" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="e93755d2-6216-4a51-99df-c0e74e30297c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.79922976923077 : 52.4151025390625); (6.65267556509888 : 52.5616567431944 : JumpStart); (6.53482443490112 : 52.6795078733922 : JumpEnd); (6.43392556509888 : 52.7804067431944 : JumpStart); (6.31607443490112 : 52.8982578733922 : JumpEnd); (6.30892556509888 : 52.9054067431944 : JumpStart); (6.19107443490112 : 53.0232578733922 : JumpEnd); (6.17422976923077 : 53.0401025390625); (5.875 : 53.0401025390625); (5.875 : 83.0015374615385); (5.5 : 83.3765374615385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_Resource" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="e93755d2-6216-4a51-99df-c0e74e30297c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 69.0564840398137); (8.59732443490112 : 69.1538084747148 : JumpStart); (8.71517556509888 : 69.2716596049126 : JumpEnd); (8.78171420237379 : 69.3381982421875); (9.04166666666667 : 69.3381982421875 : JumpStart); (9.55208333333333 : 69.3381982421875 : JumpEnd); (11.7916666666667 : 69.3381982421875 : JumpStart); (11.9583333333333 : 69.3381982421875 : JumpEnd); (14.8229166666667 : 69.3381982421875 : JumpStart); (15.0208333333333 : 69.3381982421875 : JumpEnd); (15.1875 : 69.3381982421875); (15.1875 : 81.8109625384615); (15.2515374615385 : 81.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_ResourceRate" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="b14b3fb0-4ebe-4ff1-bc85-e708719afd00" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 86.1110042955729); (6.16666666666667 : 86.1110042955729 : JumpStart); (6.33333333333333 : 86.1110042955729 : JumpEnd); (6.38541666666667 : 86.1110042955729 : JumpStart); (6.55208333333333 : 86.1110042955729 : JumpEnd); (9.10416666666667 : 86.1110042955729 : JumpStart); (9.27083333333333 : 86.1110042955729 : JumpEnd); (11.5729166666667 : 86.1110042955729 : JumpStart); (11.7395833333333 : 86.1110042955729 : JumpEnd); (11.9166666666667 : 86.1110042955729 : JumpStart); (12.0833333333333 : 86.1110042955729 : JumpEnd); (12.125 : 86.1110042955729); (12.125 : 83.75); (12.1666666666667 : 83.75 : JumpStart); (12.3333333333333 : 83.75 : JumpEnd); (14.5416666666667 : 83.75 : JumpStart); (14.8333333333333 : 83.75 : JumpEnd); (15 : 83.75); (15 : 84.2804996744792); (16.25 : 84.2804996744792); (16.25 : 84.0304996744792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Resource/Resource_ResourceRate" />
+      <nodes>
+        <classShapeMoniker Id="e93755d2-6216-4a51-99df-c0e74e30297c" />
+        <classShapeMoniker Id="b14b3fb0-4ebe-4ff1-bc85-e708719afd00" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 69.0247708374399); (8.6884274047476 : 69.2131982421875); (9.04166666666667 : 69.2131982421875 : JumpStart); (9.55208333333333 : 69.2131982421875 : JumpEnd); (11.7916666666667 : 69.2131982421875 : JumpStart); (11.9583333333333 : 69.2131982421875 : JumpEnd); (14.9375 : 69.2131982421875); (14.9375 : 84.6859625384615); (15.0035744349011 : 84.7520369733627 : JumpStart); (15.1214255650989 : 84.8698881035604 : JumpEnd); (15.2515374615385 : 85)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/LearningGroup/LearningGroup_Share" />
+      <nodes>
+        <classShapeMoniker Id="941d2076-5076-41ef-ab4e-7c8b044a68ca" />
+        <classShapeMoniker Id="f727846f-1943-43c0-ae74-2567c8fc00b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.617187875); (2.91666666666667 : 73.617187875 : JumpStart); (3.08333333333333 : 73.617187875 : JumpEnd); (3.1875 : 73.617187875); (3.1875 : 75.3429996744792); (3.19791666666667 : 75.3429996744792 : JumpStart); (3.52083333333333 : 75.3429996744792 : JumpEnd); (5.79166666666667 : 75.3429996744792 : JumpStart); (5.95833333333333 : 75.3429996744792 : JumpEnd); (8.57291666666667 : 75.3429996744792 : JumpStart); (8.73958333333333 : 75.3429996744792 : JumpEnd); (8.79166666666667 : 75.3429996744792 : JumpStart); (8.95833333333333 : 75.3429996744792 : JumpEnd); (8.97916666666667 : 75.3429996744792 : JumpStart); (9.45833333333333 : 75.3429996744792 : JumpEnd); (9.88541416666667 : 75.3429996744792 : JumpStart); (10.0520808333333 : 75.3429996744792 : JumpEnd); (10.4166666666667 : 75.3429996744792 : JumpStart); (10.5833333333333 : 75.3429996744792 : JumpEnd); (11.5729166666667 : 75.3429996744792 : JumpStart); (11.7395833333333 : 75.3429996744792 : JumpEnd); (11.9200499565304 : 75.3429996744792 : JumpStart); (12.0867166231971 : 75.3429996744792 : JumpEnd); (12.1666666666667 : 75.3429996744792 : JumpStart); (12.3333333333333 : 75.3429996744792 : JumpEnd); (14.75 : 75.3429996744792); (14.75 : 84.625); (14.9791666666667 : 84.625 : JumpStart); (15.1458333333333 : 84.625 : JumpEnd); (16.2820207307692 : 84.625); (16.2820207307692 : 85)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Share" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f727846f-1943-43c0-ae74-2567c8fc00b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.226562625); (2.91666666666667 : 73.226562625 : JumpStart); (3.39583333333333 : 73.226562625 : JumpEnd); (3.4375 : 73.226562625); (3.4375 : 75.7179996744792); (5.79166666666667 : 75.7179996744792 : JumpStart); (5.95833333333333 : 75.7179996744792 : JumpEnd); (8.57291666666667 : 75.7179996744792 : JumpStart); (8.73958333333333 : 75.7179996744792 : JumpEnd); (8.79166666666667 : 75.7179996744792 : JumpStart); (8.95833333333333 : 75.7179996744792 : JumpEnd); (8.97916666666667 : 75.7179996744792 : JumpStart); (9.45833333333333 : 75.7179996744792 : JumpEnd); (9.88541416666667 : 75.7179996744792 : JumpStart); (10.0520808333333 : 75.7179996744792 : JumpEnd); (11.5729166666667 : 75.7179996744792 : JumpStart); (11.7395833333333 : 75.7179996744792 : JumpEnd); (12.1666666666667 : 75.7179996744792 : JumpStart); (12.4617166231971 : 75.7179996744792 : JumpEnd); (14.625 : 75.7179996744792); (14.625 : 84.75); (14.9182041282051 : 84.75 : JumpStart); (15.1458333333333 : 84.75 : JumpEnd); (15.7667790961538 : 84.75); (15.7667790961538 : 85)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Share1" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f727846f-1943-43c0-ae74-2567c8fc00b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 92.3565991210938); (6.46875 : 92.3565991210938); (6.46875 : 84.7131982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/SocialGroup/SocialGroup_GroupMember" />
+      <nodes>
+        <classShapeMoniker Id="f6217407-e812-4d8d-8a28-9a757f70dc93" />
+        <classShapeMoniker Id="7cd99ab4-7b9d-4a5b-9764-5a82db9a2d5d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 91.375); (4.5 : 90.0112939453125); (6.25 : 90.0112939453125); (6.25 : 85.4762438251202); (6.38541666666667 : 85.4762438251202 : JumpStart); (6.55208333333333 : 85.4762438251202 : JumpEnd); (9.10416666666667 : 85.4762438251202 : JumpStart); (9.27083333333333 : 85.4762438251202 : JumpEnd); (11.5729166666667 : 85.4762438251202 : JumpStart); (11.7395833333333 : 85.4762438251202 : JumpEnd); (11.9166666666667 : 85.4762438251202 : JumpStart); (12.2083333333333 : 85.4762438251202 : JumpEnd); (12.25 : 85.4762438251202)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/SocialGroup/SocialGroup_ObjectGroupMapper" />
+      <nodes>
+        <classShapeMoniker Id="f6217407-e812-4d8d-8a28-9a757f70dc93" />
+        <classShapeMoniker Id="9483a481-a30a-47a1-8881-9f4c4d01af8e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 91.8345475605469); (6.38541666666667 : 91.8345475605469 : JumpStart); (6.55208333333333 : 91.8345475605469 : JumpEnd); (9.16666666666667 : 91.8345475605469 : JumpStart); (9.33333333333333 : 91.8345475605469 : JumpEnd); (9.5 : 91.8345475605469); (9.5 : 90.5); (10.6666666666667 : 90.5 : JumpStart); (10.8333333333333 : 90.5 : JumpEnd); (11.9182041282051 : 90.5 : JumpStart); (12.0848707948718 : 90.5 : JumpEnd); (15.0625 : 90.5); (15.0625 : 80.5785953776042); (15.1041666666667 : 80.5785953776042 : JumpStart); (15.2708333333333 : 80.5785953776042 : JumpEnd); (16.25 : 80.5785953776042); (16.25 : 80.2035953776042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/SocialGroup/SocialGroup_ObjectStreamGroupMapper" />
+      <nodes>
+        <classShapeMoniker Id="f6217407-e812-4d8d-8a28-9a757f70dc93" />
+        <classShapeMoniker Id="8b95b699-c863-4c06-95cd-e55ddee7c8e8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 92.8786506816406); (9.25 : 92.8786506816406); (9.25 : 90.25); (10.6666666666667 : 90.25 : JumpStart); (10.8333333333333 : 90.25 : JumpEnd); (12.0416666666667 : 90.25 : JumpStart); (12.2083333333333 : 90.25 : JumpEnd); (14.9791666666667 : 90.25 : JumpStart); (15.1458333333333 : 90.25 : JumpEnd); (16.25 : 90.25); (16.25 : 87.3478011067708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/SocialGroup/SocialGroup_Share" />
+      <nodes>
+        <classShapeMoniker Id="f6217407-e812-4d8d-8a28-9a757f70dc93" />
+        <classShapeMoniker Id="f727846f-1943-43c0-ae74-2567c8fc00b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.20312125 : 76.0112125651042); (2.20312125 : 92.3565991210938); (2.50650760416666 : 92.3565991210938 : JumpStart); (2.80208083333333 : 92.3565991210938 : JumpEnd); (3.5 : 92.3565991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_SocialGroup" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f6217407-e812-4d8d-8a28-9a757f70dc93" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.1803836153846); (2.75357443490112 : 72.1768091804835 : JumpStart); (2.87142556509888 : 72.0589580502857 : JumpEnd); (3.015625 : 71.9147586153846); (3.015625 : 72.5256982421875); (3.13541666666667 : 72.5256982421875 : JumpStart); (3.30208333333333 : 72.5256982421875 : JumpEnd); (5.79166666666667 : 72.5256982421875 : JumpStart); (6.33333333333333 : 72.5256982421875 : JumpEnd); (8.57291666666667 : 72.5256982421875 : JumpStart); (8.73958333333333 : 72.5256982421875 : JumpEnd); (8.79166666666667 : 72.5256982421875 : JumpStart); (8.95833333333333 : 72.5256982421875 : JumpEnd); (9.0625 : 72.5256982421875); (9.06607443490112 : 72.5221238072864 : JumpStart); (9.43392556509888 : 72.1542726770886 : JumpEnd); (9.5 : 72.0881982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_SurveyAnswer" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="ab79d64c-75c9-4e72-8bdf-2b1559525f62" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 59.7715220831831); (8.94107443490112 : 59.9625965180842 : JumpStart); (9.05892556509888 : 60.080447648282 : JumpEnd); (9.15625 : 60.1777720831831); (9.15625 : 71.0753471210938); (9.19791666666667 : 71.0753471210938 : JumpStart); (9.45833333333333 : 71.0753471210938 : JumpEnd); (9.5 : 71.0753471210938)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Survey/Survey_SurveyAnswer" />
+      <nodes>
+        <classShapeMoniker Id="4bc52e15-5340-4e50-af17-5fbaeb25c31e" />
+        <classShapeMoniker Id="ab79d64c-75c9-4e72-8bdf-2b1559525f62" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.71769230769231 : 76.0112125651042); (3.125 : 76.4185202574119); (3.125 : 75.5625); (3.16666666666667 : 75.5625 : JumpStart); (3.52083333333333 : 75.5625 : JumpEnd); (5.79166666666667 : 75.5625 : JumpStart); (5.95833333333333 : 75.5625 : JumpEnd); (8.57291666666667 : 75.5625 : JumpStart); (8.73958333333333 : 75.5625 : JumpEnd); (8.9375 : 75.5625); (9.00357443490112 : 75.6285744349011 : JumpStart); (9.34017556509888 : 75.9651755650989 : JumpEnd); (9.37857443490112 : 76.0035744349011 : JumpStart); (9.49642556509888 : 76.1214255650989 : JumpEnd); (9.5 : 76.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_SurveyUserSummary" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="05506c70-0b49-472d-b1a2-a2a93cb70e01" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.72449961313101 : 59.8285953776042); (8.94107443490112 : 60.0451701993743 : JumpStart); (9.05892556509888 : 60.163021329572 : JumpEnd); (9.125 : 60.2290957644732); (9.125 : 77.1378511210937); (9.15104166666667 : 77.1378511210937 : JumpStart); (9.36458333333333 : 77.1378511210937 : JumpEnd); (9.5 : 77.1378511210937)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Survey/Survey_SurveyUserSummary" />
+      <nodes>
+        <classShapeMoniker Id="4bc52e15-5340-4e50-af17-5fbaeb25c31e" />
+        <classShapeMoniker Id="05506c70-0b49-472d-b1a2-a2a93cb70e01" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.1942297692308); (2.75357443490112 : 72.1906553343296 : JumpStart); (2.87142556509888 : 72.0728042041319 : JumpEnd); (3.390625 : 71.5536047692308); (3.390625 : 72.5617496744792); (5.79166666666667 : 72.5617496744792 : JumpStart); (6.33333333333333 : 72.5617496744792 : JumpEnd); (8.57291666666667 : 72.5617496744792 : JumpStart); (8.73958333333333 : 72.5617496744792 : JumpEnd); (8.79166666666667 : 72.5617496744792 : JumpStart); (8.95833333333333 : 72.5617496744792 : JumpEnd); (8.97916666666667 : 72.5617496744792 : JumpStart); (9.55208333333333 : 72.5617496744792 : JumpEnd); (12.0952874615385 : 72.5617496744792); (12.5015374615385 : 72.1554996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Tag" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="059b6cee-5de9-48fd-a697-dd8937885b10" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0312505 : 52.0208968098958); (2.0312505 : 69.125); (2.72916666666667 : 69.125 : JumpStart); (2.89583333333333 : 69.125 : JumpEnd); (2.91666666666667 : 69.125 : JumpStart); (3.45833333333333 : 69.125 : JumpEnd); (5.79166666666667 : 69.125 : JumpStart); (6.20833333333333 : 69.125 : JumpEnd); (6.375 : 69.125); (6.375 : 70); (8.54166666666667 : 70 : JumpStart); (8.73958333333333 : 70 : JumpEnd); (8.79166666666667 : 70 : JumpStart); (8.95833333333333 : 70 : JumpEnd); (8.97916666666667 : 70 : JumpStart); (9.55208333333333 : 70 : JumpEnd); (12.125 : 70); (12.125 : 71.0777498372396); (12.5 : 71.0777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Category/Category_Tag" />
+      <nodes>
+        <classShapeMoniker Id="5228d5fe-e1b8-407e-9402-76c13e377ce3" />
+        <classShapeMoniker Id="059b6cee-5de9-48fd-a697-dd8937885b10" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.183122 : 72.125); (1.183122 : 71.875); (1.59541466666667 : 71.875 : JumpStart); (1.76208133333333 : 71.875 : JumpEnd); (2.72916666666667 : 71.875 : JumpStart); (3.15256310256411 : 71.875 : JumpEnd); (3.28125 : 71.875); (3.28125 : 72.375); (3.30729166666667 : 72.375 : JumpStart); (3.47395833333333 : 72.375 : JumpEnd); (5.79166666666667 : 72.375 : JumpStart); (6.33333333333333 : 72.375 : JumpEnd); (8.57291666666667 : 72.375 : JumpStart); (8.73958333333333 : 72.375 : JumpEnd); (8.79166666666667 : 72.375 : JumpStart); (8.95833333333333 : 72.375 : JumpEnd); (8.97916666666667 : 72.375 : JumpStart); (9.55208333333333 : 72.375 : JumpEnd); (12.1987038026843 : 72.375 : JumpStart); (12.365370469351 : 72.375 : JumpEnd); (14.7916666666667 : 72.375 : JumpStart); (15.3958333333333 : 72.375 : JumpEnd); (15.4375 : 72.375); (15.4375 : 71.8125); (17.625 : 71.8125); (17.625 : 73.9815991210938); (18.25 : 73.9815991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_TagMapper" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="581dc127-2464-461c-ac2a-80a01d91c664" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.5 : 71.2147127278646); (14.8229166666667 : 71.2147127278646 : JumpStart); (15.2708333333333 : 71.2147127278646 : JumpEnd); (15.2916666666667 : 71.2147127278646 : JumpStart); (15.4583333333333 : 71.2147127278646 : JumpEnd); (16.4166666666667 : 71.2147127278646 : JumpStart); (16.5833333333333 : 71.2147127278646 : JumpEnd); (18.0625 : 71.2147127278646); (18.0625 : 72.7997054036458); (18.7500005 : 72.7997054036458); (18.7500005 : 73)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Tag/Tag_TagMapper" />
+      <nodes>
+        <classShapeMoniker Id="059b6cee-5de9-48fd-a697-dd8937885b10" />
+        <classShapeMoniker Id="581dc127-2464-461c-ac2a-80a01d91c664" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 61.65625); (8.91666666666667 : 61.65625 : JumpStart); (9.55208333333333 : 61.65625 : JumpEnd); (14.40625 : 61.65625); (14.40625 : 57.1362939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Topic/Topic_CourseTopcMapper" />
+      <nodes>
+        <classShapeMoniker Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" />
+        <classShapeMoniker Id="9cfafe74-684d-4c36-bcc7-4fb1fcd46883" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 61.5587801698718); (8.94107443490112 : 61.3677057349707 : JumpStart); (9.05892556509888 : 61.2498546047729 : JumpEnd); (9.06607443490112 : 61.2427057349707 : JumpStart); (9.18392556509888 : 61.1248546047729 : JumpEnd); (9.1875 : 61.1212801698718); (9.1875 : 43.2892976888021); (9.5 : 43.2892976888021)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Topic/Topic_ObjectTopicMapper" />
+      <nodes>
+        <classShapeMoniker Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" />
+        <classShapeMoniker Id="14dd0db5-a35b-4c33-b59b-eea6428d9156" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0742146875 : 76.0112125651042); (2.0742146875 : 127.616201985677); (2.50650760416666 : 127.616201985677 : JumpStart); (2.80208083333333 : 127.616201985677 : JumpEnd); (3.5 : 127.616201985677)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_UserActSummary" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="7c0eb7f5-b946-4e7e-98e8-0d696e1697c8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.74846153846154 : 72.125); (2.75357443490112 : 72.1198871035604 : JumpStart); (2.87142556509888 : 72.0020359733627 : JumpEnd); (3.4375 : 71.4359615384615); (3.4375 : 69.5881982421875); (5.79166666666667 : 69.5881982421875 : JumpStart); (6.20833333333333 : 69.5881982421875 : JumpEnd); (6.22916666666667 : 69.5881982421875 : JumpStart); (6.45833333333333 : 69.5881982421875 : JumpEnd); (8.57291666666667 : 69.5881982421875 : JumpStart); (8.73958333333333 : 69.5881982421875 : JumpEnd); (9 : 69.5881982421875); (9.06607443490112 : 69.5221238072864 : JumpStart); (9.43392556509888 : 69.1542726770886 : JumpEnd); (9.5 : 69.0881982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_UserKnowledgeProfile" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="f4ccc070-6d48-4147-979a-50b309bbdd2b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.73769230769231 : 52.4151025390625); (9.12857443490112 : 52.8059846662713 : JumpStart); (9.24642556509888 : 52.9238357964691 : JumpEnd); (9.328125 : 53.0055352313702); (9.328125 : 68.0753471210938); (9.5 : 68.0753471210938)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_UserKnowledgeProfile" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="f4ccc070-6d48-4147-979a-50b309bbdd2b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 62.635210343149); (8.94107443490112 : 62.8262847780502 : JumpStart); (9.05892556509888 : 62.9441359082479 : JumpEnd); (9.06607443490112 : 62.9512847780502 : JumpStart); (9.18392556509888 : 63.0691359082479 : JumpEnd); (9.1875 : 63.072710343149); (9.1875 : 67.5689215605469); (9.19791666666667 : 67.5689215605469 : JumpStart); (9.45833333333333 : 67.5689215605469 : JumpEnd); (9.5 : 67.5689215605469)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Topic/Topic_UserKnowledgeProfile" />
+      <nodes>
+        <classShapeMoniker Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" />
+        <classShapeMoniker Id="f4ccc070-6d48-4147-979a-50b309bbdd2b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 72.78125); (3.04166666666667 : 72.78125 : JumpStart); (3.20833333333333 : 72.78125 : JumpEnd); (3.28125 : 72.78125); (3.28125 : 75.9375); (5.79166666666667 : 75.9375 : JumpStart); (5.95833333333333 : 75.9375 : JumpEnd); (8.57291666666667 : 75.9375 : JumpStart); (8.73958333333333 : 75.9375 : JumpEnd); (8.79166666666667 : 75.9375 : JumpStart); (8.95833333333333 : 75.9375 : JumpEnd); (8.97916666666667 : 75.9375 : JumpStart); (9.39583333333333 : 75.9375 : JumpEnd); (9.4375 : 75.9375); (9.4375 : 78.75); (10.5 : 78.75); (10.5 : 79.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_UserSoActProfile" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="85b9176e-f334-44df-9150-e8cf12c46c6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.73153846153846 : 52.4151025390625); (9.234375 : 52.917939077524); (9.234375 : 80.1065991210938); (9.5 : 80.1065991210938)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Course/Course_UserSoActProfile" />
+      <nodes>
+        <classShapeMoniker Id="534b9f0a-962d-4ea1-9282-39f70ceaef67" />
+        <classShapeMoniker Id="85b9176e-f334-44df-9150-e8cf12c46c6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.65625 : 62.6939925130208); (8.65625 : 79.21875); (8.79166666666667 : 79.21875 : JumpStart); (8.95833333333333 : 79.21875 : JumpEnd); (8.97916666666667 : 79.21875 : JumpStart); (9.36458333333333 : 79.21875 : JumpEnd); (9.5 : 79.21875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/Topic/Topic_UserSoActProfile" />
+      <nodes>
+        <classShapeMoniker Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" />
+        <classShapeMoniker Id="85b9176e-f334-44df-9150-e8cf12c46c6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 73.9554374492187); (2.91666666666667 : 73.9554374492187 : JumpStart); (3.45833333333333 : 73.9554374492187 : JumpEnd); (3.5 : 73.9554374492187)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_UserTopicMapper" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="b97a527a-d761-46e7-bd60-de63a348956e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.75 : 62.6939925130208); (6.65267556509888 : 62.7913169479219 : JumpStart); (6.53482443490112 : 62.9091680781197 : JumpEnd); (6.375 : 63.0689925130208); (6.33333333333333 : 63.0689925130208 : JumpStart); (6.04166666666667 : 63.0689925130208 : JumpEnd); (6 : 63.0689925130208); (6 : 72.875); (5.93392556509888 : 72.9410744349011 : JumpStart); (5.81607443490112 : 73.0589255650989 : JumpEnd); (5.5 : 73.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SocialLearningDataContext/Topic/Topic_UserTopicMapper" />
+      <nodes>
+        <classShapeMoniker Id="432ad9a6-3c34-4976-a3f9-e64798007f0d" />
+        <classShapeMoniker Id="b97a527a-d761-46e7-bd60-de63a348956e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 75.1076233203125); (3.21875 : 75.1076233203125); (3.21875 : 72.2131982421875); (3.22572646269032 : 72.2131982421875 : JumpStart); (3.47395833333333 : 72.2131982421875 : JumpEnd); (5.79166666666667 : 72.2131982421875 : JumpStart); (6.20833333333333 : 72.2131982421875 : JumpEnd); (6.3125 : 72.2131982421875); (6.3125 : 66.4631982421875); (7.5 : 66.4631982421875); (7.5 : 66.0881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/App_User/App_User_Vote" />
+      <nodes>
+        <classShapeMoniker Id="b148633e-331b-4f57-aa5b-a8619fa5f4d8" />
+        <classShapeMoniker Id="68b609b3-d99b-46e4-861e-f301e110d4e2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 47.90625); (6.59375 : 47.90625); (6.59375 : 64.125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SocialLearningDataContext/VoteParent/VoteParent_Vote" />
+      <nodes>
+        <classShapeMoniker Id="23df72a3-a66e-4d74-bdac-7f5911cae173" />
+        <classShapeMoniker Id="68b609b3-d99b-46e4-861e-f301e110d4e2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

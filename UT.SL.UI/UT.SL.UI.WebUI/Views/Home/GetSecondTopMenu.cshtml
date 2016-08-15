@@ -1,0 +1,107 @@
+﻿@using UT.SL.Data.LINQ
+@model List<App_SiteMenu>
+@{
+        
+}
+@helper drawSubMenu(App_SiteMenu item1, List<App_SiteMenu> menuList, int level)
+{        
+    var items = menuList.Where(u => u.ParentId != null && u.ParentId.Value != 0 && u.ParentId == item1.Id).OrderBy(u => u.Rank);
+    if (items.Any())
+    {         
+    <ul class="dropdown-menu level@(level)">
+        @foreach (var item in items)
+        {
+            if (menuList.Where(u => u.ParentId != null && u.ParentId.Value != 0 && u.ParentId == item.Id).OrderBy(u => u.Rank).Any())
+            {
+            <li class="dropdown-submenu">
+                @if (item.ActionId.HasValue)
+                {
+                    @Html.ActionLink(item.MenuTitle,
+                    item.App_Action.ActionName,
+                    item.App_Action.ControllerName,
+                    new { area = item.App_Action.AreaName },
+                    new { })
+                }
+                else
+                {
+                    <a href="javascript:void(0);">@item.MenuTitle</a>
+                }
+                @drawSubMenu(item, menuList, (level + 1))
+            </li>
+            }
+            else
+            {
+            <li>
+                @if (item.ActionId.HasValue)
+                {
+                    @Html.ActionLink(item.MenuTitle,
+                    item.App_Action.ActionName,
+                    item.App_Action.ControllerName,
+                    new { area = item.App_Action.AreaName },
+                    new { })
+                }
+                else
+                {
+                    <a href="javascript:void(0);">@item.MenuTitle</a>
+                }
+            </li>
+            }
+        }
+    </ul>
+    }
+}
+<div class="navbar  navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            @Html.ActionLink(UT.SL.Model.Resource.App_Common.Logo, "MyHome", "home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="btn btn-default navbar-btn btn-default" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon glyphicon-bar"></span>
+                <span class="glyphicon glyphicon-bar"></span>
+                <span class="glyphicon glyphicon-bar"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+                <p class="navbar-text pull-right">
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @:<a href="@Url.Action("LogIn", "Account", new { area = "" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.LogIn</a>
+                        @:<a href="@Url.Action("Register", "Account", new { area = "" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.Register</a>
+                    }
+                    else
+                    {
+                        @: @UT.SL.Model.Resource.App_Common.LogOInAs <a href="@Url.Action("Index", "Account", new { area = "" })" class="navbar-link">@HttpContext.Current.User.Identity.Name</a>
+                        @:<a href="@Url.Action("LogOff", "Account", new { area = "" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.LogOff</a>
+                    }
+                </p>
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@UT.SL.Model.Resource.App_Common.Language <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="langs">
+                            <li><a href="javascript:void(0);" class="en-US">English</a></li>
+                            <li><a href="javascript:void(0);" class="fa-IR">فارسی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav">
+                    <li><a href="@Url.Action("MyHome", "Home", new { area = "" })">@UT.SL.Model.Resource.App_Common.Home</a></li>
+                    @{
+                        var topMenus = Model.Where(u => u.ParentId == null && Model.Any(x => x.ParentId != null && x.ParentId == u.Id) || (u.App_Action != null && u.App_Action.Id == 1));
+                        foreach (var item in topMenus)
+                        { 
+                        <li class="dropdown">
+                            @if (item.ActionId.HasValue)
+                            {
+                                <a href="@Url.Action(item.App_Action.ActionName, item.App_Action.ControllerName, new { area = item.App_Action.AreaName })" class="dropdown-toggle" data-toggle="dropdown">@item.MenuTitle <b class="caret"></b></a>
+                            }
+                            else
+                            {                                
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@item.MenuTitle <b class="caret"></b></a>
+                            }
+                            @drawSubMenu(item, Model, 1)
+                        </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@model  ViewModels.AssignmentSubmission.NewSubmissionViewModel
+
+@if (ViewBag.AssessValue != null)
+{
+    if (ViewBag.AssessType == (int)UT.SL.Model.Enumeration.AssessType.self)
+    {
+        if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.SelfAssignmentSubmissionReactionType.I_am_able_now_to_create_new_idea_based_on_my_mastery_of_the_subject)
+        {
+
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.I_have_able_now_to_create_new_idea_based_on_my_mastery_of_the_subject" data-toggle="tooltip">@ViewBag.AssessValue</span>
+            @*<img  src="@Url.Content("~/Images/SLIcons/1_SOLO_Ambiguty.png")" alt="" />*@
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.SelfAssignmentSubmissionReactionType.I_have_some_ambiguty)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.I_have_some_ambiguty" data-toggle="tooltip">@ViewBag.AssessValue</span>
+            @*<img class="" src="@Url.Content("~/Images/SLIcons/1_SOLO_Ambiguty.png")" alt="" />*@
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.SelfAssignmentSubmissionReactionType.I_have_understand_one_concept)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.I_have_understand_one_concept" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.SelfAssignmentSubmissionReactionType.I_have_understand_some_concepts)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.I_have_understand_some_concepts" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.SelfAssignmentSubmissionReactionType.I_have_understand_some_concepts_and_their_relationships)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.I_have_understand_some_concepts_and_their_relationships" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+    }
+    else if (ViewBag.AssessType == (int)UT.SL.Model.Enumeration.AssessType.expert)
+    {
+        if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType.The_student_is_able_now_to_create_new_idea_based_on_my_mastery_of_the_subject)
+        {
+
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.The_student_is_able_now_to_create_new_idea_based_on_my_mastery_of_the_subject" data-toggle="tooltip">@ViewBag.AssessValue</span>
+           
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType.The_student_has_some_ambiguty)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.The_student_has_some_ambiguty" data-toggle="tooltip">@ViewBag.AssessValue</span>
+           
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType.The_student_has_understand_one_concept)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.The_student_has_understand_one_concept" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType.The_student_has_understand_some_concepts)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.The_student_has_understand_some_concepts" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+        else if (ViewBag.AssessValue == (int)UT.SL.Model.Enumeration.ExpertAssignmentSubmissionReactionType.The_student_has_understand_some_concepts_and_their_relationships)
+        {
+            <span class="label label-info" title="@UT.SL.Model.Resource.AssignmentSubmission.The_studend_has_understand_some_concepts_and_their_relationships" data-toggle="tooltip">@ViewBag.AssessValue</span>
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+﻿@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.CourseAbstract>
+@foreach (var item in Model)
+{ 
+    <li class="leftRight">
+        @Ajax.AuthorizationActionLink(User.Identity.Name, item.Category.Id, (int)UT.SL.Model.Enumeration.ObjectType.Category, item.Title, "CreateCourseAbstract", "Category", new { area = "admin", Id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $.DialogOpen('dialog', '" + @UT.SL.Model.Resource.App_Common.EditCourseAbstract + "')",
+                       LoadingElementId = "loadingAjax"
+                   }, new { })
+    </li>
+}

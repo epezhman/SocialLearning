@@ -1,0 +1,35 @@
+﻿
+@font-face {
+    font-family: 'BTraffic';
+    src: url('../../Content/Fonts/BTraffic.eot?#') format('eot'), /* IE6–8 */
+    url('../../Content/Fonts/BTraffic.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../Content/Fonts/BTraffic.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: 'BYekan';
+    src: url('../../Content/Fonts/BYekan.eot?#') format('eot'), /* IE6–8 */
+    url('../../Content/Fonts/BYekan.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../Content/Fonts/BYekan.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: 'BTitrTGEBold';
+    src: url('../../Content/Fonts/BTitrTGEBold.eot?#') format('eot'), /* IE6–8 */
+    url('../../Content/Fonts/BTitrTGEBold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../Content/Fonts/BTitrTGEBold.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: 'BTabassom';
+    src: url('../../Content/Fonts/BTabassom.eot?#') format('eot'), /* IE6–8 */
+    url('../../Content/Fonts/BTabassom.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../Content/Fonts/BTabassom.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: 'BBardiya';
+    src: url('../../Content/Fonts/BBardiya.eot?#') format('eot'), /* IE6–8 */
+    url('../../Content/Fonts/BBardiya.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../../Content/Fonts/BBardiya.ttf') format('truetype'); /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}

@@ -1,0 +1,65 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model List<UT.SL.Data.LINQ.App_UserEnrolement>
+
+<div id="ResultListMembers">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@UT.SL.Model.Resource.App_Common.Members</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("Members", "Course", new { area = "admin", id = ViewBag.CourseId }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "ResultListMembers",
+                         HttpMethod = "Post",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "submitMembersForm", @class = "form-horizontal" }))
+            {
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @for (int i = 1; i <= 3; i++)
+            {
+                <div class="row utwell" style="text-align: center; margin-bottom:10px;">
+                    <div class=" span3" style="margin: 5px;">
+                        <span style="font-weight: bold; margin-left: 5px; margin-right: 5px;">
+                            @if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.Teacher)
+                            { 
+                                @UT.SL.Model.Resource.App_Common.Teacher
+                            }
+                            else if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.TA)
+                            { 
+                                @UT.SL.Model.Resource.App_Common.TA
+                            }
+                            else if (i == (int)UT.SL.Model.Enumeration.MemebrshipType.Student)
+                            { 
+                                @UT.SL.Model.Resource.App_Common.Student
+                            }
+                        </span>
+                    </div>
+                    <div class=" span2" style="margin: 5px;">
+                        @Ajax.ImageActionLinkBootstrap("glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.ManageMembers, "Create", "App_UserEnrolement", new { id = ViewBag.CourseId, memberType = i },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dialog",
+                       OnSuccess = " $('#dialog').dialog('open');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "manage" }, null)
+                        <span title="@UT.SL.Model.Resource.App_Common.MemberCount"><span class="glyphicon glyphicon-user"></span><span id="memberCount@(i)">@Model.Where(x => x.Type == i).Count()</span></span>
+                    </div>
+                    <div class=" span7">
+                        @Html.Action("GetTopMembershipMembers", "App_UserEnrolement", new { area = "Admin", id = ViewBag.CourseId, memberType = i })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,345 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Harter;
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Survey), 0, false, true);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Survey, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+
+<div class="stickDownSubmitSurvey">
+    <div class="row">
+        <div class="col-md-6" title="@(ViewBag.QuestionCountLeft != 0 ? UT.SL.Model.Resource.App_Common.AnswerToAllBeforeSubmit: "")" id="finalSubmitTitle">
+            @if (ViewBag.QuestionCountLeft != 0)
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 1 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", disabled = "disabled", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+            else
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 1 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="boldAndLarger surveySubmit">
+                Q: <span id="questionLeft">@ViewBag.QuestionCountLeft</span>/@ViewBag.QuestionCount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="surveyRating">
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 1 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            1-	در کلاس سوال می کنم زیرا می خواهم چیزهای جدیدی یاد بگیرم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 2 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            2-	دوست دارم بفهمم چطور می توانم کارهای درسی ام را بدون کمک دیگران انجام دهم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 3 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            3-	علاقه ندارم راه حل مسائل دشوار را پیدا کنم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 4 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            4-	من برای این درس می خوانم که استاد می خواهد
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 5 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            5-  وقتی چیزی را زود نمی فهمم از استاد می خواهم جواب را به من بگوید
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 6 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            6-	دوست دارم در دانشگاه تا می توانم یاد بگیرم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 7 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            7-	من تمرین و کارهای اضافی می کنم چون درباره مطالب مورد علاقه ام می توانم چیزهایی یاد بگیرم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 8 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            8-	وقتی بعضی از مطالب را فورا نمی فهمم ترجیح می دهم آن ها را با تلاش خودم بفهمم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 9 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            9-	می خواهم فقط چیزهایی را در دانشگاه یاد بگیرم که مجبورم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 10 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            10-	کارهای دانشگاه را چون استاد می گوید انجام می دهم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 11 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            11-	میل دارم از استاد بخواهم در تکالیفم به من کمک کند
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 12 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            12-	دوست دارم سراغ تکالیف تازه ای که مشکل تر است بروم
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 13 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            13-	برای این مطالب را می خوانم که به موضوع آن ها علاقه دارم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 14 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            14-	وقتی اشتباهی می کنم دلم می خواهد خودم پاسخ درست را پیدا کنم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 15 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            15-	تکالیف دشوار را دوست ندارم چون مجبورم سخت کار کنم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 16 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            16-	دروی مساله ها به این خاطر کار می کنم که مجبور هستم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 17 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            17-	وقتی اشتباهی می کنم دوست دارم از استاد بپرسم چگونه جواب درست را پیدا کنم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 18 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            18-	آن مطالبی را بیشتر دوست دارم که حل کردن آن ها مرا سخت به فکر کردن وادار می کند
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 19 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            19-	کارهای درسی را برای این انجام می دهم تا مطالب زیادی که می خواهم بفهمم پیدا کنم
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 20 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            20-	اگر در مساله ای به مشکل برخورد کنم تلاش می کنم تا خودم آن را حل کنم
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 21 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            21-	من کار آسان را دوست دارم تا مطمئن باشم می توانم آن را انجام دهم
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 22 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            22-	من از استاد سوال می کنم چون می خواهم به من توجه کند
+        </div>
+    </div>
+
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 23 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            23-	اگر در مساله ای به مشکل برخورد کنم از استاد تقاضای کمک می کنم
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 24 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            24-	من مسائل دشوار را دوست دارم چون از حل آن ها لذت می برم
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 25 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            25-	من واقعا سخت کار می کنم چون می خواهم چیزهای جدیدتری یاد بگیرم
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 26 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            26-	مایلم تکالیفم را بدون کمک دیگران انجام دهم
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 27 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            27-	دوست دارم به تکالیفی بپردازم که نسبتا آسان است
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 28 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            28-	دلم می خواهد در برنامه ریزی کارهای بعدی استاد به من کمک کند
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 29 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            29-	به تکالیف دشوار درسی علاقه دارم چون جالب ترند
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 30 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            30-	روی مساله ها کار می کنم تا یاد بگیرم چگونه باید آن ها را حل کنم
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 31 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            31-	درس هایی را دوست دارم که یادگیری جواب آن ها نسبتا آسان است
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 32 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            32-	دلم می خواهد از استاد بپرسم چگونه باید تکالیف درسی را انجام داد
+        </div>
+    </div>
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 1, questionId = 33 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            33-	به کارهای سخت علاقه دارم چون توانایی های خودم را می توانم آزمایش کنم
+        </div>
+    </div>
+
+</div>

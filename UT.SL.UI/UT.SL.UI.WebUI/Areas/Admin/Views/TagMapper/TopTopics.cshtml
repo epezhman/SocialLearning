@@ -1,0 +1,96 @@
+﻿@model List<UT.SL.Model.TagAndTopicModel>
+@if (Model.Any())
+{
+
+    int i = 1;
+
+    if (Model.Any(x => !x.IsTag))
+    {
+        i++;
+        var tempTag = String.Empty;
+        int j = 1;
+        tempTag += Model.Where(x => !x.IsTag).First().Topic.Title;
+        <div class="inner@(i == 1 ? 1 : i)P inner@(j)T innerPT topicTextSize @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+            <div class="innerPTtop">@tempTag</div>
+        </div>
+
+        if (ViewBag.ViewType != null)
+        {
+            foreach (var item in Model.Where(x => !x.IsTag).Skip(1))
+            {
+
+                tempTag = string.Empty;
+
+                tempTag += item.Topic.Title;
+                j++;
+                <div class="inner@(i + 1)P inner@(j)T innerP2T  topicTextSize @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+                    <div class="innerPTBottom">@(tempTag)</div>
+                </div>
+                i++;
+            }
+        }
+        else
+        {
+            foreach (var item in Model.Where(x => !x.IsTag).Skip(1).Take(2))
+            {
+
+                tempTag = string.Empty;
+
+                tempTag += item.Topic.Title;
+                j++;
+                <div class="inner@(i + 1)P inner@(j)T innerP2T topicTextSize  @(tempTag.Length <= 10 ? "smallWidth" : tempTag.Length <= 20 ? "mediumWidth" : "longWidth")">
+                    <div class="innerPTBottom">@(tempTag)</div>
+                </div>
+                i++;
+            }
+        }
+
+
+    }
+}
+else
+{
+    <span></span>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@model List<UT.SL.Model.TagAndTopicModel>
+    @if (Model.Any())
+    {
+
+        if (Model.Any(x => !x.IsTag))
+        {
+            var tempTag = String.Empty;
+            tempTag += Model.Where(x => !x.IsTag).First().Topic.Title;
+            <div class="inline paleIt">
+                <span class="label label-default label-warning">$@tempTag</span>
+            </div>
+            foreach (var item in Model.Where(x => !x.IsTag).Skip(1))
+            {
+                tempTag = string.Empty;
+                tempTag += item.Topic.Title;
+                <div class="inline paleIt">
+                    <span class="label label-default label-warning">$@(tempTag)</span>
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <span></span>
+    }*@

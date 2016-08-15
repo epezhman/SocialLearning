@@ -1,0 +1,83 @@
+﻿@model UT.SL.Data.LINQ.App_User
+@{
+    var draggable = string.Empty;
+    if (ViewBag.Drag)
+    {
+        draggable = "draggableItem";
+    }
+}
+@if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ImageSizeType.Large)
+{
+    if (Model.UserPic != null)
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicLarge img-thumbnail" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" />
+        </a>
+    }
+    else
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicLarge img-thumbnail" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+        </a>
+    }
+}
+else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ImageSizeType.Medium)
+{
+    if (Model.UserPic != null)
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPic" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" />
+        </a>
+    }
+    else
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPic" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+        </a>
+    }
+}
+else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ImageSizeType.Small)
+{
+    if (Model.UserPic != null)
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicComment img-circle" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" />
+        </a>
+    }
+    else
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicComment img-circle" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+        </a>
+    }
+}
+else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ImageSizeType.X_Small)
+{
+    if (Model.UserPic != null)
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicXSmall img-circle" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" />
+        </a>
+    }
+    else
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicXSmall img-circle" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+        </a>
+    }
+}
+else if (ViewBag.Type == (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic)
+{
+   if (Model.UserPic != null)
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicGetPanel img-circle" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" />
+        </a>
+    }
+    else
+    {
+        <a class="@draggable " data-id="@Model.GuidId" href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = Model.GuidId })" title="@string.Format("{0} {1}", Model.FirstName, Model.LastName)">
+            <img class="userPicGetPanel img-circle" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" />
+        </a>
+    }
+}

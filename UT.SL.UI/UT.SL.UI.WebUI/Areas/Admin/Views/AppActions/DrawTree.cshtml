@@ -1,0 +1,76 @@
+﻿@model List<UT.SL.Data.LINQ.App_Action>
+@{      
+    int i = 1;
+}
+@helper TreeNode(UT.SL.Data.LINQ.App_Action acObj)
+{    
+    string title = acObj.Title.IndexOf("/") == -1 ? string.Format("{0}", acObj.ActionName) : acObj.ActionName;
+    @(new HtmlString(string.Format("<li id='{0}' class='jstree-leaf'><ins class='jstree-icon'>", acObj.Id)))
+    @Html.Raw("&nbsp;</ins>")
+    @Ajax.ActionLink(title, "ViewArea", "AppActions", new { area = "admin", id = acObj.Id }, new AjaxOptions()
+    {
+        UpdateTargetId = "result",
+        InsertionMode = InsertionMode.Replace,
+        OnBegin = "Clear(false)",
+        LoadingElementId = "loadingAjax"
+    }, null)
+    @(new HtmlString("</li>"))
+}
+<div style="height: 600px;" class="demo jstree-default-rtl jstree jstree-0 jstree-focused"
+    id="demo1">
+    <ul>
+        <li id="root" class="jstree-open"><ins class="jstree-icon">&nbsp;</ins> <a href="javascript:void(0);"
+            class=""><ins class="jstree-icon">&nbsp;</ins>  @UT.SL.Model.Resource.App_Common.Program</a>
+            <ul style="">
+                @foreach (var item in Model.Select(u => u.AreaName).Distinct().OrderBy(u => u))
+                {
+                    i++;
+                    <li id="@string.Format("ar_{0}", i)" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins>
+                        <a href="javascript:void(0);" class=""><ins class="jstree-icon">&nbsp;</ins>@item</a>
+                        @if (Model.Any(u => u.AreaName == item && u.ControllerName.Length > 0))
+                        {
+                            <ul>
+                                @foreach (var cn in Model.Where(u => u.AreaName == item).OrderBy(u => u.ControllerName).Select(u => u.ControllerName).Distinct())
+                                {
+                                    i++;
+                                    <li id="@string.Format("cn_{0}", i)" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins>
+                                        <a href="javascript:void(0);" class=""><ins class="jstree-icon">&nbsp;</ins>@cn</a>
+                                        @if (Model.Any(u => u.ControllerName == cn && u.ActionName.Length > 0))
+                                        {
+                                            <ul>
+                                                @foreach (var ac in Model.Where(u => u.ControllerName == cn).OrderBy(u => u.ActionName))
+                                                {
+                                                    i++;
+                                                    @TreeNode(ac)
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $(function () {
+        Clear(true);
+        $("#demo1")
+		.jstree({
+		    "plugins": ["themes", "html_data", "ui", "crrm", "hotkeys"],
+		    "ui": { "select_limit": 1, "selected_parent_close": "select_parent" },
+		    "core": { "initially_open": ["root"], "rtl": "true" }
+		})
+    });
+    function Clear(first) {
+        $("#result").html("");
+        $("#result2").html("");
+        $("#result3").html("");
+        $("#part2").html("");
+        if (!first)
+            $("#loading").css("display", "");
+    }
+</script>

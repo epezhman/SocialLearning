@@ -1,0 +1,19 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.Security
+@model List<UT.SL.Model.ObjectViewModelList>
+@foreach (var ObjectModel in Model)
+{
+    foreach (var item in ObjectModel.ObjectViewModels)
+    { 
+    @Html.Partial("ObjectViewer", item)    
+    }
+}
+@if (ViewBag.LastCheckDate != null)
+{ 
+    <script type="text/javascript">
+        $(function () {
+            window.lastCheckDate = '@(ViewBag.LastCheckDate)';
+        });
+    </script>
+}

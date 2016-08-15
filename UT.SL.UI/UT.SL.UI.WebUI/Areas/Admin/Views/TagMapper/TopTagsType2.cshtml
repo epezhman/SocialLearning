@@ -1,0 +1,58 @@
+﻿@model List<UT.SL.Model.TagAndTopicModel>
+@if (Model.Any())
+{
+    if (Model.Any(x => x.IsTag))
+    {
+        var tempTag = String.Empty;
+        if (Model.Where(x => x.IsTag).First().Tag.Category != null)
+        {
+            if (Model.Where(x => x.IsTag).First().Tag.Category.Category1 != null)
+            {
+                tempTag += Model.Where(x => x.IsTag).First().Tag.Category.Category1.Title + "-";
+            }
+            tempTag += Model.Where(x => x.IsTag).First().Tag.Category.Title + "-";
+        }
+        tempTag += Model.Where(x => x.IsTag).First().Tag.Title;
+        <div class="inline opacity02">
+            <span class="label label-default label-info">#@tempTag</span>
+        </div>
+        foreach (var item in Model.Where(x => x.IsTag).Skip(1))
+        {
+            tempTag = string.Empty;
+            if (item.Tag.Category != null)
+            {
+                if (item.Tag.Category.Category1 != null)
+                {
+                    tempTag += item.Tag.Category.Category1.Title + "-";
+                }
+                tempTag += item.Tag.Category.Title + "-";
+            }
+            tempTag += item.Tag.Title;
+
+            <div class="inline opacity02">
+                <span class="label label-default label-info">#@(tempTag)</span>
+            </div>
+        }
+    }
+
+    if (Model.Any(x => !x.IsTag))
+    {
+        var tempTag = String.Empty;
+        tempTag += Model.Where(x => !x.IsTag).First().Topic.Title;
+        <div class="inline opacity02">
+            <span class="label label-default label-warning">$@tempTag</span>
+        </div>
+        foreach (var item in Model.Where(x => !x.IsTag).Skip(1))
+        {
+            tempTag = string.Empty;
+            tempTag += item.Topic.Title;
+            <div class="inline opacity02">
+                <span class="label label-default label-warning">$@(tempTag)</span>
+            </div>
+        }
+    }
+}
+else
+{
+    <span></span>
+}

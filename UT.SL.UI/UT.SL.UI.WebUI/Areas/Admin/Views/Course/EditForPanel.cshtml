@@ -1,0 +1,50 @@
+﻿@using UT.SL.Security
+<div>
+    <div class="row boldAndMedium">
+        <div class="col-md-9">
+            @if (ViewBag.MemberType == (int)UT.SL.Model.Enumeration.MemebrshipType.Teacher)
+            {
+                @UT.SL.Model.Resource.App_Common.Teacher
+            }
+            else if (ViewBag.MemberType == (int)UT.SL.Model.Enumeration.MemebrshipType.TA)
+            {
+                @UT.SL.Model.Resource.App_Common.TA
+            }
+            else if (ViewBag.MemberType == (int)UT.SL.Model.Enumeration.MemebrshipType.Student)
+            {
+                @UT.SL.Model.Resource.App_Common.Student
+            }
+        </div>
+        <div class="col-md-3">
+            <span class="glyphicon glyphicon-trash droppableItem hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.DragAndDropHereToDelete"></span>
+            <span class="glyphicon glyphicon-backward backToGroups hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.Back"></span>
+        </div>
+    </div>
+    <div id="membersInGroupEdit">
+        @Html.Action("GetMembersForManageForPanel", new { Id = ViewBag.CourseId, memberType = ViewBag.MemberType })
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("AddMemberPanel", "App_UserEnrolement", new { }, new AjaxOptions()
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    LoadingElementId = "loadingAjax",
+                    OnSuccess = "UpdateMemebrsSections(" + ViewBag.CourseId + " , " + ViewBag.MemberType + ")"
+                }, new { data_toSubmit = "true" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <input type="text" name="Member" id="Member@(ViewBag.MemberType)" data-lookupurl="@Url.Action("GetUsers", "App_User", new { area = "Admin" })" data-autocompletewithpics="true" placeholder="@UT.SL.Model.Resource.App_Common.AddUser" style="width:80%" />
+                <input type="hidden" name="CourseId" value="@ViewBag.CourseId" />
+                <input type="hidden" name="MembershipType" value="@ViewBag.MemberType" />
+            }
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.InitialComponents();
+        DragDrop("@Url.Action("RemoveMemberByPanel", "App_UserEnrolement", new { area = "Admin" })", @ViewBag.CourseId ,3 ,@ViewBag.MemberType);
+    });
+</script>

@@ -1,0 +1,12 @@
+﻿@if (ViewBag.Statuse != null && ViewBag.Statuse == 1)
+{
+    <sup><span class="green">@UT.SL.Model.Resource.App_Common.New !</span></sup>
+}
+else if (ViewBag.Statuse != null && ViewBag.Statuse == 2)
+{
+    <sup><span class="orange">@UT.SL.Model.Resource.App_Common.Incomplete !</span></sup>
+}
+else
+{
+
+}

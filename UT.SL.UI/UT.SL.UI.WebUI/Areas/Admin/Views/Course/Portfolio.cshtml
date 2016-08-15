@@ -1,0 +1,84 @@
+﻿@model UT.SL.Data.LINQ.Course
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.MyCourses, extra = Model.Id, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = Model.Id })
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="bold">
+            @UT.SL.Model.Resource.App_Common.PortfolioHelp
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetCourseUserActivities", "Course", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="activityDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetGradeChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="gradeDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetGradeTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetUserSoActProfileChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="soActDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetSoActTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("GetUserKnowledgeProfileChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="knowledgeDetail">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Action("KnowledgetTableDetails", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+    </div>
+</div>
+@*<div class="row">
+        <div class="col-md-12">
+            @Html.Action("GetProgressChart", "Grade", new { area = "Admin", userId = ViewBag.GuidId, courseId = Model.Id })
+        </div>
+    </div>*@
+@section scripts    {
+    <script type="text/javascript">
+        $(function () {
+            $("#arrowheader").show();
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.MyCourses), @Model.Id, true, false);
+        });
+    </script>
+    <script src="@Url.Content("~/Scripts/highcharts/js/highcharts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/highcharts/js/highcharts-more.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/highcharts/js/modules/exporting.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/highcharts/js/modules/data.js")" type="text/javascript"></script>
+}

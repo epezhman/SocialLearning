@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="CorrectAnsver" xml:space="preserve">
+    <value>پاسخ صحیح</value>
+  </data>
+  <data name="IsEffective" xml:space="preserve">
+    <value>مؤثر بود</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>گذرواژه</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>پست الکترونیکی</value>
+  </data>
+  <data name="IsAdmin" xml:space="preserve">
+    <value>مدیر سایت هستید؟</value>
+  </data>
+  <data name="IsDeleted" xml:space="preserve">
+    <value>حذف شده است</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>فعال است</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>آخرین دسترسی به سایت</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="CreatDate" xml:space="preserve">
+    <value>تاریخ ایجاد</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>وضعیت</value>
+  </data>
+  <data name="BirsthDate" xml:space="preserve">
+    <value>تاریخ تولد</value>
+  </data>
+  <data name="Grade" xml:space="preserve">
+    <value>نمره</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>درباره</value>
+  </data>
+  <data name="IsCircleAdmin" xml:space="preserve">
+    <value>IsCircleAdmin</value>
+  </data>
+  <data name="ChangeText" xml:space="preserve">
+    <value>متن تغییر</value>
+  </data>
+  <data name="ChangeDate" xml:space="preserve">
+    <value>تاریخ تغییر</value>
+  </data>
+  <data name="App_User" xml:space="preserve">
+    <value>جدول کاربرها</value>
+  </data>
+  <data name="MinGrade" xml:space="preserve">
+    <value>کمترین نمره</value>
+  </data>
+  <data name="MaxGrade" xml:space="preserve">
+    <value>بیشترین نمره</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>متن</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>نوع شی</value>
+  </data>
+  <data name="FromPage" xml:space="preserve">
+    <value>از صفحه</value>
+  </data>
+  <data name="FromeLine" xml:space="preserve">
+    <value>از خط</value>
+  </data>
+  <data name="FromLetter" xml:space="preserve">
+    <value>از واژه</value>
+  </data>
+  <data name="ToPage" xml:space="preserve">
+    <value>به صفحه</value>
+  </data>
+  <data name="ToLine" xml:space="preserve">
+    <value>به خط</value>
+  </data>
+  <data name="ToLetter" xml:space="preserve">
+    <value>به حرف</value>
+  </data>
+  <data name="FileContent" xml:space="preserve">
+    <value>محتوای فایل</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>موضوع</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>بدنه</value>
+  </data>
+  <data name="ViewCount" xml:space="preserve">
+    <value>مشاهده تعداد</value>
+  </data>
+  <data name="Attachement" xml:space="preserve">
+    <value>ضمیمه</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>موعد انجام</value>
+  </data>
+  <data name="Deadline" xml:space="preserve">
+    <value>سررسید</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>مدت</value>
+  </data>
+  <data name="EffectiveScore" xml:space="preserve">
+    <value>نمره مؤثر</value>
+  </data>
+  <data name="Titile" xml:space="preserve">
+    <value>Titile</value>
+  </data>
+  <data name="MessageCount" xml:space="preserve">
+    <value>تعداد پیام ها</value>
+  </data>
+  <data name="BeginningMessage" xml:space="preserve">
+    <value>شروع پیام</value>
+  </data>
+  <data name="Snippest" xml:space="preserve">
+    <value>Snippest</value>
+  </data>
+  <data name="LastUpdate" xml:space="preserve">
+    <value>آخرین به روز رسانی</value>
+  </data>
+  <data name="MessageThread" xml:space="preserve">
+    <value>MessageThread</value>
+  </data>
+  <data name="Recipnients_App_User" xml:space="preserve">
+    <value>گیرنده ها</value>
+  </data>
+  <data name="Xcoord" xml:space="preserve">
+    <value>Xcoord</value>
+  </data>
+  <data name="Ycoord" xml:space="preserve">
+    <value>Ycoord</value>
+  </data>
+  <data name="UpvoteCount" xml:space="preserve">
+    <value>تعداد رای مثبت</value>
+  </data>
+  <data name="DownvoteCount" xml:space="preserve">
+    <value>تعداد رأی منفی</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>تعداد</value>
+  </data>
+  <data name="Updown" xml:space="preserve">
+    <value>Updown</value>
+  </data>
+  <data name="HyperLink" xml:space="preserve">
+    <value>لینک</value>
+  </data>
+</root>

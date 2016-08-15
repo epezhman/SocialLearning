@@ -1,0 +1,72 @@
+﻿@using UT.SL.Security
+
+@model UT.SL.Data.LINQ.ForumDiscussionPost
+<div class="row" id="oneDiscussionPostRow@(Model.Id)">
+    <div class="col-md-12">
+        <div class="discussionBlockPost">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-10 col-xs-10">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td>
+                                        @Html.Action("GetUserPic", "App_User", new { area = "admin", Id = Model.UserId, type = (int)UT.SL.Model.Enumeration.ImageSizeType.GetPanelPic })
+                                    </td>
+                                    <td>
+                                        <div id="dicussionPostContent@(Model.Id)">                                            
+                                            @HelperUtils.RTLCorrection(Model.Text)
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div id="dicussionPostContent@(Model.Id)">
+                                            <div class="inline">
+                                                <div class="inline feedDivLessImportant  paleIt hidden-xs">
+                                                    @HelperUtils.ShowRecentTime(Model.CreateDate.Value)
+                                                </div>
+                                                <div class="inline">
+                                                    @Html.Action("GradeComponent", "ForumDiscussion", new { area = "admin", id = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost })
+                                                </div>
+                                                <div class="inline">
+                                                    <a href="javascript:void(0);" title="@UT.SL.Model.Resource.App_Common.Reply" data-discussionid="@(Model.ParentId)" data-user="@(Model.ForumDiscussion.App_User.FirstName)" class="view paleIt viewDiscussionPostForm glyColor"><span class="glyphicon glyphicon-share-alt"></span></a>
+                                                </div>
+                                                <div class="inline">
+                                                    @Html.Action("VoteComponentResource", "VoteParent", new { area = "admin", objectId = Model.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost })
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xs-2">
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "Edit", "ForumDiscussionPost", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "dicussionPostContent" + Model.Id,
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+                        @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteObject", "Course", new { area = "admin", objectId = Model.Id, ObjecType = (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussionPost },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       //OnSuccess = "$('#resourceRow" + Model.Type + Model.Id + "').hide('blind', 1000);",
+                       OnSuccess = "DeleteDiscussionPost('" + Model.Id + "'); updateDiscussionsReplyPostCount( '" + Model.ParentId + "', '" + Url.Action("DiscussionPostsCount", "ForumDiscussionPost", new { area = "Admin", id = Model.ParentId }) + "');",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

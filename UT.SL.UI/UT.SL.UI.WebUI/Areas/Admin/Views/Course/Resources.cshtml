@@ -1,0 +1,61 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Model.ObjectViewModelList>
+
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        if (item.IsWide)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="objectItem@(item.ObjectViewModels.First().Type)@(item.ObjectViewModels.First().Id)">
+                        @Html.Partial("ObjectViewer", item.ObjectViewModels.First())
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            if (item.ObjectViewModels.Any())
+            {
+                <div class="row">
+                    <div class="col-md-6 ">
+                        @for (int cnt = 0; cnt < item.ObjectViewModels.Count; cnt++)
+                            {
+                                if (cnt % 2 == 0)
+                                {
+                            <div id="objectItem@(item.ObjectViewModels[cnt].Type)@(item.ObjectViewModels[cnt].Id)">
+                                @Html.Partial("ObjectViewer", item.ObjectViewModels[cnt])
+                            </div>
+                                }
+                            }
+                    </div>
+                    <div class="col-md-6">
+                        @for (int cnt = 0; cnt < item.ObjectViewModels.Count; cnt++)
+                            {
+                                if (cnt % 2 == 1)
+                                {
+                            <div id="objectItem@(item.ObjectViewModels[cnt].Type)@(item.ObjectViewModels[cnt].Id)">
+                                @Html.Partial("ObjectViewer", item.ObjectViewModels[cnt])
+                            </div>
+                                }
+                            }
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+
+
+
+@if (ViewBag.LastCheckDate != null)
+{
+    <script type="text/javascript">
+        $(function () {
+            window.lastCheckDate = '@(ViewBag.LastCheckDate)';
+        });
+    </script>
+}

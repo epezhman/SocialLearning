@@ -1,0 +1,87 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Data.LINQ.App_ActionEvaulation
+    <div class="form-horizontal">
+        @Html.AntiForgeryToken()
+        <div class="" id="SubmitResult">
+        </div>
+        <div class="">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.ActionId)</label>
+                <div class="col-sm-9 readonly">
+                    @if (Model.ActionId.HasValue)
+                    {
+                        <div>@string.Format("{0} - {1} - {2}", Model.App_Action.AreaName, Model.App_Action.ControllerName, Model.App_Action.ActionName)</div>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.UserId)</label>
+                <div class="col-sm-9 readonly">
+                    @if (Model.UserId.HasValue)
+                    {
+                        @Html.Action("GetUserProfileLink", "App_User", new { area = "admin", Id = Model.UserId.Value, type = (int)UT.SL.Model.Enumeration.ProfileLinkType.FullName })
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.ObjectId)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.ObjectId
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.ObjectType)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.ObjectType
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.CreateDate)</label>
+                <div class="col-sm-9 readonly">
+                    @HelperUtils.LocalizedDate(Model.CreateDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.RoleId)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.RoleId
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.Credit)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.Credit
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.IP)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.IP
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.Browser)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.OS
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.IsMobile)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.IsMobile
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="Body">@Html.LabelFor(model => model.ScreenRes)</label>
+                <div class="col-sm-9 readonly">
+                    @Model.ScreenRes
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <a href="javascript:void(0);" class="btn btn-default closeWindow" onclick="$(this).closest('.ui-dialog-content').dialog('close');">@UT.SL.Model.Resource.App_Common.CloseWindow</a>
+                </div>
+            </div>
+        </div>
+    </div>

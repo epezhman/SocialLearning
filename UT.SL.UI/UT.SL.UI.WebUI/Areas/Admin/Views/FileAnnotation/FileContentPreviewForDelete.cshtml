@@ -1,0 +1,104 @@
+﻿@using UT.SL.Security
+@model UT.SL.Model.ObjectViewModel
+
+<div class="form-group alignCul" id="fileRow@(Model.Type)@(Model.Id)">
+    <div class="col-md-offset-1 col-sm-11">
+        @if (Model.FileMime == "application/pdf")
+        {
+            <a href="@Url.Action("ViewImageResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })" class=" fancybox" rel="" data-fancypdf="true">
+                <img class="resourceThumbnail" src="@Url.Content("~/Images/icon/32x32/pdf3.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "image/jpeg" || Model.FileMime == "image/pjpeg" || Model.FileMime == "image/png" || Model.FileMime == "image/gif")
+        {
+            if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+            {
+                <a href="@Url.Action("ViewImageResourceForAnnotation", "ImageAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })" class="fancybox" rel="" data-fancypic="true" data-updateid="ImageViewFooter@(Model.Type)@(Model.Id)">
+                </a>
+            }
+            <img class="resourceThumbnail img-thumbnail" src="@Url.Action("ViewImageResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })" alt="" />
+        }
+        else if (Model.FileMime == "video/webm" || Model.FileMime == "video/mp4" || Model.FileMime == "video/ogg")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceThumbnail" src="@Url.Content("~/Images/icon/32x32/video.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "application/msword" || Model.FileMime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/word.png")" alt="" />
+            </a>
+        }
+        else if (Model.FileMime == "application/x-rar-compressed" || Model.FileMime == "application/rar" || Model.FileMime == "application/zip" || Model.FileMime == "application/octet-stream")
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/zip2.png")" alt="" />
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("DownloadResource", "FileAnnotation", new { area = "admin", objectId = Model.Id, type = Model.Type })">
+                <img class="resourceSmallThumbnail" src="@Url.Content("~/Images/icon/32x32/file.png")" alt="" />
+            </a>
+        }
+        <span>
+            @if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Resource)
+            {
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteFile", "Course", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = "$('#fileRow" + Model.Type + Model.Id + "').hide('blind', 500);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  " }, null)
+            }
+            else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Forum)
+            {
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteFile", "Forum", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = "$('#fileRow" + Model.Type + Model.Id + "').hide('blind', 500);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  " }, null)
+            }
+            else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.ForumDiscussion)
+            {
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteFile", "ForumDiscussion", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = "$('#fileRow" + Model.Type + Model.Id + "').hide('blind', 500);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  " }, null)
+            }
+            else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.Assignment)
+            {
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteFile", "Assignment", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = "$('#fileRow" + Model.Type + Model.Id + "').hide('blind', 500);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  " }, null)
+            }
+            else if (Model.Type == (int)UT.SL.Model.Enumeration.ObjectType.AssignmentSubmission)
+            {
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, Model.Id, Model.Type, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteFile", "AssignmentSubmission", new { area = "admin", id = Model.Id },
+                   new AjaxOptions()
+                   {
+                       Confirm = UT.SL.Model.Resource.App_Common.AreYouSure,
+                       HttpMethod = "POST",
+                       OnSuccess = "$('#fileRow" + Model.Type + Model.Id + "').hide('blind', 500);",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete  " }, null)
+            }
+        </span>
+    </div>
+</div>
+

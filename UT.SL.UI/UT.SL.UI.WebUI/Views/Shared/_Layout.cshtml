@@ -1,0 +1,149 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    var area = Request.RequestContext.RouteData.DataTokens["area"];
+    string controllerName = ViewBag.controllerName;
+    string actionName = ViewBag.actionName;
+    string areaName = area != null ? area.ToString() : string.Empty;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="ePezhman">
+    <title>
+        @if (ViewBag.Title != null)
+        {
+            @(string.Format("DoosMooc - {0}", ViewBag.Title))
+        }
+        else
+        {
+            @(string.Format("DoosMooc"))
+        }
+    </title>
+    <link rel="shortcut icon" href="@Url.Content("~/Icon.ico")">
+    @Styles.Render("~/Content/framework")
+    @if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower() == "fa-ir")
+    {
+        @Styles.Render("~/Content/bootstrapCSSRTL")
+    }
+    else
+    {
+        @*@Styles.Render("~/Content/themes/bootstrapCSS")*@
+        @Styles.Render("~/Content/bootstrapCSS")
+    }
+    @Styles.Render("~/Content/Customize")
+    @Styles.Render("~/Content/themes/jquery-uiCSS")
+    @Styles.Render("~/Content/kendoCSS")
+    @Styles.Render("~/Content/other/fancyBox/fancyBoxCSS")
+    @*@Styles.Render("~/Content/other/annotationCSS")*@
+    @if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower() == "fa-ir")
+    {
+        @Styles.Render("~/Content/sitecssrtl")
+    }
+    else
+    {
+        @Styles.Render("~/Content/sitecss")
+    }
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="@(System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower() == "fa-ir" ? "k-rtl" : "")">
+    <div id="wrap">
+        <div class="">
+            <div class="page-header-fluid" style="margin-bottom: 75px">
+                @Html.Action("GetTopMenu", "Home", new { area = "" })
+                <div class="topLinks">
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (IsSectionDefined("TopLinks"))
+                        {
+                            @RenderSection("TopLinks")
+                        }
+                        else
+                        {
+                            @Html.Action("TopMenuLinks", "Home", new { area = "" })
+                        }
+                    }
+                    else
+                    {
+                        if (IsSectionDefined("TopLinks"))
+                        {
+                            @RenderSection("TopLinks")
+                        }
+                        else
+                        {
+                            @Html.Action("TopMenuLinksNotLoggedIn", "Home", new { area = "" })
+                        }
+                    }
+                </div>
+            </div>
+            <div class="container-fluid">
+                @if (Request.IsAuthenticated)
+                {
+                    <div id="navigationPanel">
+                        @Html.Action("GetLeftMenu", "Home", new { area = "" })
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-1 mergein visible-md visible-lg">
+                    </div>
+                    <div class="col-md-10 mainBody" id="mainBody">
+                        @RenderBody()
+                    </div>
+                    <div class="col-md-1 mergein visible-md visible-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dialog" data-dialog="true" data-dialogwidth="600"></div>
+        <div id="feedbackDialog" data-dialog="true" data-dialogwidth="600"></div>
+        <div id="dialog2" data-dialog="true" data-dialogwidth="700"></div>
+        <div id="shareDialog" data-dialog="true" data-dialogwidth="600"></div>
+        <div id="tagDialog" data-dialog="true" data-dialogwidth="800"></div>
+        <div id="commentDialog" data-dialog="true" data-dialogwidth="700" data-dialogheight="500" data-dialogscroll="true"></div>
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modalDialog1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="modalDialogContent1">
+                </div>
+            </div>
+        </div>
+        <div class="footerMessage" id="footerMessage" style="display:none"></div>
+        <div class="loadingAjax" id="loadingAjax" style="display:none">
+            <div class="loadingAjaxInner">
+                <img src="@Url.Content("~/images/ajax-loader/76-1.gif")" alt="" />
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted credit text-center">© @DateTime.Now.Year DoosMooc</p>
+        </div>
+    </div>
+    @Html.Partial("ScriptLocalization")
+
+    @Scripts.Render("~/bundles/bootsrap")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/authorCode")
+    @Scripts.Render("~/bundles/otherJs")
+    @if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower() == "fa-ir")
+    {
+        @Scripts.Render("~/bundles/rtl")
+    }
+    @RenderSection("scripts", required: false)
+    @Html.RenderScripts()
+</body>
+</html>
+

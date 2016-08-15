@@ -1,0 +1,223 @@
+﻿@using UT.SL.Data.LINQ
+@model App_User
+
+@if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLower() == "fa-ir")
+{
+    <div class="navbar navbar-inverse navbar-top" role="navigation" data-nav="true">
+        <div class="container">
+            <a href="@Url.Action("Index", "MyHome", new { area="" })" class="navbar-brand" style="margin-left: 2em; margin-right: -1em;"><img src="@Url.Content("~/Images/Logos/logoDoosmoocPNG.png")" style="width:58px; height:26px;" /></a>
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-hidemenu="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="javascript:void(0);" class="navbar-link feedbackSubmit">@UT.SL.Model.Resource.App_Common.Feedback</a>
+                    </li>
+                    @*<li class="hidden-xs hidden-sm">
+                        <a href="javascript:void(0);" class="navbar-link" style="color: DeepPink; ">(نسخه فارسی در حال پيشرفت است)</a>
+                    </li>*@
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@UT.SL.Model.Resource.App_Common.Language <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="langs">
+                            <li id="enlangli"><a href="javascript:void(0);" class="en-US">English</a></li>
+                            <li id="falangli"><a href="javascript:void(0);" class="fa-IR">فارسی</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="hidden-xs">
+                            @Html.Action("InboxButton", "MessageThread", new { Area = "Admin", type = 1 })
+                            @Html.Action("Inbox", "MessageThread", new { Area = "Admin", type = 1 })
+                            <script>
+                                setInterval(function () {
+                                    $.ajax({
+                                        url: '@Url.Action("GetNotSeenCount", "MessageThread", new { Area = "Admin" })',
+                                        success: function (html) {
+                                            if (html) {
+                                                $("#notifCnt1").html(html);
+                                                $("#notifCnt2").html(html);
+                                            }
+                                        }
+                                    });
+                                }, 61000);
+                            </script>
+                        </li>
+                        <li class="hidden-xs">
+                            @Html.Action("NotificationButton", "Notification", new { Area = "Admin", type = 1 })
+                            @Html.Action("NotificationBox", "Notification", new { Area = "Admin", type = 1 })
+                            <script>
+                                setInterval(function () {
+                                    $.ajax({
+                                        url: '@Url.Action("GetNotSeenCount", "Notification", new { Area = "Admin" })',
+                                        success: function (html) {
+                                            if (html) {
+                                                $("#notifNotificationCnt1").html(html);
+                                                $("#notifNotificationCnt2").html(html);
+                                            }
+                                        }
+                                    });
+                                }, 60000);
+                            </script>
+                        </li>
+                        <li>
+                            @if (Model.UserPic != null)
+                            {
+                                <img class="userPicComment img-rounded" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" style="margin-top:8px;" />
+                            }
+                            else
+                            {
+                                <img class="userPicComment img-rounded" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" style="margin-top:8px;" />
+                            }
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@Model.FirstName <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = @Model.GuidId })">@UT.SL.Model.Resource.App_Common.MyProfile</a></li>
+                                <li><a href="@Url.Action("Index", "SocialGroup", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.MyGroups</a></li>
+                                <li><a href="@Url.Action("AccountIndex", "App_User", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.MyAccount</a></li>
+                                <li><a href="@Url.Action("LogOff", "App_User", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.LogOff</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("LogIn", "App_User", new { area = "Admin" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.LogIn</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Register", "App_User", new { area = "Admin" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.Register</a>
+                        </li>
+                    }
+                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <form class="navbar-form hidden-xs hidden-sm">
+                        <input type="text" class="form-control" placeholder="@UT.SL.Model.Resource.App_Common.Search">
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#falangli").addClass('active');
+        });
+    </script>
+}
+else
+{
+    <div class="navbar navbar-inverse navbar-top" role="navigation" data-nav="true">
+        <div class="container">
+            <a href="@Url.Action("Index", "MyHome", new { area="" })" class="navbar-brand" style="margin-right: 2em; margin-left: -1em;"><img src="@Url.Content("~/Images/Logos/logoDoosmoocPNG.png")" style="width:58px; height:26px;" /></a>
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-hidemenu="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="javascript:void(0);" class="navbar-link feedbackSubmit">@UT.SL.Model.Resource.App_Common.Feedback</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@UT.SL.Model.Resource.App_Common.Language <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="langs">
+                            <li id="enlangli"><a href="javascript:void(0);" class="en-US">English</a></li>
+                            <li id="falangli"><a href="javascript:void(0);" class="fa-IR">فارسی</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="hidden-xs">
+                            @Html.Action("InboxButton", "MessageThread", new { Area = "Admin", type = 1 })
+                            @Html.Action("Inbox", "MessageThread", new { Area = "Admin", type = 1 })
+                            <script>
+                                setInterval(function () {
+                                    $.ajax({
+                                        url: '@Url.Action("GetNotSeenCount", "MessageThread", new { Area = "Admin" })',
+                                        success: function (html) {
+                                            if (html) {
+                                                $("#notifCnt1").html(html);
+                                                $("#notifCnt2").html(html);
+                                            }
+                                        }
+                                    });
+                                }, 61000);
+                            </script>
+                        </li>
+                        <li class="hidden-xs">
+                            @Html.Action("NotificationButton", "Notification", new { Area = "Admin", type = 1 })
+                            @Html.Action("NotificationBox", "Notification", new { Area = "Admin", type = 1 })
+                            <script>
+                                setInterval(function () {
+                                    $.ajax({
+                                        url: '@Url.Action("GetNotSeenCount", "Notification", new { Area = "Admin" })',
+                                        success: function (html) {
+                                            if (html) {
+                                                $("#notifNotificationCnt1").html(html);
+                                                $("#notifNotificationCnt2").html(html);
+                                            }
+                                        }
+                                    });
+                                }, 60000);
+                            </script>
+                        </li>
+                        <li>
+                            @if (Model.UserPic != null)
+                            {
+                                <img class="userPicComment img-rounded" src="@Url.Action("ViewUserPic", "App_User", new { area = "admin", id = Model.GuidId })" alt="" style="margin-top:8px;" />
+                            }
+                            else
+                            {
+                                <img class="userPicComment img-rounded" src="@Url.Content("~/Images/content/default_avatar.png")" alt="" style="margin-top:8px;" />
+                            }
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">@Model.FirstName <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Profile", "App_User", new { area = "Admin", Id = @Model.GuidId })">@UT.SL.Model.Resource.App_Common.MyProfile</a></li>
+                                <li><a href="@Url.Action("Index", "SocialGroup", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.MyGroups</a></li>
+                                <li><a href="@Url.Action("AccountIndex", "App_User", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.MyAccount</a></li>
+                                <li><a href="@Url.Action("LogOff", "App_User", new { area = "Admin" })">@UT.SL.Model.Resource.App_Common.LogOff</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        @*<li>
+                            <a href="@Url.Action("LogIn", "App_User", new { area = "Admin" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.LogIn</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Register", "App_User", new { area = "Admin" })" class="navbar-link">@UT.SL.Model.Resource.App_Common.Register</a>
+                        </li>*@
+                    }
+                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <form class="navbar-form  hidden-xs hidden-sm">
+                        <input type="text" class="form-control" placeholder="@UT.SL.Model.Resource.App_Common.Search">
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#enlangli").addClass('active');
+        });
+    </script>
+}
+

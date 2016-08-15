@@ -1,0 +1,54 @@
+﻿@using UT.SL.Security
+@model UT.SL.Data.LINQ.SocialGroup
+<div>
+    <div class="row">
+        <div class="col-md-9 boldAndLarger">
+            <span>
+                @UT.SL.Model.Resource.App_Common.In @Model.Title :
+            </span>
+        </div>
+        <div class="col-md-3">
+            <span class="glyphicon glyphicon-trash droppableItem hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.DragAndDropHereToDelete"></span>
+            <span class="glyphicon glyphicon-backward backToGroups hiddenoption" style="cursor: pointer" title="@UT.SL.Model.Resource.App_Common.Back"></span>
+        </div>
+    </div>
+    <div id="membersInGroupEdit">
+        @Html.Action("GetMembersForManageForPanel", new { Id = Model.Id })
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("AddMemberPanel", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "UpdateSocialGroupMemebrsSections(" + Model.Id + ")"
+}, new { data_toSubmit = "true" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+    <input type="text" name="Member" id="Member@(Model.Id)" data-lookupurl="@Url.Action("GetUsers", "App_User", new { area = "Admin" })" data-autocompletewithpics="true" placeholder="@UT.SL.Model.Resource.App_Common.AddUser" style="width:80%" />
+                @Html.HiddenFor(model => model.Id)
+                <input type="hidden" name="GroupeId" value="@Model.Id" />
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12  boldAndMedium">
+            <span>
+                @UT.SL.Model.Resource.App_Common.AboutThisGroup
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Model.About
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.InitialComponents();
+        DragDrop("@Url.Action("RemoveMemberByPanel", "SocialGroup", new { area = "Admin" })", @Model.Id ,1 ,0);
+    });
+</script>

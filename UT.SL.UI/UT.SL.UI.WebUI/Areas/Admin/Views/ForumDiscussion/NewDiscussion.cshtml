@@ -1,0 +1,69 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.ForumDiscussion, List<SelectListItems>>
+<div class="col-md-12">
+    <div class="parentDiv FivePxPadding  paddingIt">
+        @using (Ajax.BeginForm("PostDiscussion", "ForumDiscussion", new { area = "Admin" }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "updateDiscussionsFirst(" + Model.FormObject.ForumId + ",'" + Url.Action("DiscussionThread", "Forum", new { area = "admin", id = Model.FormObject.ForumId }) + "','" + Url.Action("AddDiscussion", "ForumDiscussion", new { area = "admin", Id = Model.FormObject.ForumId }) + "');"
+}, new { data_dom = "discussionForm" + Model.FormObject.ForumId, @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">@UT.SL.Model.Resource.App_Common.Title</label>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(model => model.FormObject.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Title)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">@UT.SL.Model.Resource.App_Common.Body</label>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.FormObject.Body, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FormObject.Body)
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">@UT.SL.Model.Resource.App_Common.Attach</label>
+                <div class="col-sm-10">
+                    <input name="discussionFile" id="discussionFile@(Model.FormObject.ForumId)" type="file" data-kendouploader="true" data-saveurl="@(Url.Action("SaveDiscussionFile", "ForumDiscussion", new { area = "admin", Id = Model.FormObject.ForumId }))" data-deleteurl="@(Url.Action("RemoveDiscussionFile", "ForumDiscussion", new { area = "admin" }))" data-updateid="discussionId@(Model.FormObject.ForumId)" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">@UT.SL.Model.Resource.App_Common.Topics</label>
+                <div class="col-sm-10">
+                    @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.First().SelectedIds, Model.ExtraKnownData.First().Items, "topicIds", @UT.SL.Model.Resource.App_Common.ChooseTopics)
+                </div>
+            </div>
+            @*<div class="form-group alignCul">
+                    <div class="col-md-1">
+                        @UT.SL.Model.Resource.App_Common.To
+                    </div>
+                    <div class="col-md-11">
+                        @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.Last().SelectedIds, Model.ExtraKnownData.Last().Items, "groupIds", null)
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary btn-sm submit" title="@UT.SL.Model.Resource.App_Common.Submit"><span class=" glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default btn-sm closeNewDiscussionPart deleteFileOnCancel" title="@UT.SL.Model.Resource.App_Common.Close"><span class=" glyphicon glyphicon-remove"></span></button>
+                    <input name="FormObject.Id" id="discussionId@(Model.FormObject.ForumId)" type="hidden" data-resetonpost="true" value="" class="fileId" />
+                    @Html.HiddenFor(model => model.FormObject.ForumId)
+                </div>
+            </div>
+        }
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { data_antiforgery = "true" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            initializeUploaderWithDon('@("discussionForm" + Model.FormObject.ForumId)');
+        });
+    </script>
+</div>

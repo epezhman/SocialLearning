@@ -1,0 +1,60 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Categories;    
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {           
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Admin), @((int)UT.SL.Model.Enumeration.NavLinks.Category), true, false);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Admin, extra = (int)UT.SL.Model.Enumeration.NavLinks.Category })
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@UT.SL.Model.Resource.App_Common.Categories</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.Create, "Create", "Category", new { area = "admin" },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "dialog",
+                                             OnSuccess = " $.DialogOpen('dialog', '" + @UT.SL.Model.Resource.App_Common.CreateCourseAbstract + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default" })
+            @Html.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.Edit, "EditIndex", "Category", new { area = "admin" }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @using (Ajax.BeginForm("CategoriesList", new { }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "ResultList",
+                         LoadingElementId = "loadingAjax",
+                         HttpMethod = "Post",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "searchFormCategory", @class = "form-horizontal" }))
+            {
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="ResultList">
+                @Html.Action("CategoriesList")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

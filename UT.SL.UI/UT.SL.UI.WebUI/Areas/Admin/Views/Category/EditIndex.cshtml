@@ -1,0 +1,52 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model UT.SL.Model.CategorySearchModel
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Categories;    
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@UT.SL.Model.Resource.App_Common.Categories</h2>
+        </div>
+    </div>   
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>@UT.SL.Model.Resource.App_Common.Search</legend>
+                @using (Ajax.BeginForm("IX", new { }, new AjaxOptions()
+                     {
+                         UpdateTargetId = "ResultList",
+                         LoadingElementId = "loadingAjax",
+                         HttpMethod = "Post",
+                         InsertionMode = InsertionMode.Replace,
+                     }, new { id = "searchForm", @class = "form-horizontal" }))
+                {        
+                    @Html.Action("CategorySearchModelView", Model)
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Search)" id="submit" class="btn btn-default submit" />
+                        </div>
+                    </div>                                                      
+                }
+            </fieldset>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="ResultList">
+                @Html.Action("IX", Model)
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>@UT.SL.Model.Resource.App_Common.Help</legend>
+                <ul>
+                    <li></li>
+                </ul>
+            </fieldset>
+        </div>
+    </div>*@
+</div>

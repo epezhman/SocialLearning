@@ -1,0 +1,12 @@
+﻿@if (ViewBag.Count != null && ViewBag.Count > 0)
+{
+    <div class="notif-info">
+        <div class="notif-info-inside"> @ViewBag.Count </div>
+    </div>
+}
+else
+{
+    <div class="notif-info" style="visibility:hidden">
+        <div class="notif-info-inside"> 0 </div>
+    </div>
+}

@@ -1,0 +1,130 @@
+﻿@using UT.SL.Helper
+@model UT.SL.Model.RegisterModel
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Register;
+}
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Advrt), 0, true, false);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinksNotLoggedIn", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Advrt, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+@section styles{
+    <style type="text/css">
+        .form-group {
+            margin-bottom: 0px;
+        }
+    </style>
+}
+<div class="row paperSheetBackGround">
+    <div class="col-md-8 hidden-xs  hidden-sm">
+        <img src="@Url.Content("~/Images/Logos/doosmoocTree.png")" alt="" />
+    </div>
+    <div class="col-md-4">
+        <div class="" style="padding-top:40px;">
+            @using (Html.BeginForm("Register", "App_User", new { area = "Admin" }, FormMethod.Post, new { @class = " form-signin" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <h2 class="form-signin-heading">@UT.SL.Model.Resource.App_Common.Register</h2>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", type = "password" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.ConfirmEmail)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.ConfirmEmail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmEmail)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" value="@(UT.SL.Model.Resource.App_Common.Register)" id="submit" class="btn btn-primary submit" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@if (ViewBag.Reset != null)
+{
+    <script>
+        $(function () {
+            resetFields();
+        });
+    </script>
+}
+

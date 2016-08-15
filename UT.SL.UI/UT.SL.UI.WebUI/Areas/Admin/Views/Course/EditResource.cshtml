@@ -1,0 +1,64 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model FormModel<UT.SL.Data.LINQ.Resource, List<SelectListItems>>
+<div class="FivePxPadding">
+    @using (Ajax.BeginForm("EditResource", new { }, new AjaxOptions()
+{
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST",
+    LoadingElementId = "loadingAjax",
+    OnSuccess = "closeEditSection('objectItem" + (int)UT.SL.Model.Enumeration.ObjectType.Resource + Model.FormObject.Id + "', '" + @Url.Action("GetOneObjectAfterEdit", "Course", new { area = "Admin", id = Model.FormObject.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource }) + "')"
+}, new { data_dom = "editForm" + Model.FormObject.Id, @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-offset-1 col-sm-11">
+                @Html.TextBoxFor(model => model.FormObject.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FormObject.Body)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-1 col-sm-11">
+                @Html.TextAreaFor(model => model.FormObject.Body, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FormObject.Body)
+            </div>
+        </div>
+        <div class="form-group hiddenFileUpload alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Attach</label>
+            <div class="col-sm-11">
+                <input name="resourceFile" id="resourceFile" type="file" data-kendouploader="true"
+                       data-saveurl="@(Url.Action("SaveResource", "Course", new { area = "admin", id = Model.FormObject.Id, overwite = 1 }))"
+                       data-deleteurl="@(Url.Action("DeleteFile", "Course", new { area = "admin" , id = Model.FormObject.Id }))" data-updateid="dummy" />
+            </div>
+        </div>
+        if (Model.FormObject.FileContent != null)
+        {
+            @Html.Action("FileContentPreviewForDelete", "FileAnnotation", new { area = "Admin", objectId = Model.FormObject.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })
+        }
+        <div class="form-group hiddenShareOption alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.Topics</label>
+            <div class="col-sm-11">
+                @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.First().SelectedIds, Model.ExtraKnownData.First().Items, "topicIds", null)
+            </div>
+        </div>
+        <div class="form-group hiddenShareOption alignCul">
+            <label class="control-label col-sm-1">@UT.SL.Model.Resource.App_Common.To</label>
+            <div class="col-sm-11">
+                @HelperUtils.CustomListBoxFor(Model.ExtraKnownData.Last().SelectedIds, Model.ExtraKnownData.Last().Items, "groupIds", UT.SL.Model.Resource.App_Common.ChooseLearningGroups)
+            </div>
+        </div>
+        <div class="form-group alignCul">
+            <div class="col-md-offset-1 col-md-11">
+                <button class="btn btn-primary btn-sm submit" title="@UT.SL.Model.Resource.App_Common.Submit"><span class=" glyphicon glyphicon-ok"></span></button>
+                <button class="btn btn-default btn-sm closeEditSection " data-cellid="objectItem@((int)UT.SL.Model.Enumeration.ObjectType.Resource)@(Model.FormObject.Id)" data-updateurl="@Url.Action("GetOneObjectAfterEdit", "Course", new { area = "Admin", id = Model.FormObject.Id, type = (int)UT.SL.Model.Enumeration.ObjectType.Resource })" title="@UT.SL.Model.Resource.App_Common.Close"><span class=" glyphicon glyphicon-remove"></span></button>
+                @Html.HiddenFor(model => model.FormObject.Id)
+            </div>
+        </div>
+    }
+    <script type="text/javascript">
+        $(function () {
+            initializeUploaderWithDon('editForm@(Model.FormObject.Id)');
+        });
+    </script>
+</div>

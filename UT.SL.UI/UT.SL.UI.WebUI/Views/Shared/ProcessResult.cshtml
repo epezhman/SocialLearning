@@ -1,0 +1,72 @@
+﻿@model UT.SL.Helper.BatchProcessResultModel
+@{
+    Random rnd = new Random();
+    int rand = rnd.Next();  
+}
+@if (Model != null)
+{
+    if (Model.Failed > 0)
+    {
+    <div class="alert alert-danger @(rand)">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @Html.Raw(Model.Message)
+    </div>    
+        if (!string.IsNullOrEmpty(Model.FailedClientScript))
+        {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @Html.Raw(Model.FailedClientScript)
+        });
+    </script>
+        }
+    }
+    else
+    {
+    <div class="alert alert-success @(rand)">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        @Html.Raw(Model.Message)
+    </div>
+        if (!string.IsNullOrEmpty(Model.SuccessClientScript))
+        {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @Html.Raw(Model.SuccessClientScript)
+            setTimeout(function (e) {
+                $(".@(rand)").closest('.ui-dialog-content').dialog('close');
+                $(".@(rand)").hide();
+                $(".@(rand)").closest('.modal').modal('hide');
+                $(".@(rand)").closest('.modal-content').html('');
+            }, 2000);
+        });
+    </script>
+        }
+        else
+        {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                setTimeout(function (e) {
+                    $(".@(rand)").closest('.ui-dialog-content').dialog('close');
+                    $(".@(rand)").hide();
+                    $(".@(rand)").closest('.modal').modal('hide');
+                    $(".@(rand)").closest('.modal-content').html('');
+                }, 2000);
+        });
+    </script>
+        }
+        
+    }
+
+    if (!string.IsNullOrEmpty(Model.ClientScript))
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            @Html.Raw(Model.ClientScript)
+        });
+    </script>
+    }
+}
+else
+{
+    @:&nbsp;
+}
+

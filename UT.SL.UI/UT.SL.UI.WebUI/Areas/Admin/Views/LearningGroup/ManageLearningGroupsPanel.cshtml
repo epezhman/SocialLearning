@@ -1,0 +1,201 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@model List<UT.SL.Data.LINQ.LearningGroup>
+<div class="utwell" data-showeditdelete="true">
+    <div id="GroupAll">
+        <div class="row">
+            <div class="col-md-9 boldAndLarger">
+                <span>
+                    @UT.SL.Model.Resource.App_Common.ManageLearningGroups
+                </span>
+            </div>
+            <div class="col-md-3">
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, (int)ViewBag.CourseId, (int)UT.SL.Model.Enumeration.ObjectType.Course, "glyphicon glyphicon-plus", UT.SL.Model.Resource.App_Common.Create, "CreateForPanel", "LearningGroup", new { area = "admin", id = ViewBag.CourseId },
+                                     new AjaxOptions
+                                         {
+                                             HttpMethod = "GET",
+                                             InsertionMode = InsertionMode.Replace,
+                                             UpdateTargetId = "groupManage",
+                                             OnSuccess = "$('#groupManage').slideDown();",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "hiddenoption" }, null)
+                @*@Html.AuthorizationActionLinkBootstrap(User.Identity.Name, 0, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.AdvancedEdit, "EditPage", "Course", new { area = "admin", Id = ViewBag.CourseId }, new { @class = "edit hiddenoption", target = "_blank" }, null)*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    @if (Model.Any())
+                    {
+                        if (Model.Count() <= 3)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold; margin-top: 5px;">@item.Title</span>
+                                        </div>
+                                        <div class="col-md-9" style="display: inline-block">
+                                            <div style="display: inline-block">
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "" }, null)
+
+                                            </div>
+                                            <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                                @Html.Action("GetTopMembersForPanel", "LearningGroup", new { area = "Admin", Id = item.Id })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in Model.Take(3))
+                            {
+                                <div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <span style="font-weight: bold; margin-top: 5px;">@item.Title</span>
+                                        </div>
+                                        <div class="col-md-9" style="display: inline-block">
+                                            <div style="display: inline-block">
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "" }, null)
+                                            </div>
+                                            <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                                @Html.Action("GetTopMembersForPanel", "LearningGroup", new { area = "Admin", Id = item.Id })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-3" style="text-align: center">
+                                        <div id="showMoreGroups" style="cursor: pointer">
+                                            <span class="glyphicon glyphicon-arrow-down glyColor"></span> @UT.SL.Model.Resource.App_Common.More
+                                        </div>
+                                        <div id="showLessGroups" style="display: none; cursor: pointer">
+                                            <span class="glyphicon glyphicon-arrow-up  glyColor"></span> @UT.SL.Model.Resource.App_Common.Less
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: none" id="moreGroups">
+                                @foreach (var item in Model.Skip(3))
+                                {
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <span style="font-weight: bold; margin-top: 5px;">@item.Title</span>
+                                            </div>
+                                            <div class="col-md-9" style="display: inline-block">
+                                                <div style="display: inline-block">
+                                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-edit", UT.SL.Model.Resource.App_Common.Edit, "EditGroupForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "edit hiddenoption" }, null)
+                                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-trash", UT.SL.Model.Resource.App_Common.Delete, "DeleteForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupManage",
+                       OnSuccess = "$('#groupManage').slideDown();",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "delete hiddenoption" }, null)
+
+                                                    @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.LearningGroup, "glyphicon glyphicon-th-list", UT.SL.Model.Resource.App_Common.View, "EditForPanel", "LearningGroup", new { area = "admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "groupMembersDiv",
+                       OnSuccess = "$('#GroupAll').hide(1000, function(){ $('#groupMembersDiv').show(1000); })",
+                       LoadingElementId = "loadingAjax"
+                   }, new { @class = "" }, null)
+                                                </div>
+                                                <div id="groupDiv@(item.Id)" style="display:inline-block">
+                                                    @Html.Action("GetTopMembersForPanel", "LearningGroup", new { area = "Admin", Id = item.Id })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div></div>
+                    }
+                </div>
+
+            </div>
+        </div>
+        <div class="row" id="groupManage" style="display:none">
+
+        </div>
+    </div>
+    <div id="groupMembersDiv" style="display: none">
+    </div>
+</div>

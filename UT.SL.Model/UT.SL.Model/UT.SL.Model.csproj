@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6E5F651-4019-4C63-8ED5-2D8A2418970A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UT.SL.Model</RootNamespace>
+    <AssemblyName>UT.SL.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AddGroupMemberModel.cs" />
+    <Compile Include="Models\NotificationEmailViewModel.cs" />
+    <Compile Include="Models\NotificationViewModel.cs" />
+    <Compile Include="Models\RequestDetailModel.cs" />
+    <Compile Include="Models\AgentInfo.cs" />
+    <Compile Include="Models\CategoryCourseModel.cs" />
+    <Compile Include="Models\CommentsModel.cs" />
+    <Compile Include="Models\ContentInterestModel.cs" />
+    <Compile Include="Models\ContentKnowledgeModel.cs" />
+    <Compile Include="Models\CourseActivitiesSummaryModel.cs" />
+    <Compile Include="Models\CourseRecommendedSummaryModel.cs" />
+    <Compile Include="Models\CourseSummaryModel.cs" />
+    <Compile Include="Models\DiscussionPosterModel.cs" />
+    <Compile Include="Models\ForumDiscussionsModel.cs" />
+    <Compile Include="Models\FilterObjectModel.cs" />
+    <Compile Include="Models\ImageAnnotationCoord.cs" />
+    <Compile Include="Models\LinkModel.cs" />
+    <Compile Include="Models\LeadersModel.cs" />
+    <Compile Include="Models\ObjectViewModel.cs" />
+    <Compile Include="Models\ObjectBackbone.cs" />
+    <Compile Include="Models\criteriaIndicators.cs" />
+    <Compile Include="Models\ProgressModel.cs" />
+    <Compile Include="Models\GradeTypeModel.cs" />
+    <Compile Include="Models\ObejctModel.cs" />
+    <Compile Include="Models\ResourceBackbone.cs" />
+    <Compile Include="Models\SharedVia.cs" />
+    <Compile Include="Models\TagAndTopicModel.cs" />
+    <Compile Include="Models\ToEmergeIds.cs" />
+    <Compile Include="Models\ResourceViewModel.cs" />
+    <Compile Include="Models\ShareModel.cs" />
+    <Compile Include="Models\showForumPosts.cs" />
+    <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Models\UserActivityRecordModel.cs" />
+    <Compile Include="Models\ViewModels.cs" />
+    <Compile Include="Models\VoteModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchModel\EmailSearchModel.cs" />
+    <Compile Include="SearchModel\FeedbackSearchModel.cs" />
+    <Compile Include="SearchModel\AnswerSearchModel.cs" />
+    <Compile Include="SearchModel\App_RoleSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserEnrolementSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserGradeSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserInfoSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserInRoleSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserLogSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserProfileSearchModel.cs" />
+    <Compile Include="SearchModel\App_UserSearchModel.cs" />
+    <Compile Include="SearchModel\AssignmentSearchModel.cs" />
+    <Compile Include="SearchModel\CategoryMapperSearchModel.cs" />
+    <Compile Include="SearchModel\CategorySearchModel.cs" />
+    <Compile Include="SearchModel\CommentLogSearchModel.cs" />
+    <Compile Include="SearchModel\CommentSearchModel.cs" />
+    <Compile Include="SearchModel\CourseSearchModel.cs" />
+    <Compile Include="SearchModel\DiscussionReplySearchModel.cs" />
+    <Compile Include="SearchModel\FileAnnotationSearchModel.cs" />
+    <Compile Include="SearchModel\GradeSearchModel.cs" />
+    <Compile Include="SearchModel\GroupMemberSearchModel.cs" />
+    <Compile Include="SearchModel\LearningGroupSearchModel.cs" />
+    <Compile Include="SearchModel\MainDiscussionSearchModel.cs" />
+    <Compile Include="SearchModel\MessageSearchModel.cs" />
+    <Compile Include="SearchModel\MessageThreadSearchModel.cs" />
+    <Compile Include="SearchModel\ObjectStreamSearchModel.cs" />
+    <Compile Include="SearchModel\ParentForumSearchModel.cs" />
+    <Compile Include="SearchModel\ImageAnnotationSearchModel.cs" />
+    <Compile Include="SearchModel\QuestionSearchModel.cs" />
+    <Compile Include="SearchModel\QuizSearchModel.cs" />
+    <Compile Include="SearchModel\ResourceSearchModel.cs" />
+    <Compile Include="SearchModel\ShareSearchModel.cs" />
+    <Compile Include="SearchModel\SocialGroupSearchModel.cs" />
+    <Compile Include="SearchModel\TagMapperSearchModel.cs" />
+    <Compile Include="SearchModel\SurveySearchModel.cs" />
+    <Compile Include="SearchModel\TagSearchModel.cs" />
+    <Compile Include="SearchModel\TopicLearningGoalSearchModel.cs" />
+    <Compile Include="SearchModel\VoteParentSearchModel.cs" />
+    <Compile Include="SearchModel\VoteSearchModel.cs" />
+    <Compile Include="SearchModel\WikiSearchModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\UT.SL.Data\UT.SL.Data.LINQ\UT.SL.Data.LINQ.csproj">
+      <Project>{af43e761-610a-4492-99b8-9789073b7a82}</Project>
+      <Name>UT.SL.Data.LINQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UT.SL.Helper\UT.SL.Helper.csproj">
+      <Project>{14224af0-881a-4a53-997d-12d819c2b8b7}</Project>
+      <Name>UT.SL.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UT.SL.Model.Enumeration\UT.SL.Model.Enumeration.csproj">
+      <Project>{a2d3ce70-9f8c-4ce2-8c2e-bb26a4a38fa7}</Project>
+      <Name>UT.SL.Model.Enumeration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UT.SL.Model.Resource\UT.SL.Model.Resource.csproj">
+      <Project>{c3b47236-c90d-4e7e-b7e1-b7d437c84c0d}</Project>
+      <Name>UT.SL.Model.Resource</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

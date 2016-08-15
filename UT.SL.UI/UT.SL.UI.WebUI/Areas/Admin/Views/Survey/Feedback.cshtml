@@ -1,0 +1,881 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@{
+    ViewBag.Title = UT.SL.Model.Resource.App_Common.Feedback;
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.Survey), 0, false, true);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.Survey, extra = 0, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = 0 })
+}
+
+<div class="stickDownSubmitSurvey">
+    <div class="row">
+        <div class="col-md-6" title="@(ViewBag.QuestionCountLeft != 0 ? UT.SL.Model.Resource.App_Common.AnswerToAllBeforeSubmit: "")" id="finalSubmitTitle">
+            @if (ViewBag.QuestionCountLeft != 0)
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 4 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", disabled = "disabled", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+            else
+            {
+                @Ajax.AuthorizationActionLink(User.Identity.Name, UT.SL.Model.Resource.App_Common.FinalSubmit, "FinalSubmit", "Survey", new { area = "Admin", surveyId = 4 },
+                                     new AjaxOptions
+                                         {
+                                             Confirm = UT.SL.Model.Resource.App_Common.AreYouSureFinalSubmit,
+                                             HttpMethod = "GET",
+                                             OnSuccess = "window.location.replace('" + Url.Action("SurveyReport", "Survey", new { area = "Admin" }) + "')",
+                                             LoadingElementId = "loadingAjax"
+                                         }, new { @class = "btn btn-default", id = "finalSubmit", data_trigger = "manual", data_container = "body", data_placement = "top", data_content = UT.SL.Model.Resource.App_Common.FinalSubmit })
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="boldAndLarger surveySubmit">
+                Q: <span id="questionLeft">@ViewBag.QuestionCountLeft</span>/@ViewBag.QuestionCount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="surveyRating">
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 1 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            1- در دوسموک میتوانم با تعاملات اجتماعی کیفیت یادگیری را بهبود ببخشم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 2 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            2- در طول دوره می توانم براحتی فعالیتهایم را سازماندهی کنم و به یادگیری خودسامانی (Self-regulated)  برسم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 3 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            3- دوسموک یادگیری فعال را تسهیل می کند و مشاهده فعالیت سایرین به من انگیزه می دهد در مقایسه با آنها فعالیتهای یادگیری خودم را بهتر برنامه ریزی کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 4 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            4- منابعی که دوسموک به عنوان منابع مناسب من توصیه می کند متناسب با نیازهای یادگیری من است و فرآیند یادگیری را برایم تسهیل می کند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 5 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            5- معمولا انگیزه بیشتری دارم که منابع و مباحثاتی که دوسموک به عنوان محتواهای پربازدید معرفی می کند را ببینم و در مباحثات شرکت کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 6 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            6- نسبت به قبل وقت بیشتری را در دوسموک به مطالعه و شرکت در فعالیتهای یادگیری اختصاص می دهم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 7 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            7- به جای بحث در تالارهای گفتگو و کامنت گذاری روی پستهای دوستانم ترجیح می دهم مطالب بیشتری بخوانم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 8 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            8- در دوسموک بیشتر علاقه دارم مطلب بخوانم و در مورد آن به تبادل نظر بپردازم. بصورت کلی آنچه در دوسموک یادگرفته ام بیشتر در ذهنم باقیمانده است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 9 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            9- به نظرم یادگیری اجتماعی نسبت به یادگیری فردی انگیزه بیشتری به من بخشیده است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 10 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            10- ترجیح می دهم به جای آنکه در تعامل با دوستانم مطلب یادبگیرم استاد خودشان مطالب را تدریس نمایند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 11 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            11- دیدن مدل علاقمندیهایم در پورتفولیو به من انگیزه بیشتری برای ساماندهی فعالیتهای یادگیری ام می دهد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 12 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            12- در محاسبه این مدل علاقمندیها، به نظرم وقتی یک محتوا به اشتراک می گذارم که یک یا چند تاپیک را پوشش می دهد درست است که دوسموک مرا علاقمند به آن تاپیکها تلقی کند. (گزینه خیلی موافقم یعنی با ضریب 4 و گزینه خیلی مخالفم یعنی با ضریب 0 در نمودار علاقمندیها لحاظ کند)
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 13 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            13- همچنین وقتی روی یک محتوا که یک یا چند تاپیک را پوشش می دهد کامنت می گذارم به نظرم دوسموک می تواند مرا علاقمند به آن تاپیکها تلقی کند. (گزینه خیلی موافقم یعنی با ضریب 4 و گزینه خیلی مخالفم یعنی با ضریب 0 در نمودار علاقمندیها لحاظ کند)
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 14 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            14- همچنین وقتی برای یک محتوا که یک یا چند تاپیک را پوشش می دهد تگ انتخاب می کنم به نظرم  دوسموک می تواند مرا علاقمند به آن تاپیکها تلقی کند. (گزینه خیلی موافقم یعنی با ضریب 4 و گزینه خیلی مخالفم یعنی با ضریب 0 در نمودار علاقمندیها لحاظ کند)
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 15 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            15- همچنین وقتی به محتوا یا مباحثه همکلاسی ام که یک یا چند تاپیک را پوشش می دهد Vote می دهم یا کامنتش را لایک می کنم به نظرم  دوسموک می تواند مرا علاقمند به آن تاپیکها تلقی کند. (گزینه خیلی موافقم یعنی با ضریب 4 و گزینه خیلی مخالفم یعنی با ضریب 0 در نمودار علاقمندیها لحاظ کند)
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 16 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            16- به نظرم اینکه دوسموک مدل دانش مرا در تایپکهای مختلف بر اساس نمراتی که در  تکالیف و فعالیتهای مختلف دریافت کرده ام می سازد درست است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 17 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            17- به نظرم تعداد و ارزش Vote هایی که از سایرین دریافت می کنم هم می تواند نشان بدهد من چقدر در تاپیکهای مربوطه خبرگی دارم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 18 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            18- دریافت لایک و Vote همکلاسیها به من انرژی بیشتری برای فعالیتهای ارزشمند می دهد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 19 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            19- دیدن عکس دوستانم که یک محتوا را لایک کرده اند حس خوبی به من می دهد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 20 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            20- به نظرم گزینه های Vote به تالار گفتگو گویا و متناسب است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 21 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            21- به نظرم گزینه های Vote به یک مباحثه گویا و متناسب است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 22 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            22- به نظرم گزینه های Vote به یک محتوا گویا و متناسب است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 23 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            23- بعد از مدتی که به Vote های مدرج عادت کردم استفاده از آن را بیشتر از لایک دوست دارم چون به من این امکان را می دهد که دقیقتر درباره یک محتوا یا یک مباحثه اظهار نظر کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 24 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            24- هنوز هم به نظرم لایک کافیست و نیازی به Vote مدرج جداگانه برای محتوا یا مباحثه نیست.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 25 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            25- اغلب از دادن Vote مدرج صرفنظر می کنم چون نیاز به فکر دارد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 26 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            26- به نظرم طراحی محیط جذاب بود و در کل از دوسموک خوشم آمد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 27 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            27- دربافت نظرات مدرس و همتایان مرا به فعالیت بیشتر در درس تشویق می کرد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 28 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            28- مستقل از وجود پاداش بیرونی بابت فعالیتهای درسی، من از فعالیت در محیط اجتماعی لذت می بردم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 29 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            29- به نظرم ماجولهای پیش بینی شده برای به اشتراک گذاری اطلاعات و تبادل نظرات مفید بودند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 30 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            30- محیط و طرزکار ابزارهای آن برای کاربر مبتدی واضح است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 31 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            31- محیط برای یادگیرندگان جذاب است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 32 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            32- موقعیت و پیششرطها برای کاربر مبتدی واضح است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 33 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            33- می شود براحتی کار با ابزارهای پیش بینی شده را یاد گرفت.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 34 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            34- نسخه موبایل و تبلت دوسموک به من این امکان را می داد که برخی فعالیتها را بتوانم در موقعیتهای مختلف انجام بدهم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 35 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            35- کمتر پیش می آید که بخواهم با موبایل یا تبلت وارد دوسموک بشوم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 36 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            36- زمانیکه با موبایل به دوسموک وارد می شوم از نمای خلاصه تری که در اختیارم است و برخی جزئیات پنهان می شوند احساس راحتی می کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 37 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            37- به نظرم تنظیمات نمای تبلت و موبایل دوسموک مناسب و قابل درک است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 38 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            38- به سادگی می توانم ایده ها و افکارم را به اشتراک بگذارم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 39 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            39- تعریف فعالیتهای یادگیری (تکلیف، تالار و مباحثات) و هدایت آنها آسان است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 40 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            40- به اشتراک‌گذاری محتوای جدید (آپلود محتوا و انتخاب تاپیک) آسان است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 41 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            41- بکارگیری ابزارهای تعامل اجتماعی (رای دادن، کامنت گذاشتن) آسان است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 42 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            42- در فعالیتهای مختلف مکانیزم نمره دادن مشابه و کار با آن ساده است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 43 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            43- اینکه تمام تنظیمات محتوا کنار دستش است احساس راحتی میکنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 44 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            44- اینکه تمام کامنتها و Voteها و تگ و تاپیک محتوا را روی خودش میبینم محتوا برایم ارزشمند می شود و کار با آن ساده است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 45 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            45- از اینکه تمام تگ تاپیک کامنت وVote واسط کاربری مشابهی دارند احساس راحتی می کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 46 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            46- ترجیح می دهم برای ویرایش یا انجام تنظیمات یک محتوا به صفحه دیگری بروم به جای آنکه همانجا باکس مربوطه باز شود.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 47 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            47- اگر بدانم دوستانم بیشتر روی کدام محتوا کامنت گذاشته اند بیشتر ترغیب میشوم آنرا مطالعه کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 48 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            48- بصورت کلی کامنتهای روی محتوا ارزش آنرا در نظرم بالاتر می برند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 49 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            49- وقتی کامنتها را می بینم شاید به کامنتها نگاهی بیندازم و بعد محتوا را بخوانم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 50 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            50- در مواجه با یک محتوا بیشتر نویسنده برایم مهم است تا نظرات سایرین.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 51 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            51- از آنجا که خواندن کامنتها وقتگیر است ترجیح می دهم فقط محتوا را بخوانم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 52 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            52- به نظرم کامنت گذاشتن در دوسموک راحت تر و جذابتر از اظهارنظر شفاهی سرکلاس است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 53 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            53- دیدن کامنتهای دوستانم مرا به دادن کامنت ترغیب میکند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 54 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            54- اگر از نظر استاد بلامانع باشد ترجیح می دهم حتی برای تشکر به جای لایک از کامنت استفاده کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 55 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            55- کامنت می گذارم چون می خواهم فعالیتم دیده شود.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 56 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            56- همیشه اول کار نگاهی به Recommended می اندازم تا توصیه‌هایی که سیستم از بابت محتواها دارد را ببینم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 57 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            57- در تب Recommended فقط یکی دو آیتم اول به نظرم جذاب آمدند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 58 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            58- اگر وقتم کم باشد و نتوانم محتوای مورد نظرم را پیدا کنم سراغ تب Recommended می روم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 59 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            59- کلا تب Recommended را ندیده میگیرم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 60 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            60- با مشاهده تگهای روی یک محتوا دید روشنتری نسبت به محتویات آن برایم ایجاد میشد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 61 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            61- انتخاب کلمات مناسب به عنوان تگ برایم دشوار بود و لذا از آن اجتناب میکردم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 62 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            62- در انتخاب تگ ترجیح می دادم مشابه تاپیک انتخاب کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 63 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            63- انتخاب تگ بعد از مدتی برایم آسان شد و با کمی فکر امکانپذیر بود.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 64 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            64- در انتخاب تگ برای محتوای خودم دوست داشتم کلمات خاص متن را بیرون بکشم و برجسته کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 65 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            65- در مباحثات تالارهای گفتگو شرکت میکنم چون میخواهم با اظهارنظر اطلاعات و ایدههایم را محک بزنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 66 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            66- مباحثات را بیشتر به عنوان تکلیفی که از ما خواسته شده بود دنبال می کردم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 67 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            67- شرکت در مباحثات و دنبال کردن آنها را دوست دارم چون می توانم چیزهای جدید یاد بگیرم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 68 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            68- راه انداختن مباحثه و دریافت نظرات همدوره ای ها برایم انگیزه بخش بود.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 69 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            69- مباحثات برخی تالارها بیشتر از توضیحات خود محتوا در ذهنم مانده است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 70 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            70- فعالیت همدوره ایهایم در مباحثات تالارهای گفتگو مرا به فعالیت مشابه وامی داشت.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 71 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            71- مباحثه ای که استاد دوره در آن مشارکت کند برایم جالبتر می شود تا مباحثاتی که فقط دانشجویان در آن مشارکت دارند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 72 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            72- می خواستم مشارکتم در تالارهای گفتگو کمتر از سایرین نباشد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 73 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            73- نمی خواستم کمتر از حد مورد انتظار دوره در مباحثات فعالیت کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 74 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            74- حین آپلود تکلیف هایم سعی کردم با Assess روند یادگیری خودم را ارزشیابی کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 75 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            75- با مقایسه Assess خودم با Assess استاد می توانم مسیر یادگیری ام را بهبود ببخشم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 76 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            76- به نظرم گزینه Assess تاحدودی تشریفاتی است و من بدون فکر کافی تکالیفم را Assess   میکنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 77 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            77- گزینه Assess برایم ناآشنا بود و اغلب تکالیفم را بدون Assess آپلود می کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 78 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            78- هنگام نمره دادن به برخی تکالیف گزینه Assess را غیرضروری می دانم و به نظرم Grade کافیست.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 79 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            79- اگر بدانم دوستانم روی کدام محتوا کامنت گذاشتهاند یا از کدام محتواها بیشتر خوششان آمده است بیشتر ترغیب میشوم آنرا بخوانم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 80 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            80- به نظرم در فضای یادگیری رسمی بیشتر خود محتوا مهم است تا عملکرد دوستانم روی محتوا.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 81 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            81- من دوست دارم منابع ابتدا بر اساس نیاز یادگیریام به من نشان داده شوند و اگر خودم خواستم سیستم در مورد دوستانم هم گزارش بدهد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 82 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            82- به نظرم اینکه دوستانم بیشتر از کدام محتوا خوششان آمده بیشتر در شبکه اجتماعی برایم جالب است تا فضای شبکه یادگیری!
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 83 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            83- کسیکه نام یا عکسش را در میان محبوب ترین محتواها یا فعالترین افراد می بینم اعتبار بیشتری در نزدم پیدا می کنند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 84 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            84- به نظرم اینکه سیستم در هر هفته و هر ماه برترین و فعالترین اعضای دوره آموزشی را معرفی می کند در تشویق آنها به فعالیتهای بیشتر بی تاثیر است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 85 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            85- من اگر حتی برای یک هفته این امکان را داشته باشم که فعالیتم موثرتر از سایرین ارزیابی شود و نامم در لیست پیشتازان درس ذکر گردد انگیزه بیشتری برای ادامه فعالیت در هفته های بعد می یابم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 86 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            86- به نظرم همینکه پیشتازان درس در طول کل دوره معرفی شدند کفایت می کند و نیازی نیست که برای هر ماه یا هر هفته بصورت جداگانه ذکر شوند.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 87 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            87- به عنوان ارزیابی نهایی، تجربه کلی کار با دوسموک را موفق ارزیابی می کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 88 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            88- دوره درسی که در دوسموک برگزار شد انتظارات مرا برآورده کرد.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 89 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            89- مایلم بلافاصله یا در عرض چند هفته درس دیگری در این سیستم بگیرم. (فرض کنید چنین درسی وجود دارد)
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 90 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            90- احتمالا دوسموک را به یک دوست پیشنهاد می‌کنم.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 91 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            91- یادگیری در دوسموک جذاب و انگیزه بخش است.
+        </div>
+    </div>
+
+    <div class="row borderBottom">
+        <div class="col-md-3">
+            @Html.Action("RatingContent", "Survey", new { area = "Admin", surveyId = 4, questionId = 92 })
+        </div>
+        <div class="col-md-9 surveyFont">
+            92- من فیدبکها و حمایت و کامنتهای مناسبی از مشارکت کنندگان دوره دریافت کردم.
+        </div>
+    </div>
+
+</div>

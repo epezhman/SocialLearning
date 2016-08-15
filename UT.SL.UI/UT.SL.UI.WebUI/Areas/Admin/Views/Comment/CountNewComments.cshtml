@@ -1,0 +1,10 @@
+﻿@if (ViewBag.Count != null)
+{
+    <div class="" title="@UT.SL.Model.Resource.App_Common.Comments" data-hideafterclick="true">
+        <span class="label label-default" style="padding:3px"> @ViewBag.Count @string.Format(UT.SL.Model.Resource.App_Common.NewThing, string.Empty) <img src="@Url.Content("~/Images/icon/32x32/reply-white.png")" style="width:20px; height:20px; margin-bottom:4px" alt="@UT.SL.Model.Resource.App_Common.Comment" />&nbsp;</span>
+    </div>
+}
+else
+{
+    <span></span>
+}

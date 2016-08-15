@@ -1,0 +1,106 @@
+﻿@using UT.SL.Helper
+@using UT.SL.Security
+@using UT.SL.UI.WebUI
+@model List<UT.SL.Data.LINQ.SurveyUserSummary>
+@if (Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <div class="inline">
+            <div class="inline">
+                @Ajax.AuthorizationActionLinkBootstrap(User.Identity.Name, item.Id, (int)UT.SL.Model.Enumeration.ObjectType.Survey, "glyphicon glyphicon-eye-open", UT.SL.Model.Resource.App_Common.View, "ViewOneSurvey", "Survey", new { area = "Admin", id = item.Id },
+                   new AjaxOptions()
+                   {
+                       HttpMethod = "POST",
+                       LoadingElementId = "loadingAjax",
+                       UpdateTargetId = "syrveyResult",
+                       InsertionMode = InsertionMode.Replace
+                   }, new { @class = "view" }, null)
+
+            </div>
+            <div class="inline ">
+                @if (item.Statuse == 0)
+                {
+                    if (item.SurveyId == 1)
+                    {
+                        <span class="label label-default label-danger">Hrtr</span>
+                    }
+                    else if (item.SurveyId == 2)
+                    {
+                        <span class="label label-default label-danger">Hrmns</span>
+                    }
+                    else if (item.SurveyId == 3)
+                    {
+                        <span class="label label-default label-danger">agq-r</span>
+                    }
+                    else if (item.SurveyId == 4)
+                    {
+                        <span class="label label-default label-danger">feedback</span>
+                    }
+                }
+                else if (item.Statuse == 1)
+                {
+                    if (item.SurveyId == 1)
+                    {
+                        <span class="label label-default label-info">Hrtr</span>
+                    }
+                    else if (item.SurveyId == 2)
+                    {
+                        <span class="label label-default label-info">Hrmns</span>
+                    }
+                    else if (item.SurveyId == 3)
+                    {
+                        <span class="label label-default label-info">agq-r</span>
+                    }
+                    else if (item.SurveyId == 4)
+                    {
+                        <span class="label label-default label-info">feedback</span>
+                    }
+                }
+                else if (item.Statuse == 2)
+                {
+                    if (item.SurveyId == 1)
+                    {
+                        <span class="label label-default label-warning">Hrtr</span>
+                    }
+                    else if (item.SurveyId == 2)
+                    {
+                        <span class="label label-default label-warning">Hrmns</span>
+                    }
+                    else if (item.SurveyId == 3)
+                    {
+                        <span class="label label-default label-warning">agq-r</span>
+                    }
+                    else if (item.SurveyId == 4)
+                    {
+                        <span class="label label-default label-warning">feedback</span>
+                    }
+                }
+                else if (item.Statuse == 3)
+                {
+                    if (item.SurveyId == 1)
+                    {
+                        <span class="label label-default label-success">Hrtr</span>
+                    }
+                    else if (item.SurveyId == 2)
+                    {
+                        <span class="label label-default label-success">Hrmns</span>
+                    }
+                    else if (item.SurveyId == 3)
+                    {
+                        <span class="label label-default label-success">agq-r</span>
+                    }
+                     else if (item.SurveyId == 4)
+                    {
+                        <span class="label label-default label-success">feedback</span>
+                    }
+                }
+                
+            </div>
+        </div>
+    }
+}
+else
+{
+    <span></span>
+}

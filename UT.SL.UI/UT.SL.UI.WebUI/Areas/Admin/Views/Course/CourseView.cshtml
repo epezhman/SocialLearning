@@ -1,0 +1,53 @@
+﻿@model UT.SL.Data.LINQ.Course
+@{
+    ViewBag.Title = Model.Title;
+}
+@section scripts {
+    <script type="text/javascript" src="@Url.Content("~/scripts/loader.js")"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            window.loadUrl = "@(Url.Action("GetCourseResources", "Course", new { area = "admin", date = DateTime.Now, Id = Model.Id }))";
+            window.loadUrlForNewPosts = "@(Url.Action("GetNewCourseResources", "Course", new { area = "admin", Id = Model.Id }))"
+            window.filterss = '@(ViewBag.Filter != null ? ViewBag.Filter : string.Empty)';
+            window.lastCheckDate = '@(DateTime.Now)';
+            $("#mycourcesdropdown").text('@(Model.Title)');
+            $("#mycourcesdropdownitem@(Model.Id)").addClass('active');
+            $("#arrowheader").show();
+            highLight(@((int)UT.SL.Model.Enumeration.MenuType.MyCourses), @Model.Id, true, false);
+        });
+    </script>
+}
+@section TopLinks{
+    @Html.Action("TopMenuLinks", "Home", new { area = "", menuType = (int)UT.SL.Model.Enumeration.MenuType.MyCourses, extra = Model.Id, rank = (ViewBag.LinkRank != null ? (int)ViewBag.LinkRank : 0), id = Model.Id })
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-6" id="mainPortal">
+            <div id="postItemsArea">
+                @Html.Action("PostToCourse", new { Model })
+            </div>
+            <div id="previewOneItemArea" style="display:none"></div>
+            @Html.Action("LeadersPanel", new { Model, filter = ViewBag.Filter })
+        </div>
+        <div class="col-md-6 panelCompo hidden-xs" id="stufftobemoved">
+            @Html.Action("GetPanel", new { Model, filter = ViewBag.Filter })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="postswrapper">
+                @Html.Action("GetCourseResources", new { Model, resourceSelections = ViewBag.Filter != null ? ViewBag.Filter : string.Empty })
+            </div>
+        </div>
+    </div>
+    <div id="noMorePosts" class="row" style="display:none">
+        <div class="col-md-12">
+            <div class="feedDiv centerOne boldAndLarger marginBottom20" style="width:100%">
+                <span>
+                    @UT.SL.Model.Resource.App_Common.NoMorePosts
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

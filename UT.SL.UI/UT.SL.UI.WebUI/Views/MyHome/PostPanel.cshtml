@@ -1,0 +1,17 @@
+﻿<div class="postToCourse"> 
+    <div id="postTemplate">
+        <div class="whatsup"  data-show="postResourceTemplate" data-hide="postTemplate" data-toggleclass="mainPortal" data-showit="true">
+        </div>
+        <div class="alignCul">
+            <div class="resourceIconPost"  data-show="postResourceTemplate" data-hide="postTemplate" data-toggleclass="mainPortal" data-showit="true">
+                <div>
+                    <span class="glyphicon glyphicon-file"></span>
+                </div>
+                @UT.SL.Model.Resource.App_Common.ToShare
+            </div>           
+        </div>
+    </div>
+    <div id="postResourceTemplate" style="display:none">
+        @Html.Action("PostResource")
+    </div>     
+</div>
